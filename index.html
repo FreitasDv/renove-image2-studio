@@ -242,12 +242,19 @@ summary:focus-visible {
   display: flex;
   align-items: stretch;
   gap: 4px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .primary-nav a {
   min-height: 44px;
-  padding: 11px 13px 9px;
-  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border: 1px solid transparent;
+  border-radius: 5px;
   color: rgba(255, 255, 255, 0.74);
   text-decoration: none;
   font-size: 0.9rem;
@@ -256,13 +263,14 @@ summary:focus-visible {
 
 .primary-nav a:hover,
 .primary-nav a[aria-current="page"] {
-  border-bottom-color: var(--aqua);
+  border-color: rgba(165, 214, 207, 0.24);
+  background: rgba(255, 255, 255, 0.105);
   color: #ffffff;
 }
 
 .intro {
   position: relative;
-  padding: 62px 0 92px;
+  padding: 48px 0 72px;
 }
 
 .intro::before {
@@ -792,16 +800,23 @@ legend {
   font-size: 0.82rem;
 }
 
+.recipe-asset p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .recipe-assets {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 10px;
 }
 
 .recipe-asset {
-  min-height: 150px;
+  min-height: 118px;
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid rgba(41, 108, 123, 0.16);
   border-radius: var(--radius-small);
@@ -819,7 +834,7 @@ legend {
 }
 
 .recipe-asset__preview {
-  min-height: 150px;
+  min-height: 118px;
   overflow: hidden;
   background: #dbe4e1;
 }
@@ -863,14 +878,14 @@ legend {
 
 .recipe-asset > div {
   min-width: 0;
-  padding: 15px 15px 14px;
+  padding: 12px 12px 11px;
 }
 
 .recipe-asset a:not(.recipe-asset__preview) {
-  min-height: 36px;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 7px;
   color: var(--blue);
   font-size: 0.8rem;
   font-weight: 700;
@@ -1429,7 +1444,7 @@ legend {
   }
 
   .recipe-assets {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   .asset-grid {
@@ -1771,16 +1786,16 @@ legend {
         <span>Estúdio criativo</span>
       </a>
       <nav class="primary-nav" aria-label="Navegação principal">
-        <a href="#produzir" aria-current="page">Produzir</a>
-        <a href="#arquivos">Arquivos</a>
-        <a href="#metodo">Método</a>
-        <a href="#qualidade">Qualidade</a>
+        <a href="#produzir" data-view-link="produzir" aria-current="page">Produzir</a>
+        <a href="#arquivos" data-view-link="arquivos">Arquivos</a>
+        <a href="#metodo" data-view-link="metodo">Método</a>
+        <a href="#qualidade" data-view-link="qualidade">Qualidade</a>
       </nav>
     </div>
   </header>
 
   <main id="conteudo">
-    <section class="intro" id="produzir" aria-labelledby="page-title">
+    <section class="intro" id="produzir" data-view="produzir" aria-labelledby="page-title">
       <div class="shell">
         <div class="intro__heading">
           <p class="eyebrow">Renove · direção criativa assistida</p>
@@ -2085,7 +2100,7 @@ legend {
           </div>
         </section>
 
-    <section class="section" id="arquivos" aria-labelledby="library-title">
+    <section class="section" id="arquivos" data-view="arquivos" aria-labelledby="library-title">
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div><p class="eyebrow">Biblioteca</p><h2 id="library-title">Materiais de criação</h2></div>
@@ -4175,7 +4190,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       </div>
     </section>
 
-    <section class="section section--method" id="metodo" aria-labelledby="method-title">
+    <section class="section section--method" id="metodo" data-view="metodo" aria-labelledby="method-title">
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div><p class="eyebrow">Método comprovado</p><h2 id="method-title">A inteligência está na sequência</h2></div>
@@ -4191,7 +4206,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       </div>
     </section>
 
-    <section class="section" id="qualidade" aria-labelledby="quality-title">
+    <section class="section" id="qualidade" data-view="qualidade" aria-labelledby="quality-title">
       <div class="shell quality-layout">
         <div class="section-heading"><p class="eyebrow">Gate final</p><h2 id="quality-title">Aprovar, corrigir ou reconstruir</h2><p>Faça a decisão pela imagem real, não pela intenção do prompt.</p></div>
         <div class="quality-actions">
@@ -4211,6 +4226,8 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
   const data = window.RENOVE_IMAGE2_DATA;
   if (!data) return;
+
+  document.documentElement.classList.add("js-enabled");
 
   const state = { ...data.state };
   const byId = (id) => document.getElementById(id);
@@ -4676,13 +4693,53 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   }
 
   function bindNavigation() {
-    const links = [...document.querySelectorAll(".primary-nav a")];
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        links.forEach((item) => item.removeAttribute("aria-current"));
-        link.setAttribute("aria-current", "page");
+    const views = [...document.querySelectorAll("[data-view]")];
+    const navLinks = [...document.querySelectorAll("[data-view-link]")];
+    const viewNames = new Set(views.map((view) => view.dataset.view));
+
+    function viewFromHash(hash) {
+      const id = (hash || "#produzir").replace(/^#/, "");
+      if (viewNames.has(id)) return id;
+      const target = document.getElementById(id);
+      return target?.closest("[data-view]")?.dataset.view || null;
+    }
+
+    function setActiveView(viewName, options = {}) {
+      views.forEach((view) => {
+        view.hidden = view.dataset.view !== viewName;
       });
+      navLinks.forEach((link) => {
+        const selected = link.dataset.viewLink === viewName;
+        link.setAttribute("aria-current", selected ? "page" : "false");
+      });
+      const activeView = document.querySelector(`[data-view="${viewName}"]`);
+      if (options.push) history.pushState(null, "", `#${viewName}`);
+      if (options.focus && activeView) {
+        activeView.scrollIntoView({ block: "start" });
+        const heading = activeView.querySelector("h1, h2");
+        if (heading) {
+          heading.setAttribute("tabindex", "-1");
+          heading.focus({ preventScroll: true });
+        }
+      }
+    }
+
+    function openHash(hash, options = {}) {
+      setActiveView(viewFromHash(hash), options);
+    }
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const hash = link.getAttribute("href");
+      const viewName = viewFromHash(hash);
+      if (!viewName) return;
+      event.preventDefault();
+      openHash(hash, { push: true, focus: true });
     });
+
+    window.addEventListener("popstate", () => openHash(window.location.hash || "#produzir"));
+    openHash(window.location.hash || "#produzir");
   }
 
   bindStudio();
