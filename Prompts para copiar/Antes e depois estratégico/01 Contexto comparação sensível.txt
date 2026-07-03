@@ -1,4 +1,4 @@
-COMPARAÇÃO SENSÍVEL — CONTEXTO, NÃO GERAR AINDA
+CORPO PROTEGIDO / COMPARAÇÃO SENSÍVEL — CONTEXTO, NÃO GERAR AINDA
 
 Use a imagem-base do formato escolhido como contexto principal.
 
@@ -11,10 +11,10 @@ OBJETIVO
 Recriar uma peça da Renove Clinic que já demonstrou força comercial, sem empobrecer a engenharia visual.
 
 ATIVO
-- Frente: COMPARAÇÃO SENSÍVEL.
+- Frente: CORPO PROTEGIDO / COMPARAÇÃO SENSÍVEL.
 - Modo: preservar e corrigir.
 - Formatos: Story 9:16 e Feed 4:5 são composições separadas.
-- Intenção: preservar a força de uma base real sem reforçar exposição corporal agressiva.
+- Intenção: preservar a força de uma base real de antes/depois sem reforçar exposição corporal agressiva.
 
 PAPEL DOS ANEXOS
 - A imagem-base governa composição, recorte, hierarquia, proporções, textura e ritmo.
@@ -38,11 +38,11 @@ CORRIGIR
 - somente as trocas de copy declaradas no próximo prompt.
 
 REGRA DA FRENTE
-Não trate esta frente como tema fixo ou caso isolado. Ela é uma base sensível de comparação corporal. Evite corpo muito exposto, vergonha, culpa, espelho, reflexo, close dramático ou antes/depois explícito demais. Prefira recorte mais protegido, roupa, postura natural, cuidado clínico e leitura de acompanhamento.
+Não trate esta frente como tema fixo ou caso isolado. Ela é uma base sensível de comparação corporal. Evite corpo muito exposto, vergonha, culpa, espelho, reflexo, close dramático ou antes/depois explícito demais. Referências com roupa, calça, postura natural e evolução visível tendem a funcionar melhor porque mostram resultado sem erotizar. Prefira recorte protegido, cuidado clínico e leitura de acompanhamento.
 
 CONFIRMAÇÃO ESPERADA
 Responda apenas confirmando:
-1. que entendeu a frente COMPARAÇÃO SENSÍVEL;
+1. que entendeu a frente CORPO PROTEGIDO / COMPARAÇÃO SENSÍVEL;
 2. que não deve gerar imagem ainda;
 3. qual base e formato recebeu;
 4. que vai editar sem redesenhar;

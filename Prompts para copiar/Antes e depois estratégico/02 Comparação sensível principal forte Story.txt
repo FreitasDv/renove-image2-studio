@@ -1,4 +1,4 @@
-COMPARAÇÃO SENSÍVEL — PRINCIPAL FORTE — STORY 9:16 — 1080 × 1920
+CORPO PROTEGIDO — MÉDIO / PRINCIPAL FORTE — STORY 9:16 — 1080 × 1920
 
 Agora edite somente a imagem-base Story anexada.
 
@@ -11,7 +11,7 @@ TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
 - Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
 
 OBJETIVO
-Manter a força comercial de uma base real com agressividade média, mas reduzindo risco de rejeição: menos exposição corporal, mais acompanhamento, sem fármaco visível, kg como promessa ou vergonha corporal.
+Manter a força comercial de uma base real com agressividade média, mas reduzindo risco de rejeição: roupa ou calça quando houver corpo, barriga/contorno sem erotização, mais acompanhamento, sem fármaco visível, kg como promessa ou vergonha corporal.
 
 FORMATO
 Use a zona segura anexada. Nada vital no rodapé de interface.
@@ -32,7 +32,7 @@ REGRAS DE TEXTO
 - Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
 
 CRITÉRIO DE SUCESSO
-Deve preservar a arquitetura da base, mas ficar menos explícita na comparação corporal e mais clínica.
+Deve preservar a arquitetura da base, mostrar evolução com corpo protegido e manter leitura clínica/comercial.
 
 SAÍDA
 Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, mockup, grid ou variações lado a lado.

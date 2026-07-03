@@ -34,18 +34,19 @@ TEXTO
 [ ] Valores e unidades ficaram juntos: R$ 997, R$ 2.797, 10x.
 
 FORÇA
-[ ] Dentro da política: reduz risco, mas não promete aprovação.
-[ ] Principal forte: agressividade média, oferta e tensão com controle.
+[ ] Seguro / dentro da política: reduz risco, mas não promete aprovação.
+[ ] Médio / principal forte: agressividade média, oferta e tensão com controle.
 [ ] Agressivo controlado: tensão maior, sem inventar fatos; revisar antes de subir.
 
 ANTES/DEPOIS ESTRATÉGICO
 [ ] A base escolhida corresponde à frente e ao formato final.
 [ ] A base é material de edição e NÃO foi publicada como está.
 [ ] As fotos são reais e autorizadas; pessoa, corpo e anatomia foram preservados.
-[ ] Principal forte foi usado como primeira rota ou Protegida como backup consciente.
+[ ] Médio / principal forte foi usado como primeira rota ou Seguro / protegida como backup consciente.
 [ ] A geração editou a base sem criar um layout novo.
 [ ] Preço antigo, texto histórico e acentos foram corrigidos.
 [ ] Feed usa a base Feed e Story usa a base Story.
+[ ] Antes/depois agressivo não é rota padrão; se parecer agressivo, revisar antes de qualquer veiculação.
 
 REFERÊNCIA EXTERNA
 [ ] O print foi anexado manualmente.
