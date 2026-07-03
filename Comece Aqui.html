@@ -1076,6 +1076,108 @@ legend {
   background: #f9f8f5;
 }
 
+.recipe-brief {
+  margin-bottom: 18px;
+  padding: 18px;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(165, 214, 207, 0.18), rgba(255, 255, 255, 0.86)),
+    #ffffff;
+}
+
+.recipe-brief__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.recipe-brief__header h3 {
+  margin: 3px 0 4px;
+  font-size: 1rem;
+}
+
+.recipe-brief__header p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.recipe-brief__badge {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid rgba(41, 108, 123, 0.2);
+  border-radius: 999px;
+  background: var(--paper-soft);
+  color: var(--petrol);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.brief-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 12px;
+}
+
+.brief-field {
+  display: grid;
+  gap: 6px;
+}
+
+.brief-field span {
+  color: var(--blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.brief-field textarea,
+.brief-field input {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-small);
+  background: var(--paper-soft);
+  color: var(--ink);
+  font: 0.86rem/1.45 "Ubuntu Local", Arial, sans-serif;
+}
+
+.brief-field textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.brief-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.brief-actions button {
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid var(--petrol);
+  border-radius: var(--radius-small);
+  background: var(--petrol);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brief-actions small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 .manual-asset > span,
 .recipe-asset span {
   color: var(--blue);
@@ -1099,10 +1201,7 @@ legend {
 }
 
 .recipe-asset p {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  line-height: 1.42;
 }
 
 .recipe-assets {
@@ -1193,11 +1292,22 @@ legend {
   min-height: 32px;
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   margin-top: 7px;
   color: var(--blue);
   font-size: 0.8rem;
   font-weight: 700;
   text-underline-offset: 3px;
+}
+
+.recipe-asset__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.recipe-asset__actions a:first-child {
+  color: var(--petrol);
 }
 
 .asset-note {
@@ -2061,6 +2171,20 @@ legend {
     padding: 26px 20px 30px;
   }
 
+  .recipe-brief__header,
+  .brief-fields {
+    display: block;
+  }
+
+  .recipe-brief__badge {
+    display: inline-flex;
+    margin-top: 12px;
+  }
+
+  .brief-field + .brief-field {
+    margin-top: 12px;
+  }
+
   .recipe-assets,
   .decision-grid {
     grid-template-columns: 1fr;
@@ -2592,10 +2716,41 @@ legend {
                 </div>
               </header>
 
+              <div class="recipe-brief" data-tour="brief">
+                <div class="recipe-brief__header">
+                  <div>
+                    <span class="library-kicker">Brief da peça</span>
+                    <h3>Coloque a ideia antes de copiar os prompts</h3>
+                    <p>Use este bloco para transformar roteiro, tema ou copy solta em uma instrução clara. Copie o briefing e cole no chat do Image 2 antes do primeiro prompt da receita.</p>
+                  </div>
+                  <span class="recipe-brief__badge" id="brief-flow-badge">Story e Feed separados</span>
+                </div>
+                <div class="brief-fields">
+                  <label class="brief-field" for="brief-copy">
+                    <span>Tema, copy ou roteiro</span>
+                    <textarea id="brief-copy" placeholder="Ex.: protocolo de emagrecimento com avaliação, acompanhamento médico e nutrição. Headline desejada, oferta, CTA ou ideia do roteiro."></textarea>
+                  </label>
+                  <div>
+                    <label class="brief-field" for="brief-headline">
+                      <span>Headline desejada</span>
+                      <input id="brief-headline" type="text" placeholder="Opcional">
+                    </label>
+                    <label class="brief-field" for="brief-cta">
+                      <span>CTA ou oferta</span>
+                      <input id="brief-cta" type="text" placeholder="Opcional">
+                    </label>
+                  </div>
+                </div>
+                <div class="brief-actions">
+                  <button type="button" id="copy-brief">Copiar briefing da receita</button>
+                  <small id="brief-helper">Depois cole os prompts abaixo na ordem. A copy exata deve ficar entre aspas quando for texto obrigatório na arte.</small>
+                </div>
+              </div>
+
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>1</span>
-                  <div><h3 id="recipe-assets-title">Separe só estes materiais</h3><p>Este conjunto concentra o que governa a peça sem diluir a direção. Base real só entra quando a receita pedir.</p></div>
+                  <div><h3 id="recipe-assets-title">Anexe só estes arquivos</h3><p>Baixe ou abra apenas os itens desta receita. Se a peça for antes/depois, a base real aparece aqui porque ela faz parte da edição.</p></div>
                 </div>
                 <div class="manual-assets" id="manual-assets"></div>
                 <div class="recipe-assets" id="recipe-assets" data-tour="recipe-assets"></div>
@@ -2604,7 +2759,7 @@ legend {
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>2</span>
-                  <div><h3 id="recipe-prompts-title">Cole nesta ordem</h3><p>Comece pelo contexto, gere uma imagem por vez e corrija sem trocar a arquitetura quando a base estiver boa.</p></div>
+                  <div><h3 id="recipe-prompts-title">Cole nesta ordem</h3><p>Primeiro o briefing acima, depois os prompts. Story e Feed são gerações próprias: não transforme um em corte automático do outro.</p></div>
                 </div>
                 <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
@@ -2633,8 +2788,8 @@ legend {
           <div class="shell">
             <div class="section-heading">
               <p class="eyebrow">Bases reais</p>
-              <h2 id="online-title">Seleção controlada</h2>
-              <p>O painel online mostra método, prompts e anexos de marca. As bases reais de antes/depois ficam na pasta privada e entram somente quando forem escolhidas para a peça, evitando anexo errado e comparação corporal sem critério.</p>
+              <h2 id="online-title">Uso controlado por receita</h2>
+              <p>As bases de antes/depois aparecem quando a rota pede esse tipo de criativo. Use sempre Story com Story e Feed com Feed, escolhendo corpo protegido ou protocolo conforme o objetivo da peça.</p>
             </div>
           </div>
         </section>
@@ -4554,12 +4709,55 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
               </div>
             </article>
 
-            <article class="asset-card asset-card--locked" data-library-item data-search="bases reais privadas comparação sensível protocolo antes depois base de edição">
+            <article class="asset-card" data-library-item data-search="corpo protegido story antes depois base real edição comparação sensível 9:16">
+              <a class="asset-card__image asset-card__image--document" href="Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Story%209x16.png" aria-label="Abrir Corpo protegido Story">
+                <span>Base real</span>
+                <strong>Story 9:16</strong>
+              </a>
               <div class="asset-card__body">
-                <span class="library-kicker">bases reais · envio controlado</span>
-                <h3>Bases reais de antes/depois</h3>
-                <p>No link online, as bases reais ficam ocultas. Quando a receita pedir uma base, use a pasta privada: Story com Story, Feed com Feed, corpo protegido ou protocolo conforme a frente escolhida.</p>
-                <div class="asset-card__note"><strong>Base real de edição.</strong> A escolha correta acontece em Produzir &gt; Antes/depois, não pela biblioteca.</div>
+                <span class="library-kicker">Base real · Story 9:16</span>
+                <h3>Corpo protegido Story</h3>
+                <p>Base de edição para antes/depois com roupa, recorte cuidadoso e evolução visível.</p>
+                <a class="text-action" href="Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Story%209x16.png" download>Baixar base</a>
+              </div>
+            </article>
+
+            <article class="asset-card" data-library-item data-search="corpo protegido feed antes depois base real edição comparação sensível 4:5">
+              <a class="asset-card__image asset-card__image--document" href="Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Feed%204x5.png" aria-label="Abrir Corpo protegido Feed">
+                <span>Base real</span>
+                <strong>Feed 4:5</strong>
+              </a>
+              <div class="asset-card__body">
+                <span class="library-kicker">Base real · Feed 4:5</span>
+                <h3>Corpo protegido Feed</h3>
+                <p>Use quando a receita pedir Feed 4:5. Não corte o Story para simular Feed.</p>
+                <a class="text-action" href="Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Feed%204x5.png" download>Baixar base</a>
+              </div>
+            </article>
+
+            <article class="asset-card" data-library-item data-search="protocolo story antes depois base real edição acompanhamento 9:16">
+              <a class="asset-card__image asset-card__image--document" href="Anexos/Bases%20de%20performance/Protocolo%20Story%209x16.png" aria-label="Abrir Protocolo Story">
+                <span>Base real</span>
+                <strong>Story 9:16</strong>
+              </a>
+              <div class="asset-card__body">
+                <span class="library-kicker">Base real · Story 9:16</span>
+                <h3>Protocolo Story</h3>
+                <p>Base para vender acompanhamento e protocolo, sem depender de fármaco visível.</p>
+                <a class="text-action" href="Anexos/Bases%20de%20performance/Protocolo%20Story%209x16.png" download>Baixar base</a>
+              </div>
+            </article>
+
+            <article class="asset-card" data-library-item data-search="protocolo feed antes depois base real edição acompanhamento 4:5">
+              <a class="asset-card__image asset-card__image--document" href="Anexos/Bases%20de%20performance/Protocolo%20Feed%204x5.png" aria-label="Abrir Protocolo Feed">
+                <span>Base real</span>
+                <strong>Feed 4:5</strong>
+              </a>
+              <div class="asset-card__body">
+                <span class="library-kicker">Base real · Feed 4:5</span>
+                <h3>Protocolo Feed</h3>
+                <p>Use quando a receita pedir Feed 4:5. A composição já nasce no formato certo.</p>
+                <a class="text-action" href="Anexos/Bases%20de%20performance/Protocolo%20Feed%204x5.png" download>Baixar base</a>
               </div>
             </article>
 
@@ -4765,6 +4963,23 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   const data = window.RENOVE_IMAGE2_DATA;
   if (!data) return;
 
+  const baseFiles = {
+    "Bases de performance/Comparação sensível Story 9x16.png": "Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Story%209x16.png",
+    "Bases de performance/Comparação sensível Feed 4x5.png": "Anexos/Bases%20de%20performance/Compara%C3%A7%C3%A3o%20sens%C3%ADvel%20Feed%204x5.png",
+    "Bases de performance/Protocolo Story 9x16.png": "Anexos/Bases%20de%20performance/Protocolo%20Story%209x16.png",
+    "Bases de performance/Protocolo Feed 4x5.png": "Anexos/Bases%20de%20performance/Protocolo%20Feed%204x5.png",
+  };
+
+  Object.entries(baseFiles).forEach(([file, href]) => {
+    if (!data.assetInfo[file]) return;
+    Object.assign(data.assetInfo[file], {
+      href,
+      isImage: true,
+      lockedOnline: false,
+      description: "Base real de edição. Baixe e anexe somente quando esta receita pedir; não use como anúncio final sem revisar risco, copy e autorização.",
+    });
+  });
+
   document.documentElement.classList.add("js-enabled");
 
   const state = { ...data.state };
@@ -4783,7 +4998,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   const libraryMessages = {
     "referência mestra": "Consulta de marca: abre a referência mestra. A receita continua escolhendo logo, formato e prompts em Produzir.",
     "guias de formato": "Consulta de formato: use Story com Story e Feed com Feed. A receita de Produzir seleciona o guia correto.",
-    "base de edição": "Bases reais de edição: isto não é a área de produção. Use Produzir > Antes/depois para escolher uma única base por frente, formato e faixa.",
+    "base de edição": "Bases reais de edição: consulte ou baixe aqui, mas escolha a base pela receita em Produzir > Antes/depois para não misturar frente, formato e faixa.",
     "adaptar print": "Prompts de referência externa: primeiro leia o print, depois adapte sem copiar marca, pessoa ou promessa de terceiros.",
   };
 
@@ -4817,9 +5032,15 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     },
     {
       view: "#produzir",
+      selector: "[data-tour='brief']",
+      title: "Cole a ideia aqui",
+      body: "Roteiro, copy solta ou tema entram no briefing. Copie esse bloco antes dos prompts para o Image 2 entender o que deve aparecer na peça.",
+    },
+    {
+      view: "#produzir",
       selector: "[data-tour='recipe-assets']",
       title: "Anexe só o que aparece",
-      body: "A receita escolhe uma base por vez e o guia do formato certo. Não anexe tudo junto.",
+      body: "A receita mostra arquivos de marca, formato e, quando for o caso, a base real certa. Não anexe tudo junto.",
     },
     {
       view: "#produzir",
@@ -4888,6 +5109,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     if (appStarted) return;
     appStarted = true;
     bindStudio();
+    bindBrief();
     bindTabs();
     bindLibrary();
     bindNavigation();
@@ -5065,9 +5287,15 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
     return {
       title: `${front.label} · ${lane.label} · ${format.label}`,
-      description: `${lane.description} A base é material de edição e não deve ser publicada como está: revisar risco, texto, preço e composição.`,
+      description: `${lane.description} Baixe a base real desta receita e anexe com os arquivos indicados. Ela é material de edição, não anúncio final: revisar risco, texto, preço, roupa, recorte e autorização antes de veicular.`,
       assets: unique(assets),
-      manualAssets: [],
+      manualAssets: [
+        {
+          title: "Critério antes de usar a base",
+          role: "checagem obrigatória",
+          description: "Use médio quando a imagem está controlada. Use seguro quando corpo, promessa ou copy ficarem fortes. Se a comparação parecer agressiva demais, use a alternativa sem comparação corporal.",
+        },
+      ],
       prompts: [
         promptStep(front.context, "Confirmar a base"),
         promptStep(generation, "Gerar a peça"),
@@ -5086,6 +5314,74 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     if (state.workflow === "version") return buildVersionRecipe();
     if (state.workflow === "before-after") return buildBeforeAfterRecipe();
     return buildNewRecipe();
+  }
+
+  function currentFormatLabel() {
+    if (state.workflow === "before-after") return data.formats[state.beforeFormat].label;
+    return data.formats[state.format].label;
+  }
+
+  function storyFeedNote() {
+    const format = state.workflow === "before-after" ? state.beforeFormat : state.format;
+    if (format === "story") return "Faça o Story primeiro e depois use a receita de Feed 4:5 como recomposição própria. Não corte o Story.";
+    if (format === "feed45") return "Feed 4:5 deve nascer como composição própria. Se também precisar de Story, volte para Story 9:16 e gere outra peça.";
+    if (format === "square") return "Feed 1:1 é compacto: reduza copy e mantenha o núcleo visual no centro.";
+    return "Carrossel é rota orgânica/editorial por padrão. Planeje e gere uma lâmina por vez.";
+  }
+
+  function buildBriefText(recipe) {
+    const copy = byId("brief-copy")?.value.trim() || "[COLE AQUI O TEMA, ROTEIRO OU COPY DA PEÇA]";
+    const headline = byId("brief-headline")?.value.trim() || "[SE HOUVER HEADLINE OBRIGATÓRIA, COLE AQUI]";
+    const cta = byId("brief-cta")?.value.trim() || "[SE HOUVER CTA/OFERTA OBRIGATÓRIA, COLE AQUI]";
+    const workflow = data.workflows[state.workflow].label;
+    const format = currentFormatLabel();
+    const surface = data.surfaces[state.surface]?.label || "Edição controlada";
+    const force = state.workflow === "before-after"
+      ? data.beforeLanes[state.beforeLane].label
+      : data.forces[state.force]?.label || "Controle pela receita";
+    const visual = state.workflow === "new" ? data.visuals[state.visual].label : recipe.title;
+    const assetTitles = recipe.assets.map((file) => data.assetInfo[file]?.title).filter(Boolean).join(", ");
+    const manualTitles = recipe.manualAssets.map((item) => item.title).join(", ");
+
+    return `BRIEF DA PEÇA RENOVE
+
+Objetivo: ${workflow}
+Formato: ${format}
+Uso: ${surface}
+Força: ${force}
+Direção visual: ${visual}
+
+Tema/copy de origem:
+"${copy}"
+
+Headline obrigatória, se houver:
+"${headline}"
+
+CTA/oferta obrigatória, se houver:
+"${cta}"
+
+Anexos desta receita:
+${assetTitles || "nenhum anexo automático"}
+${manualTitles ? `Arquivos manuais: ${manualTitles}` : ""}
+
+Regra de formato:
+${storyFeedNote()}
+
+Regra de texto:
+Preserve acentos. Qualquer texto entre aspas é EXACT TEXT ON IMAGE. Não invente preço, prova, resultado, telefone, CRM, depoimento ou promessa clínica.
+
+Agora siga os prompts da receita na ordem.`;
+  }
+
+  function renderBrief(recipe) {
+    const badge = byId("brief-flow-badge");
+    const helper = byId("brief-helper");
+    if (!badge || !helper) return;
+    badge.textContent = currentFormatLabel();
+    helper.textContent = state.workflow === "before-after"
+      ? "Baixe a base real desta receita, anexe com os arquivos indicados e cole o briefing antes do contexto de antes/depois."
+      : "Depois cole os prompts abaixo na ordem. A copy exata deve ficar entre aspas quando for texto obrigatório na arte.";
+    byId("copy-brief").dataset.briefText = buildBriefText(recipe);
   }
 
   function renderManualAssets(items) {
@@ -5117,6 +5413,10 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
         ? `<div class="recipe-asset__preview recipe-asset__preview--locked" aria-hidden="true">
           <span>Base real privada</span>
         </div>`
+        : info.sensitiveBase
+        ? `<a class="recipe-asset__preview recipe-asset__preview--document" href="${info.href}" aria-label="Abrir ${info.title}">
+          <span>Base real</span>
+        </a>`
         : info.isImage
         ? `<a class="recipe-asset__preview" href="${info.href}" aria-label="Abrir ${info.title}">
           <img src="${info.href}" alt="Prévia de ${info.title}">
@@ -5125,13 +5425,14 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
           <span>${info.href.toLowerCase().endsWith(".pdf") ? "PDF" : "Arquivo"}</span>
         </a>`;
       const actionLabel = info.lockedOnline ? null : info.isImage ? "Abrir imagem" : "Abrir arquivo";
+      const downloadLabel = info.sensitiveBase ? "Baixar base" : info.isImage ? "Baixar anexo" : null;
       article.innerHTML = `
         ${preview}
         <div>
           <span>${info.role}</span>
           <h4>${info.title}</h4>
           <p>${info.description}</p>
-          ${actionLabel ? `<a href="${info.href}">${actionLabel}</a>` : `<small class="asset-note">Base oculta no link online; use a pasta privada ou solicite a seleção correta.</small>`}
+          ${actionLabel ? `<div class="recipe-asset__actions"><a href="${info.href}">${actionLabel}</a>${downloadLabel ? `<a href="${info.href}" download>${downloadLabel}</a>` : ""}</div>` : `<small class="asset-note">Base manual: use somente quando a receita pedir este arquivo.</small>`}
         </div>
       `;
       root.appendChild(article);
@@ -5195,6 +5496,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     byId("recipe-title").textContent = recipe.title;
     byId("recipe-description").textContent = recipe.description;
     byId("recipe-status").textContent = `${recipe.assets.length + recipe.manualAssets.length} anexos · ${recipe.prompts.length} prompts`;
+    renderBrief(recipe);
     renderManualAssets(recipe.manualAssets);
     renderAssets(recipe.assets);
     renderPrompts(recipe.prompts);
@@ -5312,6 +5614,26 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       }
       window.setTimeout(() => {
         event.target.textContent = original;
+      }, 2200);
+    });
+  }
+
+  function bindBrief() {
+    ["brief-copy", "brief-headline", "brief-cta"].forEach((id) => {
+      byId(id)?.addEventListener("input", () => renderRecipe());
+    });
+    byId("copy-brief")?.addEventListener("click", async (event) => {
+      const button = event.currentTarget;
+      const original = button.textContent;
+      try {
+        const copied = await copyText(button.dataset.briefText || buildBriefText(buildRecipe()));
+        button.textContent = copied ? "Briefing copiado" : "Briefing selecionado";
+        announce(copied ? "Briefing copiado." : "O briefing foi selecionado para cópia manual.");
+      } catch {
+        button.textContent = "Tente copiar manualmente";
+      }
+      window.setTimeout(() => {
+        button.textContent = original;
       }, 2200);
     });
   }
