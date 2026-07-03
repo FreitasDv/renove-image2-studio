@@ -10,8 +10,8 @@ PROCESSO
 
 FORMATO
 [ ] Story: vertical 9:16, com informação principal na zona segura.
-[ ] Feed 4:5: composição própria, sem cortar o Story.
-[ ] Feed quadrado: menos texto, mais respiro e hierarquia mais simples.
+[ ] Feed 4:5: composição própria com Geometria Feed 4:5 e 1:1, sem cortar o Story.
+[ ] Feed quadrado: menos texto, núcleo visual central e hierarquia mais simples.
 [ ] Carrossel: rota orgânica/editorial por padrão, sequência planejada antes, uma lâmina por vez, sem prancha.
 
 SUPERFÍCIE

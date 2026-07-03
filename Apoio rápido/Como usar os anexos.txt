@@ -14,7 +14,7 @@ ORDEM RECOMENDADA NO CHAT
 1. Referência mestra v2.
 2. Logo escolhida pelo contraste do fundo.
 3. Uma família visual, quando a peça pedir atmosfera específica.
-4. Guia de formato, somente em Story/Reels.
+4. Guia de formato: Story/Reels ou Feed, conforme o formato final.
 5. Base real, somente na rota Antes/depois estratégico.
 6. Print externo, somente na rota Adaptar referência.
 
@@ -59,6 +59,7 @@ Escolha 1 cor dominante, 1 cor de hierarquia, 1 neutra e no máximo 1 acento.
 
 GUIA DE FORMATO
 Zona segura Story e Reels: anexar somente em Story/Reels. Ela governa texto vital, oferta e respiro contra a interface do aplicativo.
+Geometria Feed 4:5 e 1:1: anexar quando o formato final for Feed. Ela governa headline, cena, oferta, logo, margens e sobrevivência em preview/corte quadrado.
 Feed 4:5 e Feed 1:1 precisam recomposição própria. Não peça só para cortar o Story.
 Carrossel é orgânico/editorial por padrão. Planeje a sequência antes e gere uma lâmina por vez.
 
@@ -72,7 +73,7 @@ Protocolo Feed: usar só quando o formato final for Feed 4:5.
 As bases podem conter copy e preço históricos. O prompt selecionado corrige esses pontos sem redesenhar a composição.
 
 ANTES/DEPOIS ESTRATÉGICO
-Use: referência mestra v2 + base correta + logo adequada + zona segura, se for Story.
+Use: referência mestra v2 + base correta + logo adequada + guia de formato correto.
 Comece por Principal forte. Use Protegida como backup consciente.
 As fotos precisam ser reais e autorizadas. O modelo não pode trocar pessoa, alterar anatomia ou inventar transformação corporal.
 Se o risco não fizer sentido, use a alternativa sem comparação corporal.

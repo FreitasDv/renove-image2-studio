@@ -41,7 +41,9 @@ COR E LOGO
 
 FORMATO
 - Story/Reels 9:16: informação principal no topo 60%; nada vital abaixo de Y 1250.
-- Feed 4:5 ou 1:1: recomponha. Não corte o Story.
+- Feed 4:5: recomponha com o guia Geometria Feed 4:5 e 1:1. Headline no terço superior, cena no centro, oferta/CTA no centro inferior e logo com respiro.
+- Feed 1:1: simplifique texto e mantenha tudo que é vital dentro do quadrado central.
+- Não corte o Story para virar Feed.
 - Com texto pequeno, preço ou muitos elementos, gere em alta qualidade.
 
 ANTI-GENÉRICO

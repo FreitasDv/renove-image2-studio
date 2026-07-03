@@ -1,31 +1,34 @@
-Redesenhe a arte anterior no formato Feed vertical 4:5, 1080x1350.
+Recomponha a direção aprovada para Feed 4:5 da Renove Clinic.
 
-MANTENHA TRAVADO
-- mesmo texto, sem trocar nenhuma palavra;
-- mesma paleta;
-- mesma família visual;
-- mesma logo;
-- mesmo conceito de cena;
-- mesma textura e acabamento.
+Não recorte o Story. Reorganize a peça no formato final 1080x1350.
 
-RECOMPONHA DO ZERO
-Feed não é corte de Story. Não estique, não recorte e não empurre tudo para cima. Use o quadro inteiro com equilíbrio.
+PAPEL DOS ANEXOS
+- Referência mestra v2: preserva identidade, textura, paleta e acabamento.
+- Geometria Feed 4:5 e 1:1: governa margens, leitura, posição de headline, cena, oferta e assinatura.
+- Logo: lock. Escolha a variação mais legível pelo fundo final.
+- Peça/direção aprovada, se anexada: preservar inteligência visual, não copiar erro operacional.
 
-AJUSTES OBRIGATORIOS
-1. Use mais largura para reduzir quebras de linha.
-2. Centralize melhor o peso visual.
-3. Mantenha margens de seguranca de aproximadamente 8%.
-4. Deixe o texto legível no celular.
-5. Distribua topo, meio e base com respiro.
-6. Reposicione elementos organicos para o novo formato.
-7. Remova qualquer cara de crop preguiçoso.
+OBJETIVO
+Criar uma peça Feed 4:5 com composição própria, pronta para leitura no celular e resistente a recortes de preview.
 
-CTA
-Continua como texto ou faixa tipográfica plana. Não criar botão falso.
+GEOMETRIA FEED 4:5
+- Headline no terço superior, curta e forte.
+- Cena, mecanismo ou grafismo no centro, sem esmagar texto.
+- Oferta/CTA no centro inferior, antes da faixa de risco do rodapé.
+- Logo com respiro, contraste real e sem colar na borda.
+- Nada vital grudado nas laterais ou no rodapé.
+- Se houver chance de reaproveitamento 1:1, manter o núcleo principal dentro do quadrado central.
 
-CAMADA RENOVE APROVADA - FEED
-- Feed não é corte de Story. Recompose do zero para o formato.
-- Se estiver no ChatGPT, use o seletor de proporção 4:5 ou 1:1. Se for API, prefira dimensões múltiplas de 16: 1088x1360 para 4:5 aproximado ou 1088x1088 para quadrado.
-- Não existe zona de sacrifício no Feed. Use o canvas inteiro com equilíbrio, margens e leitura mobile.
-- Preserve texto literal em português, com acentos corretos. Não traduza, não invente copy e não quebre "R$ 997", "R$ 2.797" ou "10x".
-- A adaptação deve preservar DNA visual, textura, luz, logo e hierarquia, mas pode reposicionar tudo para o novo quadro.
+PRESERVAR
+- Palavra hero e hierarquia aprovadas.
+- Paleta e textura Renove.
+- Tensão comercial definida pela intensidade.
+- Copy final entre aspas, se já estiver aprovada.
+
+CORRIGIR
+- Proporções que funcionavam no Story, mas ficam longas demais no Feed.
+- Texto pequeno, preço quebrado, logo sem contraste e rodapé poluído.
+- Qualquer aparência de crop, print ou peça espremida.
+
+SAÍDA
+Gere uma única imagem final Feed 4:5, 1080x1350, sem prancha, mockup, borda de app ou grid.

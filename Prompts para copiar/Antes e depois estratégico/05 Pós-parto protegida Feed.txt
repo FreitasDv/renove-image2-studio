@@ -14,7 +14,7 @@ OBJETIVO
 Criar o backup mais cuidadoso para conta e número, mantendo contraste, preço e leitura comercial.
 
 FORMATO
-Use a base Feed. Não faça crop do Story e não herde sua zona de sacrifício.
+Use a base Feed e o guia Geometria Feed 4:5 e 1:1. Não faça crop do Story. Headline no terço superior, cena no centro, oferta/CTA no centro inferior e logo com respiro. Nada vital colado nas bordas.
 
 TEXTO VISÍVEL FINAL
 ACOMPANHAMENTO INDIVIDUAL

@@ -35,6 +35,8 @@ FAMÍLIAS VISUAIS
 FORMATO
 - Zona segura Story e Reels.png
   Usar somente em Story/Reels. Não precisa em Feed.
+- Geometria Feed 4x5 e 1x1.png
+  Usar em Feed 4:5 e Feed 1:1. Ajuda a recompor sem cortar o Story e protege headline, oferta, logo e margens.
 
 BASES REAIS DE PERFORMANCE
 - Pós-parto Story 9x16.png
@@ -67,8 +69,8 @@ COMBINAÇÕES RÁPIDAS
 - Peça nova escura: Referência mestra v2 + Logo clara + Família petróleo ou editorial.
 - Peça com grafismo de símbolo: Referência mestra v2 + Logo oficial ou clara + Isologo oficial.
 - Story/Reels: adicionar Zona segura Story e Reels.
-- Feed: não usar zona segura; recompor no formato final.
-- Antes/depois: Referência mestra v2 + base correta + logo adequada + zona segura se for Story.
+- Feed: adicionar Geometria Feed 4x5 e 1x1; recompor no formato final.
+- Antes/depois: Referência mestra v2 + base correta + logo adequada + guia de formato correto.
 - Print externo: Referência mestra v2 + logo + print manual, depois rodar leitura antes de gerar.
 
 REGRA FINAL
