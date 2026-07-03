@@ -68,7 +68,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: calc(var(--header-height) + 24px);
 }
 
@@ -103,7 +103,7 @@ body::before {
 }
 
 body.access-locked {
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -112,21 +112,19 @@ body.access-locked > :not(.access-screen) {
 }
 
 .access-screen {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 32px;
-  background:
-    radial-gradient(circle at 18% 22%, rgba(165, 214, 207, 0.34), transparent 28%),
-    radial-gradient(circle at 82% 84%, rgba(217, 170, 143, 0.34), transparent 30%),
-    linear-gradient(145deg, #0d3039 0%, #123f4b 48%, #edf2ef 48.1%, #f7faf6 100%);
+  background: linear-gradient(90deg, var(--petrol) 0 34%, var(--bg) 34% 100%);
 }
 
 .access-card {
   width: min(100%, 480px);
   padding: 34px;
   border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 14px;
+  border-top: 4px solid var(--clay);
+  border-radius: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(251, 252, 250, 0.92)),
     var(--paper);
@@ -322,7 +320,7 @@ summary:focus-visible {
   z-index: 50;
   min-height: var(--header-height);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(18, 63, 75, 0.97);
+  background: var(--petrol);
   color: #f7faf8;
 }
 
@@ -362,20 +360,20 @@ summary:focus-visible {
 .primary-nav {
   display: flex;
   align-items: stretch;
-  gap: 4px;
-  padding: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-small);
-  background: rgba(255, 255, 255, 0.045);
+  gap: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .primary-nav a {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  padding: 9px 14px;
-  border: 1px solid transparent;
-  border-radius: 5px;
+  padding: 10px 2px 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
   color: rgba(255, 255, 255, 0.74);
   text-decoration: none;
   font-size: 0.9rem;
@@ -384,8 +382,8 @@ summary:focus-visible {
 
 .primary-nav a:hover,
 .primary-nav a[aria-current="page"] {
-  border-color: rgba(165, 214, 207, 0.24);
-  background: rgba(255, 255, 255, 0.105);
+  border-bottom-color: var(--aqua);
+  background: transparent;
   color: #ffffff;
 }
 
@@ -401,14 +399,119 @@ summary:focus-visible {
   cursor: pointer;
 }
 
+.tour-start {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid rgba(165, 214, 207, 0.34);
+  border-radius: var(--radius-small);
+  background: rgba(165, 214, 207, 0.12);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .access-logout:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
 }
 
+.tour-start:hover {
+  background: rgba(165, 214, 207, 0.2);
+}
+
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.tour-spotlight {
+  position: fixed;
+  z-index: 81;
+  pointer-events: none;
+  border: 2px solid var(--aqua);
+  border-radius: 14px;
+  background: transparent;
+  filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    0 0 0 9999px rgba(12, 32, 39, 0.44),
+    0 0 0 5px rgba(251, 252, 250, 0.9),
+    0 18px 54px rgba(12, 32, 39, 0.16);
+  transition: top 160ms ease, left 160ms ease, width 160ms ease, height 160ms ease;
+}
+
+.tour-card {
+  position: fixed;
+  z-index: 82;
+  width: min(360px, calc(100vw - 32px));
+  padding: 22px;
+  pointer-events: auto;
+  border: 1px solid var(--line-strong);
+  border-top: 4px solid var(--clay);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 26px 70px rgba(12, 32, 39, 0.22);
+}
+
+.tour-count {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tour-card h2 {
+  margin-bottom: 8px;
+  font-family: "Ubuntu Local", Arial, sans-serif;
+  font-size: 1.18rem;
+}
+
+.tour-card p:not(.tour-count) {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tour-actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
+
+.tour-actions button {
+  min-height: 44px;
+  padding: 9px 12px;
+  border-radius: var(--radius-small);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tour-primary {
+  border: 1px solid var(--petrol);
+  background: var(--petrol);
+  color: #ffffff;
+}
+
+.tour-secondary {
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--petrol);
+}
+
+.tour-secondary:disabled {
+  cursor: not-allowed;
+  opacity: 0.44;
+}
+
 .intro {
   position: relative;
-  padding: 38px 0 58px;
+  padding: 34px 0 50px;
 }
 
 .intro::before {
@@ -422,8 +525,8 @@ summary:focus-visible {
 }
 
 .intro__heading {
-  max-width: 780px;
-  margin-bottom: 28px;
+  max-width: 700px;
+  margin-bottom: 24px;
 }
 
 .intro__heading > p:last-child {
@@ -455,32 +558,30 @@ summary:focus-visible {
 }
 
 .workflow-wrap {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .workflow-switcher {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 7px;
-  padding: 6px;
-  border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(229, 241, 238, 0.62)),
-    rgba(251, 252, 250, 0.74);
-  box-shadow: 0 10px 24px rgba(18, 63, 75, 0.045);
+  gap: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: rgba(251, 252, 250, 0.48);
 }
 
 .workflow-switcher button {
   position: relative;
-  min-height: 92px;
-  padding: 18px 18px 34px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-small);
+  min-height: 104px;
+  padding: 20px 22px 34px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
   background: transparent;
   text-align: left;
   cursor: pointer;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 
 .workflow-switcher button:last-child {
@@ -501,23 +602,18 @@ summary:focus-visible {
 }
 
 .workflow-switcher button:hover {
-  border-color: rgba(41, 108, 123, 0.16);
-  background: rgba(255, 255, 255, 0.86);
-  transform: translateY(-1px);
+  background: rgba(229, 241, 238, 0.62);
 }
 
 .workflow-switcher button[aria-pressed="true"] {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 46%),
-    var(--petrol);
-  border-color: rgba(165, 214, 207, 0.28);
-  color: #ffffff;
-  box-shadow: 0 16px 34px rgba(18, 63, 75, 0.18);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: inset 0 -4px 0 var(--petrol);
 }
 
 .workflow-switcher button[aria-pressed="true"]::after {
   content: "Selecionado";
-  color: var(--aqua);
+  color: var(--petrol);
 }
 
 .workflow-switcher strong,
@@ -538,7 +634,7 @@ summary:focus-visible {
 }
 
 .workflow-switcher button[aria-pressed="true"] span {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 .studio-layout {
@@ -552,10 +648,12 @@ summary:focus-visible {
   position: sticky;
   top: calc(var(--header-height) + 22px);
   overflow: hidden;
-  border: 1px solid rgba(41, 108, 123, 0.14);
-  border-radius: var(--radius);
-  background: rgba(251, 252, 250, 0.88);
-  box-shadow: 0 18px 44px rgba(18, 63, 75, 0.052);
+  border: 0;
+  border-top: 3px solid var(--clay);
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: rgba(251, 252, 250, 0.72);
+  box-shadow: none;
 }
 
 .setup__heading {
@@ -593,6 +691,42 @@ summary:focus-visible {
 
 #studio-form > div {
   padding: 6px 24px 26px;
+}
+
+.setup-recipe-jump {
+  min-height: 58px;
+  margin: 0 24px 24px;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid var(--petrol);
+  background: var(--petrol);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.setup-recipe-jump:hover {
+  background: var(--petrol-2);
+}
+
+.setup-recipe-jump span,
+.setup-recipe-jump strong {
+  display: block;
+}
+
+.setup-recipe-jump span {
+  color: var(--aqua);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.setup-recipe-jump strong {
+  max-width: 14ch;
+  text-align: right;
+  font-size: 0.85rem;
 }
 
 fieldset {
@@ -793,13 +927,13 @@ legend {
 }
 
 .recipe {
-  overflow: hidden;
-  border: 1px solid rgba(41, 108, 123, 0.15);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 180px),
-    var(--paper);
-  box-shadow: 0 18px 46px rgba(18, 63, 75, 0.09);
+  overflow: clip;
+  border: 0;
+  border-top: 3px solid var(--petrol);
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: 0 22px 54px rgba(18, 63, 75, 0.075);
 }
 
 .recipe__heading {
@@ -808,12 +942,9 @@ legend {
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  padding: 36px 38px 32px;
+  padding: 32px 38px 30px;
   border-bottom: 1px solid var(--line);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 72%),
-    linear-gradient(90deg, rgba(165, 214, 207, 0.14), transparent 42%),
-    var(--petrol);
+  background: var(--petrol);
   color: #f7faf8;
 }
 
@@ -822,9 +953,9 @@ legend {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: min(36%, 300px);
-  height: 7px;
-  background: linear-gradient(90deg, var(--aqua), var(--clay));
+  width: min(22%, 190px);
+  height: 4px;
+  background: var(--clay);
 }
 
 .recipe__heading h2 {
@@ -875,7 +1006,7 @@ legend {
   font-size: 0.86rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 12px 22px rgba(4, 22, 27, 0.16);
+  box-shadow: none;
 }
 
 .recipe-copy-main:hover {
@@ -987,17 +1118,14 @@ legend {
   overflow: hidden;
   border: 1px solid rgba(41, 108, 123, 0.16);
   border-radius: var(--radius-small);
-  background:
-    linear-gradient(135deg, #ffffff, rgba(245, 247, 244, 0.88)),
-    var(--paper-soft);
-  box-shadow: 0 8px 18px rgba(18, 63, 75, 0.035);
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  background: #ffffff;
+  box-shadow: none;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 
 .recipe-asset:hover {
   border-color: rgba(41, 108, 123, 0.32);
-  box-shadow: 0 14px 28px rgba(18, 63, 75, 0.065);
-  transform: translateY(-1px);
+  background: var(--aqua-soft);
 }
 
 .recipe-asset__preview {
@@ -1357,7 +1485,7 @@ legend {
 
 .library-shortcuts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin: -8px 0 26px;
 }
@@ -1366,25 +1494,23 @@ legend {
   min-height: 108px;
   padding: 18px;
   border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(229, 241, 238, 0.5)),
-    var(--paper-soft);
+  border-radius: 0;
+  background: var(--paper-soft);
   color: var(--ink);
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 14px 32px rgba(18, 63, 75, 0.045);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  box-shadow: none;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 
 .library-shortcuts button:hover {
   border-color: rgba(41, 108, 123, 0.3);
-  box-shadow: 0 20px 38px rgba(18, 63, 75, 0.075);
-  transform: translateY(-1px);
+  background: var(--aqua-soft);
 }
 
 .library-shortcuts span,
-.library-shortcuts strong {
+.library-shortcuts strong,
+.library-shortcuts small {
   display: block;
 }
 
@@ -1400,6 +1526,29 @@ legend {
   max-width: 22ch;
   font-size: 0.92rem;
   line-height: 1.25;
+}
+
+.library-shortcuts small {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.library-shortcuts [data-open-workflow] {
+  border-color: rgba(41, 108, 123, 0.34);
+  background:
+    linear-gradient(145deg, rgba(165, 214, 207, 0.32), rgba(251, 252, 250, 0.78)),
+    var(--paper);
+}
+
+.library-context {
+  margin: -8px 0 22px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--petrol);
+  background: rgba(229, 241, 238, 0.56);
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .library-toolbar {
@@ -1572,6 +1721,14 @@ legend {
   margin-top: 14px;
 }
 
+.asset-card__note {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
 .empty-state {
   padding: 30px;
   text-align: center;
@@ -1714,7 +1871,7 @@ legend {
   }
 
   .library-shortcuts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .brand span {
@@ -1757,31 +1914,44 @@ legend {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --header-height: 108px;
+  }
+
   .shell,
   .site-header__inner {
     width: min(calc(100% - 28px), var(--shell));
   }
 
   .site-header {
-    position: relative;
+    position: sticky;
   }
 
   .site-header__inner {
     min-height: auto;
-    padding: 14px 0 0;
-    display: block;
+    padding: 10px 0 9px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px 12px;
   }
 
   .brand {
-    margin-bottom: 8px;
+    min-width: 0;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .brand img {
-    width: 104px;
+    width: 88px;
   }
 
   .primary-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
     width: 100%;
+    gap: 20px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -1792,12 +1962,21 @@ legend {
 
   .primary-nav a {
     flex: 0 0 auto;
-    padding-inline: 12px;
+    padding-inline: 2px;
   }
 
   .access-logout {
-    width: 100%;
-    margin: 8px 0 12px;
+    grid-column: 3;
+    grid-row: 1;
+    width: auto;
+    margin: 0;
+    padding-inline: 14px;
+  }
+
+  .tour-start {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
   }
 
   .access-screen {
@@ -1818,20 +1997,30 @@ legend {
   }
 
   .intro {
-    padding: 44px 0 72px;
+    padding: 30px 0 56px;
   }
 
   h1 {
-    font-size: 2.42rem;
+    font-size: 2.28rem;
   }
 
   .intro__heading {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+  }
+
+  .workflow-switcher {
+    grid-template-columns: repeat(4, minmax(236px, 78vw));
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline proximity;
+    scrollbar-color: var(--line-strong) transparent;
+    scrollbar-width: thin;
   }
 
   .workflow-switcher button {
-    min-height: 98px;
-    padding: 17px 14px 34px;
+    min-height: 94px;
+    padding: 17px 18px 32px;
+    scroll-snap-align: start;
   }
 
   .workflow-switcher button::after {
@@ -1847,6 +2036,11 @@ legend {
   #studio-form > div {
     padding-right: 18px;
     padding-left: 18px;
+  }
+
+  .setup-recipe-jump {
+    margin-right: 18px;
+    margin-left: 18px;
   }
 
   .recipe__heading {
@@ -1980,14 +2174,9 @@ legend {
 }
 
 @media (max-width: 420px) {
-  .workflow-switcher {
-    grid-template-columns: 1fr;
-  }
-
   .workflow-switcher button,
   .workflow-switcher button:nth-child(2) {
-    min-height: 82px;
-    border-right: 0;
+    min-height: 90px;
   }
 
   .choice-grid--two {
@@ -2017,6 +2206,22 @@ legend {
     width: 100%;
     justify-content: space-between;
     gap: 10px;
+  }
+
+  .tour-card {
+    right: 12px;
+    bottom: 12px;
+    left: 12px !important;
+    width: auto;
+    padding: 18px;
+  }
+
+  .tour-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tour-actions [data-tour-close] {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2068,7 +2273,7 @@ legend {
     <div class="access-card">
       <div class="access-card__brand">
         <img src="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" alt="Renove Clinic">
-        <span>Estúdio criativo</span>
+        <span>Produção criativa</span>
       </div>
       <div class="access-card__copy">
         <p class="eyebrow">Acesso ao painel</p>
@@ -2092,7 +2297,7 @@ legend {
     <div class="site-header__inner">
       <a class="brand" href="#produzir" aria-label="Renove · Produção de criativos">
         <img src="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" alt="Renove Clinic">
-        <span>Estúdio criativo</span>
+        <span>Produção criativa</span>
       </a>
       <nav class="primary-nav" aria-label="Navegação principal">
         <a href="#produzir" data-view-link="produzir" aria-current="page">Produzir</a>
@@ -2100,17 +2305,32 @@ legend {
         <a href="#metodo" data-view-link="metodo">Método</a>
         <a href="#qualidade" data-view-link="qualidade">Qualidade</a>
       </nav>
+      <button class="tour-start" id="tour-start" type="button">Guia rápido</button>
       <button class="access-logout" id="access-logout" type="button">Sair</button>
     </div>
   </header>
+
+  <section class="tour" id="tour" aria-labelledby="tour-title" aria-modal="true" role="dialog" hidden>
+    <div class="tour-spotlight" aria-hidden="true"></div>
+    <div class="tour-card" role="document">
+      <p class="tour-count" id="tour-count">1 de 6</p>
+      <h2 id="tour-title">Escolha o trabalho</h2>
+      <p id="tour-body">Comece pelo tipo de peça que vai produzir agora.</p>
+      <div class="tour-actions">
+        <button class="tour-secondary" type="button" data-tour-close>Fechar guia</button>
+        <button class="tour-secondary" type="button" data-tour-prev>Voltar</button>
+        <button class="tour-primary" type="button" data-tour-next>Próximo</button>
+      </div>
+    </div>
+  </section>
 
   <main id="conteudo">
     <section class="intro" id="produzir" data-view="produzir" aria-labelledby="page-title">
       <div class="shell">
         <div class="intro__heading">
-          <p class="eyebrow">Renove · direção criativa assistida</p>
-          <h1 id="page-title">Estúdio criativo Renove</h1>
-          <p>Uma primeira versão navegável do método de criação da Renove: escolha o tipo de peça, use os anexos certos e siga a sequência para produzir com mais consistência no Image 2.</p>
+          <p class="eyebrow">Renove · direção criativa</p>
+          <h1 id="page-title">Produção criativa Renove</h1>
+          <p>Escolha o trabalho. A receita reúne os anexos certos e organiza os prompts na ordem de produção.</p>
         </div>
 
         <noscript>
@@ -2118,7 +2338,7 @@ legend {
         </noscript>
 
         <div class="studio" data-testid="studio">
-          <div class="workflow-wrap">
+          <div class="workflow-wrap" data-tour="workflow">
           <p class="field-label" id="workflow-label">Escolha a frente criativa</p>
             <div class="workflow-switcher" role="group" aria-labelledby="workflow-label">
               <button type="button" data-workflow="new" aria-pressed="true">
@@ -2141,7 +2361,7 @@ legend {
           </div>
 
           <div class="studio-layout">
-            <section class="setup" aria-labelledby="setup-title">
+            <section class="setup" aria-labelledby="setup-title" data-tour="setup">
               <div class="setup__heading">
                 <p class="section-index">Direção</p>
                 <h2 id="setup-title">Defina a peça</h2>
@@ -2319,21 +2539,21 @@ legend {
                   </div>
                   <fieldset>
                     <legend>Frente criativa</legend>
-                    <div class="choice-stack" data-choice-group="beforeFront">
+                    <div class="choice-stack" data-choice-group="beforeFront" data-tour="before-front">
                       <button type="button" data-value="sensitive" aria-pressed="true"><strong>Corpo protegido</strong><small>Antes/depois com roupa e recorte cuidadoso</small></button>
                       <button type="button" data-value="protocol" aria-pressed="false"><strong>Protocolo e acompanhamento</strong><small>Preço ligado ao acompanhamento</small></button>
                     </div>
                   </fieldset>
                   <fieldset>
                     <legend>Formato</legend>
-                    <div class="choice-grid choice-grid--two" data-choice-group="beforeFormat">
+                    <div class="choice-grid choice-grid--two" data-choice-group="beforeFormat" data-tour="before-format">
                       <button type="button" data-value="story" aria-pressed="true"><strong>Story 9:16</strong><small>Usa a base Story</small></button>
                       <button type="button" data-value="feed45" aria-pressed="false"><strong>Feed 4:5</strong><small>Usa a base Feed</small></button>
                     </div>
                   </fieldset>
                   <fieldset>
                     <legend>Faixa de comunicação</legend>
-                    <div class="choice-stack choice-stack--lane" data-choice-group="beforeLane">
+                    <div class="choice-stack choice-stack--lane" data-choice-group="beforeLane" data-tour="before-lane">
                       <button type="button" data-value="principal" aria-pressed="true"><strong>Médio / principal forte</strong><small>Primeiro teste quando a imagem está controlada</small></button>
                       <button type="button" data-value="protected" aria-pressed="false"><strong>Seguro / protegida</strong><small>Backup quando corpo, copy ou promessa pesam</small></button>
                     </div>
@@ -2353,9 +2573,13 @@ legend {
                   </fieldset>
                 </div>
               </form>
+              <a class="setup-recipe-jump" href="#receita">
+                <span>Direção definida</span>
+                <strong>Ver receita atualizada</strong>
+              </a>
             </section>
 
-            <section class="recipe" id="receita" aria-labelledby="recipe-title">
+            <section class="recipe" id="receita" aria-labelledby="recipe-title" data-tour="recipe">
               <header class="recipe__heading">
                 <div>
                   <p class="section-index">Direção pronta</p>
@@ -2374,7 +2598,7 @@ legend {
                   <div><h3 id="recipe-assets-title">Separe só estes materiais</h3><p>Este conjunto concentra o que governa a peça sem diluir a direção. Base real só entra quando a receita pedir.</p></div>
                 </div>
                 <div class="manual-assets" id="manual-assets"></div>
-                <div class="recipe-assets" id="recipe-assets"></div>
+                <div class="recipe-assets" id="recipe-assets" data-tour="recipe-assets"></div>
               </div>
 
               <div class="recipe-section">
@@ -2382,7 +2606,7 @@ legend {
                   <span>2</span>
                   <div><h3 id="recipe-prompts-title">Cole nesta ordem</h3><p>Comece pelo contexto, gere uma imagem por vez e corrija sem trocar a arquitetura quando a base estiver boa.</p></div>
                 </div>
-                <div class="recipe-prompts" id="recipe-prompts"></div>
+                <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
 
               <div class="recipe-section recipe-decision">
@@ -2419,27 +2643,37 @@ legend {
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div><p class="eyebrow">Biblioteca</p><h2 id="library-title">Materiais de criação</h2></div>
-          <p>Referências de marca, guias de formato, bases reais e prompts ficam organizados por função. Use a biblioteca para consultar o papel de cada arquivo antes de anexar.</p>
+          <p>Arquivos é consulta. Para produzir, volte em Produzir e deixe a receita escolher só o conjunto certo.</p>
         </div>
 
         <div class="library-shortcuts" aria-label="Atalhos da biblioteca">
           <button type="button" data-library-shortcut data-target-tab="assets" data-query="referência mestra">
-            <span>Marca essencial</span>
-            <strong>Referência mestra, logo e paleta</strong>
+            <span>Consulta</span>
+            <strong>Referência mestra</strong>
+            <small>O anexo principal da marca</small>
           </button>
           <button type="button" data-library-shortcut data-target-tab="assets" data-query="guias de formato">
             <span>Formato</span>
             <strong>Story, Feed 4:5 e Feed 1:1</strong>
+            <small>Guias que ajudam a recompor</small>
+          </button>
+          <button type="button" data-open-workflow="before-after">
+            <span>Produzir</span>
+            <strong>Montar antes/depois</strong>
+            <small>Abre a receita certa em Produzir</small>
           </button>
           <button type="button" data-library-shortcut data-target-tab="assets" data-query="base de edição">
-            <span>Antes/depois</span>
-            <strong>Bases reais para editar com cautela</strong>
+            <span>Consulta</span>
+            <strong>Ver bases reais</strong>
+            <small>Mostra as bases; não escolhe por você</small>
           </button>
           <button type="button" data-library-shortcut data-target-tab="prompts" data-query="adaptar print">
-            <span>Referência externa</span>
-            <strong>Ler print e adaptar para Renove</strong>
+            <span>Prompt</span>
+            <strong>Ler print e adaptar</strong>
+            <small>Para referência externa</small>
           </button>
         </div>
+        <p class="library-context" id="library-context">Escolha um atalho para consultar arquivos por função. A produção principal acontece em Produzir.</p>
 
         <div class="library-toolbar">
           <div class="tabs" role="tablist" aria-label="Tipo de arquivo">
@@ -2556,7 +2790,7 @@ Aguarde meu próximo prompt.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="contrato de saída impede prancha, mockup, grid e múltiplas imagens. base">
               <div class="library-row__copy">
@@ -2603,7 +2837,7 @@ This avoids the common failure where the model creates a design board instead of
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="assistente de briefing faz as perguntas que faltam e monta o prompt final. planejamento">
               <div class="library-row__copy">
@@ -2677,7 +2911,7 @@ Não gere antes da confirmação.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="story foto editorial cena humana, consulta e autoridade acolhedora. geração">
               <div class="library-row__copy">
@@ -2743,7 +2977,7 @@ Corpo sensacionalista, vergonha corporal, depoimento falso, transformação inve
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="story oceano profundo impacto premium com oceano e petróleo do manual. geração">
               <div class="library-row__copy">
@@ -2780,7 +3014,7 @@ Branco puro, preto puro, botão fake, logo redesenhada, promessa clínica invent
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="story céu claro leitura limpa, confiável e leve, sem frieza hospitalar. geração">
               <div class="library-row__copy">
@@ -2817,7 +3051,7 @@ Visual frio de hospital, excesso de texto, cinza fraco, foto genérica e promess
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="story aqua clínico método, frescor e clareza técnica com aqua oficial. geração">
               <div class="library-row__copy">
@@ -2853,7 +3087,7 @@ Infográfico pesado, excesso de ícones, cara de app genérico, fármaco explíc
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="story solo humano acolhimento e calor humano com clay controlado. geração">
               <div class="library-row__copy">
@@ -2890,7 +3124,7 @@ Culpa, vergonha corporal, antes/depois inventado, depoimento falso, promessa gar
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="recompor para feed 4:5 converte uma direção aprovada usando geometria própria de feed. formato">
               <div class="library-row__copy">
@@ -2941,7 +3175,7 @@ Gere uma única imagem final Feed 4:5, 1080x1350, sem prancha, mockup, borda de 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="recompor para feed 1:1 simplifica e reorganiza para o quadrado sem cortar o story. formato">
               <div class="library-row__copy">
@@ -2991,7 +3225,7 @@ Gere uma única imagem final Feed 1:1, 1080x1080, sem prancha, mockup, borda de 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="correção cirúrgica corrige uma falha localizada sem perder o shell. revisão">
               <div class="library-row__copy">
@@ -3045,7 +3279,7 @@ CAMADA RENOVE APROVADA - REVISÃO CIRÚRGICA
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="ler print de anúncio extrai anatomia, copy e mecanismo antes de adaptar. referência">
               <div class="library-row__copy">
@@ -3111,7 +3345,7 @@ Aguarde meu próximo prompt antes de gerar.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="adaptar print para renove aplica o nível de adaptação e o dna renove. referência">
               <div class="library-row__copy">
@@ -3188,7 +3422,7 @@ Gere uma única imagem final no formato escolhido.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="corrigir comparando com print recupera a lógica aprovada de uma referência. referência">
               <div class="library-row__copy">
@@ -3230,7 +3464,7 @@ Depois gere uma única versão corrigida, mantendo a peça Renove e ajustando so
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="planejar carrossel orgânico define cinco a sete lâminas editoriais antes da geração. carrossel">
               <div class="library-row__copy">
@@ -3283,7 +3517,7 @@ No final, diga qual lâmina deve ser gerada primeiro. Aguarde confirmação.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="gerar lâmina de carrossel produz uma lâmina orgânica por vez, sem prancha. carrossel">
               <div class="library-row__copy">
@@ -3332,7 +3566,7 @@ Se a lâmina for reaproveitada em anúncio pago, respeite a força escolhida e r
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="reset dirigido reconstrói a arquitetura e preserva a inteligência aprovada. revisão">
               <div class="library-row__copy">
@@ -3393,7 +3627,7 @@ Quando eu confirmar, gere uma única imagem final no formato definido.
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="contexto corpo protegido confirma a base, o formato e os locks antes de gerar. antes e depois">
               <div class="library-row__copy">
@@ -3459,7 +3693,7 @@ Responda apenas confirmando:
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="corpo protegido · médio / principal forte · story 9:16 faixa média para base real com roupa, recorte cuidadoso e evolução visível. antes e depois">
               <div class="library-row__copy">
@@ -3514,7 +3748,7 @@ Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="corpo protegido · médio / principal forte · feed 4:5 faixa média para feed, com composição menos explícita e mais controle. antes e depois">
               <div class="library-row__copy">
@@ -3569,7 +3803,7 @@ Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mo
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="corpo protegido · seguro / protegida · story 9:16 backup mais seguro para conta, número e leitura pública. antes e depois">
               <div class="library-row__copy">
@@ -3624,7 +3858,7 @@ Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="corpo protegido · seguro / protegida · feed 4:5 backup com copy clínica e composição feed própria. antes e depois">
               <div class="library-row__copy">
@@ -3679,7 +3913,7 @@ Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mo
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="contexto protocolo confirma a base, o formato e a leitura de protocolo antes de gerar. antes e depois">
               <div class="library-row__copy">
@@ -3745,7 +3979,7 @@ Responda apenas confirmando:
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="protocolo · médio / principal forte · story 9:16 faixa média sem fármaco visível, preservando a base vencedora. antes e depois">
               <div class="library-row__copy">
@@ -3800,7 +4034,7 @@ Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="protocolo · médio / principal forte · feed 4:5 faixa média sem fármaco visível, usando a base feed. antes e depois">
               <div class="library-row__copy">
@@ -3855,7 +4089,7 @@ Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mo
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="protocolo · seguro / protegida · story 9:16 backup mais publicável sem perder contraste e preço. antes e depois">
               <div class="library-row__copy">
@@ -3910,7 +4144,7 @@ Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, 
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="protocolo · seguro / protegida · feed 4:5 backup mais publicável com composição feed própria. antes e depois">
               <div class="library-row__copy">
@@ -3965,7 +4199,7 @@ Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mo
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="correção cirúrgica de antes/depois corrige texto, preço ou margem sem trocar pessoa, base ou composição. revisão">
               <div class="library-row__copy">
@@ -4008,7 +4242,7 @@ Antes de gerar, responda em uma frase quais itens serão corrigidos. Aguarde min
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="caso clínico sem comparação corporal alternativa de menor risco quando o antes/depois não deve ser usado. antes e depois">
               <div class="library-row__copy">
@@ -4047,7 +4281,7 @@ Gere uma única imagem final no formato informado. Mantenha leitura forte no cel
 </pre>
               </details>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="versionar peça aprovada edita uma peça própria ou autorizada sem redesenhar o que já funciona. versão">
               <div class="library-row__copy">
@@ -4097,211 +4331,225 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
             </article>
             </div>
         <div class="tab-panel asset-grid" id="panel-assets" role="tabpanel" aria-labelledby="tab-assets" data-tab-panel="assets" hidden>
-            <article class="asset-card" data-library-item data-search="referência mestra v2 referência ativa: governa paleta, textura, superfície, intensidade, formato e travas por contexto. sempre que criar identidade">
-              
+            <article class="asset-card" data-library-item data-search="referência mestra v2 referência ativa: governa paleta, textura, superfície, intensidade, formato e travas por contexto. sempre que criar identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Refer%C3%AAncia%20mestra%20Renove%20v2.png" aria-label="Abrir Referência mestra v2">
                 <img src="Anexos/Identidade/Refer%C3%AAncia%20mestra%20Renove%20v2.png" alt="Prévia de Referência mestra v2">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · sempre que criar</span>
                 <h3>Referência mestra v2</h3>
                 <p>Referência ativa: governa paleta, textura, superfície, intensidade, formato e travas por contexto.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Refer%C3%AAncia%20mestra%20Renove%20v2.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo clara usar em fundos escuros, oceano ou petróleo. a logo é lock e nunca deve ser redesenhada. logo lock identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo clara usar em fundos escuros, oceano ou petróleo. a logo é lock e nunca deve ser redesenhada. logo lock identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" aria-label="Abrir Logo clara">
                 <img src="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" alt="Prévia de Logo clara">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo lock</span>
                 <h3>Logo clara</h3>
                 <p>Usar em fundos escuros, oceano ou petróleo. A logo é lock e nunca deve ser redesenhada.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo oficial usar em fundos claros e off-white. se o modelo falhar, reservar área limpa. logo lock identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo oficial usar em fundos claros e off-white. se o modelo falhar, reservar área limpa. logo lock identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20oficial%20Renove.png" aria-label="Abrir Logo oficial">
                 <img src="Anexos/Identidade/Logo%20oficial%20Renove.png" alt="Prévia de Logo oficial">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo lock</span>
                 <h3>Logo oficial</h3>
                 <p>Usar em fundos claros e off-white. Se o modelo falhar, reservar área limpa.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20oficial%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo céu variação do manual para composições claras e delicadas. use quando o contraste ficar melhor que a oficial. logo variação identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo céu variação do manual para composições claras e delicadas. use quando o contraste ficar melhor que a oficial. logo variação identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20c%C3%A9u%20Renove.png" aria-label="Abrir Logo céu">
                 <img src="Anexos/Identidade/Logo%20c%C3%A9u%20Renove.png" alt="Prévia de Logo céu">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo variação</span>
                 <h3>Logo céu</h3>
                 <p>Variação do manual para composições claras e delicadas. Use quando o contraste ficar melhor que a oficial.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20c%C3%A9u%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo aqua variação para direções clínicas, leves e frescas. não usar se competir com fundo aqua. logo variação identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo aqua variação para direções clínicas, leves e frescas. não usar se competir com fundo aqua. logo variação identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20aqua%20Renove.png" aria-label="Abrir Logo aqua">
                 <img src="Anexos/Identidade/Logo%20aqua%20Renove.png" alt="Prévia de Logo aqua">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo variação</span>
                 <h3>Logo aqua</h3>
                 <p>Variação para direções clínicas, leves e frescas. Não usar se competir com fundo aqua.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20aqua%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo clay variação quente para acolhimento, cuidado e solo humano. boa em fundos claros. logo variação identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo clay variação quente para acolhimento, cuidado e solo humano. boa em fundos claros. logo variação identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20clay%20Renove.png" aria-label="Abrir Logo clay">
                 <img src="Anexos/Identidade/Logo%20clay%20Renove.png" alt="Prévia de Logo clay">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo variação</span>
                 <h3>Logo clay</h3>
                 <p>Variação quente para acolhimento, cuidado e solo humano. Boa em fundos claros.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20clay%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo petróleo variação profunda para impacto e autoridade. boa em off-white, céu claro e fundos leves. logo variação identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo petróleo variação profunda para impacto e autoridade. boa em off-white, céu claro e fundos leves. logo variação identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20petr%C3%B3leo%20Renove.png" aria-label="Abrir Logo petróleo">
                 <img src="Anexos/Identidade/Logo%20petr%C3%B3leo%20Renove.png" alt="Prévia de Logo petróleo">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo variação</span>
                 <h3>Logo petróleo</h3>
                 <p>Variação profunda para impacto e autoridade. Boa em off-white, céu claro e fundos leves.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20petr%C3%B3leo%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="logo azul variação oceano para reconhecimento de marca em materiais claros e editoriais. logo variação identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="logo azul variação oceano para reconhecimento de marca em materiais claros e editoriais. logo variação identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Logo%20azul%20Renove.png" aria-label="Abrir Logo azul">
                 <img src="Anexos/Identidade/Logo%20azul%20Renove.png" alt="Prévia de Logo azul">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo variação</span>
                 <h3>Logo azul</h3>
                 <p>Variação oceano para reconhecimento de marca em materiais claros e editoriais.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Logo%20azul%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="isologo oficial símbolo isolado oficial para detalhe gráfico. não substituir a logo completa quando a peça precisar assinar marca. logo detalhe identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="isologo oficial símbolo isolado oficial para detalhe gráfico. não substituir a logo completa quando a peça precisar assinar marca. logo detalhe identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Isologo%20oficial%20Renove.png" aria-label="Abrir Isologo oficial">
                 <img src="Anexos/Identidade/Isologo%20oficial%20Renove.png" alt="Prévia de Isologo oficial">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · logo detalhe</span>
                 <h3>Isologo oficial</h3>
                 <p>Símbolo isolado oficial para detalhe gráfico. Não substituir a logo completa quando a peça precisar assinar marca.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Isologo%20oficial%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="família petróleo referência positiva de impacto e oferta. preserve atmosfera e contraste; não copie copy antiga. família visual identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="família petróleo referência positiva de impacto e oferta. preserve atmosfera e contraste; não copie copy antiga. família visual identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/DNA%20visual%20petr%C3%B3leo%20Renove.png" aria-label="Abrir Família petróleo">
                 <img src="Anexos/Identidade/DNA%20visual%20petr%C3%B3leo%20Renove.png" alt="Prévia de Família petróleo">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · família visual</span>
                 <h3>Família petróleo</h3>
                 <p>Referência positiva de impacto e oferta. Preserve atmosfera e contraste; não copie copy antiga.</p>
+
                 <a class="text-action" href="Anexos/Identidade/DNA%20visual%20petr%C3%B3leo%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="família clara referência positiva de confiança, avaliação e estrutura médica. use visual, textura e respiro. família visual identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="família clara referência positiva de confiança, avaliação e estrutura médica. use visual, textura e respiro. família visual identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Refer%C3%AAncia%20clara%20off-white.png" aria-label="Abrir Família clara">
                 <img src="Anexos/Identidade/Refer%C3%AAncia%20clara%20off-white.png" alt="Prévia de Família clara">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · família visual</span>
                 <h3>Família clara</h3>
                 <p>Referência positiva de confiança, avaliação e estrutura médica. Use visual, textura e respiro.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Refer%C3%AAncia%20clara%20off-white.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="família editorial referência positiva de cena humana e acolhimento. use para consulta, médica e presença real. família visual identidade">
-              
+
+            <article class="asset-card" data-library-item data-search="família editorial referência positiva de cena humana e acolhimento. use para consulta, médica e presença real. família visual identidade marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Identidade/Refer%C3%AAncia%20escura%20com%20foto.png" aria-label="Abrir Família editorial">
                 <img src="Anexos/Identidade/Refer%C3%AAncia%20escura%20com%20foto.png" alt="Prévia de Família editorial">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Identidade · família visual</span>
                 <h3>Família editorial</h3>
                 <p>Referência positiva de cena humana e acolhimento. Use para consulta, médica e presença real.</p>
+
                 <a class="text-action" href="Anexos/Identidade/Refer%C3%AAncia%20escura%20com%20foto.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="zona segura story e reels anexar em story/reels. guia de geometria para manter texto e oferta fora da interface do aplicativo. geometria guias de formato">
-              
+
+            <article class="asset-card" data-library-item data-search="zona segura story e reels anexar em story/reels. guia de geometria para manter texto e oferta fora da interface do aplicativo. geometria guias de formato formato story feed recomposição geometria">
+
               <a class="asset-card__image" href="Anexos/Guias%20de%20formato/Zona%20segura%20Story%20e%20Reels.png" aria-label="Abrir Zona segura Story e Reels">
                 <img src="Anexos/Guias%20de%20formato/Zona%20segura%20Story%20e%20Reels.png" alt="Prévia de Zona segura Story e Reels">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Guias de formato · geometria</span>
                 <h3>Zona segura Story e Reels</h3>
                 <p>Anexar em Story/Reels. Guia de geometria para manter texto e oferta fora da interface do aplicativo.</p>
+
                 <a class="text-action" href="Anexos/Guias%20de%20formato/Zona%20segura%20Story%20e%20Reels.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="geometria feed 4:5 e 1:1 anexar em feed. guia de recomposição para manter texto, logo e oferta legíveis sem cortar o story. geometria guias de formato">
-              
+
+            <article class="asset-card" data-library-item data-search="geometria feed 4:5 e 1:1 anexar em feed. guia de recomposição para manter texto, logo e oferta legíveis sem cortar o story. geometria guias de formato formato story feed recomposição geometria">
+
               <a class="asset-card__image" href="Anexos/Guias%20de%20formato/Geometria%20Feed%204x5%20e%201x1.png" aria-label="Abrir Geometria Feed 4:5 e 1:1">
                 <img src="Anexos/Guias%20de%20formato/Geometria%20Feed%204x5%20e%201x1.png" alt="Prévia de Geometria Feed 4:5 e 1:1">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Guias de formato · geometria</span>
                 <h3>Geometria Feed 4:5 e 1:1</h3>
                 <p>Anexar em Feed. Guia de recomposição para manter texto, logo e oferta legíveis sem cortar o Story.</p>
+
                 <a class="text-action" href="Anexos/Guias%20de%20formato/Geometria%20Feed%204x5%20e%201x1.png">Abrir imagem</a>
               </div>
             </article>
@@ -4311,111 +4559,119 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
                 <span class="library-kicker">bases reais · envio controlado</span>
                 <h3>Bases reais de antes/depois</h3>
                 <p>No link online, as bases reais ficam ocultas. Quando a receita pedir uma base, use a pasta privada: Story com Story, Feed com Feed, corpo protegido ou protocolo conforme a frente escolhida.</p>
+                <div class="asset-card__note"><strong>Base real de edição.</strong> A escolha correta acontece em Produzir &gt; Antes/depois, não pela biblioteca.</div>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="paleta oficial consulta rápida das cores oficiais. ajuda quando a peça pedir uma rota de cor diferente. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="paleta oficial consulta rápida das cores oficiais. ajuda quando a peça pedir uma rota de cor diferente. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Paleta%20oficial%20Renove.png" aria-label="Abrir Paleta oficial">
                 <img src="Anexos/Manual%20de%20marca/Paleta%20oficial%20Renove.png" alt="Prévia de Paleta oficial">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Paleta oficial</h3>
                 <p>Consulta rápida das cores oficiais. Ajuda quando a peça pedir uma rota de cor diferente.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Paleta%20oficial%20Renove.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="variações de logo 01 consulta das versões permitidas de símbolo e lettering em azul, céu e petróleo. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="variações de logo 01 consulta das versões permitidas de símbolo e lettering em azul, céu e petróleo. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2001.png" aria-label="Abrir Variações de logo 01">
                 <img src="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2001.png" alt="Prévia de Variações de logo 01">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Variações de logo 01</h3>
                 <p>Consulta das versões permitidas de símbolo e lettering em azul, céu e petróleo.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2001.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="variações de logo 02 consulta das variações céu, clay, azul, petróleo e aqua para escolher por contraste. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="variações de logo 02 consulta das variações céu, clay, azul, petróleo e aqua para escolher por contraste. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2002.png" aria-label="Abrir Variações de logo 02">
                 <img src="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2002.png" alt="Prévia de Variações de logo 02">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Variações de logo 02</h3>
                 <p>Consulta das variações céu, clay, azul, petróleo e aqua para escolher por contraste.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Varia%C3%A7%C3%B5es%20de%20logo%2002.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="isologo explicado explica sol, onda, ciclo de renovação e folhas. bom para orientar grafismos, não para substituir logo. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="isologo explicado explica sol, onda, ciclo de renovação e folhas. bom para orientar grafismos, não para substituir logo. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Isologo%20explicado.png" aria-label="Abrir Isologo explicado">
                 <img src="Anexos/Manual%20de%20marca/Isologo%20explicado.png" alt="Prévia de Isologo explicado">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Isologo explicado</h3>
                 <p>Explica sol, onda, ciclo de renovação e folhas. Bom para orientar grafismos, não para substituir logo.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Isologo%20explicado.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="tipografia literata consulta para orientar headline editorial. o image 2 deve reproduzir o estilo, não inventar fonte aleatória. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="tipografia literata consulta para orientar headline editorial. o image 2 deve reproduzir o estilo, não inventar fonte aleatória. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Tipografia%20Literata.png" aria-label="Abrir Tipografia Literata">
                 <img src="Anexos/Manual%20de%20marca/Tipografia%20Literata.png" alt="Prévia de Tipografia Literata">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Tipografia Literata</h3>
                 <p>Consulta para orientar headline editorial. O Image 2 deve reproduzir o estilo, não inventar fonte aleatória.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Tipografia%20Literata.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="tipografia ubuntu consulta para corpo, cta e textos operacionais. ajuda a manter leitura limpa no celular. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="tipografia ubuntu consulta para corpo, cta e textos operacionais. ajuda a manter leitura limpa no celular. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image" href="Anexos/Manual%20de%20marca/Tipografia%20Ubuntu.png" aria-label="Abrir Tipografia Ubuntu">
                 <img src="Anexos/Manual%20de%20marca/Tipografia%20Ubuntu.png" alt="Prévia de Tipografia Ubuntu">
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Tipografia Ubuntu</h3>
                 <p>Consulta para corpo, CTA e textos operacionais. Ajuda a manter leitura limpa no celular.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Tipografia%20Ubuntu.png">Abrir imagem</a>
               </div>
             </article>
-            
 
-            <article class="asset-card" data-library-item data-search="manual de identidade visual pdf completo para consulta humana. não anexar por padrão: prefira os pngs isolados. consulta manual de marca">
-              
+
+            <article class="asset-card" data-library-item data-search="manual de identidade visual pdf completo para consulta humana. não anexar por padrão: prefira os pngs isolados. consulta manual de marca marca essencial referência mestra logo paleta">
+
               <a class="asset-card__image asset-card__image--document" href="Anexos/Manual%20de%20marca/Manual%20de%20identidade%20visual%20Renove.pdf" aria-label="Abrir Manual de identidade visual">
                 <span>PDF</span>
                 <strong>Manual completo</strong>
               </a>
-            
+
               <div class="asset-card__body">
                 <span class="library-kicker">Manual de marca · consulta</span>
                 <h3>Manual de identidade visual</h3>
                 <p>PDF completo para consulta humana. Não anexar por padrão: prefira os PNGs isolados.</p>
+
                 <a class="text-action" href="Anexos/Manual%20de%20marca/Manual%20de%20identidade%20visual%20Renove.pdf">Abrir arquivo</a>
               </div>
             </article>
@@ -4431,7 +4687,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
                 <a class="text-action" href="Apoio%20r%C3%A1pido/Checklist%20r%C3%A1pido.txt">Abrir TXT</a>
               </div>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="como usar os anexos papel de cada arquivo e combinações recomendadas.">
               <div class="library-row__copy">
@@ -4443,7 +4699,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
                 <a class="text-action" href="Apoio%20r%C3%A1pido/Como%20usar%20os%20anexos.txt">Abrir TXT</a>
               </div>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="mapa de anexos resumo direto do papel de cada anexo do painel.">
               <div class="library-row__copy">
@@ -4455,7 +4711,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
                 <a class="text-action" href="Apoio%20r%C3%A1pido/Mapa%20de%20anexos.txt">Abrir TXT</a>
               </div>
             </article>
-            
+
 
             <article class="library-row" data-library-item data-search="mensagem para enviar texto curto de entrega do pacote.">
               <div class="library-row__copy">
@@ -4520,6 +4776,68 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   };
   let activeTab = "prompts";
   let appStarted = false;
+  let navigateToHash = null;
+  let activeTourIndex = 0;
+  let tourOpen = false;
+
+  const libraryMessages = {
+    "referência mestra": "Consulta de marca: abre a referência mestra. A receita continua escolhendo logo, formato e prompts em Produzir.",
+    "guias de formato": "Consulta de formato: use Story com Story e Feed com Feed. A receita de Produzir seleciona o guia correto.",
+    "base de edição": "Bases reais de edição: isto não é a área de produção. Use Produzir > Antes/depois para escolher uma única base por frente, formato e faixa.",
+    "adaptar print": "Prompts de referência externa: primeiro leia o print, depois adapte sem copiar marca, pessoa ou promessa de terceiros.",
+  };
+
+  const tourSteps = [
+    {
+      view: "#produzir",
+      selector: "[data-tour='workflow']",
+      title: "Escolha o trabalho",
+      body: "Comece pela frente criativa. Isso muda os campos, os anexos e a ordem dos prompts.",
+    },
+    {
+      view: "#produzir",
+      selector: "[data-workflow='before-after']",
+      title: "Antes/depois fica aqui",
+      body: "Quando for corpo, protocolo ou base real, entre por esta rota. Arquivos serve só para consulta.",
+      workflow: "before-after",
+    },
+    {
+      view: "#produzir",
+      selector: "[data-tour='before-front']",
+      title: "Escolha a frente",
+      body: "Corpo protegido usa comparação com roupa e recorte cuidadoso. Protocolo vende acompanhamento sem depender de fármaco visível.",
+      workflow: "before-after",
+    },
+    {
+      view: "#produzir",
+      selector: "[data-tour='before-lane']",
+      title: "Controle a força",
+      body: "Médio é a rota principal quando a imagem está controlada. Seguro é o backup quando corpo, texto ou promessa pesam.",
+      workflow: "before-after",
+    },
+    {
+      view: "#produzir",
+      selector: "[data-tour='recipe-assets']",
+      title: "Anexe só o que aparece",
+      body: "A receita escolhe uma base por vez e o guia do formato certo. Não anexe tudo junto.",
+    },
+    {
+      view: "#produzir",
+      selector: "[data-tour='recipe-prompts']",
+      title: "Cole na ordem",
+      body: "Abra o primeiro prompt, copie e siga a sequência. Se a base ficar boa, use correção cirúrgica.",
+    },
+  ];
+
+  function scrollTargetIntoView(target, behavior = "auto") {
+    if (!target) return;
+    const header = document.querySelector(".site-header");
+    const headerStyle = header ? window.getComputedStyle(header) : null;
+    const headerOffset = headerStyle?.position === "sticky" ? header.getBoundingClientRect().height : 0;
+    const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - headerOffset - 16);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top, behavior: reducedMotion ? "auto" : behavior });
+  }
 
   const workflowDescriptions = {
     new: "Escolha formato, canal, intensidade e direção visual.",
@@ -4573,6 +4891,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     bindTabs();
     bindLibrary();
     bindNavigation();
+    bindTour();
     bindAccessLogout();
     render();
   }
@@ -4633,6 +4952,12 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
   function logoAssets() {
     return data.logoModes[state.logoMode]?.assets || [];
+  }
+
+  function setWorkflow(workflow, shouldAnnounce = true) {
+    state.workflow = workflow;
+    render();
+    if (shouldAnnounce) announce(`${data.workflows[state.workflow].label} selecionado.`);
   }
 
   function buildNewRecipe() {
@@ -4929,7 +5254,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const copied = document.execCommand("copy");
     area.remove();
     if (!copied && sourceElement) {
-      sourceElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      scrollTargetIntoView(sourceElement, "smooth");
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(sourceElement);
@@ -4952,9 +5277,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     document.querySelector(".workflow-switcher").addEventListener("click", (event) => {
       const button = event.target.closest("button[data-workflow]");
       if (!button) return;
-      state.workflow = button.dataset.workflow;
-      render();
-      announce(`${data.workflows[state.workflow].label} selecionado.`);
+      setWorkflow(button.dataset.workflow);
     });
 
     byId("studio-form").addEventListener("click", (event) => {
@@ -4984,7 +5307,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
         event.target.textContent = copied ? "Prompt copiado" : "Texto selecionado";
         announce(copied ? "Prompt copiado." : "O texto foi selecionado para cópia manual.");
       } catch {
-        if (source) source.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (source) scrollTargetIntoView(source, "smooth");
         event.target.textContent = "Consulte abaixo";
       }
       window.setTimeout(() => {
@@ -5026,12 +5349,19 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   }
 
   function filterLibrary() {
-    const query = byId("library-search").value.trim().toLocaleLowerCase("pt-BR");
+    const normalize = (value) => value
+      .trim()
+      .toLocaleLowerCase("pt-BR")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\/_-]+/g, " ")
+      .replace(/\s+/g, " ");
+    const query = normalize(byId("library-search").value);
     const panel = document.querySelector(`[data-tab-panel="${activeTab}"]`);
     const items = [...panel.querySelectorAll("[data-library-item]")];
     let visible = 0;
     items.forEach((item) => {
-      const match = !query || item.dataset.search.includes(query);
+      const match = !query || normalize(item.dataset.search).includes(query);
       item.hidden = !match;
       if (match) visible += 1;
     });
@@ -5052,8 +5382,16 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       const query = shortcut.dataset.query || "";
       setActiveTab(tab);
       byId("library-search").value = query;
+      byId("library-context").textContent = libraryMessages[query] || "Biblioteca de consulta. Produza pela receita principal para evitar anexo errado.";
       filterLibrary();
       byId("library-search").focus({ preventScroll: true });
+    });
+    byId("arquivos").addEventListener("click", (event) => {
+      const shortcut = event.target.closest("[data-open-workflow]");
+      if (!shortcut) return;
+      setWorkflow(shortcut.dataset.openWorkflow);
+      if (navigateToHash) navigateToHash("#produzir", { push: true, focus: true });
+      window.setTimeout(() => scrollTargetIntoView(byId("setup-title"), "smooth"), 40);
     });
     byId("arquivos").addEventListener("click", async (event) => {
       const button = event.target.closest("[data-copy-source]");
@@ -5066,13 +5404,123 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
         const copied = await copyText(source.textContent, source);
         button.textContent = copied ? "Copiado" : "Selecionado";
       } catch {
-        source.scrollIntoView({ behavior: "smooth", block: "center" });
+        scrollTargetIntoView(source, "smooth");
         button.textContent = "Consulte abaixo";
       }
       window.setTimeout(() => {
         button.textContent = original;
       }, 2200);
     });
+  }
+
+  function bindTour() {
+    const root = byId("tour");
+    const spotlight = root.querySelector(".tour-spotlight");
+    const title = byId("tour-title");
+    const body = byId("tour-body");
+    const count = byId("tour-count");
+    const card = root.querySelector(".tour-card");
+    const prev = root.querySelector("[data-tour-prev]");
+    const next = root.querySelector("[data-tour-next]");
+    const close = root.querySelector("[data-tour-close]");
+    const start = byId("tour-start");
+
+    function targetFor(step) {
+      return document.querySelector(step.selector);
+    }
+
+    function positionTour(target) {
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const padding = window.innerWidth < 640 ? 8 : 12;
+      const top = Math.max(8, rect.top - padding);
+      const left = Math.max(8, rect.left - padding);
+      const right = Math.min(window.innerWidth - 8, rect.right + padding);
+      const bottom = Math.min(window.innerHeight - 8, rect.bottom + padding);
+      spotlight.style.top = `${top}px`;
+      spotlight.style.left = `${left}px`;
+      spotlight.style.width = `${right - left}px`;
+      spotlight.style.height = `${bottom - top}px`;
+
+      if (window.innerWidth < 720) {
+        card.style.top = "auto";
+        card.style.left = "";
+        card.style.right = "";
+        return;
+      }
+
+      const cardWidth = Math.min(360, window.innerWidth - 32);
+      const placeRight = right + 18 + cardWidth < window.innerWidth;
+      const placeLeft = left - 18 - cardWidth > 0;
+      const cardLeft = placeRight ? right + 18 : placeLeft ? left - 18 - cardWidth : Math.min(Math.max(left, 16), window.innerWidth - cardWidth - 16);
+      const cardHeight = Math.min(260, window.innerHeight - 32);
+      const placeBelow = bottom + 18 + cardHeight < window.innerHeight;
+      const placeAbove = top - 18 - cardHeight > 0;
+      const wantedTop = placeRight || placeLeft
+        ? Math.min(Math.max(top, 16), window.innerHeight - cardHeight - 16)
+        : placeBelow
+        ? bottom + 18
+        : placeAbove
+        ? top - 18 - cardHeight
+        : 16;
+      card.style.left = `${cardLeft}px`;
+      card.style.top = `${wantedTop}px`;
+      card.style.right = "auto";
+    }
+
+    function showStep(index) {
+      activeTourIndex = Math.max(0, Math.min(index, tourSteps.length - 1));
+      const step = tourSteps[activeTourIndex];
+      if (step.workflow) setWorkflow(step.workflow, false);
+      if (navigateToHash) navigateToHash(step.view, { push: false, focus: false });
+      root.hidden = false;
+      tourOpen = true;
+      title.textContent = step.title;
+      body.textContent = step.body;
+      count.textContent = `${activeTourIndex + 1} de ${tourSteps.length}`;
+      prev.disabled = activeTourIndex === 0;
+      next.textContent = activeTourIndex === tourSteps.length - 1 ? "Concluir" : "Próximo";
+      const immediateTarget = targetFor(step);
+      if (immediateTarget) positionTour(immediateTarget);
+      window.setTimeout(() => {
+        const target = targetFor(step);
+        if (target) {
+          scrollTargetIntoView(target, "smooth");
+          window.setTimeout(() => positionTour(target), 180);
+        }
+      }, 20);
+    }
+
+    function closeTour() {
+      root.hidden = true;
+      tourOpen = false;
+      start.focus({ preventScroll: true });
+    }
+
+    start.addEventListener("click", () => showStep(0));
+    next.addEventListener("click", () => {
+      if (activeTourIndex === tourSteps.length - 1) {
+        closeTour();
+        return;
+      }
+      showStep(activeTourIndex + 1);
+    });
+    prev.addEventListener("click", () => showStep(activeTourIndex - 1));
+    close.addEventListener("click", closeTour);
+    document.addEventListener("keydown", (event) => {
+      if (!tourOpen) return;
+      if (event.key === "Escape") closeTour();
+      if (event.key === "ArrowRight") next.click();
+      if (event.key === "ArrowLeft" && activeTourIndex > 0) prev.click();
+    });
+    window.addEventListener("resize", () => {
+      if (!tourOpen) return;
+      positionTour(targetFor(tourSteps[activeTourIndex]));
+    });
+    window.addEventListener("scroll", () => {
+      if (!tourOpen) return;
+      positionTour(targetFor(tourSteps[activeTourIndex]));
+    }, { passive: true });
   }
 
   function bindNavigation() {
@@ -5097,26 +5545,32 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       });
       const activeView = document.querySelector(`[data-view="${viewName}"]`);
       if (options.push) history.pushState(null, "", `#${viewName}`);
-      if (options.focus && activeView) {
-        activeView.scrollIntoView({ block: "start" });
-        const heading = activeView.querySelector("h1, h2");
-        if (heading) {
-          heading.setAttribute("tabindex", "-1");
-          heading.focus({ preventScroll: true });
-        }
-      }
+      return activeView;
     }
 
     function openHash(hash, options = {}) {
       const target = document.getElementById((hash || "").replace(/^#/, ""));
       const viewName = viewFromHash(hash);
-      setActiveView(viewName, options);
-      if (target && target.closest("[data-view]")?.dataset.view === viewName && !target.matches("[data-view]")) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        target.setAttribute("tabindex", "-1");
-        target.focus({ preventScroll: true });
+      if (!viewName) return;
+      const activeView = setActiveView(viewName, options);
+      const isNestedTarget = target
+        && target.closest("[data-view]")?.dataset.view === viewName
+        && !target.matches("[data-view]");
+      const focusTarget = isNestedTarget ? target : activeView?.querySelector("h1, h2");
+
+      if (isNestedTarget) {
+        scrollTargetIntoView(target, options.smooth ? "smooth" : "auto");
+      } else {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+
+      if (options.focus && focusTarget) {
+        focusTarget.setAttribute("tabindex", "-1");
+        focusTarget.focus({ preventScroll: true });
       }
     }
+
+    navigateToHash = openHash;
 
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
