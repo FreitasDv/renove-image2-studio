@@ -1,61 +1,90 @@
 COMO USAR OS ANEXOS
 
-Comece pelo painel principal. Ele organiza a frente criativa, os materiais certos e a sequência de prompts.
-Não use todos os arquivos de uma vez. Material demais confunde o Image 2 e dilui a direção da peça.
+Comece pelo painel principal. Ele já escolhe o conjunto mínimo para cada frente.
+Não anexe tudo de uma vez: material demais faz o Image 2 misturar referência, copiar texto antigo e perder direção.
 
 A lógica do método:
 1. contexto da marca;
-2. materiais certos para a frente escolhida;
-3. geração no formato correto;
-4. revisão de marca, leitura e política;
-5. correção cirúrgica ou reset dirigido quando necessário.
+2. anexos com papel claro;
+3. geração no formato certo;
+4. revisão de marca, leitura e superfície;
+5. correção cirúrgica ou reset dirigido.
 
-PASTA IDENTIDADE
-Referência mestra Renove: governa acabamento, textura, respiro e sofisticação.
-Logo oficial: lock principal da marca.
-Logo clara: usar em fundos escuros, oceano e petróleo.
-Logos céu, aqua, clay, azul e petróleo: variações do manual para testar contraste e atmosfera.
-DNA visual petróleo: referência de impacto, não obrigação.
-Referência clara off-white: confiança e avaliação.
-Referência escura com foto: presença humana, consulta e editorial.
+ORDEM RECOMENDADA NO CHAT
+1. Referência mestra v2.
+2. Logo escolhida pelo contraste do fundo.
+3. Uma família visual, quando a peça pedir atmosfera específica.
+4. Guia de formato, somente em Story/Reels.
+5. Base real, somente na rota Antes/depois estratégico.
+6. Print externo, somente na rota Adaptar referência.
 
-PASTA MANUAL DE MARCA
-Paleta oficial Renove: consulta rápida das cores do manual.
-Variações de logo 01 e 02: visão completa das versões permitidas.
-Isologo explicado: usar como apoio visual, não como substituto automático da logo completa.
-Tipografia Literata e Ubuntu: referência para orientar serifa editorial e sans limpa.
-Manual de identidade visual Renove.pdf: consulta completa. Não anexe o PDF inteiro por padrão.
+REFERÊNCIA MESTRA
+Referência mestra v2: anexo ativo para quase toda criação. Ela governa paleta oficial, textura, superfície, intensidade, formato e revisão por contexto.
+
+LOGOS
+Logo oficial: lock principal em fundos claros e off-white.
+Logo clara: lock para fundos escuros, oceano e petróleo.
+Logo petróleo: autoridade e leitura forte em fundos claros.
+Logo azul: reconhecimento de marca em composições claras.
+Logo céu: delicadeza e calma quando o fundo permite contraste.
+Logo aqua: frescor clínico; evitar quando o fundo também for aqua.
+Logo clay: acolhimento e calor humano em fundos claros.
+Isologo oficial: detalhe gráfico ou apoio conceitual. Não substitui automaticamente a logo completa.
+
+FAMÍLIAS VISUAIS
+DNA visual petróleo: impacto, oferta, preço, plano completo e contraste premium.
+Referência clara off-white: avaliação, estrutura médica, confiança e leitura limpa.
+Referência escura com foto: presença humana, consulta, médica e editorial com foto.
+Use a família como direção visual, não como layout para copiar.
+
+MANUAL DE MARCA
+Paleta oficial: consulta rápida das cores do manual.
+Variações de logo 01 e 02: escolher logo por contraste e atmosfera.
+Isologo explicado: entender sol, onda, ciclo, renovação e folha sutil.
+Tipografia Literata: orientar headline editorial.
+Tipografia Ubuntu: orientar corpo, CTA e leitura operacional.
+Manual de identidade visual Renove.pdf: consulta humana completa. Não anexar por padrão.
 
 CORES
 As opções de cor são direção, não trava.
 Oceano profundo: oferta, preço, impacto e plano completo.
 Céu claro: avaliação, estrutura médica e confiança.
 Aqua clínico: método, bioimpedância, educação e manutenção.
-Solo humano: cuidado, recomeço, conversa mais acolhedora.
+Solo humano: cuidado, recomeço e conversa acolhedora.
 Editorial com foto: consulta, médica, paciente e presença real.
-Livre com critério: o Image 2 propõe um caminho novo, preservando logo, textura, ritmo e paleta Renove.
+Livre com critério: o Image 2 propõe um caminho novo preservando logo, paleta, textura, leitura e revisão.
 
 Regra prática: no máximo 4 cores ativas por peça.
 Escolha 1 cor dominante, 1 cor de hierarquia, 1 neutra e no máximo 1 acento.
 
 GUIA DE FORMATO
-Zona segura Story e Reels: anexar somente em Story. Ela governa a posição de texto, oferta e elementos vitais.
-Feed 4:5 e 1:1 precisam recomposição própria. Não peça só para cortar o Story.
+Zona segura Story e Reels: anexar somente em Story/Reels. Ela governa texto vital, oferta e respiro contra a interface do aplicativo.
+Feed 4:5 e Feed 1:1 precisam recomposição própria. Não peça só para cortar o Story.
+Carrossel é orgânico/editorial por padrão. Planeje a sequência antes e gere uma lâmina por vez.
 
 BASES DE PERFORMANCE
-São materiais de edição, não peças prontas para publicar.
+São materiais reais de edição, não peças prontas para publicar.
 Escolha apenas uma base: frente correta + formato correto.
-Elas contêm copy e preço históricos. O prompt selecionado corrige esses pontos sem redesenhar a composição.
+Pós-parto Story: usar só quando o formato final for Story 9:16.
+Pós-parto Feed: usar só quando o formato final for Feed 4:5.
+Protocolo Story: usar só quando o formato final for Story 9:16.
+Protocolo Feed: usar só quando o formato final for Feed 4:5.
+As bases podem conter copy e preço históricos. O prompt selecionado corrige esses pontos sem redesenhar a composição.
 
-ANTES/DEPOIS
-Use: base escolhida + logo adequada + zona segura, se for Story.
-Comece por Principal forte. Use Protegida como backup.
+ANTES/DEPOIS ESTRATÉGICO
+Use: referência mestra v2 + base correta + logo adequada + zona segura, se for Story.
+Comece por Principal forte. Use Protegida como backup consciente.
 As fotos precisam ser reais e autorizadas. O modelo não pode trocar pessoa, alterar anatomia ou inventar transformação corporal.
+Se o risco não fizer sentido, use a alternativa sem comparação corporal.
 
 PRINT EXTERNO
-O print não fica nesta pasta. Anexe manualmente junto com os arquivos Renove.
-Use a receita Adaptar referência para analisar, adaptar e corrigir.
+O print não fica nesta pasta. Anexe manualmente junto com a referência mestra v2 e a logo.
+Use a receita Adaptar referência para analisar antes de gerar.
+Escolha o nível de adaptação: leve, equilibrada, fiel à referência, fiel à Renove ou mirror autorizado.
 Use mirror somente com peça própria ou autorizada.
 
 IDIOMA DOS PROMPTS
-O idioma não substitui estrutura. Operação, contexto e copy final ficam em português. Termos técnicos podem permanecer em inglês quando forem mais precisos. Texto entre aspas é literal e não deve ser traduzido. O que mais protege a qualidade é a sequência: papel dos anexos, contexto sem gerar, prompt de geração, QA e correção cirúrgica.
+O idioma não substitui estrutura. Operação, contexto e copy final ficam em português.
+Termos técnicos podem permanecer em inglês quando forem mais precisos.
+Texto entre aspas é literal: não traduzir, resumir, completar ou remover acentos.
+O que mais protege a qualidade é a sequência: papel dos anexos, contexto sem gerar, prompt de geração, QA e correção cirúrgica.

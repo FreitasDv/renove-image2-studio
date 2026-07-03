@@ -1,0 +1,75 @@
+MAPA DE ANEXOS DO PAINEL
+
+Use este mapa quando quiser decidir rápido quais arquivos entram no chat do Image 2.
+
+ANEXO ATIVO PRINCIPAL
+- Referência mestra Renove v2.png
+  Usar em quase toda criação. É o card atualizado que governa identidade, textura, superfície, intensidade, formato e revisão.
+
+LOGOS
+- Logo oficial Renove.png
+  Padrão para fundos claros e off-white.
+- Logo clara para fundo escuro.png
+  Padrão para fundos escuros, oceano e petróleo.
+- Logo petróleo Renove.png
+  Autoridade e impacto em fundo claro.
+- Logo azul Renove.png
+  Reconhecimento forte em peças claras.
+- Logo céu Renove.png
+  Leveza e calma, desde que o contraste fique bom.
+- Logo aqua Renove.png
+  Frescor clínico; cuidado para não sumir em fundo aqua.
+- Logo clay Renove.png
+  Calor humano, acolhimento e solo humano.
+- Isologo oficial Renove.png
+  Símbolo isolado para detalhe gráfico. Não substitui a logo completa quando a peça precisa assinar marca.
+
+FAMÍLIAS VISUAIS
+- DNA visual petróleo Renove.png
+  Para oferta, preço, plano completo e impacto premium.
+- Referência clara off-white.png
+  Para avaliação, estrutura médica e confiança.
+- Referência escura com foto.png
+  Para consulta, médica, paciente e cena humana.
+
+FORMATO
+- Zona segura Story e Reels.png
+  Usar somente em Story/Reels. Não precisa em Feed.
+
+BASES REAIS DE PERFORMANCE
+- Pós-parto Story 9x16.png
+  Base de edição para Story da frente pós-parto.
+- Pós-parto Feed 4x5.png
+  Base de edição para Feed da frente pós-parto.
+- Protocolo Story 9x16.png
+  Base de edição para Story da frente protocolo/acompanhamento.
+- Protocolo Feed 4x5.png
+  Base de edição para Feed da frente protocolo/acompanhamento.
+
+As bases reais não são peças prontas. Elas preservam estrutura aprovada, mas o prompt precisa corrigir copy, preço histórico, acentos, margem e risco.
+
+MANUAL DE MARCA
+- Paleta oficial Renove.png
+  Consulta de cor.
+- Variações de logo 01.png e Variações de logo 02.png
+  Consulta de versões permitidas de logo.
+- Isologo explicado.png
+  Consulta de conceito do símbolo: sol, onda, ciclo, renovação e folhas.
+- Tipografia Literata.png
+  Consulta para headline editorial.
+- Tipografia Ubuntu.png
+  Consulta para corpo e CTA.
+- Manual de identidade visual Renove.pdf
+  Consulta completa humana. Não anexar por padrão.
+
+COMBINAÇÕES RÁPIDAS
+- Peça nova clara: Referência mestra v2 + Logo oficial + Família clara.
+- Peça nova escura: Referência mestra v2 + Logo clara + Família petróleo ou editorial.
+- Peça com grafismo de símbolo: Referência mestra v2 + Logo oficial ou clara + Isologo oficial.
+- Story/Reels: adicionar Zona segura Story e Reels.
+- Feed: não usar zona segura; recompor no formato final.
+- Antes/depois: Referência mestra v2 + base correta + logo adequada + zona segura se for Story.
+- Print externo: Referência mestra v2 + logo + print manual, depois rodar leitura antes de gerar.
+
+REGRA FINAL
+Cada anexo deve ter uma função. Se você não consegue explicar o papel do arquivo naquele prompt, não anexe.

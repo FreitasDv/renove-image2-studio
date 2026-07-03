@@ -3,6 +3,7 @@ CHECKLIST RÁPIDO ANTES DE APROVAR
 PROCESSO
 [ ] Começou pelo contexto fixo e esperou o Image 2 confirmar entendimento.
 [ ] Usou a direção indicada pelo painel, não um conjunto aleatório de arquivos.
+[ ] A referência mestra v2 foi usada como anexo ativo quando a receita pediu identidade.
 [ ] Anexou somente os arquivos indicados na receita.
 [ ] Depois da geração, passou por QA.
 [ ] Se a base ficou boa, corrigiu cirurgicamente. Se a arquitetura ficou ruim, reconstruiu com reset dirigido.

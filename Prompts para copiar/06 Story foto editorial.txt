@@ -4,7 +4,7 @@ EDITORIAL COM FOTO
 Direção humana, premium e acolhedora. Use foto, cena ou atmosfera de consulta sem parecer banco de imagem, hospital frio ou propaganda farmacêutica.
 
 PAPEL DOS ANEXOS
-- Referência mestra Renove: governa paleta, textura, acabamento e reconhecimento da marca.
+- Referência mestra v2: governa paleta, textura, acabamento, superfície, intensidade e reconhecimento da marca.
 - Referência editorial com foto: governa presença humana, luz, materialidade e clima de consulta.
 - Logo: lock. Não redesenhar, não distorcer e não inventar símbolo.
 - Manual/paleta, quando anexado: guia de cor e contraste, não trava de layout.

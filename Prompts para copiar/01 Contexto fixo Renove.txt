@@ -12,7 +12,7 @@ MARCA
 Renove Clinic é uma clínica médica premium acessível em Bauru/SP, focada em emagrecimento, estética, saúde e bem-estar. O visual deve ser acolhedor, sofisticado, médico sem parecer hospitalar, natural, editorial e confiável.
 
 PAPEL DOS ANEXOS
-- Referência mestra: governa paleta, espaçamento, textura, mood editorial, acabamento premium e sinais anti-genéricos.
+- Referência mestra v2: governa paleta, espaçamento, textura, mood editorial, superfície, intensidade, formatos e sinais anti-genéricos.
 - Logo: é lock. Não redesenhe, não invente símbolo e não altere proporções. Se não conseguir reproduzir com fidelidade, deixe uma área limpa para aplicação posterior.
 - Família visual: governa esta sessão como DNA visual. Não copie o layout literal nem a copy do exemplo.
 - Print externo: é diagnóstico ou referência variável. Só use depois de declarar o nível de adaptação.
