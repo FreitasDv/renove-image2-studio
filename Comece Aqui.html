@@ -5471,6 +5471,11 @@ Depois desse mapa, aguarde meu briefing final e os prompts da receita.`;
     const visual = currentVisualLabel(recipe);
     const assetTitles = recipe.assets.map((file) => data.assetInfo[file]?.title).filter(Boolean).join(", ");
     const manualTitles = recipe.manualAssets.map((item) => item.title).join(", ");
+    const imageRule = state.workflow === "before-after"
+      ? `Regra de antes/depois:
+Se esta receita pedir base real, use a base anexada como material de edição, preserve roupa, recorte digno e leitura estratégica. Não invente transformação, kg, prazo, depoimento ou corpo mais exposto.`
+      : `Regra de imagem e referência:
+Se usar foto, print de anúncio ou material externo, trate como referência de direção, composição ou cena. Não invente resultado, paciente, depoimento, prova clínica ou autorização. Se a foto real for essencial, peça confirmação antes de gerar.`;
 
     return `BRIEF FINAL DA PEÇA RENOVE — USE ANTES DOS PROMPTS DA RECEITA
 
@@ -5515,8 +5520,7 @@ Arquitetura obrigatória:
 - Rodapé só se ajudar a reduzir risco ou explicar plano/avaliação.
 - Textura de papel/linho, grão sutil, luz quente e grafismos Renove sem virar fundo sólido cru.
 
-Regra de antes/depois:
-Se esta receita pedir base real, use a base anexada como material de edição, preserve roupa, recorte digno e leitura estratégica. Não invente transformação, kg, prazo, depoimento ou corpo mais exposto.
+${imageRule}
 
 Regra de texto:
 Preserve acentos. Qualquer texto entre aspas é EXACT TEXT ON IMAGE. Não invente preço, prova, resultado, telefone, CRM, depoimento ou promessa clínica.
