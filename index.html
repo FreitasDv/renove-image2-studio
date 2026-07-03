@@ -1124,6 +1124,16 @@ legend {
   gap: 12px;
 }
 
+.brief-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.brief-fields--copy-map {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
 .brief-field {
   display: grid;
   gap: 6px;
@@ -1171,6 +1181,20 @@ legend {
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.brief-actions button.secondary-action {
+  background: #ffffff;
+  color: var(--petrol);
+}
+
+.brief-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(35, 100, 140, 0.12);
+}
+
+.brief-actions button:active {
+  transform: translateY(0);
 }
 
 .brief-actions small {
@@ -2721,37 +2745,56 @@ legend {
                 <div class="recipe-brief__header">
                   <div>
                     <span class="library-kicker">Brief da peça</span>
-                    <h3>Coloque a ideia antes de copiar os prompts</h3>
-                    <p>Use este bloco para transformar roteiro, tema ou copy solta em uma instrução clara. Copie o briefing e cole no chat do Image 2 antes do primeiro prompt da receita.</p>
+                    <h3>Transforme a ideia em mapa de peça</h3>
+                    <p>Comece pela copy ou roteiro. Se a ideia ainda estiver solta, copie o diagnóstico primeiro; se a copy já estiver fechada, preencha os campos e copie o briefing final da receita.</p>
                   </div>
                   <span class="recipe-brief__badge" id="brief-flow-badge">Story e Feed separados</span>
                 </div>
                 <div class="brief-fields">
                   <label class="brief-field" for="brief-copy">
-                    <span>Tema, copy ou roteiro</span>
-                    <textarea id="brief-copy" placeholder="Ex.: protocolo de emagrecimento com avaliação, acompanhamento médico e nutrição. Headline desejada, oferta, CTA ou ideia do roteiro."></textarea>
+                    <span>Copy, roteiro ou tema bruto</span>
+                    <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira: tema do roteiro, texto do anúncio, oferta, dor, ângulo, print de referência descrito ou pauta que vai virar peça."></textarea>
                   </label>
-                  <div>
+                  <div class="brief-stack">
                     <label class="brief-field" for="brief-headline">
-                      <span>Headline desejada</span>
-                      <input id="brief-headline" type="text" placeholder="Opcional">
+                      <span>Headline na arte</span>
+                      <input id="brief-headline" type="text" placeholder="Ex.: Estrutura médica completa">
+                    </label>
+                    <label class="brief-field" for="brief-subheadline">
+                      <span>Subheadline</span>
+                      <input id="brief-subheadline" type="text" placeholder="Ex.: avaliação, plano e acompanhamento">
                     </label>
                     <label class="brief-field" for="brief-cta">
                       <span>CTA ou oferta</span>
-                      <input id="brief-cta" type="text" placeholder="Opcional">
+                      <input id="brief-cta" type="text" placeholder="Ex.: Agende uma avaliação">
                     </label>
                   </div>
                 </div>
+                <div class="brief-fields brief-fields--copy-map">
+                  <label class="brief-field" for="brief-footer">
+                    <span>Rodapé / aviso</span>
+                    <input id="brief-footer" type="text" placeholder="Opcional: plano, condição, disclaimer curto">
+                  </label>
+                  <label class="brief-field" for="brief-support">
+                    <span>Blocos auxiliares</span>
+                    <input id="brief-support" type="text" placeholder="Ex.: avaliação | médico | nutrição">
+                  </label>
+                  <label class="brief-field" for="brief-angle">
+                    <span>Ângulo que deve dominar</span>
+                    <input id="brief-angle" type="text" placeholder="Ex.: acompanhamento > medicação">
+                  </label>
+                </div>
                 <div class="brief-actions">
+                  <button class="secondary-action" type="button" id="copy-diagnostic">Copiar diagnóstico da copy</button>
                   <button type="button" id="copy-brief">Copiar briefing da receita</button>
-                  <small id="brief-helper">Depois cole os prompts abaixo na ordem. A copy exata deve ficar entre aspas quando for texto obrigatório na arte.</small>
+                  <small id="brief-helper">Quando a copy estiver solta, use o diagnóstico antes de gerar. Quando já estiver decidida, copie o briefing final e siga os prompts abaixo.</small>
                 </div>
               </div>
 
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>1</span>
-                  <div><h3 id="recipe-assets-title">Anexe só estes arquivos</h3><p>Baixe ou abra apenas os itens desta receita. Se a peça for antes/depois, a base real aparece aqui porque ela faz parte da edição.</p></div>
+                  <div><h3 id="recipe-assets-title">Anexe só o que a receita pedir</h3><p>Esses arquivos entram no chat depois do briefing. Se aparecer base real, baixe e anexe; se não aparecer, não procure base em Arquivos.</p></div>
                 </div>
                 <div class="manual-assets" id="manual-assets"></div>
                 <div class="recipe-assets" id="recipe-assets" data-tour="recipe-assets"></div>
@@ -2760,7 +2803,7 @@ legend {
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>2</span>
-                  <div><h3 id="recipe-prompts-title">Cole nesta ordem</h3><p>Primeiro o briefing acima, depois os prompts. Story e Feed são gerações próprias: não transforme um em corte automático do outro.</p></div>
+                  <div><h3 id="recipe-prompts-title">Cole os prompts depois do briefing</h3><p>A ordem é: diagnóstico quando precisar, briefing final, contexto da receita e geração. Story e Feed são composições próprias, não cortes automáticos.</p></div>
                 </div>
                 <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
@@ -4934,11 +4977,11 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
           <p>A lógica vem do que já funcionou melhor nas produções da Renove: contexto antes de gerar, poucos anexos com papel claro, formato tratado separadamente e revisão pela imagem real.</p>
         </div>
         <ol class="method-flow">
-          <li><span>01</span><h3>Escolher</h3><p>Definir formato, canal, força e visual antes de abrir anexos.</p></li>
-          <li><span>02</span><h3>Anexar</h3><p>Usar só arquivos com função clara: marca, formato, base real ou referência.</p></li>
-          <li><span>03</span><h3>Gerar</h3><p>Uma saída por vez. Story e Feed são composições diferentes; carrossel é orgânico.</p></li>
-          <li><span>04</span><h3>Julgar risco</h3><p>Corpo, roupa, recorte, texto e promessa decidem se a peça fica segura, média ou precisa de revisão.</p></li>
-          <li><span>05</span><h3>Refinar</h3><p>Base boa recebe correção cirúrgica; estrutura ruim recebe reset dirigido.</p></li>
+          <li><span>01</span><h3>Escolher</h3><p>Definir frente, formato, canal, força e visual antes de abrir anexos.</p></li>
+          <li><span>02</span><h3>Mapear copy</h3><p>Separar headline, subheadline, CTA, rodapé, blocos auxiliares, risco e arquitetura antes de pedir imagem.</p></li>
+          <li><span>03</span><h3>Anexar</h3><p>Usar só arquivos com função clara: marca, formato, base real ou referência. Não anexar tudo por ansiedade.</p></li>
+          <li><span>04</span><h3>Gerar</h3><p>Uma saída por vez. Story e Feed são composições próprias; carrossel é rota orgânica/editorial.</p></li>
+          <li><span>05</span><h3>Refinar</h3><p>Julgar risco pela imagem real. Base boa recebe correção cirúrgica; estrutura ruim recebe reconstrução dirigida.</p></li>
         </ol>
       </div>
     </section>
@@ -5035,7 +5078,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       view: "#produzir",
       selector: "[data-tour='brief']",
       title: "Cole a ideia aqui",
-      body: "Roteiro, copy solta ou tema entram no briefing. Copie esse bloco antes dos prompts para o Image 2 entender o que deve aparecer na peça.",
+      body: "Roteiro, copy solta ou tema entram aqui. Se ainda não houver headline, subheadline e CTA claros, copie Diagnóstico da copy antes do briefing final.",
     },
     {
       view: "#produzir",
@@ -5330,36 +5373,132 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     return "Carrossel é rota orgânica/editorial por padrão. Planeje e gere uma lâmina por vez.";
   }
 
-  function buildBriefText(recipe) {
-    const copy = byId("brief-copy")?.value.trim() || "[COLE AQUI O TEMA, ROTEIRO OU COPY DA PEÇA]";
-    const headline = byId("brief-headline")?.value.trim() || "[SE HOUVER HEADLINE OBRIGATÓRIA, COLE AQUI]";
-    const cta = byId("brief-cta")?.value.trim() || "[SE HOUVER CTA/OFERTA OBRIGATÓRIA, COLE AQUI]";
+  function briefValue(id, fallback) {
+    return byId(id)?.value.trim() || fallback;
+  }
+
+  function currentForceLabel() {
+    if (state.workflow === "before-after") return data.beforeLanes[state.beforeLane].label;
+    return data.forces[state.force]?.label || "Controle pela receita";
+  }
+
+  function currentVisualLabel(recipe) {
+    if (state.workflow === "new") return data.visuals[state.visual].label;
+    if (state.workflow === "adapt") return `${recipe.title} / ${data.references[state.reference].label}`;
+    return recipe.title;
+  }
+
+  function buildCopyDiagnosticText(recipe) {
+    const copy = briefValue("brief-copy", "[COLE AQUI O TEMA, ROTEIRO, TEXTO DO ANÚNCIO OU IDEIA DA PEÇA]");
+    const headline = briefValue("brief-headline", "[se já existir, preserve; se não existir, proponha]");
+    const subheadline = briefValue("brief-subheadline", "[se já existir, preserve; se não existir, proponha]");
+    const cta = briefValue("brief-cta", "[se já existir, preserve; se não existir, proponha]");
+    const footer = briefValue("brief-footer", "[se precisar, proponha curto; se não precisar, deixe vazio]");
+    const support = briefValue("brief-support", "[se fizer sentido, proponha 2 a 4 blocos curtos]");
+    const angle = briefValue("brief-angle", "[defina o ângulo que deve dominar]");
     const workflow = data.workflows[state.workflow].label;
     const format = currentFormatLabel();
     const surface = data.surfaces[state.surface]?.label || "Edição controlada";
-    const force = state.workflow === "before-after"
-      ? data.beforeLanes[state.beforeLane].label
-      : data.forces[state.force]?.label || "Controle pela receita";
-    const visual = state.workflow === "new" ? data.visuals[state.visual].label : recipe.title;
+    const force = currentForceLabel();
+    const visual = currentVisualLabel(recipe);
+
+    return `DIAGNÓSTICO DA COPY E ARQUITETURA VISUAL — NÃO GERE IMAGEM AINDA
+
+Você é diretor de arte e copywriter sênior para criativos de performance da Renove Clinic.
+Sua tarefa agora é transformar a ideia abaixo em um mapa de peça, sem gerar imagem.
+
+CONTEXTO DA RECEITA
+- Frente criativa: ${workflow}
+- Formato previsto: ${format}
+- Uso/canal: ${surface}
+- Força comercial: ${force}
+- Direção visual: ${visual}
+- Regra de formato: ${storyFeedNote()}
+
+COPY / ROTEIRO / IDEIA BRUTA
+"${copy}"
+
+CAMPOS JÁ INFORMADOS PELO USUÁRIO
+- Headline: "${headline}"
+- Subheadline: "${subheadline}"
+- CTA/oferta: "${cta}"
+- Rodapé/aviso: "${footer}"
+- Blocos auxiliares: "${support}"
+- Ângulo desejado: "${angle}"
+
+ENTREGUE APENAS ESTE MAPA, EM PORTUGUÊS:
+1. ÂNGULO PRINCIPAL
+Escolha uma rota: estrutura médica, acompanhamento maior que medicação, avaliação antes da conduta, preço/plano, caso acompanhado, recomeço, referência visual ou outra rota específica. Explique em uma frase.
+
+2. CAMADA DE RISCO
+Classifique como seguro, médio ou agressivo controlado para anúncio pago. Separe o que pode ir NA ARTE do que deve ficar só para legenda/conversa/comentário interno. Não seja covarde, mas não invente risco desnecessário.
+
+3. TEXTO EXATO PARA A ARTE
+HEADLINE:
+SUBHEADLINE:
+CTA/OFERTA:
+RODAPÉ/DISCLAIMER:
+BLOCOS AUXILIARES:
+
+4. ARQUITETURA VISUAL
+Defina a hierarquia: logo, headline, cena/mecanismo visual, prova/oferta, CTA, rodapé. Diga como adaptar para Story e Feed sem virar corte automático.
+
+5. INVARIANTES E FLEXÍVEIS
+Liste o que deve ficar travado e o que pode variar entre versões.
+
+REGRAS
+- Não gere imagem.
+- Não invente dado, preço, promessa, prova social, CRM, telefone, resultado, kg, prazo ou depoimento.
+- Se a copy estiver fraca, proponha uma versão melhor, curta e humana.
+- Se houver texto obrigatório, preserve exatamente entre aspas.
+- Mantenha a peça com leitura de celular, textura, respiro, grafismo Renove e CTA sem botão falso.
+
+Depois desse mapa, aguarde meu briefing final e os prompts da receita.`;
+  }
+
+  function buildBriefText(recipe) {
+    const copy = briefValue("brief-copy", "[COLE AQUI O TEMA, ROTEIRO OU COPY DA PEÇA]");
+    const headline = briefValue("brief-headline", "[HEADLINE EXATA OU RESULTADO DO DIAGNÓSTICO]");
+    const subheadline = briefValue("brief-subheadline", "[SUBHEADLINE EXATA OU RESULTADO DO DIAGNÓSTICO]");
+    const cta = briefValue("brief-cta", "[CTA/OFERTA EXATA OU RESULTADO DO DIAGNÓSTICO]");
+    const footer = briefValue("brief-footer", "[RODAPÉ/DISCLAIMER, SE PRECISAR]");
+    const support = briefValue("brief-support", "[BLOCOS AUXILIARES, SE PRECISAR]");
+    const angle = briefValue("brief-angle", "[ÂNGULO PRINCIPAL DA PEÇA]");
+    const workflow = data.workflows[state.workflow].label;
+    const format = currentFormatLabel();
+    const surface = data.surfaces[state.surface]?.label || "Edição controlada";
+    const force = currentForceLabel();
+    const visual = currentVisualLabel(recipe);
     const assetTitles = recipe.assets.map((file) => data.assetInfo[file]?.title).filter(Boolean).join(", ");
     const manualTitles = recipe.manualAssets.map((item) => item.title).join(", ");
 
-    return `BRIEF DA PEÇA RENOVE
+    return `BRIEF FINAL DA PEÇA RENOVE — USE ANTES DOS PROMPTS DA RECEITA
 
 Objetivo: ${workflow}
 Formato: ${format}
 Uso: ${surface}
 Força: ${force}
 Direção visual: ${visual}
+Ângulo principal: ${angle}
 
 Tema/copy de origem:
 "${copy}"
 
-Headline obrigatória, se houver:
+TEXTO EXATO PARA A ARTE
+Headline:
 "${headline}"
 
-CTA/oferta obrigatória, se houver:
+Subheadline:
+"${subheadline}"
+
+CTA/oferta:
 "${cta}"
+
+Rodapé/disclaimer:
+"${footer}"
+
+Blocos auxiliares:
+"${support}"
 
 Anexos desta receita:
 ${assetTitles || "nenhum anexo automático"}
@@ -5368,8 +5507,21 @@ ${manualTitles ? `Arquivos manuais: ${manualTitles}` : ""}
 Regra de formato:
 ${storyFeedNote()}
 
+Arquitetura obrigatória:
+- Logo oficial com respiro e sem redesenhar.
+- Headline e subheadline com leitura forte no celular.
+- Cena, base real ou mecanismo visual coerente com o ângulo.
+- Oferta/CTA como texto ou faixa tipográfica plana; nunca botão falso.
+- Rodapé só se ajudar a reduzir risco ou explicar plano/avaliação.
+- Textura de papel/linho, grão sutil, luz quente e grafismos Renove sem virar fundo sólido cru.
+
+Regra de antes/depois:
+Se esta receita pedir base real, use a base anexada como material de edição, preserve roupa, recorte digno e leitura estratégica. Não invente transformação, kg, prazo, depoimento ou corpo mais exposto.
+
 Regra de texto:
 Preserve acentos. Qualquer texto entre aspas é EXACT TEXT ON IMAGE. Não invente preço, prova, resultado, telefone, CRM, depoimento ou promessa clínica.
+
+Se algum campo acima ainda estiver vazio ou fraco, faça uma pergunta curta ou proponha um mapa de copy antes de gerar. Não preencha lacunas inventando prova.
 
 Agora siga os prompts da receita na ordem.`;
   }
@@ -5381,8 +5533,11 @@ Agora siga os prompts da receita na ordem.`;
     badge.textContent = currentFormatLabel();
     helper.textContent = state.workflow === "before-after"
       ? "Baixe a base real desta receita, anexe com os arquivos indicados e cole o briefing antes do contexto de antes/depois."
-      : "Depois cole os prompts abaixo na ordem. A copy exata deve ficar entre aspas quando for texto obrigatório na arte.";
-    byId("copy-brief").dataset.briefText = buildBriefText(recipe);
+      : "Quando a copy estiver solta, use o diagnóstico antes de gerar. Quando já estiver decidida, copie o briefing final e siga os prompts abaixo.";
+    const diagnosticButton = byId("copy-diagnostic");
+    const briefButton = byId("copy-brief");
+    if (diagnosticButton) diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
+    if (briefButton) briefButton.dataset.briefText = buildBriefText(recipe);
   }
 
   function renderManualAssets(items) {
@@ -5620,8 +5775,22 @@ Agora siga os prompts da receita na ordem.`;
   }
 
   function bindBrief() {
-    ["brief-copy", "brief-headline", "brief-cta"].forEach((id) => {
+    ["brief-copy", "brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
       byId(id)?.addEventListener("input", () => renderRecipe());
+    });
+    byId("copy-diagnostic")?.addEventListener("click", async (event) => {
+      const button = event.currentTarget;
+      const original = button.textContent;
+      try {
+        const copied = await copyText(button.dataset.diagnosticText || buildCopyDiagnosticText(buildRecipe()));
+        button.textContent = copied ? "Diagnóstico copiado" : "Diagnóstico selecionado";
+        announce(copied ? "Diagnóstico da copy copiado." : "O diagnóstico foi selecionado para cópia manual.");
+      } catch {
+        button.textContent = "Tente copiar manualmente";
+      }
+      window.setTimeout(() => {
+        button.textContent = original;
+      }, 2200);
     });
     byId("copy-brief")?.addEventListener("click", async (event) => {
       const button = event.currentTarget;
