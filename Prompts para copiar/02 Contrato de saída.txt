@@ -1,0 +1,30 @@
+Este bloco serve para impedir que o Image 2 gere prancha, mockup, moodboard ou várias opções quando você quer uma única arte final.
+
+Cole junto do prompt da peça.
+
+---
+
+OUTPUT CONTRACT
+- Generate exactly ONE final image.
+- Do not create a moodboard.
+- Do not create a grid.
+- Do not create a presentation board.
+- Do not create a mockup.
+- Do not show multiple options side by side.
+- Do not place other images/cards around it.
+- The output must be a single publishable ad creative.
+
+REFERENCE ROLES
+- The logo attachment is a locked brand asset, not inspiration.
+- The master reference card defines brand DNA: palette, texture, rhythm, elegance and visual restraint.
+- The family reference defines this specific visual lane only.
+- Negative examples, if any, are for rejection only. Do not imitate them.
+
+IF LOGO FAILS
+If you cannot reproduce the attached logo faithfully, leave a clean blank area in the correct logo position. Do not invent, redraw or approximate the logo.
+
+TEXT RULE
+All quoted text is exact and verbatim. Do not rewrite, translate, summarize, add punctuation or correct the copy unless I explicitly ask.
+
+WHY THIS MATTERS
+This avoids the common failure where the model creates a design board instead of a real ad. One prompt, one final image, one format.

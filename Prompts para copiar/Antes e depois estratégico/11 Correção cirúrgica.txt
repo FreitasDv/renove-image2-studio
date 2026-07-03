@@ -1,0 +1,26 @@
+CORREÇÃO CIRÚRGICA DE ANTES/DEPOIS
+
+Use somente quando a imagem está boa e o erro é pontual.
+
+Quero uma revisão cirúrgica da última imagem, sem trocar a arte.
+
+NÃO refaça o conceito.
+NÃO troque pessoa, foto, corpo ou recorte.
+NÃO altere a paleta, a textura ou a composição principal.
+NÃO redesenhe a logo.
+
+Corrija apenas os itens que eu listar abaixo:
+- texto incorreto;
+- preço antigo;
+- acento;
+- linha quebrada;
+- margem ou espaçamento;
+- leitura mobile;
+- botão falso, caso tenha aparecido.
+
+TRAVAS
+- `R$ 997,00` deve ficar em uma única linha.
+- Preserve o restante exatamente como está.
+- Não invente telefone, URL, CRM, selo, dado, prova ou resultado.
+
+Antes de gerar, responda em uma frase quais itens serão corrigidos. Aguarde minha confirmação e gere uma única imagem final.

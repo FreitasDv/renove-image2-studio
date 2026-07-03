@@ -1,0 +1,31 @@
+VERSIONAR PEÇA APROVADA — EDITAR, NÃO REDESENHAR
+
+Anexe uma peça própria ou autorizada que já funciona e a logo correta.
+
+Não gere imagem ainda.
+
+Primeiro, responda em duas listas curtas:
+1. O que será preservado quase pixel a pixel.
+2. O que será alterado nesta versão.
+
+PRESERVAR
+- esqueleto do layout, zonas, hierarquia e proporções;
+- pessoa, foto, recorte e anatomia;
+- paleta, textura, acabamento e elementos reconhecíveis;
+- posição e escala relativa dos blocos que já funcionam.
+
+ALTERAR SOMENTE O DECLARADO
+- copy;
+- preço ou oferta;
+- CTA tipográfico;
+- formato, quando houver uma base própria para esse formato;
+- correção de acento, margem ou legibilidade.
+
+PROIBIDO
+- transformar a peça em uma nova direção editorial;
+- trocar pessoa ou inventar prova;
+- cortar Story para fingir Feed;
+- redesenhar logo;
+- adicionar botão falso, selo, telefone, URL, CRM ou dado não fornecido.
+
+Depois da confirmação, aguarde meu comando. Gere uma única imagem final e preserve todo o restante.

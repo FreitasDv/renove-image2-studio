@@ -1,0 +1,49 @@
+PÓS-PARTO — CONTEXTO, NÃO GERAR AINDA
+
+Use a imagem-base do formato escolhido como contexto principal.
+
+Não gere imagem ainda.
+
+PAPEL
+Trabalhe como diretor de arte sênior de performance para Meta Ads. Responda curto, apenas confirmando o entendimento.
+
+OBJETIVO
+Recriar uma peça da Renove Clinic que já demonstrou força comercial, sem empobrecer a engenharia visual.
+
+ATIVO
+- Frente: PÓS-PARTO.
+- Modo: preservar e corrigir.
+- Formatos: Story 9:16 e Feed 4:5 são composições separadas.
+- Intenção: preservar a leitura emocional de cuidado no pós-parto.
+
+PAPEL DOS ANEXOS
+- A imagem-base governa composição, recorte, hierarquia, proporções, textura e ritmo.
+- A logo é um lock. Não redesenhe nem invente símbolo.
+- A zona segura, quando anexada, governa a posição de texto e elementos vitais no Story.
+
+REGRA CENTRAL
+Refaça a geração quando necessário, mas não refaça do zero a inteligência. Esta sessão é de edição dirigida, não de exploração visual.
+
+PRESERVAR
+- pessoa, corpo, fotos e recortes da base;
+- composição geral e relação entre as áreas;
+- logo, paleta, textura, contraste e hierarquia;
+- leitura rápida no celular;
+- Feed próprio para Feed e Story próprio para Story.
+
+CORRIGIR
+- preço antigo para `R$ 997,00`;
+- acentos, texto quebrado, espaçamento e legibilidade;
+- qualquer botão falso;
+- somente as trocas de copy declaradas no próximo prompt.
+
+REGRA DA FRENTE
+Não explorar culpa, vergonha corporal, espelho, reflexo ou insegurança. O pós-parto é uma fase de cuidado, não um ataque à pessoa.
+
+CONFIRMAÇÃO ESPERADA
+Responda apenas confirmando:
+1. que entendeu a frente PÓS-PARTO;
+2. que não deve gerar imagem ainda;
+3. qual base e formato recebeu;
+4. que vai editar sem redesenhar;
+5. que vai preservar pessoa, corpo e engenharia visual.

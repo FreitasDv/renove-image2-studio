@@ -1,0 +1,31 @@
+Redesenhe a arte anterior no formato Feed vertical 4:5, 1080x1350.
+
+MANTENHA TRAVADO
+- mesmo texto, sem trocar nenhuma palavra;
+- mesma paleta;
+- mesma família visual;
+- mesma logo;
+- mesmo conceito de cena;
+- mesma textura e acabamento.
+
+RECOMPONHA DO ZERO
+Feed não é corte de Story. Não estique, não recorte e não empurre tudo para cima. Use o quadro inteiro com equilíbrio.
+
+AJUSTES OBRIGATORIOS
+1. Use mais largura para reduzir quebras de linha.
+2. Centralize melhor o peso visual.
+3. Mantenha margens de seguranca de aproximadamente 8%.
+4. Deixe o texto legível no celular.
+5. Distribua topo, meio e base com respiro.
+6. Reposicione elementos organicos para o novo formato.
+7. Remova qualquer cara de crop preguiçoso.
+
+CTA
+Continua como texto ou faixa tipográfica plana. Não criar botão falso.
+
+CAMADA RENOVE APROVADA - FEED
+- Feed não é corte de Story. Recompose do zero para o formato.
+- Se estiver no ChatGPT, use o seletor de proporção 4:5 ou 1:1. Se for API, prefira dimensões múltiplas de 16: 1088x1360 para 4:5 aproximado ou 1088x1088 para quadrado.
+- Não existe zona de sacrifício no Feed. Use o canvas inteiro com equilíbrio, margens e leitura mobile.
+- Preserve texto literal em português, com acentos corretos. Não traduza, não invente copy e não quebre "R$ 997", "R$ 2.797" ou "10x".
+- A adaptação deve preservar DNA visual, textura, luz, logo e hierarquia, mas pode reposicionar tudo para o novo quadro.

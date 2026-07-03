@@ -1,0 +1,20 @@
+Gere uma única imagem final para Story/Reels 9:16 da Renove Clinic.
+
+MODO VISUAL
+CÉU CLARO. Direção clara, limpa e confiável baseada no manual: céu #BFD3E0, off-white, oceano #23648C em pontos de hierarquia e neutros #606060/#999999. Use textura sutil para não virar fundo hospitalar. É direção, não trava.
+
+USO
+Avaliação, estrutura médica, acompanhamento, equipe, pós-atendimento e mensagens de confiança.
+
+ARQUITETURA
+- Topo: logo oficial ou versão céu com contraste suficiente.
+- Headline: serifa editorial, poucas palavras, sem gritar.
+- Cena: consulta, detalhe humano ou composição clínica natural.
+- Apoio: bullets curtos ou microcard limpo.
+- CTA: texto forte, sem botão falso.
+
+COPY
+Texto literal entre aspas, português correto e hierarquia clara no celular.
+
+EVITAR
+Visual frio de hospital, excesso de texto, cinza fraco, foto genérica e promessa absoluta.

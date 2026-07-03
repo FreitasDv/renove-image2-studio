@@ -1,0 +1,32 @@
+Gere UMA lâmina de carrossel da Renove por vez.
+
+Use o plano aprovado do prompt anterior.
+
+PREENCHA ANTES DE GERAR
+- Número da lâmina:
+- Função:
+- Formato: 4:5 ou 1:1.
+- Superfície: PAGO, ORGÂNICO ou INTERNO.
+- Força: DENTRO DA POLÍTICA, PRINCIPAL FORTE ou AGRESSIVO CONTROLADO.
+- Direção visual: OCEANO PROFUNDO, CÉU CLARO, AQUA CLÍNICO, SOLO HUMANO, EDITORIAL COM FOTO ou LIVRE COM CRITÉRIO.
+- Logo: automática por contraste, oficial, clara, oceano/petróleo, céu/aqua, clay ou isologo como detalhe.
+- Texto exato na arte:
+- Anexos usados:
+
+REGRAS
+- Gere uma única imagem final.
+- Não gere o carrossel completo em uma prancha.
+- Não coloque miniaturas de outras lâminas.
+- Mantenha continuidade de paleta, textura, logo, margem, ritmo e hierarquia.
+- Cada lâmina precisa ser legível isoladamente no celular.
+- Preserve acentos e pares como `R$ 997`, `R$ 2.797`, `10x` e número/unidade.
+- Sem botão falso, logo redesenhada ou promessa clínica inventada.
+- Não deixe a cor escolhida virar trava. Ajuste contraste e respiro pela leitura.
+
+ARQUITETURA
+- Topo: logo pequeno com respiro.
+- Centro: ideia principal.
+- Apoio: detalhe, prova, contraste ou orientação.
+- Rodapé: só se necessário; nada vital apertado.
+
+Se for anúncio pago, respeite a força escolhida. Agressivo controlado exige revisão antes de subir.

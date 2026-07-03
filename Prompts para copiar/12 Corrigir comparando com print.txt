@@ -1,0 +1,25 @@
+Compare a imagem gerada com o print de referência e faça uma revisão cirúrgica.
+
+NÃO refaça o conceito inteiro.
+NÃO copie marca ou peça de terceiros.
+NÃO troque a identidade Renove.
+NÃO altere copy literal, logo, paleta, textura, foto principal ou nível de força.
+
+CORRIJA APENAS O QUE DESVIOU DA DIREÇÃO
+- hierarquia;
+- ordem de leitura;
+- proporção entre texto e foto;
+- margem e respiro;
+- contraste;
+- densidade;
+- posição de oferta e CTA;
+- legibilidade mobile;
+- fidelidade ao nível escolhido.
+
+CHECK ANTES DE GERAR
+1. O que a referência fazia bem?
+2. O que a versão Renove perdeu?
+3. O que deve continuar travado?
+4. O que será corrigido?
+
+Depois gere uma única versão corrigida, mantendo a peça Renove e ajustando somente a arquitetura necessária.

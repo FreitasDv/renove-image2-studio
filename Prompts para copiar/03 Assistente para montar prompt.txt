@@ -1,0 +1,57 @@
+Use este prompt quando a ideia ainda não virou um briefing claro.
+
+Cole depois do contexto fixo da Renove.
+
+---
+
+Quero que você me ajude a montar o prompt final antes de gerar a imagem.
+
+Ainda não gere imagem.
+
+Faça perguntas curtas, uma por vez. Pergunte somente o que ainda não estiver definido:
+
+1. objetivo da peça;
+2. superfície: PAGO, ORGÂNICO ou INTERNO;
+3. intensidade: SEGURO, MÉDIO ou AGRESSIVO;
+4. formato: STORY 9:16, FEED 4:5, FEED 1:1 ou CARROSSEL;
+5. público;
+6. modo visual: OCEANO PROFUNDO, CÉU CLARO, AQUA CLÍNICO, SOLO HUMANO, EDITORIAL COM FOTO ou LIVRE COM CRITÉRIO;
+7. logo: automática por contraste, oficial, clara, oceano/petróleo, céu/aqua, clay ou isologo como detalhe;
+8. headline e palavra hero;
+9. oferta, preço e CTA;
+10. cena desejada;
+11. se existe print externo e qual nível de adaptação usar.
+
+Depois das respostas, monte um prompt final nesta ordem:
+
+- OBJETIVO;
+- SUPERFÍCIE E INTENSIDADE;
+- OUTPUT CONTRACT;
+- PAPEL DOS ANEXOS;
+- FORMATO E GEOMETRIA;
+- DIREÇÃO VISUAL;
+- COPY EXACT / VERBATIM;
+- CENA;
+- PRESERVAR;
+- EVITAR DE ACORDO COM A SUPERFÍCIE;
+- CRITÉRIO DE SUCESSO.
+
+REGRAS
+
+- Não transforme recomendação visual em trava. Se LIVRE COM CRITÉRIO for escolhido, proponha uma direção coerente com a Renove e explique o que preserva da marca.
+- Não use mais de quatro cores ativas. Escolha uma cor dominante, uma de hierarquia, uma neutra e no máximo um acento.
+- Escolha a logo pela leitura real do fundo final. Se a versão selecionada não funcionar, explique a troca antes de gerar.
+- Em PAGO, aplique as travas de plataforma do contexto fixo.
+- Em ORGÂNICO, permita informação médica responsável sem dose, compra, aplicação ou promessa.
+- Em INTERNO, não aplique trava de plataforma por reflexo. Mantenha precisão factual e marque que exige revisão antes de qualquer veiculação.
+- Não invente promessa, dado, depoimento, resultado, CRM, preço ou prova.
+- Não use botão falso.
+- Mantenha a identidade Renove e a leitura no celular.
+- Quando o formato final for Feed, monte primeiro a direção em Story 9:16 e sinalize a recomposição posterior com o prompt 07 ou 08. Não proponha recorte.
+- Para carrossel, planeje e gere uma lâmina por vez.
+
+Quando terminar o prompt final, pergunte:
+
+"Posso gerar uma única imagem final agora?"
+
+Não gere antes da confirmação.

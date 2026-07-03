@@ -1,0 +1,59 @@
+CHECKLIST RÁPIDO ANTES DE APROVAR
+
+PROCESSO
+[ ] Começou pelo contexto fixo e esperou o Image 2 confirmar entendimento.
+[ ] Usou a receita do HTML, não a pasta inteira.
+[ ] Anexou somente os arquivos indicados na receita.
+[ ] Depois da geração, passou por QA.
+[ ] Se a base ficou boa, corrigiu cirurgicamente. Se a arquitetura ficou ruim, reconstruiu com reset dirigido.
+
+FORMATO
+[ ] Story: vertical 9:16, com informação principal na zona segura.
+[ ] Feed 4:5: composição própria, sem cortar o Story.
+[ ] Feed quadrado: menos texto, mais respiro e hierarquia mais simples.
+[ ] Carrossel: sequência planejada antes, uma lâmina por vez, sem prancha.
+
+SUPERFÍCIE
+[ ] Pago: aplicar travas de plataforma na peça que será veiculada.
+[ ] Orgânico: informação responsável, sem dose, compra, aplicação ou promessa.
+[ ] Interno: sem trava automática de plataforma, mas ainda precisa de revisão antes de virar anúncio.
+
+MARCA
+[ ] Logo legível, sem distorção e sem logo inventada.
+[ ] A variação de logo combina com o fundo escolhido.
+[ ] Visual parece Renove, não template genérico.
+[ ] As cores seguiram direção, não trava: no máximo 4 cores ativas.
+[ ] Paleta usada tem função: 1 dominante, 1 hierarquia, 1 neutra e no máximo 1 acento.
+[ ] Copy, preço e promessa das miniaturas antigas não foram reutilizados por reflexo.
+
+TEXTO
+[ ] Poucas palavras e hierarquia clara.
+[ ] Português correto e acentos preservados.
+[ ] Copy entre aspas saiu verbatim.
+[ ] Valores e unidades ficaram juntos: R$ 997, R$ 2.797, 10x.
+
+FORÇA
+[ ] Dentro da política: reduz risco, mas não promete aprovação.
+[ ] Principal forte: agressividade média, oferta e tensão com controle.
+[ ] Agressivo controlado: tensão maior, sem inventar fatos; revisar antes de subir.
+
+ANTES/DEPOIS ESTRATÉGICO
+[ ] A base escolhida corresponde à frente e ao formato final.
+[ ] A base é material de edição e NÃO foi publicada como está.
+[ ] As fotos são reais e autorizadas; pessoa, corpo e anatomia foram preservados.
+[ ] Principal forte foi usado como primeira rota ou Protegida como backup consciente.
+[ ] A geração editou a base sem criar um layout novo.
+[ ] Preço antigo, texto histórico e acentos foram corrigidos.
+[ ] Feed usa a base Feed e Story usa a base Story.
+
+REFERÊNCIA EXTERNA
+[ ] O print foi anexado manualmente.
+[ ] O print foi analisado antes da geração.
+[ ] O nível foi escolhido: leve, equilibrada, fiel à referência, fiel à Renove ou mirror autorizado.
+[ ] A copy foi tratada separadamente: ignorar, só ângulo, estrutura ou copy Renove.
+[ ] Mirror foi usado somente com peça própria ou autorizada.
+
+DECISÃO
+[ ] Aprovar: base e detalhes corretos.
+[ ] Corrigir: base boa e falha localizada; usar correção cirúrgica.
+[ ] Reconstruir: arquitetura ruim; usar reset dirigido e preservar a inteligência aprovada.

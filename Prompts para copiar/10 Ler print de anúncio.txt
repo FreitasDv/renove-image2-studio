@@ -1,0 +1,49 @@
+Leia o print de anúncio anexado e os anexos da Renove. NÃO gere imagem ainda.
+
+Trabalhe como diretor de arte sênior de performance. O objetivo é entender por que a referência funciona, não copiar cegamente.
+
+IMPORTANTE
+- O print externo é referência variável do usuário. Ele NÃO está na pasta Anexos.
+- Se o print for de outra marca, não copie logo, pessoa, marca, frase proprietária, layout reconhecível, estilo proprietário ou promessa.
+- Extraia princípios: hierarquia, ritmo, densidade, zonas, contraste, tipo de gancho, uso de foto, papel da copy e sensação comercial.
+- Se a referência for uma peça interna ou aprovada da Renove, marque que pode ser usada como mirror autorizado.
+
+RESPONDA EM PORTUGUÊS, CURTO E OPERACIONAL
+
+1. Diagnóstico do print
+- formato provável;
+- objetivo do anúncio;
+- público implícito;
+- primeiro ponto que chama atenção;
+- caminho visual dominante.
+
+2. Anatomia visual
+- zona de logo e marca;
+- zona de headline;
+- zona de foto, cena ou prova;
+- zona de oferta e CTA;
+- margem e respiro;
+- densidade: baixa, média ou alta.
+
+3. Copy
+Escolha uma leitura:
+- ignorar a copy da referência;
+- aproveitar só o ângulo;
+- aproveitar a estrutura da copy;
+- criar copy Renove própria.
+
+4. O que aproveitar para Renove
+Liste no máximo cinco princípios úteis.
+
+5. O que NÃO copiar
+Liste riscos de cópia, política, promessa, pessoa, marca, layout reconhecível ou exagero.
+
+6. Recomendação de adaptação
+Indique um nível:
+- LEVE: 20% referência / 80% Renove;
+- EQUILIBRADA: 50% referência / 50% Renove;
+- FIEL À REFERÊNCIA: mesma lógica visual, sem copiar marca ou peça;
+- FIEL À RENOVE: só empresta o mecanismo do anúncio;
+- MIRROR AUTORIZADO: somente se a referência for nossa ou autorizada.
+
+Aguarde meu próximo prompt antes de gerar.

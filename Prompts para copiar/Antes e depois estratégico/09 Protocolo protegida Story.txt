@@ -1,0 +1,38 @@
+PROTOCOLO — PROTEGIDA — STORY 9:16 — 1080 × 1920
+
+Agora edite somente a imagem-base Story anexada.
+
+TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
+- Use a imagem-base anexada como template travado.
+- Não crie uma nova arte apenas inspirada na referência.
+- Não redesenhe layout, fundo, logo, fotos, cards, molduras, textura, ícones, CTA, barras ou posições.
+- Não troque a pessoa, não recorte novamente, não altere anatomia e não invente transformação corporal.
+- Preserve a composição quase pixel a pixel. Altere somente o que estiver pedido.
+- Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
+
+OBJETIVO
+Manter o que para o scroll — comparação, contraste e preço — com copy mais publicável e clínica.
+
+FORMATO
+Use a zona segura anexada. Nada vital no rodapé de interface.
+
+TEXTO VISÍVEL FINAL
+PROTOCOLO MÉDICO DE 4 SEMANAS
+médica + nutri em todas as etapas
+a partir de R$ 997,00
+Em 10x sem juros
+Plano definido após avaliação. Resultados variam para cada paciente.
+
+Não use nome de fármaco, caneta, dose, mg, medicamento, promessa garantida ou botão falso.
+
+REGRAS DE TEXTO
+- `R$ 997,00` deve ficar em uma única linha.
+- Preserve acentos: `avaliação`, `médico`, `pós-parto`, `disposição`.
+- Não invente outro preço, telefone, URL, CRM, selo, dado ou depoimento.
+- Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
+
+CRITÉRIO DE SUCESSO
+Mesma força visual da base, com copy mais protegida e preço claramente ligado ao protocolo.
+
+SAÍDA
+Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, mockup, grid ou variações lado a lado.

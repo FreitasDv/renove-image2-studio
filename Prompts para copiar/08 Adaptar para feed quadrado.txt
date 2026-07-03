@@ -1,0 +1,31 @@
+Redesenhe a arte anterior no formato Feed quadrado 1:1, 1080x1080.
+
+MANTENHA TRAVADO
+- mesmo texto, sem trocar nenhuma palavra;
+- mesma paleta;
+- mesma família visual;
+- mesma logo;
+- mesmo conceito de cena;
+- mesma textura e acabamento.
+
+RECOMPONHA PARA QUADRADO
+O quadrado precisa parecer desenhado para o feed desde o início. Não cortar a Story.
+
+AJUSTES OBRIGATORIOS
+1. Menos linhas no headline.
+2. Mais largura e menos altura.
+3. Logo pequena e elegante.
+4. Texto e oferta no centro visual.
+5. Cena ou textura como apoio, sem competir.
+6. CTA visível, mas sem botão falso.
+7. Margens generosas em todos os lados.
+
+RESULTADO ESPERADO
+Uma peça compacta, legível e premium, pronta para carrossel ou feed quadrado.
+
+CAMADA RENOVE APROVADA - FEED
+- Feed não é corte de Story. Recompose do zero para o formato.
+- Se estiver no ChatGPT, use o seletor de proporção 4:5 ou 1:1. Se for API, prefira dimensões múltiplas de 16: 1088x1360 para 4:5 aproximado ou 1088x1088 para quadrado.
+- Não existe zona de sacrifício no Feed. Use o canvas inteiro com equilíbrio, margens e leitura mobile.
+- Preserve texto literal em português, com acentos corretos. Não traduza, não invente copy e não quebre "R$ 997", "R$ 2.797" ou "10x".
+- A adaptação deve preservar DNA visual, textura, luz, logo e hierarquia, mas pode reposicionar tudo para o novo quadro.

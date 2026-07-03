@@ -1,0 +1,37 @@
+Use quando a arte ficou quase boa. Corrija uma coisa por vez.
+
+1. FORMATO ERRADO
+Redraw in vertical 9:16 portrait, 1080x1920, with all crucial information inside the top 60% of the canvas. Keep the same text, palette, visual concept and brand style.
+
+2. LOGO ERRADA
+The logo in my attached PNG is the only valid logo. Do not redraw it, do not invent a symbol, do not modify proportions. If you cannot reproduce it faithfully, leave a clean blank area at top-center instead.
+
+3. BOTÃO FALSO
+Remove the fake UI button. Render the CTA as plain bold typographic text or a flat typographic strip only. No pill shape, no rounded rectangle, no button shadow.
+
+4. HERO WORD GIGANTE
+Reduce the hero word size. It should be only 30-50% larger than surrounding words, elegant like a magazine pull quote, not a billboard.
+
+5. PREÇO QUEBRADO
+Keep "R$ 997" / "R$ 2.797" / "10x" together on one line. Never split currency from number.
+
+6. TEXTO BAIXO NA STORY
+Move all crucial text content into the top 60% of the image. The bottom 40% should carry only photography, texture and non-critical visual weight.
+
+7. CARA DE CANVA
+Add more breathing room, stronger editorial hierarchy, visible paper/linen texture, subtle film grain and magazine-quality restraint. Avoid free-template Canva energy.
+
+8. FRIO OU FARMACEUTICO
+Make the image warmer, more editorial, more lifestyle-premium and less pharmaceutical. Remove any pharmacy, hospital-cold or product-selling feeling.
+
+9. FEED CROPADO
+Regenerate this Feed version as a proper Feed composition. Do not crop the Story. Recompose for the new aspect ratio, use the full canvas, reduce awkward line breaks and keep all text readable.
+
+10. ORTOGRAFIA
+Correct only the wrong word. Keep the entire image, composition, palette and text placement. Replace the incorrect text with exactly: "[PALAVRA CORRETA]".
+
+CAMADA RENOVE APROVADA - REVISÃO CIRÚRGICA
+- Corrija uma coisa por vez quando a peça está quase boa.
+- LOCK: copy literal, logo, paleta, textura, mood, cena/foto principal e família visual.
+- MUDA: proporção, margens, alinhamento, hierarquia, zonas, respiro, quebra de linha e posição.
+- Se o modelo insistir no mesmo erro por 3 tentativas, abra chat novo com contexto fixo + anexos certos.

@@ -1,0 +1,61 @@
+COMO USAR OS ANEXOS
+
+Comece sempre pelo HTML. Ele mostra a receita da tarefa, os anexos certos e os prompts na ordem.
+Não anexe a pasta inteira. Anexo demais confunde o Image 2 e dilui o que precisa mandar na peça.
+
+A lógica é simples:
+1. contexto fixo;
+2. anexos certos;
+3. prompt de geração;
+4. QA;
+5. correção cirúrgica ou reset dirigido.
+
+PASTA IDENTIDADE
+Referência mestra Renove: governa acabamento, textura, respiro e sofisticação.
+Logo oficial: lock principal da marca.
+Logo clara: usar em fundos escuros, oceano e petróleo.
+Logos céu, aqua, clay, azul e petróleo: variações do manual para testar contraste e atmosfera.
+DNA visual petróleo: referência de impacto, não obrigação.
+Referência clara off-white: confiança e avaliação.
+Referência escura com foto: presença humana, consulta e editorial.
+
+PASTA MANUAL DE MARCA
+Paleta oficial Renove: consulta rápida das cores do manual.
+Variações de logo 01 e 02: visão completa das versões permitidas.
+Isologo explicado: usar como apoio visual, não como substituto automático da logo completa.
+Tipografia Literata e Ubuntu: referência para orientar serifa editorial e sans limpa.
+Manual de identidade visual Renove.pdf: consulta completa. Não anexe o PDF inteiro por padrão.
+
+CORES
+As opções de cor são direção, não trava.
+Oceano profundo: oferta, preço, impacto e plano completo.
+Céu claro: avaliação, estrutura médica e confiança.
+Aqua clínico: método, bioimpedância, educação e manutenção.
+Solo humano: cuidado, recomeço, conversa mais acolhedora.
+Editorial com foto: consulta, médica, paciente e presença real.
+Livre com critério: o Image 2 propõe um caminho novo, preservando logo, textura, ritmo e paleta Renove.
+
+Regra prática: no máximo 4 cores ativas por peça.
+Escolha 1 cor dominante, 1 cor de hierarquia, 1 neutra e no máximo 1 acento.
+
+GUIA DE FORMATO
+Zona segura Story e Reels: anexar somente em Story. Ela governa a posição de texto, oferta e elementos vitais.
+Feed 4:5 e 1:1 precisam recomposição própria. Não peça só para cortar o Story.
+
+BASES DE PERFORMANCE
+São materiais de edição, não peças prontas para publicar.
+Escolha apenas uma base: frente correta + formato correto.
+Elas contêm copy e preço históricos. O prompt selecionado corrige esses pontos sem redesenhar a composição.
+
+ANTES/DEPOIS
+Use: base escolhida + logo adequada + zona segura, se for Story.
+Comece por Principal forte. Use Protegida como backup.
+As fotos precisam ser reais e autorizadas. O modelo não pode trocar pessoa, alterar anatomia ou inventar transformação corporal.
+
+PRINT EXTERNO
+O print não fica nesta pasta. Anexe manualmente junto com os arquivos Renove.
+Use a receita Adaptar referência para analisar, adaptar e corrigir.
+Use mirror somente com peça própria ou autorizada.
+
+IDIOMA DOS PROMPTS
+O idioma não substitui estrutura. Operação, contexto e copy final ficam em português. Termos técnicos podem permanecer em inglês quando forem mais precisos. Texto entre aspas é literal e não deve ser traduzido. O que mais protege a qualidade é a sequência: papel dos anexos, contexto sem gerar, prompt de geração, QA e correção cirúrgica.

@@ -1,0 +1,38 @@
+PÓS-PARTO — PROTEGIDA — FEED 4:5 — 1080 × 1350
+
+Agora edite somente a imagem-base Feed anexada.
+
+TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
+- Use a imagem-base anexada como template travado.
+- Não crie uma nova arte apenas inspirada na referência.
+- Não redesenhe layout, fundo, logo, fotos, cards, molduras, textura, ícones, CTA, barras ou posições.
+- Não troque a pessoa, não recorte novamente, não altere anatomia e não invente transformação corporal.
+- Preserve a composição quase pixel a pixel. Altere somente o que estiver pedido.
+- Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
+
+OBJETIVO
+Criar o backup mais cuidadoso para conta e número, mantendo contraste, preço e leitura comercial.
+
+FORMATO
+Use a base Feed. Não faça crop do Story e não herde sua zona de sacrifício.
+
+TEXTO VISÍVEL FINAL
+ACOMPANHAMENTO INDIVIDUAL
+emagrecimento com avaliação
+a partir de R$ 997
+médica + nutricionista + suporte
+Bauru/SP
+
+Não use `antes e depois` como chamada, vergonha corporal, culpa, fármaco, dose, caneta, kg ou promessa garantida.
+
+REGRAS DE TEXTO
+- `R$ 997,00` deve ficar em uma única linha.
+- Preserve acentos: `avaliação`, `médico`, `pós-parto`, `disposição`.
+- Não invente outro preço, telefone, URL, CRM, selo, dado ou depoimento.
+- Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
+
+CRITÉRIO DE SUCESSO
+Peça clínica e direta, ainda reconhecível como o controle, sem virar institucional morna.
+
+SAÍDA
+Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mockup, grid ou variações lado a lado.

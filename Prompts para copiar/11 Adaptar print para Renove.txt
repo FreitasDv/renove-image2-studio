@@ -1,0 +1,58 @@
+Agora transforme a leitura do print em uma peça da Renove.
+
+Use os anexos da Renove como identidade principal e o print apenas no nível escolhido.
+
+PREENCHA OU CONFIRME ANTES DE GERAR
+- Nível: LEVE, EQUILIBRADA, FIEL À REFERÊNCIA, FIEL À RENOVE ou MIRROR AUTORIZADO.
+- Copy: IGNORAR, SÓ ÂNGULO, ESTRUTURA DA COPY ou COPY RENOVE PRÓPRIA.
+- Força: DENTRO DA POLÍTICA, PRINCIPAL FORTE ou AGRESSIVO CONTROLADO.
+- Direção visual: OCEANO PROFUNDO, CÉU CLARO, AQUA CLÍNICO, SOLO HUMANO, EDITORIAL COM FOTO ou LIVRE COM CRITÉRIO.
+- Logo: automática por contraste, oficial, clara, oceano/petróleo, céu/aqua, clay ou isologo como detalhe.
+- Formato: STORY 9:16, FEED 4:5 ou FEED 1:1.
+- Texto final na arte, entre aspas.
+
+REGRAS DE ADAPTAÇÃO
+
+LEVE
+- Use apenas gancho, ritmo ou contraste.
+- Deixe paleta, textura, logo, tipografia e composição com DNA Renove dominante.
+
+EQUILIBRADA
+- Preserve a proporção útil entre texto, foto/cena e oferta.
+- Refaça acabamento, cor, textura, logo e atmosfera como Renove.
+
+FIEL À REFERÊNCIA
+- Use a mesma lógica de zonas e ordem de leitura.
+- Não copie marca, pessoa, logo, texto, selo, composição reconhecível ou promessa de terceiros.
+
+FIEL À RENOVE
+- Use o print só como insight comercial.
+- Construa uma peça Renove com hierarquia própria.
+
+MIRROR AUTORIZADO
+- Use apenas quando a referência for nossa ou autorizada.
+- Preserve quase pixel a pixel distribuição, ritmo, margens, proporções e hierarquia.
+- Troque só copy, formato, oferta ou risco solicitado.
+
+COR E LOGO
+- As opções de cor são direção, não trava.
+- No máximo 4 cores ativas: dominante, hierarquia, neutra e um acento.
+- Escolha a logo pela leitura real do fundo final. Se a opção escolhida falhar, reserve área limpa para aplicação posterior.
+
+FORMATO
+- Story/Reels 9:16: informação principal no topo 60%; nada vital abaixo de Y 1250.
+- Feed 4:5 ou 1:1: recomponha. Não corte o Story.
+- Com texto pequeno, preço ou muitos elementos, gere em alta qualidade.
+
+ANTI-GENÉRICO
+- Sem botão falso ou logo redesenhada.
+- Sem branco puro ou preto puro.
+- Use textura, grão sutil, luz natural e sombra cinza quando a direção pedir.
+- Palavra hero no máximo 30-50% maior, nunca como outdoor.
+- Mantenha `R$ 997`, `R$ 2.797`, `10x` e pares número/unidade na mesma linha.
+
+REALISMO
+- Não invente resultado clínico, depoimento, corpo, antes/depois, CRM, preço, prova ou mecanismo médico.
+- Agressivo controlado continua sujeito a revisão antes de subir.
+
+Gere uma única imagem final no formato escolhido.

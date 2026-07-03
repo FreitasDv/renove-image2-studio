@@ -1,0 +1,44 @@
+Refaça a geração do zero, mas não refaça do zero a inteligência.
+
+Use este prompt quando a arquitetura da peça ficou errada e uma correção pequena não resolve.
+
+NÃO copie literalmente a imagem com problema. Preserve a engenharia visual e processual que já foi aprovada.
+
+PRESERVAR
+- objetivo e superfície;
+- intensidade;
+- copy final verbatim;
+- papel de cada anexo;
+- família visual e paleta;
+- textura, materialidade e atmosfera;
+- formato e zonas;
+- elementos que funcionaram na rodada aprovada.
+
+CORRIGIR
+- arquitetura de composição;
+- proporções;
+- ordem de leitura;
+- margens e respiro;
+- relação entre texto, cena, oferta e CTA;
+- falhas factuais, operacionais e de legibilidade.
+
+NÃO INVENTAR
+- texto;
+- logo;
+- pessoa;
+- prova;
+- resultado clínico;
+- preço;
+- depoimento;
+- dado;
+- mecanismo médico.
+
+ANTES DE GERAR
+Responda em português com duas listas curtas:
+
+1. O que será preservado.
+2. O que será reconstruído.
+
+Depois aguarde minha confirmação.
+
+Quando eu confirmar, gere uma única imagem final no formato definido.
