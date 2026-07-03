@@ -11,7 +11,7 @@ Ainda não gere imagem.
 Faça perguntas curtas, uma por vez. Pergunte somente o que ainda não estiver definido:
 
 1. objetivo da peça;
-2. superfície: PAGO, ORGÂNICO ou INTERNO;
+2. superfície: PAGO, ORGÂNICO ou APROVAÇÃO PRIVADA;
 3. intensidade: SEGURO, MÉDIO ou AGRESSIVO;
 4. formato: STORY 9:16, FEED 4:5, FEED 1:1 ou CARROSSEL;
 5. público;
@@ -43,7 +43,7 @@ REGRAS
 - Escolha a logo pela leitura real do fundo final. Se a versão selecionada não funcionar, explique a troca antes de gerar.
 - Em PAGO, aplique as travas de plataforma do contexto fixo.
 - Em ORGÂNICO, permita informação médica responsável sem dose, compra, aplicação ou promessa.
-- Em INTERNO, não aplique trava de plataforma por reflexo. Mantenha precisão factual e marque que exige revisão antes de qualquer veiculação.
+- Em APROVAÇÃO PRIVADA, não aplique trava de plataforma por reflexo. Mantenha precisão factual e marque que exige revisão antes de qualquer veiculação.
 - Não invente promessa, dado, depoimento, resultado, CRM, preço ou prova.
 - Não use botão falso.
 - Mantenha a identidade Renove e a leitura no celular.

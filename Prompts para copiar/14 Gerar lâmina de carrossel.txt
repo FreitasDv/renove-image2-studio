@@ -6,7 +6,7 @@ PREENCHA ANTES DE GERAR
 - Número da lâmina:
 - Função:
 - Formato: 4:5 ou 1:1.
-- Superfície: ORGÂNICO ou INTERNO por padrão. PAGO só se for decisão consciente e revisada.
+- Superfície: ORGÂNICO ou APROVAÇÃO PRIVADA por padrão. PAGO só se for decisão consciente e revisada.
 - Força: DENTRO DA POLÍTICA, PRINCIPAL FORTE ou AGRESSIVO CONTROLADO.
 - Direção visual: OCEANO PROFUNDO, CÉU CLARO, AQUA CLÍNICO, SOLO HUMANO, EDITORIAL COM FOTO ou LIVRE COM CRITÉRIO.
 - Logo: automática por contraste, oficial, clara, oceano/petróleo, céu/aqua, clay ou isologo como detalhe.
