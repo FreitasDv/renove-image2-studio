@@ -1,15 +1,13 @@
-Pessoal, deixei aqui o estúdio de produção dos criativos da Renove.
+Olá, deixei pronto um painel de direção criativa para os criativos da Renove.
 
-Comecem pelo arquivo "Comece Aqui.html". Não precisa instalar nada.
+Ele concentra o método que vamos usar para manter as peças com padrão visual, velocidade e consistência: identidade da marca, materiais certos, sequência de criação e revisão.
 
-Escolham primeiro o tipo de trabalho: criar do zero, adaptar um print de referência, versionar uma peça aprovada ou produzir antes/depois estratégico.
+O painel organiza quatro frentes: criar uma peça nova, adaptar uma referência, versionar uma peça aprovada e trabalhar antes/depois estratégico.
 
-Depois ajustem as opções do painel. Ele mostra os anexos certos, a função de cada arquivo e os prompts completos na ordem.
+As cores e famílias visuais funcionam como direção, não como trava. Quando a peça pedir outro caminho, a opção Livre com critério mantém os pontos essenciais da Renove: logo correta, paleta coerente, textura premium, leitura no celular e copy limpa.
 
-As cores e famílias visuais são direções, não travas. Se a peça pedir outro caminho, usem Livre com critério e mantenham os locks da Renove: logo correta, paleta coerente, textura premium, leitura no celular e copy limpa.
+Para antes/depois, a rota principal é Principal forte, com Protegida como backup. As bases reais ficam tratadas como material de edição e precisam passar pela revisão antes de qualquer publicação.
 
-Para antes/depois, comecem por Principal forte. As bases da pasta são materiais de edição e não devem ser publicadas como estão.
+Para usar um print externo como inspiração, o painel separa leitura, adaptação e correção. Assim a gente aproveita o mecanismo do anúncio sem perder identidade, política e acabamento da Renove.
 
-Para usar um print externo, anexem a imagem manualmente e sigam a receita de adaptação. O painel deixa escolher o nível: inspiração leve, equilibrada, fiel à referência, fiel à Renove ou mirror autorizado.
-
-Se a peça estiver quase boa, usem correção cirúrgica. Se a arquitetura estiver errada, usem o reset dirigido para refazer sem perder a inteligência aprovada.
+Se a peça estiver quase boa, entra correção cirúrgica. Se a arquitetura estiver errada, entra reset dirigido para refazer sem perder a inteligência do que já funcionou.

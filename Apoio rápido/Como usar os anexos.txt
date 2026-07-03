@@ -1,14 +1,14 @@
 COMO USAR OS ANEXOS
 
-Comece sempre pelo HTML. Ele mostra a receita da tarefa, os anexos certos e os prompts na ordem.
-Não anexe a pasta inteira. Anexo demais confunde o Image 2 e dilui o que precisa mandar na peça.
+Comece pelo painel principal. Ele organiza a frente criativa, os materiais certos e a sequência de prompts.
+Não use todos os arquivos de uma vez. Material demais confunde o Image 2 e dilui a direção da peça.
 
-A lógica é simples:
-1. contexto fixo;
-2. anexos certos;
-3. prompt de geração;
-4. QA;
-5. correção cirúrgica ou reset dirigido.
+A lógica do método:
+1. contexto da marca;
+2. materiais certos para a frente escolhida;
+3. geração no formato correto;
+4. revisão de marca, leitura e política;
+5. correção cirúrgica ou reset dirigido quando necessário.
 
 PASTA IDENTIDADE
 Referência mestra Renove: governa acabamento, textura, respiro e sofisticação.

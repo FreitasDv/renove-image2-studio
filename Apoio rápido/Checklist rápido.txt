@@ -2,7 +2,7 @@ CHECKLIST RÁPIDO ANTES DE APROVAR
 
 PROCESSO
 [ ] Começou pelo contexto fixo e esperou o Image 2 confirmar entendimento.
-[ ] Usou a receita do HTML, não a pasta inteira.
+[ ] Usou a direção indicada pelo painel, não um conjunto aleatório de arquivos.
 [ ] Anexou somente os arquivos indicados na receita.
 [ ] Depois da geração, passou por QA.
 [ ] Se a base ficou boa, corrigiu cirurgicamente. Se a arquitetura ficou ruim, reconstruiu com reset dirigido.
@@ -16,7 +16,7 @@ FORMATO
 SUPERFÍCIE
 [ ] Pago: aplicar travas de plataforma na peça que será veiculada.
 [ ] Orgânico: informação responsável, sem dose, compra, aplicação ou promessa.
-[ ] Interno: sem trava automática de plataforma, mas ainda precisa de revisão antes de virar anúncio.
+[ ] Aprovação/teste privado: sem trava automática de plataforma, mas ainda precisa de revisão antes de virar anúncio.
 
 MARCA
 [ ] Logo legível, sem distorção e sem logo inventada.
