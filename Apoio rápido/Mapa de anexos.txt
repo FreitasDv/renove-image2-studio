@@ -39,10 +39,10 @@ FORMATO
   Usar em Feed 4:5 e Feed 1:1. Ajuda a recompor sem cortar o Story e protege headline, oferta, logo e margens.
 
 BASES REAIS DE PERFORMANCE
-- Pós-parto Story 9x16.png
-  Base de edição para Story da frente pós-parto.
-- Pós-parto Feed 4x5.png
-  Base de edição para Feed da frente pós-parto.
+- Comparação sensível Story 9x16.png
+  Base de edição para Story com comparação corporal sensível. Usar com cautela visual.
+- Comparação sensível Feed 4x5.png
+  Base de edição para Feed com comparação corporal sensível. Preferir composição menos exposta.
 - Protocolo Story 9x16.png
   Base de edição para Story da frente protocolo/acompanhamento.
 - Protocolo Feed 4x5.png
@@ -70,7 +70,7 @@ COMBINAÇÕES RÁPIDAS
 - Peça com grafismo de símbolo: Referência mestra v2 + Logo oficial ou clara + Isologo oficial.
 - Story/Reels: adicionar Zona segura Story e Reels.
 - Feed: adicionar Geometria Feed 4x5 e 1x1; recompor no formato final.
-- Antes/depois: Referência mestra v2 + base correta + logo adequada + guia de formato correto.
+- Antes/depois: Referência mestra v2 + base correta + logo adequada + guia de formato correto. Se a comparação corporal estiver forte demais, use a alternativa sem comparação.
 - Print externo: Referência mestra v2 + logo + print manual, depois rodar leitura antes de gerar.
 
 REGRA FINAL

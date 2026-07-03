@@ -1,4 +1,4 @@
-PROTOCOLO — PROTEGIDA — FEED 4:5 — 1080 × 1350
+COMPARAÇÃO SENSÍVEL — PRINCIPAL FORTE — FEED 4:5 — 1080 × 1350
 
 Agora edite somente a imagem-base Feed anexada.
 
@@ -11,19 +11,19 @@ TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
 - Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
 
 OBJETIVO
-Manter o que para o scroll — comparação, contraste e preço — com copy mais publicável e clínica.
+Manter a força comercial de uma base real com agressividade média, mas reduzindo risco de rejeição: menos exposição corporal, mais acompanhamento, sem fármaco visível, kg como promessa ou vergonha corporal.
 
 FORMATO
 Use a base Feed e o guia Geometria Feed 4:5 e 1:1. Não faça crop do Story. Headline no terço superior, cena no centro, oferta/CTA no centro inferior e logo com respiro. Nada vital colado nas bordas.
 
-TEXTO VISÍVEL FINAL
-PROTOCOLO MÉDICO DE 4 SEMANAS
-médica + nutri em todas as etapas
-a partir de R$ 997,00
-Em 10x sem juros
-Plano definido após avaliação. Resultados variam para cada paciente.
-
-Não use nome de fármaco, caneta, dose, mg, medicamento, promessa garantida ou botão falso.
+TROCAS CIRÚRGICAS
+- Troque `R$ 897,00` por `R$ 997,00`.
+- Mantenha `PROTOCOLO DE 4 SEMANAS`.
+- Troque o subtítulo por `acompanhamento médico e nutricional personalizado`.
+- Troque a prova textual por `Caso real com acompanhamento individualizado*`.
+- Mantenha os itens `Plano de 4 semanas`, `Acompanhamento médico` e `Mais disposição`.
+- Mantenha `QUERO MINHA AVALIAÇÃO` como texto, nunca como botão falso.
+- Disclaimer: `*A Renove não vende medicamentos. Indicação mediante avaliação médica.`
 
 REGRAS DE TEXTO
 - `R$ 997,00` deve ficar em uma única linha.
@@ -32,7 +32,7 @@ REGRAS DE TEXTO
 - Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
 
 CRITÉRIO DE SUCESSO
-Mesma força visual da base, com copy mais protegida e preço claramente ligado ao protocolo.
+Deve preservar a arquitetura da base, mas ficar menos explícita na comparação corporal e mais clínica.
 
 SAÍDA
 Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mockup, grid ou variações lado a lado.

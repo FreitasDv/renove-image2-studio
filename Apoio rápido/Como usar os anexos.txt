@@ -66,15 +66,15 @@ Carrossel é orgânico/editorial por padrão. Planeje a sequência antes e gere 
 BASES DE PERFORMANCE
 São materiais reais de edição, não peças prontas para publicar.
 Escolha apenas uma base: frente correta + formato correto.
-Pós-parto Story: usar só quando o formato final for Story 9:16.
-Pós-parto Feed: usar só quando o formato final for Feed 4:5.
+Comparação sensível Story: usar só quando o formato final for Story 9:16 e houver autorização/critério para comparação corporal.
+Comparação sensível Feed: usar só quando o formato final for Feed 4:5 e a composição estiver menos exposta.
 Protocolo Story: usar só quando o formato final for Story 9:16.
 Protocolo Feed: usar só quando o formato final for Feed 4:5.
 As bases podem conter copy e preço históricos. O prompt selecionado corrige esses pontos sem redesenhar a composição.
 
 ANTES/DEPOIS ESTRATÉGICO
 Use: referência mestra v2 + base correta + logo adequada + guia de formato correto.
-Comece por Principal forte. Use Protegida como backup consciente.
+Comece por Principal forte só quando o risco visual fizer sentido. Se a comparação estiver muito explícita, vá de Protegida ou use alternativa sem comparação corporal.
 As fotos precisam ser reais e autorizadas. O modelo não pode trocar pessoa, alterar anatomia ou inventar transformação corporal.
 Se o risco não fizer sentido, use a alternativa sem comparação corporal.
 

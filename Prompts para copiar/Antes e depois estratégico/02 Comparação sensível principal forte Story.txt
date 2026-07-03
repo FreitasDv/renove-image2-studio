@@ -1,4 +1,4 @@
-PÓS-PARTO — PRINCIPAL FORTE — STORY 9:16 — 1080 × 1920
+COMPARAÇÃO SENSÍVEL — PRINCIPAL FORTE — STORY 9:16 — 1080 × 1920
 
 Agora edite somente a imagem-base Story anexada.
 
@@ -11,7 +11,7 @@ TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
 - Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
 
 OBJETIVO
-Manter a força da peça original de pós-parto com agressividade média: direta e comercial, sem fármaco visível, kg como promessa ou vergonha corporal.
+Manter a força comercial de uma base real com agressividade média, mas reduzindo risco de rejeição: menos exposição corporal, mais acompanhamento, sem fármaco visível, kg como promessa ou vergonha corporal.
 
 FORMATO
 Use a zona segura anexada. Nada vital no rodapé de interface.
@@ -20,19 +20,19 @@ TROCAS CIRÚRGICAS
 - Troque `R$ 897,00` por `R$ 997,00`.
 - Mantenha `PROTOCOLO DE 4 SEMANAS`.
 - Troque o subtítulo por `acompanhamento médico e nutricional personalizado`.
-- Troque a prova textual por `Caso real com acompanhamento no pós-parto*`.
+- Troque a prova textual por `Caso real com acompanhamento individualizado*`.
 - Mantenha os itens `Plano de 4 semanas`, `Acompanhamento médico` e `Mais disposição`.
 - Mantenha `QUERO MINHA AVALIAÇÃO` como texto, nunca como botão falso.
 - Disclaimer: `*A Renove não vende medicamentos. Indicação mediante avaliação médica.`
 
 REGRAS DE TEXTO
 - `R$ 997,00` deve ficar em uma única linha.
-- Preserve acentos: `avaliação`, `médico`, `pós-parto`, `disposição`.
+- Preserve acentos: `avaliação`, `médico`, `disposição`, `acompanhamento`.
 - Não invente outro preço, telefone, URL, CRM, selo, dado ou depoimento.
 - Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
 
 CRITÉRIO DE SUCESSO
-Deve parecer a mesma peça de performance, com preço atual e copy mais clínica.
+Deve preservar a arquitetura da base, mas ficar menos explícita na comparação corporal e mais clínica.
 
 SAÍDA
 Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, mockup, grid ou variações lado a lado.

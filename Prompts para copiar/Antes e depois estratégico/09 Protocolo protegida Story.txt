@@ -27,7 +27,7 @@ Não use nome de fármaco, caneta, dose, mg, medicamento, promessa garantida ou 
 
 REGRAS DE TEXTO
 - `R$ 997,00` deve ficar em uma única linha.
-- Preserve acentos: `avaliação`, `médico`, `pós-parto`, `disposição`.
+- Preserve acentos: `avaliação`, `médico`, `disposição`, `acompanhamento`.
 - Não invente outro preço, telefone, URL, CRM, selo, dado ou depoimento.
 - Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
 

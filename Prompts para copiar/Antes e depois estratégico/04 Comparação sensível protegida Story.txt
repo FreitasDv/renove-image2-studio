@@ -1,6 +1,6 @@
-PÓS-PARTO — PROTEGIDA — FEED 4:5 — 1080 × 1350
+COMPARAÇÃO SENSÍVEL — PROTEGIDA — STORY 9:16 — 1080 × 1920
 
-Agora edite somente a imagem-base Feed anexada.
+Agora edite somente a imagem-base Story anexada.
 
 TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
 - Use a imagem-base anexada como template travado.
@@ -11,10 +11,10 @@ TRAVA ABSOLUTA — EDITAR, NÃO REDESENHAR
 - Se não conseguir preservar a base, pare e informe que a peça precisa de revisão cirúrgica.
 
 OBJETIVO
-Criar o backup mais cuidadoso para conta e número, mantendo contraste, preço e leitura comercial.
+Criar o backup mais cuidadoso para conta e número, mantendo contraste, preço e leitura comercial sem depender de comparação corporal forte.
 
 FORMATO
-Use a base Feed e o guia Geometria Feed 4:5 e 1:1. Não faça crop do Story. Headline no terço superior, cena no centro, oferta/CTA no centro inferior e logo com respiro. Nada vital colado nas bordas.
+Use a zona segura anexada. Nada vital no rodapé de interface.
 
 TEXTO VISÍVEL FINAL
 ACOMPANHAMENTO INDIVIDUAL
@@ -23,16 +23,16 @@ a partir de R$ 997
 médica + nutricionista + suporte
 Bauru/SP
 
-Não use `antes e depois` como chamada, vergonha corporal, culpa, fármaco, dose, caneta, kg ou promessa garantida.
+Não use `antes e depois` como chamada, vergonha corporal, culpa, fármaco, dose, caneta, kg, prazo ou promessa garantida.
 
 REGRAS DE TEXTO
 - `R$ 997,00` deve ficar em uma única linha.
-- Preserve acentos: `avaliação`, `médico`, `pós-parto`, `disposição`.
+- Preserve acentos: `avaliação`, `médico`, `disposição`, `acompanhamento`.
 - Não invente outro preço, telefone, URL, CRM, selo, dado ou depoimento.
 - Se houver erro pontual de texto, não redesenhe: use a correção cirúrgica.
 
 CRITÉRIO DE SUCESSO
-Peça clínica e direta, ainda reconhecível como o controle, sem virar institucional morna.
+Peça clínica e direta, com menor risco de rejeição e sem virar institucional morna.
 
 SAÍDA
-Gere uma única imagem final em FEED 4:5 — 1080 × 1350. Não gere prancha, mockup, grid ou variações lado a lado.
+Gere uma única imagem final em STORY 9:16 — 1080 × 1920. Não gere prancha, mockup, grid ou variações lado a lado.
