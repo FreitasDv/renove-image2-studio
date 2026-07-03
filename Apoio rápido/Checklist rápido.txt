@@ -11,7 +11,7 @@ FORMATO
 [ ] Story: vertical 9:16, com informação principal na zona segura.
 [ ] Feed 4:5: composição própria, sem cortar o Story.
 [ ] Feed quadrado: menos texto, mais respiro e hierarquia mais simples.
-[ ] Carrossel: sequência planejada antes, uma lâmina por vez, sem prancha.
+[ ] Carrossel: rota orgânica/editorial por padrão, sequência planejada antes, uma lâmina por vez, sem prancha.
 
 SUPERFÍCIE
 [ ] Pago: aplicar travas de plataforma na peça que será veiculada.

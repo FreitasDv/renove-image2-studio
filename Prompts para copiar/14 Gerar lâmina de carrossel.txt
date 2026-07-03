@@ -1,4 +1,4 @@
-Gere UMA lâmina de carrossel da Renove por vez.
+Gere UMA lâmina de carrossel social/orgânico da Renove por vez.
 
 Use o plano aprovado do prompt anterior.
 
@@ -6,7 +6,7 @@ PREENCHA ANTES DE GERAR
 - Número da lâmina:
 - Função:
 - Formato: 4:5 ou 1:1.
-- Superfície: PAGO, ORGÂNICO ou INTERNO.
+- Superfície: ORGÂNICO ou INTERNO por padrão. PAGO só se for decisão consciente e revisada.
 - Força: DENTRO DA POLÍTICA, PRINCIPAL FORTE ou AGRESSIVO CONTROLADO.
 - Direção visual: OCEANO PROFUNDO, CÉU CLARO, AQUA CLÍNICO, SOLO HUMANO, EDITORIAL COM FOTO ou LIVRE COM CRITÉRIO.
 - Logo: automática por contraste, oficial, clara, oceano/petróleo, céu/aqua, clay ou isologo como detalhe.
@@ -29,4 +29,4 @@ ARQUITETURA
 - Apoio: detalhe, prova, contraste ou orientação.
 - Rodapé: só se necessário; nada vital apertado.
 
-Se for anúncio pago, respeite a força escolhida. Agressivo controlado exige revisão antes de subir.
+Se a lâmina for reaproveitada em anúncio pago, respeite a força escolhida e revise como peça de plataforma antes de subir. Agressivo controlado exige revisão.

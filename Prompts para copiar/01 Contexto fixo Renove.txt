@@ -63,7 +63,7 @@ REGRAS DE FORMATO
 - Story/Reels 9:16: informação principal no topo 60%; rodapé 40% é zona de sacrifício.
 - Mapa Story 1080x1920: headline entre Y 280 e Y 650; cena/mecanismo entre Y 620 e Y 1050; oferta + CTA entre Y 1030 e Y 1230; nada vital abaixo de Y 1250; evitar texto vital na lateral direita.
 - Feed 4:5 ou 1:1: recomponha do zero. Nunca apenas corte o Story.
-- Carrossel: planeje antes e gere uma lâmina por vez.
+- Carrossel: use como rota orgânica/editorial por padrão. Planeje antes e gere uma lâmina por vez. Não trate como formato normal de ads, salvo decisão consciente e revisão específica.
 - Sempre gere uma única imagem final, nunca prancha, contato, mockup ou grid.
 
 REGRAS DE TEXTO
