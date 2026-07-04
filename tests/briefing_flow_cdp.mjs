@@ -122,6 +122,16 @@ async function run() {
       1,
       "ação do prompt final precisa estar explícita",
     );
+    assert.equal(
+      await page.getByLabel("Linha de produção da receita").count(),
+      1,
+      "receita precisa mostrar a sequência principal sem depender de memória",
+    );
+    assert.equal(
+      await page.getByText("Baixe e anexe somente estes arquivos").count(),
+      1,
+      "seção de anexos precisa declarar que a lista da receita é a fonte de verdade",
+    );
 
     const rawIdea = [
       "Ideia do WhatsApp: mulher 40+, mudanças hormonais, já tentou emagrecer antes.",
@@ -160,6 +170,11 @@ async function run() {
     assert.match(finalPrompt, /base real indicada/i);
     assert.match(finalPrompt, /EXACT TEXT ON IMAGE/i);
     assert.match(finalPrompt, /Não invente preço, prova, resultado/i);
+    assert.match(await page.locator("#recipe-status").innerText(), /materiais/i);
+    assert(
+      await page.getByRole("link", { name: /Baixar base para anexar/i }).count() >= 1,
+      "base de antes/depois precisa aparecer como download claro para anexar",
+    );
     assert.doesNotMatch(await page.locator("body").innerText(), /diagnóstico da copy/i);
 
     const widths = await page.evaluate(() => ({

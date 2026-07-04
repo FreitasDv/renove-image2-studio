@@ -1014,6 +1014,58 @@ legend {
   background: var(--aqua-soft);
 }
 
+.recipe-path {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  border-bottom: 1px solid var(--line);
+  background: var(--line);
+}
+
+.recipe-path__item {
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  padding: 18px 18px 16px;
+  background: rgba(251, 252, 250, 0.88);
+}
+
+.recipe-path__item span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--petrol);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.recipe-path__item strong,
+.recipe-path__item small {
+  display: block;
+}
+
+.recipe-path__item strong {
+  margin-bottom: 3px;
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.recipe-path__item small {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.recipe-path__item:first-child {
+  background: linear-gradient(135deg, rgba(165, 214, 207, 0.26), #ffffff);
+}
+
 .recipe-section {
   position: relative;
   padding: 32px 38px 36px;
@@ -1400,8 +1452,29 @@ legend {
   gap: 8px 12px;
 }
 
+.recipe-asset__actions a {
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid rgba(41, 108, 123, 0.2);
+  border-radius: var(--radius-small);
+  text-decoration: none;
+}
+
 .recipe-asset__actions a:first-child {
+  background: var(--petrol);
+  color: #ffffff;
+}
+
+.recipe-asset__actions a:last-child:not(:first-child) {
   color: var(--petrol);
+}
+
+.recipe-asset__instruction {
+  display: block;
+  margin-top: 7px;
+  color: var(--faint);
+  font-size: 0.74rem;
+  line-height: 1.35;
 }
 
 .asset-note {
@@ -1493,7 +1566,7 @@ legend {
 }
 
 .summary-action::after {
-  content: "Ver prompt";
+  content: "Abrir passo";
 }
 
 .recipe-prompt details[open] .summary-action {
@@ -1695,6 +1768,7 @@ legend {
 }
 
 .library-shortcuts button {
+  position: relative;
   min-height: 108px;
   padding: 18px;
   border: 1px solid rgba(41, 108, 123, 0.16);
@@ -1744,6 +1818,21 @@ legend {
   background:
     linear-gradient(145deg, rgba(165, 214, 207, 0.32), rgba(251, 252, 250, 0.78)),
     var(--paper);
+}
+
+.library-shortcuts button::after {
+  content: "Filtrar consulta";
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.library-shortcuts [data-open-workflow]::after {
+  content: "Abrir receita";
+  color: var(--petrol);
 }
 
 .library-context {
@@ -2261,6 +2350,15 @@ legend {
     margin-top: 14px;
   }
 
+  .recipe-path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recipe-path__item {
+    min-height: 78px;
+    padding: 14px;
+  }
+
   .recipe-section {
     padding: 26px 20px 30px;
   }
@@ -2418,6 +2516,10 @@ legend {
     grid-template-columns: 1fr;
   }
 
+  .recipe-path {
+    grid-template-columns: 1fr;
+  }
+
   .recipe-asset {
     grid-template-columns: 1fr;
   }
@@ -2540,7 +2642,7 @@ legend {
         <a href="#metodo" data-view-link="metodo">Método</a>
         <a href="#qualidade" data-view-link="qualidade">Qualidade</a>
       </nav>
-      <button class="tour-start" id="tour-start" type="button">Guia rápido</button>
+      <button class="tour-start" id="tour-start" type="button">Guia passo a passo</button>
       <button class="access-logout" id="access-logout" type="button">Sair</button>
     </div>
   </header>
@@ -2565,7 +2667,7 @@ legend {
         <div class="intro__heading">
           <p class="eyebrow">Renove · direção criativa</p>
           <h1 id="page-title">Produção criativa Renove</h1>
-          <p>Escolha o trabalho. A receita reúne os anexos certos e organiza os prompts na ordem de produção.</p>
+          <p>Cole a ideia, escolha o tipo de peça e siga a receita. O painel mostra o que anexar, o que copiar e quando revisar.</p>
         </div>
 
         <noscript>
@@ -2574,7 +2676,7 @@ legend {
 
         <div class="studio" data-testid="studio">
           <div class="workflow-wrap" data-tour="workflow">
-          <p class="field-label" id="workflow-label">Escolha a frente criativa</p>
+          <p class="field-label" id="workflow-label">Comece escolhendo o tipo de produção</p>
             <div class="workflow-switcher" role="group" aria-labelledby="workflow-label">
               <button type="button" data-workflow="new" aria-pressed="true">
                 <strong>Criar peça nova</strong>
@@ -2600,8 +2702,8 @@ legend {
               <div class="setup__heading">
                 <p class="section-index">Direção</p>
                 <h2 id="setup-title">Defina a peça</h2>
-                <p id="setup-description">Escolha formato, uso, intensidade e direção visual.</p>
-                <p class="setup-hint">As cores orientam atmosfera e contraste, sem prender a criação. O padrão Renove continua protegido por logo, paleta, textura, leitura e revisão.</p>
+                <p id="setup-description">A escolha muda os anexos, os prompts e os cuidados da receita.</p>
+                <p class="setup-hint">As opções orientam a produção; não são trava cega. A Renove continua protegida por logo, paleta, textura, formato, leitura e revisão.</p>
               </div>
 
               <form id="studio-form">
@@ -2823,37 +2925,56 @@ legend {
                 </div>
                 <div class="recipe-meta">
                   <div class="recipe-status" id="recipe-status">3 anexos · 4 prompts</div>
-                  <button class="recipe-copy-main" type="button" data-copy-first-prompt>Copiar primeiro prompt</button>
+                  <button class="recipe-copy-main" type="button" data-copy-first-prompt>Copiar 1º prompt da receita</button>
                 </div>
               </header>
+
+              <div class="recipe-path" aria-label="Linha de produção da receita" data-tour="production-line">
+                <div class="recipe-path__item">
+                  <span>1</span>
+                  <div><strong>Ideia</strong><small>Cole tudo, organize no GPT e traga o mapa aprovado.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>2</span>
+                  <div><strong>Anexos</strong><small>Baixe só os arquivos que aparecem nesta receita.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>3</span>
+                  <div><strong>Prompts</strong><small>Copie em ordem, um por vez, no mesmo chat.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>4</span>
+                  <div><strong>Revisão</strong><small>Cheque formato, texto, logo, risco e recomposição.</small></div>
+                </div>
+              </div>
 
               <div class="recipe-brief" data-tour="brief">
                 <div class="recipe-brief__header">
                   <div>
                     <span class="library-kicker">Brief assistido</span>
                     <h3>Cole a ideia inteira primeiro</h3>
-                    <p>O fluxo normal não exige preencher copy separada. Cole roteiro, print descrito, oferta, áudio transcrito ou tema bruto; o passo 1 organiza isso em mapa de peça e o passo 2 monta o prompt final.</p>
+                    <p>O jeito mais simples é colar tudo de uma vez: roteiro, ideia do WhatsApp, oferta, tema, texto solto ou descrição de print. O primeiro botão organiza a ideia; o segundo monta o prompt final.</p>
                   </div>
                   <span class="recipe-brief__badge" id="brief-flow-badge">Ideia vira mapa</span>
                 </div>
                 <div class="brief-flow" aria-label="Fluxo do briefing assistido">
-                  <div class="brief-step"><b>1</b><div><span>Cole tudo</span><small>Ideia bruta, roteiro, print ou copy solta.</small></div></div>
-                  <div class="brief-step"><b>2</b><div><span>Organize no GPT</span><small>Copie o prompt organizador e cole na conversa.</small></div></div>
-                  <div class="brief-step"><b>3</b><div><span>Traga o mapa</span><small>Cole a resposta no campo Mapa aprovado.</small></div></div>
-                  <div class="brief-step"><b>4</b><div><span>Siga a receita</span><small>Anexe só os materiais listados e cole os prompts.</small></div></div>
+                  <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
+                  <div class="brief-step"><b>2</b><div><span>Organize</span><small>Copie o botão 1 e cole no ChatGPT.</small></div></div>
+                  <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Traga a resposta para o campo abaixo.</small></div></div>
+                  <div class="brief-step"><b>4</b><div><span>Produza</span><small>Baixe os anexos e use os prompts em ordem.</small></div></div>
                 </div>
                 <div class="brief-fields">
                   <label class="brief-field" for="brief-copy">
                     <span>Ideia inteira da peça</span>
-                    <textarea id="brief-copy" placeholder="Cole aqui tudo que tiver: tema do roteiro, texto do anúncio, oferta, dor, ângulo, observação do WhatsApp, print descrito, referência ou pauta que vai virar peça."></textarea>
+                    <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira. Ex.: tema do roteiro, texto do anúncio, oferta, dor, observação do WhatsApp, print descrito ou pauta que vai virar peça."></textarea>
                   </label>
                   <div class="brief-actions brief-actions--primary">
                     <button type="button" id="copy-diagnostic">1. Copiar prompt organizador</button>
-                    <small>Depois de colar a ideia, clique aqui. O GPT devolve um mapa para você colar no campo abaixo.</small>
+                    <small>Use primeiro. Ele transforma a ideia em headline, subheadline, CTA, risco, anexos e arquitetura visual.</small>
                   </div>
                   <label class="brief-field" for="brief-map">
                     <span>Mapa aprovado pelo GPT</span>
-                    <textarea id="brief-map" placeholder="Depois de usar o passo 1, cole aqui o mapa que o GPT devolver: ângulo, risco, headline, subheadline, CTA, blocos, arquitetura visual e travas."></textarea>
+                    <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Sem esse mapa, o prompt final pode ficar fraco ou genérico."></textarea>
                   </label>
                 </div>
                 <details class="brief-advanced">
@@ -2890,14 +3011,14 @@ legend {
                 </details>
                 <div class="brief-actions">
                   <button type="button" id="copy-brief">2. Copiar prompt final</button>
-                  <small id="brief-helper">Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui e depois copie o prompt final. Só depois baixe/anexe os materiais da receita.</small>
+                  <small id="brief-helper">Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui e copie o prompt final. Depois baixe/anexe os materiais da receita.</small>
                 </div>
               </div>
 
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>1</span>
-                  <div><h3 id="recipe-assets-title">Anexe só o que a receita pedir</h3><p>Esses arquivos entram no chat depois do briefing. Se aparecer base real, baixe e anexe; se não aparecer, não procure base em Arquivos.</p></div>
+                  <div><h3 id="recipe-assets-title">Baixe e anexe somente estes arquivos</h3><p>Esta lista é a fonte de verdade. Se a base real não aparecer aqui, não procure outra em Arquivos.</p></div>
                 </div>
                 <div class="manual-assets" id="manual-assets"></div>
                 <div class="recipe-assets" id="recipe-assets" data-tour="recipe-assets"></div>
@@ -2906,7 +3027,7 @@ legend {
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>2</span>
-                  <div><h3 id="recipe-prompts-title">Cole os prompts depois do briefing</h3><p>A ordem é: diagnóstico quando precisar, briefing final, contexto da receita e geração. Story e Feed são composições próprias, não cortes automáticos.</p></div>
+                  <div><h3 id="recipe-prompts-title">Use os prompts nesta ordem</h3><p>Copie um por vez no ChatGPT. Primeiro contexto/diagnóstico, depois geração. Story e Feed são composições próprias, não cortes automáticos.</p></div>
                 </div>
                 <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
@@ -2914,7 +3035,7 @@ legend {
               <div class="recipe-section recipe-decision">
                 <div class="recipe-section__title">
                   <span>3</span>
-                  <div><h3>Feche a revisão</h3><p>Peça boa recebe ajuste cirúrgico. Arquitetura fraca recebe reconstrução dirigida.</p></div>
+                  <div><h3>Revise antes de usar</h3><p>Imagem boa recebe ajuste cirúrgico. Arquitetura fraca recebe reconstrução dirigida. Nada vai para anúncio sem checar texto, logo, formato e risco.</p></div>
                 </div>
                 <div class="decision-grid">
                   <a href="#qualidade"><strong>Aprovar</strong><span>Formato, texto, logo e leitura corretos</span></a>
@@ -5158,6 +5279,12 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     },
     {
       view: "#produzir",
+      selector: "[data-tour='production-line']",
+      title: "Siga a linha de produção",
+      body: "A ordem normal é ideia, anexos, prompts e revisão. A receita atualiza cada parte para você não precisar lembrar o método.",
+    },
+    {
+      view: "#produzir",
       selector: "[data-workflow='before-after']",
       title: "Antes/depois fica aqui",
       body: "Quando for corpo, protocolo ou base real, entre por esta rota. Arquivos serve só para consulta.",
@@ -5181,13 +5308,13 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       view: "#produzir",
       selector: "[data-tour='brief']",
       title: "Cole a ideia aqui",
-      body: "Roteiro, copy solta ou tema entram aqui. Se ainda não houver headline, subheadline e CTA claros, copie Diagnóstico da copy antes do briefing final.",
+      body: "Roteiro, copy solta ou tema entram aqui. Se a ideia estiver bagunçada, copie o organizador antes do prompt final.",
     },
     {
       view: "#produzir",
       selector: "[data-tour='recipe-assets']",
-      title: "Anexe só o que aparece",
-      body: "A receita mostra arquivos de marca, formato e, quando for o caso, a base real certa. Não anexe tudo junto.",
+      title: "Baixe só o que aparece",
+      body: "Baixe e anexe somente o que aparece nesta receita. Se não apareceu aqui, não faz parte desta produção.",
     },
     {
       view: "#produzir",
@@ -5208,10 +5335,10 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   }
 
   const workflowDescriptions = {
-    new: "Escolha formato, canal, intensidade e direção visual.",
-    adapt: "Defina o quanto preservar da referência e como tratar o texto.",
-    version: "Defina a mudança mantendo a peça aprovada como base.",
-    "before-after": "Escolha corpo/protocolo, formato e faixa segura ou média.",
+    new: "Para criar do zero: defina formato, canal, força, visual e logo. Depois cole a ideia no briefing.",
+    adapt: "Para usar um print: anexe a referência manualmente, escolha o nível de adaptação e deixe a Renove governar a peça.",
+    version: "Para escalar uma peça boa: anexe a versão aprovada e mude só o necessário.",
+    "before-after": "Para base real: escolha corpo/protocolo, formato e faixa. A base só entra quando aparecer nos anexos da receita.",
   };
 
   function isCarouselActive() {
@@ -5355,7 +5482,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
     return {
       title: `${format.label} · ${force.label} · ${visual.label}`,
-      description: `${surface.rule} ${force.description}`,
+      description: `${surface.rule} ${force.description} Comece pelo briefing; depois baixe os anexos listados e use os prompts em ordem.`,
       assets: unique(assets),
       manualAssets: [],
       prompts,
@@ -5384,7 +5511,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
     return {
       title: `${format.label} · ${reference.label}`,
-      description: `${reference.description} Texto: ${copyMode.label.toLowerCase()}. ${surface.rule}`,
+      description: `${reference.description} Texto: ${copyMode.label.toLowerCase()}. ${surface.rule} O print entra manualmente; os anexos Renove protegem marca, formato e acabamento.`,
       assets: unique(assets),
       manualAssets: [
         {
@@ -5410,7 +5537,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
     return {
       title: `${format.label} · ${scope.label}`,
-      description: `${scope.description} A peça anexada é própria ou autorizada e funciona como template travado.`,
+      description: `${scope.description} Anexe a peça aprovada e preserve o que já funcionou. Não use referência de terceiro em modo espelho.`,
       assets: unique(assets),
       manualAssets: [
         {
@@ -5434,7 +5561,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
     return {
       title: `${front.label} · ${lane.label} · ${format.label}`,
-      description: `${lane.description} Baixe a base real desta receita e anexe com os arquivos indicados. Ela é material de edição, não anúncio final: revisar risco, texto, preço, roupa, recorte e autorização antes de veicular.`,
+      description: `${lane.description} Esta rota usa base real de edição. Baixe a base que aparece abaixo, anexe com os arquivos indicados e revise risco, texto, roupa, recorte e autorização antes de veicular.`,
       assets: unique(assets),
       manualAssets: [
         {
@@ -5470,8 +5597,8 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
   function storyFeedNote() {
     const format = state.workflow === "before-after" ? state.beforeFormat : state.format;
-    if (format === "story") return "Faça o Story primeiro e depois use a receita de Feed 4:5 como recomposição própria. Não corte o Story.";
-    if (format === "feed45") return "Feed 4:5 deve nascer como composição própria. Se também precisar de Story, volte para Story 9:16 e gere outra peça.";
+    if (format === "story") return "Em anúncio, Story e Feed costumam caminhar juntos. Faça o Story primeiro, aprove a lógica e depois recomponha Feed 4:5. Não corte o Story.";
+    if (format === "feed45") return "Feed 4:5 deve nascer como composição própria. Se a campanha também precisar de Story, volte para Story 9:16 e gere uma peça irmã.";
     if (format === "square") return "Feed 1:1 é compacto: reduza copy e mantenha o núcleo visual no centro.";
     return "Carrossel é rota orgânica/editorial por padrão. Planeje e gere uma lâmina por vez.";
   }
@@ -5662,8 +5789,8 @@ Agora siga os prompts da receita na ordem.`;
     if (!badge || !helper) return;
     badge.textContent = currentFormatLabel();
     helper.textContent = state.workflow === "before-after"
-      ? "Fluxo padrão: cole a ideia, organize o mapa, baixe a base real indicada, anexe só os materiais da receita e copie o prompt final antes do contexto."
-      : "Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui e depois copie o prompt final. Só depois baixe/anexe os materiais da receita.";
+      ? "Fluxo padrão: cole a ideia, organize o mapa, baixe a base real indicada, anexe somente os materiais desta receita e use os prompts em ordem."
+      : "Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui, copie o prompt final e depois use os prompts da receita em ordem.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
     if (diagnosticButton) diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
@@ -5710,15 +5837,20 @@ Agora siga os prompts da receita na ordem.`;
         : `<a class="recipe-asset__preview recipe-asset__preview--document" href="${info.href}" aria-label="Abrir ${info.title}">
           <span>${info.href.toLowerCase().endsWith(".pdf") ? "PDF" : "Arquivo"}</span>
         </a>`;
-      const actionLabel = info.lockedOnline ? null : info.isImage ? "Abrir imagem" : "Abrir arquivo";
-      const downloadLabel = info.sensitiveBase ? "Baixar base" : info.isImage ? "Baixar anexo" : null;
+      const actionLabel = info.lockedOnline ? null : info.isImage ? "Ver arquivo" : "Abrir arquivo";
+      const downloadLabel = info.lockedOnline ? null : info.sensitiveBase ? "Baixar base para anexar" : info.isImage ? "Baixar para anexar" : "Baixar arquivo";
+      const instruction = info.sensitiveBase
+        ? "Use esta base somente nesta receita e neste formato."
+        : info.role === "consulta"
+        ? "Consulta: anexe apenas se a receita pedir."
+        : "Anexo desta receita: baixe e envie no ChatGPT.";
       article.innerHTML = `
         ${preview}
         <div>
           <span>${info.role}</span>
           <h4>${info.title}</h4>
           <p>${info.description}</p>
-          ${actionLabel ? `<div class="recipe-asset__actions"><a href="${info.href}">${actionLabel}</a>${downloadLabel ? `<a href="${info.href}" download>${downloadLabel}</a>` : ""}</div>` : `<small class="asset-note">Base manual: use somente quando a receita pedir este arquivo.</small>`}
+          ${actionLabel ? `<div class="recipe-asset__actions"><a href="${info.href}" download>${downloadLabel}</a><a href="${info.href}">${actionLabel}</a></div><small class="recipe-asset__instruction">${instruction}</small>` : `<small class="asset-note">Base manual: use somente quando a receita pedir este arquivo.</small>`}
         </div>
       `;
       root.appendChild(article);
@@ -5781,7 +5913,7 @@ Agora siga os prompts da receita na ordem.`;
     const recipe = buildRecipe();
     byId("recipe-title").textContent = recipe.title;
     byId("recipe-description").textContent = recipe.description;
-    byId("recipe-status").textContent = `${recipe.assets.length + recipe.manualAssets.length} anexos · ${recipe.prompts.length} prompts`;
+    byId("recipe-status").textContent = `${recipe.assets.length + recipe.manualAssets.length} materiais · ${recipe.prompts.length} prompts`;
     renderBrief(recipe);
     renderManualAssets(recipe.manualAssets);
     renderAssets(recipe.assets);
