@@ -42,7 +42,7 @@ const { chromium } = requirePlaywright();
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
-const htmlUrl = pathToFileURL(path.join(root, "index.html")).href;
+const htmlUrl = process.env.RENOVE_HTML_URL || pathToFileURL(path.join(root, "index.html")).href;
 const cdpEndpoint = process.env.RENOVE_CDP_ENDPOINT || "http://127.0.0.1:9222";
 
 async function cdpIsReady(endpoint) {
