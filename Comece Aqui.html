@@ -1118,20 +1118,89 @@ legend {
   font-weight: 700;
 }
 
+.brief-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.brief-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  min-height: 74px;
+  padding: 11px 12px;
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.brief-step b {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--petrol);
+  color: #ffffff;
+  font-size: 0.74rem;
+}
+
+.brief-step span {
+  display: block;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.brief-step small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
 .brief-fields {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
-.brief-stack {
-  display: grid;
-  gap: 12px;
-}
-
-.brief-fields--copy-map {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.brief-advanced {
   margin-top: 12px;
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.brief-advanced summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 12px;
+  color: var(--petrol);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.brief-advanced summary small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.brief-locks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0 12px 12px;
 }
 
 .brief-field {
@@ -2201,6 +2270,19 @@ legend {
     display: block;
   }
 
+  .brief-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brief-locks {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-advanced summary {
+    display: grid;
+    align-items: start;
+  }
+
   .recipe-brief__badge {
     display: inline-flex;
     margin-top: 12px;
@@ -2329,6 +2411,10 @@ legend {
   }
 
   .choice-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-flow {
     grid-template-columns: 1fr;
   }
 
@@ -2744,50 +2830,67 @@ legend {
               <div class="recipe-brief" data-tour="brief">
                 <div class="recipe-brief__header">
                   <div>
-                    <span class="library-kicker">Brief da peça</span>
-                    <h3>Transforme a ideia em mapa de peça</h3>
-                    <p>Comece pela copy ou roteiro. Se a ideia ainda estiver solta, copie o diagnóstico primeiro; se a copy já estiver fechada, preencha os campos e copie o briefing final da receita.</p>
+                    <span class="library-kicker">Brief assistido</span>
+                    <h3>Cole a ideia inteira primeiro</h3>
+                    <p>O fluxo normal não exige preencher copy separada. Cole roteiro, print descrito, oferta, áudio transcrito ou tema bruto; o passo 1 organiza isso em mapa de peça e o passo 2 monta o prompt final.</p>
                   </div>
-                  <span class="recipe-brief__badge" id="brief-flow-badge">Story e Feed separados</span>
+                  <span class="recipe-brief__badge" id="brief-flow-badge">Ideia vira mapa</span>
+                </div>
+                <div class="brief-flow" aria-label="Fluxo do briefing assistido">
+                  <div class="brief-step"><b>1</b><div><span>Cole tudo</span><small>Ideia bruta, roteiro, print ou copy solta.</small></div></div>
+                  <div class="brief-step"><b>2</b><div><span>Organize no GPT</span><small>Copie o prompt organizador e cole na conversa.</small></div></div>
+                  <div class="brief-step"><b>3</b><div><span>Traga o mapa</span><small>Cole a resposta no campo Mapa aprovado.</small></div></div>
+                  <div class="brief-step"><b>4</b><div><span>Siga a receita</span><small>Anexe só os materiais listados e cole os prompts.</small></div></div>
                 </div>
                 <div class="brief-fields">
                   <label class="brief-field" for="brief-copy">
-                    <span>Copy, roteiro ou tema bruto</span>
-                    <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira: tema do roteiro, texto do anúncio, oferta, dor, ângulo, print de referência descrito ou pauta que vai virar peça."></textarea>
+                    <span>Ideia inteira da peça</span>
+                    <textarea id="brief-copy" placeholder="Cole aqui tudo que tiver: tema do roteiro, texto do anúncio, oferta, dor, ângulo, observação do WhatsApp, print descrito, referência ou pauta que vai virar peça."></textarea>
                   </label>
-                  <div class="brief-stack">
+                  <div class="brief-actions brief-actions--primary">
+                    <button type="button" id="copy-diagnostic">1. Copiar prompt organizador</button>
+                    <small>Depois de colar a ideia, clique aqui. O GPT devolve um mapa para você colar no campo abaixo.</small>
+                  </div>
+                  <label class="brief-field" for="brief-map">
+                    <span>Mapa aprovado pelo GPT</span>
+                    <textarea id="brief-map" placeholder="Depois de usar o passo 1, cole aqui o mapa que o GPT devolver: ângulo, risco, headline, subheadline, CTA, blocos, arquitetura visual e travas."></textarea>
+                  </label>
+                </div>
+                <details class="brief-advanced">
+                  <summary>
+                    <span>Ajustes manuais opcionais</span>
+                    <small>Use só para travar texto ou ângulo já decidido</small>
+                  </summary>
+                  <div class="brief-locks">
                     <label class="brief-field" for="brief-headline">
-                      <span>Headline na arte</span>
+                      <span>Headline travada</span>
                       <input id="brief-headline" type="text" placeholder="Ex.: Estrutura médica completa">
                     </label>
                     <label class="brief-field" for="brief-subheadline">
-                      <span>Subheadline</span>
+                      <span>Subheadline travada</span>
                       <input id="brief-subheadline" type="text" placeholder="Ex.: avaliação, plano e acompanhamento">
                     </label>
                     <label class="brief-field" for="brief-cta">
-                      <span>CTA ou oferta</span>
+                      <span>CTA ou oferta travada</span>
                       <input id="brief-cta" type="text" placeholder="Ex.: Agende uma avaliação">
                     </label>
+                    <label class="brief-field" for="brief-footer">
+                      <span>Rodapé / aviso</span>
+                      <input id="brief-footer" type="text" placeholder="Opcional: plano, condição, disclaimer curto">
+                    </label>
+                    <label class="brief-field" for="brief-support">
+                      <span>Blocos auxiliares</span>
+                      <input id="brief-support" type="text" placeholder="Ex.: avaliação | médico | nutrição">
+                    </label>
+                    <label class="brief-field" for="brief-angle">
+                      <span>Ângulo dominante</span>
+                      <input id="brief-angle" type="text" placeholder="Ex.: acompanhamento > medicação">
+                    </label>
                   </div>
-                </div>
-                <div class="brief-fields brief-fields--copy-map">
-                  <label class="brief-field" for="brief-footer">
-                    <span>Rodapé / aviso</span>
-                    <input id="brief-footer" type="text" placeholder="Opcional: plano, condição, disclaimer curto">
-                  </label>
-                  <label class="brief-field" for="brief-support">
-                    <span>Blocos auxiliares</span>
-                    <input id="brief-support" type="text" placeholder="Ex.: avaliação | médico | nutrição">
-                  </label>
-                  <label class="brief-field" for="brief-angle">
-                    <span>Ângulo que deve dominar</span>
-                    <input id="brief-angle" type="text" placeholder="Ex.: acompanhamento > medicação">
-                  </label>
-                </div>
+                </details>
                 <div class="brief-actions">
-                  <button class="secondary-action" type="button" id="copy-diagnostic">Copiar diagnóstico da copy</button>
-                  <button type="button" id="copy-brief">Copiar briefing da receita</button>
-                  <small id="brief-helper">Quando a copy estiver solta, use o diagnóstico antes de gerar. Quando já estiver decidida, copie o briefing final e siga os prompts abaixo.</small>
+                  <button type="button" id="copy-brief">2. Copiar prompt final</button>
+                  <small id="brief-helper">Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui e depois copie o prompt final. Só depois baixe/anexe os materiais da receita.</small>
                 </div>
               </div>
 
@@ -5390,6 +5493,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 
   function buildCopyDiagnosticText(recipe) {
     const copy = briefValue("brief-copy", "[COLE AQUI O TEMA, ROTEIRO, TEXTO DO ANÚNCIO OU IDEIA DA PEÇA]");
+    const map = briefValue("brief-map", "[ainda vazio: devolva um mapa pronto para colar neste campo]");
     const headline = briefValue("brief-headline", "[se já existir, preserve; se não existir, proponha]");
     const subheadline = briefValue("brief-subheadline", "[se já existir, preserve; se não existir, proponha]");
     const cta = briefValue("brief-cta", "[se já existir, preserve; se não existir, proponha]");
@@ -5402,10 +5506,10 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const force = currentForceLabel();
     const visual = currentVisualLabel(recipe);
 
-    return `DIAGNÓSTICO DA COPY E ARQUITETURA VISUAL — NÃO GERE IMAGEM AINDA
+    return `ORGANIZADOR DE IDEIA RENOVE — NÃO GERE IMAGEM AINDA
 
 Você é diretor de arte e copywriter sênior para criativos de performance da Renove Clinic.
-Sua tarefa agora é transformar a ideia abaixo em um mapa de peça, sem gerar imagem.
+Sua tarefa agora é transformar a ideia abaixo em um mapa de peça pronto para eu colar de volta no painel.
 
 CONTEXTO DA RECEITA
 - Frente criativa: ${workflow}
@@ -5418,6 +5522,9 @@ CONTEXTO DA RECEITA
 COPY / ROTEIRO / IDEIA BRUTA
 "${copy}"
 
+MAPA JÁ EXISTENTE, SE HOUVER
+"${map}"
+
 CAMPOS JÁ INFORMADOS PELO USUÁRIO
 - Headline: "${headline}"
 - Subheadline: "${subheadline}"
@@ -5426,44 +5533,54 @@ CAMPOS JÁ INFORMADOS PELO USUÁRIO
 - Blocos auxiliares: "${support}"
 - Ângulo desejado: "${angle}"
 
-ENTREGUE APENAS ESTE MAPA, EM PORTUGUÊS:
-1. ÂNGULO PRINCIPAL
-Escolha uma rota: estrutura médica, acompanhamento maior que medicação, avaliação antes da conduta, preço/plano, caso acompanhado, recomeço, referência visual ou outra rota específica. Explique em uma frase.
+DEVOLVA APENAS O BLOCO ABAIXO, EM PORTUGUÊS, SEM IMAGEM:
 
-2. CAMADA DE RISCO
-Classifique como seguro, médio ou agressivo controlado para anúncio pago. Separe o que pode ir NA ARTE do que deve ficar só para legenda/conversa/comentário interno. Não seja covarde, mas não invente risco desnecessário.
+MAPA APROVADO PARA COLAR NO PAINEL
+1. Ângulo principal:
+Escolha uma rota específica: estrutura médica, acompanhamento maior que medicação, avaliação antes da conduta, preço/plano, caso acompanhado, recomeço, referência visual, antes/depois protegido ou outra rota melhor. Explique em uma frase.
 
-3. TEXTO EXATO PARA A ARTE
+2. Camada de força e risco:
+Classifique como seguro, médio/principal forte ou agressivo controlado para a superfície selecionada. Separe:
+- texto que pode ir na arte;
+- texto melhor para legenda/conversa;
+- risco que exige revisão antes de veicular.
+
+3. Texto exato para a arte:
 HEADLINE:
 SUBHEADLINE:
 CTA/OFERTA:
 RODAPÉ/DISCLAIMER:
 BLOCOS AUXILIARES:
 
-4. ARQUITETURA VISUAL
-Defina a hierarquia: logo, headline, cena/mecanismo visual, prova/oferta, CTA, rodapé. Diga como adaptar para Story e Feed sem virar corte automático.
+4. Arquitetura visual:
+Defina logo, headline, cena ou mecanismo visual, prova/oferta, CTA, rodapé, textura, grafismos e respiro. Diga como a ideia vira Story e Feed como composições próprias, não cortes.
 
-5. INVARIANTES E FLEXÍVEIS
-Liste o que deve ficar travado e o que pode variar entre versões.
+5. Anexos e materiais:
+Diga se a receita deve usar só identidade/formato ou se precisa de base real, print de referência, foto própria, comparação sensível ou material manual.
+
+6. Invariantes e flexíveis:
+Liste o que fica travado e o que pode variar entre versões.
 
 REGRAS
 - Não gere imagem.
 - Não invente dado, preço, promessa, prova social, CRM, telefone, resultado, kg, prazo ou depoimento.
 - Se a copy estiver fraca, proponha uma versão melhor, curta e humana.
 - Se houver texto obrigatório, preserve exatamente entre aspas.
-- Mantenha a peça com leitura de celular, textura, respiro, grafismo Renove e CTA sem botão falso.
+- Mantenha leitura de celular, textura de papel/linho, grão sutil, respiro, grafismo Renove e CTA sem botão falso.
+- Preserve português e acentos no texto final da arte. Se um prompt de geração vier em inglês, só a direção técnica pode estar em inglês; o texto da peça continua em português exato.
 
-Depois desse mapa, aguarde meu briefing final e os prompts da receita.`;
+Depois desse mapa, aguarde meu prompt final e os prompts da receita.`;
   }
 
   function buildBriefText(recipe) {
     const copy = briefValue("brief-copy", "[COLE AQUI O TEMA, ROTEIRO OU COPY DA PEÇA]");
-    const headline = briefValue("brief-headline", "[HEADLINE EXATA OU RESULTADO DO DIAGNÓSTICO]");
-    const subheadline = briefValue("brief-subheadline", "[SUBHEADLINE EXATA OU RESULTADO DO DIAGNÓSTICO]");
-    const cta = briefValue("brief-cta", "[CTA/OFERTA EXATA OU RESULTADO DO DIAGNÓSTICO]");
-    const footer = briefValue("brief-footer", "[RODAPÉ/DISCLAIMER, SE PRECISAR]");
-    const support = briefValue("brief-support", "[BLOCOS AUXILIARES, SE PRECISAR]");
-    const angle = briefValue("brief-angle", "[ÂNGULO PRINCIPAL DA PEÇA]");
+    const map = briefValue("brief-map", "[COLE AQUI O MAPA APROVADO. Se estiver vazio, pare e organize a ideia antes de gerar.]");
+    const headline = briefValue("brief-headline", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
+    const subheadline = briefValue("brief-subheadline", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
+    const cta = briefValue("brief-cta", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
+    const footer = briefValue("brief-footer", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
+    const support = briefValue("brief-support", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
+    const angle = briefValue("brief-angle", "[opcional: preserve se preenchido; se vazio, use o mapa aprovado]");
     const workflow = data.workflows[state.workflow].label;
     const format = currentFormatLabel();
     const surface = data.surfaces[state.surface]?.label || "Edição controlada";
@@ -5477,7 +5594,7 @@ Se esta receita pedir base real, use a base anexada como material de edição, p
       : `Regra de imagem e referência:
 Se usar foto, print de anúncio ou material externo, trate como referência de direção, composição ou cena. Não invente resultado, paciente, depoimento, prova clínica ou autorização. Se a foto real for essencial, peça confirmação antes de gerar.`;
 
-    return `BRIEF FINAL DA PEÇA RENOVE — USE ANTES DOS PROMPTS DA RECEITA
+    return `PROMPT FINAL DE BRIEFING RENOVE — USE ANTES DOS PROMPTS DA RECEITA
 
 Objetivo: ${workflow}
 Formato: ${format}
@@ -5489,20 +5606,25 @@ Direção visual: ${visual}
 Tema/copy de origem:
 "${copy}"
 
-TEXTO EXATO PARA A ARTE
-Headline:
+MAPA APROVADO PELO GPT
+"${map}"
+
+TRAVAS MANUAIS OPCIONAIS
+Use estes campos só quando estiverem preenchidos com conteúdo real. Se estiverem genéricos ou vazios, priorize o mapa aprovado.
+
+Headline travada:
 "${headline}"
 
-Subheadline:
+Subheadline travada:
 "${subheadline}"
 
-CTA/oferta:
+CTA/oferta travada:
 "${cta}"
 
-Rodapé/disclaimer:
+Rodapé/disclaimer travado:
 "${footer}"
 
-Blocos auxiliares:
+Blocos auxiliares travados:
 "${support}"
 
 Anexos desta receita:
@@ -5518,14 +5640,18 @@ Arquitetura obrigatória:
 - Cena, base real ou mecanismo visual coerente com o ângulo.
 - Oferta/CTA como texto ou faixa tipográfica plana; nunca botão falso.
 - Rodapé só se ajudar a reduzir risco ou explicar plano/avaliação.
-- Textura de papel/linho, grão sutil, luz quente e grafismos Renove sem virar fundo sólido cru.
+- Textura de papel/linho, grão sutil, luz quente, profundidade editorial e grafismos Renove sem virar fundo sólido cru.
+- Story e Feed são peças irmãs, não recortes automáticos. Se a receita pedir Story primeiro, aprove a lógica e depois recomponha Feed.
 
 ${imageRule}
 
 Regra de texto:
-Preserve acentos. Qualquer texto entre aspas é EXACT TEXT ON IMAGE. Não invente preço, prova, resultado, telefone, CRM, depoimento ou promessa clínica.
+Preserve acentos. Qualquer texto entre aspas é EXACT TEXT ON IMAGE. Não invente preço, prova, resultado, telefone, CRM, depoimento, medicamento, dose, kg, prazo ou promessa clínica.
 
-Se algum campo acima ainda estiver vazio ou fraco, faça uma pergunta curta ou proponha um mapa de copy antes de gerar. Não preencha lacunas inventando prova.
+Se o MAPA APROVADO estiver vazio, pare e devolva primeiro um mapa de peça. Não pule direto para imagem.
+Se o mapa estiver presente, siga a receita e gere uma imagem por vez.
+Não preencha lacunas inventando prova.
+Quando o prompt de geração estiver em inglês, mantenha a direção técnica em inglês, mas escreva a copy final da arte em português exatamente como aprovado.
 
 Agora siga os prompts da receita na ordem.`;
   }
@@ -5536,8 +5662,8 @@ Agora siga os prompts da receita na ordem.`;
     if (!badge || !helper) return;
     badge.textContent = currentFormatLabel();
     helper.textContent = state.workflow === "before-after"
-      ? "Baixe a base real desta receita, anexe com os arquivos indicados e cole o briefing antes do contexto de antes/depois."
-      : "Quando a copy estiver solta, use o diagnóstico antes de gerar. Quando já estiver decidida, copie o briefing final e siga os prompts abaixo.";
+      ? "Fluxo padrão: cole a ideia, organize o mapa, baixe a base real indicada, anexe só os materiais da receita e copie o prompt final antes do contexto."
+      : "Fluxo padrão: cole a ideia, organize no GPT, cole o mapa aprovado aqui e depois copie o prompt final. Só depois baixe/anexe os materiais da receita.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
     if (diagnosticButton) diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
@@ -5779,7 +5905,7 @@ Agora siga os prompts da receita na ordem.`;
   }
 
   function bindBrief() {
-    ["brief-copy", "brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
+    ["brief-copy", "brief-map", "brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
       byId(id)?.addEventListener("input", () => renderRecipe());
     });
     byId("copy-diagnostic")?.addEventListener("click", async (event) => {
@@ -5787,8 +5913,8 @@ Agora siga os prompts da receita na ordem.`;
       const original = button.textContent;
       try {
         const copied = await copyText(button.dataset.diagnosticText || buildCopyDiagnosticText(buildRecipe()));
-        button.textContent = copied ? "Diagnóstico copiado" : "Diagnóstico selecionado";
-        announce(copied ? "Diagnóstico da copy copiado." : "O diagnóstico foi selecionado para cópia manual.");
+        button.textContent = copied ? "Organizador copiado" : "Organizador selecionado";
+        announce(copied ? "Prompt organizador copiado." : "O prompt organizador foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
@@ -5801,8 +5927,8 @@ Agora siga os prompts da receita na ordem.`;
       const original = button.textContent;
       try {
         const copied = await copyText(button.dataset.briefText || buildBriefText(buildRecipe()));
-        button.textContent = copied ? "Briefing copiado" : "Briefing selecionado";
-        announce(copied ? "Briefing copiado." : "O briefing foi selecionado para cópia manual.");
+        button.textContent = copied ? "Prompt final copiado" : "Prompt final selecionado";
+        announce(copied ? "Prompt final copiado." : "O prompt final foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
