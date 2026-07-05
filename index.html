@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23143f49'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23d9aa8f' stroke-width='5'/%3E%3Cpath d='M19 34c9-17 26-17 26 0M22 45c9-7 19-7 28 0' fill='none' stroke='%23f6f8f5' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/driverjs/driver.css">
   <title>Produção de criativos · Renove</title>
   <style>@font-face {
   font-family: "Ubuntu Local";
@@ -510,9 +511,69 @@ summary:focus-visible {
   opacity: 0.44;
 }
 
+.renove-driver-popover {
+  max-width: min(420px, calc(100vw - 32px));
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: 18px;
+  background: #fbfcfa;
+  color: var(--ink);
+  box-shadow: 0 24px 60px rgba(20, 63, 73, 0.22);
+}
+
+.renove-driver-popover .driver-popover-title {
+  color: var(--ink);
+  font-family: "Ubuntu Local", Arial, sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.28;
+}
+
+.renove-driver-popover .driver-popover-description {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.renove-driver-popover .driver-popover-progress-text {
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.renove-driver-popover .driver-popover-navigation-btns {
+  gap: 8px;
+}
+
+.renove-driver-popover .driver-popover-next-btn,
+.renove-driver-popover .driver-popover-prev-btn {
+  min-height: 42px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  font: 700 0.8rem/1 "Ubuntu Local", Arial, sans-serif;
+  text-shadow: none;
+}
+
+.renove-driver-popover .driver-popover-next-btn {
+  border: 1px solid var(--petrol);
+  background: var(--petrol);
+  color: #ffffff;
+}
+
+.renove-driver-popover .driver-popover-prev-btn {
+  border: 1px solid rgba(41, 108, 123, 0.24);
+  background: #ffffff;
+  color: var(--petrol);
+}
+
+.renove-driver-popover .driver-popover-close-btn {
+  width: 36px;
+  height: 36px;
+  color: var(--petrol);
+  font-size: 1.8rem;
+}
+
 .intro {
   position: relative;
-  padding: 34px 0 50px;
+  padding: 26px 0 32px;
 }
 
 .intro::before {
@@ -527,14 +588,21 @@ summary:focus-visible {
 
 .intro__heading {
   max-width: 700px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+}
+
+.intro__heading h1 {
+  max-width: 760px;
+  font-size: clamp(2rem, 3.15vw, 3.35rem);
+  line-height: 1.04;
 }
 
 .intro__heading > p:last-child {
   max-width: 680px;
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
 .eyebrow,
@@ -575,13 +643,13 @@ summary:focus-visible {
 .workflow-switcher button {
   position: relative;
   min-height: 74px;
-  padding: 14px 14px 28px;
+  padding: 15px 15px 30px;
   border: 1px solid transparent;
-  border-radius: 13px;
+  border-radius: 15px;
   background: transparent;
   text-align: left;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .workflow-switcher button::after {
@@ -599,6 +667,7 @@ summary:focus-visible {
 
 .workflow-switcher button:hover {
   background: rgba(229, 241, 238, 0.62);
+  transform: translateY(-1px);
 }
 
 .workflow-switcher button[aria-pressed="true"] {
@@ -966,13 +1035,11 @@ legend {
 .recipe {
   display: flex;
   flex-direction: column;
-  overflow: clip;
+  overflow: visible;
   border: 0;
-  border-top: 3px solid var(--petrol);
-  border-bottom: 1px solid var(--line-strong);
-  border-radius: 0;
-  background: var(--paper);
-  box-shadow: 0 22px 54px rgba(18, 63, 75, 0.075);
+  border-radius: 18px;
+  background: transparent;
+  box-shadow: none;
 }
 
 .recipe > * {
@@ -1003,6 +1070,14 @@ legend {
 
 .recipe > .recipe-section {
   order: 6;
+}
+
+.recipe:not([data-brief-stage="ready"]) > .workflow-wrap,
+.recipe:not([data-brief-stage="ready"]) > .setup,
+.recipe:not([data-brief-stage="ready"]) > .recipe__heading,
+.recipe:not([data-brief-stage="ready"]) > .recipe-path,
+.recipe:not([data-brief-stage="ready"]) > .recipe-section {
+  display: none;
 }
 
 .recipe__heading {
@@ -1230,13 +1305,12 @@ legend {
 }
 
 .recipe-brief {
-  margin: 18px 38px 18px;
-  padding: 18px;
-  border: 1px solid rgba(41, 108, 123, 0.18);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.18), rgba(255, 255, 255, 0.86)),
-    #ffffff;
+  margin: 0 38px 22px;
+  padding: 24px 28px 26px;
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(18, 63, 75, 0.055);
 }
 
 .recipe-brief__header {
@@ -1280,7 +1354,7 @@ legend {
 
 .brief-workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -1289,13 +1363,121 @@ legend {
   min-width: 0;
 }
 
+.brief-progress {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.brief-progress::before {
+  position: absolute;
+  top: 11px;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: rgba(41, 108, 123, 0.18);
+  content: "";
+}
+
+.brief-progress li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.brief-progress li::before {
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(41, 108, 123, 0.24);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 5px #ffffff;
+  content: "";
+}
+
+.brief-progress li[data-complete="true"]::before {
+  border-color: var(--aqua);
+  background: var(--aqua);
+}
+
+.brief-progress li[aria-current="step"] {
+  color: var(--petrol);
+}
+
+.brief-progress li[aria-current="step"]::before {
+  border: 6px solid var(--petrol);
+  background: #ffffff;
+}
+
+.brief-stage-panel {
+  display: grid;
+  gap: 14px;
+  max-width: 850px;
+}
+
+.brief-stage-panel[hidden] {
+  display: none;
+}
+
+.brief-stage-message {
+  display: grid;
+  gap: 4px;
+  padding: 0 0 2px 15px;
+  border-left: 3px solid var(--aqua);
+}
+
+.brief-stage-message strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.brief-stage-message span {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.brief-skip,
+.brief-back {
+  width: fit-content;
+  min-height: 44px;
+  padding: 8px 2px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--petrol);
+  font: 700 0.79rem/1.2 "Ubuntu Local", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.brief-skip:hover,
+.brief-back:hover {
+  border-bottom-color: currentColor;
+}
+
+.recipe-brief[data-brief-stage="ready"] .brief-main {
+  display: none;
+}
+
 .brief-guide {
   display: grid;
-  gap: 10px;
-  padding: 13px;
+  gap: 12px;
+  padding: 15px;
   border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: var(--radius-small);
-  background: rgba(255, 255, 255, 0.64);
+  border-radius: 16px;
+  background: rgba(251, 252, 250, 0.82);
 }
 
 .brief-guide__title {
@@ -1316,10 +1498,10 @@ legend {
 .brief-step {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 8px;
+  gap: 10px;
   align-items: start;
   min-height: 0;
-  padding: 11px 12px;
+  padding: 12px;
   border: 1px solid rgba(41, 108, 123, 0.16);
   border-radius: 14px;
   background: rgba(251, 252, 250, 0.78);
@@ -1407,12 +1589,12 @@ legend {
 .brief-field input {
   width: 100%;
   min-height: 46px;
-  padding: 11px 12px;
+  padding: 13px 14px;
   border: 1px solid var(--line-strong);
-  border-radius: var(--radius-small);
+  border-radius: 14px;
   background: var(--paper-soft);
   color: var(--ink);
-  font: 0.86rem/1.45 "Ubuntu Local", Arial, sans-serif;
+  font: 0.9rem/1.5 "Ubuntu Local", Arial, sans-serif;
 }
 
 .brief-field textarea:focus,
@@ -1423,7 +1605,7 @@ legend {
 }
 
 .brief-field textarea {
-  min-height: 118px;
+  min-height: 96px;
   resize: vertical;
 }
 
@@ -1432,19 +1614,20 @@ legend {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .brief-actions button {
-  min-height: 42px;
-  padding: 9px 14px;
+  min-height: 48px;
+  padding: 11px 16px;
   border: 1px solid var(--petrol);
-  border-radius: var(--radius-small);
+  border-radius: 14px;
   background: var(--petrol);
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
 .brief-actions button:disabled,
@@ -1476,14 +1659,9 @@ legend {
 }
 
 .brief-result {
-  margin-top: 14px;
-  padding: 15px;
-  border: 1px solid rgba(41, 108, 123, 0.2);
-  border-left: 4px solid var(--petrol);
-  border-radius: var(--radius-small);
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.22), rgba(255, 255, 255, 0.86)),
-    #ffffff;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(41, 108, 123, 0.18);
+  background: transparent;
 }
 
 .brief-result strong,
@@ -1492,21 +1670,30 @@ legend {
   display: block;
 }
 
+.brief-result .brief-result__eyebrow {
+  margin-bottom: 7px;
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .brief-result strong {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: var(--ink);
-  font-size: 0.96rem;
+  font-family: "Literata Local", Georgia, serif;
+  font-size: 1.12rem;
 }
 
 .brief-result p {
-  margin: 0 0 12px;
+  max-width: 68ch;
+  margin: 0 0 16px;
   color: var(--muted);
   font-size: 0.84rem;
 }
 
 .brief-result__action {
   min-height: 44px;
-  margin: 0 0 12px;
   padding: 9px 13px;
   border: 1px solid var(--petrol);
   border-radius: var(--radius-small);
@@ -1517,19 +1704,43 @@ legend {
   cursor: pointer;
 }
 
+.brief-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brief-result__secondary {
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid rgba(41, 108, 123, 0.24);
+  border-radius: var(--radius-small);
+  background: #ffffff;
+  color: var(--petrol);
+  font: 700 0.8rem/1.2 "Ubuntu Local", Arial, sans-serif;
+  cursor: pointer;
+}
+
 .brief-result__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 10px;
+  gap: 0;
+  margin-top: 18px;
+  border-top: 1px solid rgba(41, 108, 123, 0.14);
 }
 
 .brief-result__grid div {
-  min-height: 58px;
-  padding: 10px 11px;
-  border: 1px solid rgba(41, 108, 123, 0.14);
-  border-radius: var(--radius-small);
-  background: rgba(255, 255, 255, 0.72);
+  min-height: 68px;
+  padding: 13px 16px 10px 0;
+  border-right: 1px solid rgba(41, 108, 123, 0.12);
+}
+
+.brief-result__grid div + div {
+  padding-left: 16px;
+}
+
+.brief-result__grid div:last-child {
+  border-right: 0;
 }
 
 .brief-result__grid span {
@@ -2908,7 +3119,7 @@ legend {
       <div class="access-card__copy">
         <p class="eyebrow">Acesso ao painel</p>
         <div class="access-title" id="access-title">Produção criativa Renove</div>
-        <p>Entre para consultar a primeira versão navegável dos prompts, anexos e caminhos de criação da Renove.</p>
+        <p>Acesse o estúdio para consultar receitas, materiais e prompts de produção da Renove.</p>
       </div>
       <form class="access-form" id="access-form">
         <label for="access-user">Usuário</label>
@@ -3190,56 +3401,59 @@ legend {
               </a>
             </details>
 
-            <section class="recipe" id="receita" aria-labelledby="recipe-title" data-tour="recipe">
+            <section class="recipe" id="receita" aria-labelledby="recipe-title" data-tour="recipe" data-brief-stage="idea">
               <header class="recipe__heading">
                 <div>
-                  <p class="section-index">Direção pronta</p>
+                  <p class="section-index" id="recipe-stage-label">Receita em preparação</p>
                   <h2 id="recipe-title">Story · Principal forte · Impacto petróleo</h2>
                   <p id="recipe-description"></p>
                 </div>
                 <div class="recipe-meta">
                   <div class="recipe-status" id="recipe-status">3 anexos · 4 prompts</div>
-                  <button class="recipe-copy-main" type="button" data-copy-first-prompt>Copiar contexto sem gerar</button>
+                  <button class="recipe-copy-main" type="button" data-copy-first-prompt disabled>Prepare a direção primeiro</button>
                 </div>
               </header>
 
-              <div class="recipe-brief" data-tour="brief">
+              <div class="recipe-brief" data-tour="brief" data-brief-stage="idea">
                 <div class="recipe-brief__header">
                   <div>
-                    <span class="library-kicker">Brief assistido</span>
-                    <h3>Cole a ideia inteira. O painel organiza o resto.</h3>
-                    <p>Cole roteiro, mensagem, tema, oferta, copy solta ou descrição de print. O painel transforma isso em direção, materiais e prompts.</p>
+                    <span class="library-kicker" id="brief-stage-kicker">1. Cole a ideia</span>
+                    <h3 id="brief-stage-title">Cole tudo em um bloco. O painel organiza.</h3>
+                    <p id="brief-stage-copy">Pode ser roteiro, mensagem do WhatsApp, copy, tema, oferta ou descrição de um anúncio. Não precisa separar nada.</p>
                   </div>
-                  <span class="recipe-brief__badge" id="brief-flow-badge">Ideia vira mapa</span>
+                  <span class="recipe-brief__badge" id="brief-flow-badge">Aguardando ideia</span>
                 </div>
+                <ol class="brief-progress" aria-label="Progresso da produção">
+                  <li data-brief-progress="idea" aria-current="step"><span>Ideia</span></li>
+                  <li data-brief-progress="map"><span>Direção</span></li>
+                  <li data-brief-progress="ready"><span>Gerar</span></li>
+                </ol>
                 <div class="brief-workspace">
                   <div class="brief-main">
-                    <div class="brief-fields">
+                    <div class="brief-stage-panel" id="brief-idea-panel">
                       <label class="brief-field" for="brief-copy">
                         <span>Ideia inteira da peça</span>
-                        <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira. Ex.: tema do roteiro, texto do anúncio, oferta, dor, observação do WhatsApp, print descrito ou pauta que vai virar peça."></textarea>
+                        <textarea id="brief-copy" placeholder="Cole aqui tudo que você tem: tema do roteiro, mensagem do WhatsApp, texto do anúncio, oferta, dor, descrição de print ou pauta que vai virar peça."></textarea>
                       </label>
                       <div class="brief-actions brief-actions--primary">
-                        <button type="button" id="copy-diagnostic">Copiar para organizar no GPT</button>
-                        <small>Cole esse prompt no GPT. Ele devolve um mapa limpo para o painel montar a peça sem perder estratégia.</small>
+                        <button type="button" id="copy-diagnostic">Copiar pedido para o GPT</button>
+                        <small>Cole no GPT. Ele devolve a direção estruturada para o painel preparar a receita.</small>
+                      </div>
+                      <button class="brief-skip" type="button" id="show-brief-map">Já organizei no GPT</button>
+                    </div>
+                    <div class="brief-stage-panel" id="brief-map-panel" hidden>
+                      <div class="brief-stage-message" id="brief-stage-status" role="status">
+                        <strong>Cole a resposta do GPT abaixo.</strong>
+                        <span>Não precisa recortar. O painel reconhece rota, formato, força, família visual, logo e copy.</span>
                       </div>
                       <label class="brief-field" for="brief-map">
-                        <span>Resposta do GPT: mapa aprovado</span>
-                        <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Depois disso, o contexto do Image 2 será liberado."></textarea>
+                        <span>Resposta completa do GPT</span>
+                        <textarea id="brief-map" placeholder="Cole aqui tudo que o GPT devolver. Não precisa recortar nem organizar."></textarea>
                       </label>
+                      <button class="brief-back" type="button" id="back-to-brief-idea">Voltar para a ideia</button>
                     </div>
-                    <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                   </div>
-                  <aside class="brief-guide" aria-label="Como usar o briefing assistido">
-                    <p class="brief-guide__title">O que acontece aqui</p>
-                    <p class="brief-guide__note">O GPT organiza a ideia. O Image 2 recebe o contexto já aprovado e depois os prompts da receita.</p>
-                    <div class="brief-flow" aria-label="Fluxo do briefing assistido">
-                      <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
-                      <div class="brief-step"><b>2</b><div><span>Organize no GPT</span><small>Use o prompt organizador. Ainda não gere imagem.</small></div></div>
-                      <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Volte com a resposta do GPT para este painel.</small></div></div>
-                      <div class="brief-step"><b>4</b><div><span>Gere no Image 2</span><small>Copie o contexto, anexe materiais e siga os prompts.</small></div></div>
-                    </div>
-                  </aside>
+                  <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                 </div>
                 <details class="brief-advanced">
                   <summary>
@@ -3273,14 +3487,14 @@ legend {
                     </label>
                   </div>
                 </details>
-                <div class="brief-actions">
+                <div class="brief-actions" id="brief-context-action">
                   <button type="button" id="copy-brief" disabled>Cole o mapa para liberar o contexto</button>
-                  <small id="brief-helper">Depois que o mapa voltar do GPT, este botão copia o contexto que abre a geração no Image 2.</small>
+                  <small id="brief-helper">A geração só é liberada depois que o painel reconhecer a direção.</small>
                 </div>
               </div>
 
               <div class="workflow-wrap" data-tour="workflow">
-                <p class="field-label" id="workflow-label">2. Escolha ou confirme a rota da peça</p>
+                <p class="field-label" id="workflow-label">2. Confira ou ajuste a rota da peça</p>
                 <div class="workflow-switcher" role="group" aria-labelledby="workflow-label">
                   <button type="button" data-workflow="new" aria-pressed="true">
                     <strong>Criar peça nova</strong>
@@ -5579,6 +5793,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   document.documentElement.classList.add("js-enabled");
 
   const state = { ...data.state };
+  let briefStage = "idea";
   const byId = (id) => document.getElementById(id);
   const access = {
     user: "admrenove",
@@ -5982,6 +6197,13 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const map = byId("brief-map")?.value || "";
     const lines = map.split(/\r?\n/);
     return {
+      route: readMapField(lines, ["ROTA RECOMENDADA", "Rota recomendada", "ROTA", "Rota"]),
+      format: readMapField(lines, ["FORMATO PRINCIPAL", "Formato principal", "FORMATO", "Formato"]),
+      surface: readMapField(lines, ["CANAL", "Canal", "SUPERFÍCIE", "Superfície", "SUPERFICIE", "Superficie"]),
+      force: readMapField(lines, ["FAIXA", "Faixa", "INTENSIDADE", "Intensidade", "CAMADA DE FORÇA E RISCO", "Camada de força e risco"]),
+      visual: readMapField(lines, ["FAMÍLIA VISUAL", "Família visual", "FAMILIA VISUAL", "Familia visual", "DIREÇÃO VISUAL", "Direção visual"]),
+      logo: readMapField(lines, ["LOGO", "Logo"]),
+      beforeFront: readMapField(lines, ["FRENTE DE ANTES/DEPOIS", "Frente de antes/depois", "FRENTE CRIATIVA", "Frente criativa"]),
       angle: readMapField(lines, ["Ângulo principal", "Angulo principal", "Ângulo", "Angulo"]),
       headline: readMapField(lines, ["HEADLINE", "Headline"]),
       subheadline: readMapField(lines, ["SUBHEADLINE", "Subheadline"]),
@@ -5998,9 +6220,72 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     return normalized.includes("MAPA APROVADO") || normalized.includes("HEADLINE:") || normalized.includes("ANGULO PRINCIPAL");
   }
 
+  function includesAny(value, terms) {
+    const normalized = normalizeForMatch(value);
+    return terms.some((term) => normalized.includes(normalizeForMatch(term)));
+  }
+
+  function applyMapDirection(extracted) {
+    if (extracted.route) {
+      if (includesAny(extracted.route, ["antes/depois", "antes e depois", "comparação corporal"])) state.workflow = "before-after";
+      else if (includesAny(extracted.route, ["adaptar", "referência", "referencia", "print"])) state.workflow = "adapt";
+      else if (includesAny(extracted.route, ["versionar", "peça aprovada", "peca aprovada", "correção pontual"])) state.workflow = "version";
+      else if (includesAny(extracted.route, ["nova", "criar", "do zero"])) state.workflow = "new";
+    }
+
+    if (extracted.format) {
+      let format = "";
+      if (includesAny(extracted.format, ["story", "9:16", "9x16", "reels"])) format = "story";
+      else if (includesAny(extracted.format, ["4:5", "4x5", "feed vertical"])) format = "feed45";
+      else if (includesAny(extracted.format, ["1:1", "1x1", "quadrado"])) format = "square";
+      else if (includesAny(extracted.format, ["carrossel", "carousel"])) format = "carousel";
+      if (format) {
+        state.format = format;
+        state.beforeFormat = format === "feed45" ? "feed45" : "story";
+      }
+    }
+
+    if (extracted.surface) {
+      if (includesAny(extracted.surface, ["pago", "ads", "anúncio", "anuncio", "meta", "google"])) state.surface = "paid";
+      else if (includesAny(extracted.surface, ["orgânico", "organico", "editorial"])) state.surface = "organic";
+      else if (includesAny(extracted.surface, ["aprovação", "aprovacao", "interno", "privado"])) state.surface = "internal";
+    }
+
+    if (extracted.force) {
+      if (includesAny(extracted.force, ["agressivo"])) state.force = "aggressive";
+      else if (includesAny(extracted.force, ["protegido", "seguro", "baixo risco"])) state.force = "safe";
+      else if (includesAny(extracted.force, ["principal forte", "médio", "medio", "moderado"])) state.force = "medium";
+      state.beforeLane = includesAny(extracted.force, ["protegido", "seguro", "baixo risco"]) ? "protected" : "principal";
+    }
+
+    if (extracted.visual) {
+      if (includesAny(extracted.visual, ["oceano", "petróleo", "petroleo", "profundo"])) state.visual = "ocean";
+      else if (includesAny(extracted.visual, ["céu", "ceu", "claro", "off-white"])) state.visual = "sky";
+      else if (includesAny(extracted.visual, ["aqua", "clínico", "clinico"])) state.visual = "aqua";
+      else if (includesAny(extracted.visual, ["solo", "clay", "terracota", "humano"])) state.visual = "clay";
+      else if (includesAny(extracted.visual, ["editorial", "foto", "presença", "presenca"])) state.visual = "editorial";
+      else if (includesAny(extracted.visual, ["livre", "nova direção", "nova direcao"])) state.visual = "free";
+    }
+
+    if (extracted.logo) {
+      if (includesAny(extracted.logo, ["automática", "automatica", "contraste"])) state.logoMode = "auto";
+      else if (includesAny(extracted.logo, ["clara", "branca", "fundo escuro"])) state.logoMode = "light";
+      else if (includesAny(extracted.logo, ["petróleo", "petroleo", "oceano", "azul"])) state.logoMode = "deep";
+      else if (includesAny(extracted.logo, ["aqua", "céu", "ceu"])) state.logoMode = "aqua-sky";
+      else if (includesAny(extracted.logo, ["clay", "terracota"])) state.logoMode = "clay";
+      else if (includesAny(extracted.logo, ["isologo", "símbolo", "simbolo"])) state.logoMode = "isologo";
+      else if (includesAny(extracted.logo, ["oficial", "fundo claro"])) state.logoMode = "official";
+    }
+
+    const beforeHint = `${extracted.beforeFront || ""} ${extracted.angle || ""}`;
+    if (includesAny(beforeHint, ["protocolo", "acompanhamento", "preço", "preco", "plano"])) state.beforeFront = "protocol";
+    if (includesAny(beforeHint, ["corpo", "comparação", "comparacao", "roupa", "silhueta"])) state.beforeFront = "sensitive";
+  }
+
   function applyMapAutofill() {
     if (!hasApprovedMap()) return;
     const extracted = extractApprovedMap();
+    applyMapDirection(extracted);
     const targets = {
       headline: "brief-headline",
       subheadline: "brief-subheadline",
@@ -6051,12 +6336,13 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
 Você é diretor de arte e copywriter sênior para criativos de performance da Renove Clinic.
 Sua tarefa agora é transformar a ideia abaixo em um mapa de peça pronto para eu colar de volta no painel.
 
-CONTEXTO DA RECEITA
-- Frente criativa: ${workflow}
-- Formato previsto: ${format}
-- Uso/canal: ${surface}
-- Força comercial: ${force}
-- Direção visual: ${visual}
+PONTO DE PARTIDA DO PAINEL
+Use estas escolhas como hipótese, não como trava. Leia a ideia e recomende outra rota quando ela produzir uma peça melhor.
+- Frente criativa atual: ${workflow}
+- Formato atual: ${format}
+- Uso/canal atual: ${surface}
+- Força comercial atual: ${force}
+- Direção visual atual: ${visual}
 - Regra de formato: ${storyFeedNote()}
 
 COPY / ROTEIRO / IDEIA BRUTA
@@ -6076,6 +6362,14 @@ CAMPOS JÁ INFORMADOS PELO USUÁRIO
 DEVOLVA APENAS O BLOCO ABAIXO, EM PORTUGUÊS, SEM IMAGEM:
 
 MAPA APROVADO PARA COLAR NO PAINEL
+ROTA RECOMENDADA: [criar peça nova | adaptar referência | versionar aprovada | antes/depois]
+FORMATO PRINCIPAL: [Story 9:16 | Feed 4:5 | Feed 1:1 | Carrossel orgânico]
+CANAL: [pago | orgânico | aprovação]
+FAIXA: [Protegido | Principal forte | Agressivo consciente]
+FAMÍLIA VISUAL: [Oceano profundo | Céu claro | Aqua clínico | Solo humano | Editorial com foto | Livre com critério]
+LOGO: [Automática por contraste | Logo oficial | Logo clara | Oceano ou petróleo | Céu ou aqua | Logo clay | Isologo como detalhe]
+FRENTE DE ANTES/DEPOIS: [Corpo protegido | Protocolo e acompanhamento | não se aplica]
+
 1. Ângulo principal:
 Escolha uma rota específica: estrutura médica, acompanhamento maior que medicação, avaliação antes da conduta, preço/plano, caso acompanhado, recomeço, referência visual, antes/depois protegido ou outra rota melhor. Explique em uma frase.
 
@@ -6196,6 +6490,56 @@ Quando o prompt de geração estiver em inglês, mantenha a direção técnica e
 Agora siga os prompts da receita na ordem.`;
   }
 
+  function setBriefStage(nextStage, focusTarget = false) {
+    briefStage = nextStage;
+    const root = document.querySelector(".recipe-brief");
+    if (!root) return;
+    root.dataset.briefStage = nextStage;
+    const recipeRoot = root.closest(".recipe");
+    if (recipeRoot) recipeRoot.dataset.briefStage = nextStage;
+    const stageText = {
+      idea: {
+        kicker: "1. Cole a ideia",
+        title: "Cole tudo em um bloco. O painel organiza.",
+        copy: "Pode ser roteiro, mensagem do WhatsApp, copy, tema, oferta ou descrição de um anúncio. Não precisa separar nada.",
+        badge: "Aguardando ideia",
+      },
+      map: {
+        kicker: "2. Volte com a direção",
+        title: "Cole aqui a resposta completa do GPT.",
+        copy: "Essa resposta destrava a receita certa: rota, formato, força, anexos, família visual e prompts em ordem.",
+        badge: "Aguardando direção",
+      },
+      ready: {
+        kicker: "3. Gerar com receita",
+        title: "Direção pronta. Agora use materiais e prompts.",
+        copy: "Baixe somente os anexos listados abaixo e copie os prompts na ordem. O contexto inicial já leva a ideia, a direção e as travas certas para o Image 2.",
+        badge: "Receita pronta",
+      },
+    }[nextStage];
+    if (stageText) {
+      byId("brief-stage-kicker").textContent = stageText.kicker;
+      byId("brief-stage-title").textContent = stageText.title;
+      byId("brief-stage-copy").textContent = stageText.copy;
+      byId("brief-flow-badge").textContent = stageText.badge;
+    }
+    const ideaPanel = byId("brief-idea-panel");
+    const mapPanel = byId("brief-map-panel");
+    if (ideaPanel) ideaPanel.hidden = nextStage !== "idea";
+    if (mapPanel) mapPanel.hidden = nextStage !== "map";
+    document.querySelectorAll("[data-brief-progress]").forEach((item) => {
+      const order = { idea: 0, map: 1, ready: 2 };
+      const itemStage = item.dataset.briefProgress;
+      item.toggleAttribute("aria-current", itemStage === nextStage);
+      if (itemStage === nextStage) item.setAttribute("aria-current", "step");
+      item.dataset.complete = String(order[itemStage] < order[nextStage]);
+    });
+    if (focusTarget) {
+      const target = nextStage === "map" ? byId("brief-map") : byId("brief-copy");
+      window.setTimeout(() => target?.focus(), 50);
+    }
+  }
+
   function renderBriefResult(recipe) {
     const root = byId("brief-result");
     if (!root) return;
@@ -6205,15 +6549,24 @@ Agora siga os prompts da receita na ordem.`;
       return;
     }
     const extracted = extractApprovedMap();
-    const firstPrompt = recipe.prompts[0]?.title || "primeiro prompt da receita";
     const headline = extracted.headline || byId("brief-headline")?.value.trim() || "Use o texto aprovado no mapa.";
     const subheadline = extracted.subheadline || byId("brief-subheadline")?.value.trim() || "Use o texto aprovado no mapa.";
     const cta = extracted.cta || byId("brief-cta")?.value.trim() || "Use o CTA aprovado no mapa.";
+    const direction = [
+      data.workflows[state.workflow]?.label,
+      currentFormatLabel(),
+      currentForceLabel(),
+      state.workflow === "new" ? data.visuals[state.visual]?.label : null,
+    ].filter(Boolean).join(" · ");
     root.hidden = false;
     root.innerHTML = `
-      <strong>Mapa recebido. Agora a geração já pode começar.</strong>
-      <p>Copie o contexto para o Image 2, anexe os materiais da receita e depois comece por: ${escapeHtml(firstPrompt)}.</p>
-      <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar contexto para o Image 2</button>
+      <span class="brief-result__eyebrow">Direção reconhecida</span>
+      <strong>Pronto para começar no Image 2.</strong>
+      <p>${escapeHtml(direction)}. O painel já escolheu a receita e manteve a copy aprovada abaixo.</p>
+      <div class="brief-result__actions">
+        <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar contexto inicial</button>
+        <button class="brief-result__secondary" type="button" data-jump-to-materials>Ver materiais e prompts</button>
+      </div>
       <div class="brief-result__grid" aria-label="Texto extraído do mapa aprovado">
         <div><span>Headline</span><small>${escapeHtml(headline)}</small></div>
         <div><span>Subheadline</span><small>${escapeHtml(subheadline)}</small></div>
@@ -6227,24 +6580,34 @@ Agora siga os prompts da receita na ordem.`;
     const helper = byId("brief-helper");
     if (!badge || !helper) return;
     const mapReady = hasApprovedMap();
-    badge.textContent = mapReady ? "Mapa recebido" : currentFormatLabel();
+    if (mapReady) setBriefStage("ready");
+    if (!mapReady) setBriefStage(briefStage);
     helper.textContent = mapReady
-      ? "Cole este contexto no Image 2 antes dos prompts da receita. Ele leva a ideia, o mapa aprovado, as travas de copy e os cuidados de formato."
+      ? "O contexto inicial leva ao Image 2 a ideia, a direção aprovada, a copy e os cuidados de formato."
       : state.workflow === "before-after"
-      ? "Primeiro organize a ideia no GPT e cole o mapa aprovado aqui. Só depois anexe a base privada indicada pela receita."
-      : "Primeiro organize a ideia no GPT e cole o mapa aprovado aqui. O contexto do Image 2 será liberado depois disso.";
+      ? "Cole a ideia, prepare a direção no GPT e volte com a resposta. A base privada só aparece na receita certa."
+      : "Cole a ideia, prepare a direção no GPT e volte com a resposta. O painel organiza o restante.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
+    const recipeButton = document.querySelector("[data-copy-first-prompt]");
+    const stageLabel = byId("recipe-stage-label");
     if (diagnosticButton) {
       diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
-      diagnosticButton.textContent = mapReady ? "Refazer mapa no GPT" : "Copiar para organizar no GPT";
+      diagnosticButton.textContent = "Copiar pedido para o GPT";
     }
     if (briefButton) {
       briefButton.dataset.briefText = buildBriefText(recipe);
       briefButton.disabled = !mapReady;
-      briefButton.textContent = mapReady ? "Copiar contexto para o Image 2" : "Cole o mapa para liberar o contexto";
+      briefButton.textContent = mapReady ? "Copiar contexto inicial" : "Cole a resposta para liberar a geração";
       const actionRow = briefButton.closest(".brief-actions");
-      if (actionRow) actionRow.hidden = mapReady;
+      if (actionRow) actionRow.hidden = true;
+    }
+    if (recipeButton) {
+      recipeButton.disabled = !mapReady;
+      recipeButton.textContent = mapReady ? "Copiar contexto inicial" : "Prepare a direção primeiro";
+    }
+    if (stageLabel) {
+      stageLabel.textContent = mapReady ? "Receita pronta" : "Prévia da receita";
     }
     renderBriefResult(recipe);
   }
@@ -6515,13 +6878,16 @@ Agora siga os prompts da receita na ordem.`;
       const fileButton = event.target.closest("[data-copy-file]");
       const firstButton = event.target.closest("[data-copy-first-prompt]");
       if (!copyButton && !fileButton && !firstButton) return;
+      if (firstButton?.disabled) return;
       const original = event.target.textContent;
       const source = copyButton
         ? copyButton.closest(".prompt-body").querySelector("[data-prompt-content]")
-        : firstButton
-        ? byId("recipe-prompts").querySelector("[data-prompt-content]")
         : null;
-      const text = copyButton || firstButton ? source.textContent : data.promptInfo[fileButton.dataset.copyFile].content;
+      const text = firstButton
+        ? byId("copy-brief")?.dataset.briefText || buildBriefText(buildRecipe())
+        : copyButton
+        ? source.textContent
+        : data.promptInfo[fileButton.dataset.copyFile].content;
       try {
         const copied = await copyText(text, source);
         event.target.textContent = copied ? "Prompt copiado" : "Texto selecionado";
@@ -6540,7 +6906,7 @@ Agora siga os prompts da receita na ordem.`;
     byId("brief-copy")?.addEventListener("input", () => renderRecipe());
     byId("brief-map")?.addEventListener("input", () => {
       applyMapAutofill();
-      renderRecipe();
+      render();
     });
     ["brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
       byId(id)?.addEventListener("input", (event) => {
@@ -6551,10 +6917,11 @@ Agora siga os prompts da receita na ordem.`;
     byId("copy-diagnostic")?.addEventListener("click", async (event) => {
       const button = event.currentTarget;
       const original = button.textContent;
+      setBriefStage("map", true);
       try {
         const copied = await copyText(button.dataset.diagnosticText || buildCopyDiagnosticText(buildRecipe()));
-        button.textContent = copied ? "Organizador copiado" : "Organizador selecionado";
-        announce(copied ? "Prompt organizador copiado." : "O prompt organizador foi selecionado para cópia manual.");
+        button.textContent = copied ? "Direção copiada" : "Texto selecionado";
+        announce(copied ? "Pedido copiado. Cole no GPT e volte com a resposta." : "O pedido foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
@@ -6576,7 +6943,14 @@ Agora siga os prompts da receita na ordem.`;
         button.textContent = original;
       }, 2200);
     });
+    byId("show-brief-map")?.addEventListener("click", () => setBriefStage("map", true));
+    byId("back-to-brief-idea")?.addEventListener("click", () => setBriefStage("idea", true));
     byId("brief-result")?.addEventListener("click", async (event) => {
+      const jumpButton = event.target.closest("[data-jump-to-materials]");
+      if (jumpButton) {
+        scrollTargetIntoView(byId("recipe-assets-title"), "smooth");
+        return;
+      }
       const button = event.target.closest("[data-copy-brief-inline]");
       if (!button) return;
       const original = button.textContent;

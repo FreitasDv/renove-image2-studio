@@ -99,11 +99,9 @@ async function run() {
 
   try {
     await login(page);
-    await page.locator('[data-workflow="before-after"]').click();
-    await page.locator('[data-workflow="before-after"][aria-pressed="true"]').waitFor();
 
     assert.equal(
-      await page.getByRole("heading", { name: /Cole a ideia inteira/i }).count(),
+      await page.getByRole("heading", { name: /Cole tudo em um bloco/i }).count(),
       1,
       "briefing precisa guiar pela ideia inteira, não por campos soltos",
     );
@@ -113,14 +111,29 @@ async function run() {
       "campos separados devem ficar escondidos como ajuste opcional",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Copiar para organizar no GPT/i }).count(),
+      await page.getByRole("button", { name: /Copiar pedido para o GPT/i }).count(),
       1,
       "ação primária do passo 1 precisa estar explícita",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Cole o mapa para liberar o contexto/i }).count(),
+      await page.locator("#copy-brief").count(),
       1,
-      "contexto do Image 2 deve ficar bloqueado até existir mapa aprovado",
+      "contexto do Image 2 deve existir como contrato interno do fluxo",
+    );
+    assert.equal(
+      await page.locator('.recipe-brief[data-brief-stage="idea"]').count(),
+      1,
+      "briefing deve iniciar em um estado único e reconhecível",
+    );
+    assert.equal(
+      await page.locator("#brief-map-panel").isVisible(),
+      false,
+      "campo de retorno do GPT não deve competir com a ideia antes da primeira ação",
+    );
+    assert.equal(
+      await page.locator("[data-copy-first-prompt]").isDisabled(),
+      true,
+      "atalho de geração no cabeçalho deve ficar bloqueado antes do mapa aprovado",
     );
     assert.equal(
       await page.locator("#copy-brief").isDisabled(),
@@ -131,6 +144,11 @@ async function run() {
       await page.locator("details.setup").count(),
       1,
       "configurações devem ficar em painel recolhível, sem sequestrar a tela Produzir",
+    );
+    assert.equal(
+      await page.locator(".recipe:not([data-brief-stage='ready']) [data-tour='workflow']").isVisible(),
+      false,
+      "rotas avançadas não devem aparecer antes da direção do GPT",
     );
     assert.equal(
       await page.locator("details.setup").evaluate((node) => node.open),
@@ -178,9 +196,31 @@ async function run() {
     assertPromptIntegrity(organizerPrompt);
     assert.match(organizerPrompt, /mulher 40\+/i);
     assert.match(organizerPrompt, /antes\/depois protegido/i);
+    assert.match(organizerPrompt, /ROTA RECOMENDADA/i);
+    assert.match(organizerPrompt, /FORMATO PRINCIPAL/i);
+    assert.match(organizerPrompt, /FAMÍLIA VISUAL/i);
+
+    await page.locator("#copy-diagnostic").click();
+    await page.locator('.recipe-brief[data-brief-stage="map"]').waitFor();
+    assert.equal(
+      await page.locator("#brief-map-panel").isVisible(),
+      true,
+      "depois de copiar o organizador, a tela deve revelar somente o retorno do GPT",
+    );
+    assert.match(
+      await page.locator("#brief-stage-status").innerText(),
+      /Cole a resposta do GPT abaixo/i,
+      "a interface precisa dizer claramente o que fazer depois da troca de tela",
+    );
 
     const approvedMap = [
       "MAPA APROVADO PARA COLAR NO PAINEL",
+      "ROTA RECOMENDADA: antes/depois",
+      "FORMATO PRINCIPAL: Story 9:16",
+      "CANAL: pago",
+      "FAIXA: principal forte",
+      "FAMÍLIA VISUAL: céu claro",
+      "LOGO: automática por contraste",
       "1. Ângulo principal: acompanhamento médico e nutricional maior que medicação isolada.",
       "2. Camada de força e risco: médio/principal forte; comparação protegida, sem kg e sem prazo.",
       "3. Texto exato para a arte:",
@@ -196,34 +236,54 @@ async function run() {
     await page.locator("#brief-map").fill(approvedMap);
 
     await page.locator("#brief-result").waitFor({ state: "visible" });
+    assert.equal(
+      await page.locator('.recipe-brief[data-brief-stage="ready"]').count(),
+      1,
+      "mapa válido deve levar o briefing ao estado pronto para gerar",
+    );
+    assert.equal(
+      await page.locator('[data-workflow="before-after"]').getAttribute("aria-pressed"),
+      "true",
+      "rota recomendada pelo GPT deve atualizar a receita automaticamente",
+    );
+    assert.equal(
+      await page.locator('[data-choice-group="beforeFormat"] [data-value="story"]').getAttribute("aria-pressed"),
+      "true",
+      "formato recomendado pelo GPT deve atualizar a receita automaticamente",
+    );
     assert.match(
       await page.locator("#brief-result").innerText(),
-      /Mapa recebido/i,
+      /Direção reconhecida/i,
       "ao colar o mapa aprovado, a tela precisa confirmar que entendeu a volta do GPT",
     );
     assert.match(
       await page.locator("#brief-result").innerText(),
-      /Copie o contexto para o Image 2/i,
+      /Pronto para começar no Image 2/i,
       "depois do mapa, a próxima ação precisa ficar explícita na própria tela",
     );
     assert(
-      await page.getByRole("button", { name: /Copiar contexto para o Image 2/i }).count() >= 1,
+      await page.getByRole("button", { name: /Copiar contexto inicial/i }).count() >= 1,
       "o estado de mapa recebido precisa oferecer o botão certo sem obrigar a procurar na tela",
     );
     assert.equal(
-      await page.getByText("Mapa recebido").count() >= 1,
+      await page.getByText("Receita pronta").count() >= 1,
       true,
       "depois da volta do GPT, o selo do briefing deve mostrar progresso real",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Refazer mapa no GPT/i }).count(),
-      1,
-      "depois da volta do GPT, o organizador deve virar ação de refazer, não primeiro passo",
+      await page.getByRole("button", { name: /Copiar pedido para o GPT/i }).count(),
+      0,
+      "depois da volta do GPT, o primeiro passo deve sair do caminho visual",
     );
     assert.equal(
       await page.locator("#copy-brief").isDisabled(),
       false,
       "mapa aprovado precisa liberar o contexto do Image 2",
+    );
+    assert.equal(
+      await page.locator("[data-copy-first-prompt]").isDisabled(),
+      false,
+      "atalho de geração no cabeçalho deve liberar junto com o mapa aprovado",
     );
     assert.equal(
       await page.locator("#brief-headline").inputValue(),
@@ -295,8 +355,6 @@ async function run() {
       mobileInitialScreen.copyTop < mobileInitialScreen.workflowTop,
       `briefing precisa vir antes da escolha de rota no mobile: ${JSON.stringify(mobileInitialScreen)}`,
     );
-    await page.locator('[data-workflow="before-after"]').click();
-    await page.locator('[data-workflow="before-after"][aria-pressed="true"]').waitFor();
     const mobileFirstScreen = await page.evaluate(() => ({
       copyTop: Math.round(document.querySelector("#brief-copy")?.getBoundingClientRect().top || 9999),
       viewport: window.innerHeight,
@@ -306,12 +364,13 @@ async function run() {
       `campo de ideia precisa aparecer na primeira dobra mobile: ${JSON.stringify(mobileFirstScreen)}`,
     );
     await page.locator("#brief-copy").fill(rawIdea);
+    await page.locator("#show-brief-map").click();
     await page.locator("#brief-map").fill(approvedMap);
 
     const mobileWidths = await page.evaluate(() => ({
       document: document.documentElement.scrollWidth,
       viewport: document.documentElement.clientWidth,
-      briefFlowColumns: getComputedStyle(document.querySelector(".brief-flow")).gridTemplateColumns,
+      briefFlowColumns: getComputedStyle(document.querySelector(".brief-progress")).gridTemplateColumns,
     }));
     assert(
       mobileWidths.document <= mobileWidths.viewport + 1,
