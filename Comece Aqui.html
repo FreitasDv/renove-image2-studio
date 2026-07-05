@@ -573,7 +573,8 @@ summary:focus-visible {
 
 .intro {
   position: relative;
-  padding: 26px 0 32px;
+  min-height: calc(100dvh - 72px);
+  padding: 26px 0 72px;
 }
 
 .intro::before {
@@ -642,6 +643,8 @@ summary:focus-visible {
 
 .workflow-switcher button {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 74px;
   padding: 15px 15px 30px;
   border: 1px solid transparent;
@@ -694,6 +697,7 @@ summary:focus-visible {
 
 .workflow-switcher span {
   max-width: 24ch;
+  margin-bottom: 8px;
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.35;
@@ -2253,13 +2257,16 @@ legend {
 }
 
 .section {
-  padding: 88px 0;
+  min-height: calc(100dvh - 72px);
+  padding: 88px 0 104px;
   border-top: 1px solid var(--line);
   background: var(--paper);
 }
 
 .section--method {
-  background: var(--petrol);
+  background:
+    linear-gradient(180deg, rgba(13, 48, 57, 0.94), rgba(20, 73, 84, 0.98)),
+    var(--petrol);
   color: #f7faf8;
 }
 
@@ -2299,8 +2306,10 @@ legend {
 
 .library-shortcuts button {
   position: relative;
-  min-height: 108px;
-  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 124px;
+  padding: 18px 18px 14px;
   border: 1px solid rgba(41, 108, 123, 0.16);
   border-radius: 0;
   background: var(--paper-soft);
@@ -2338,6 +2347,7 @@ legend {
 
 .library-shortcuts small {
   margin-top: 8px;
+  margin-bottom: 12px;
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1.35;
@@ -2352,9 +2362,11 @@ legend {
 
 .library-shortcuts button::after {
   content: "Filtrar consulta";
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
+  position: static;
+  display: block;
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 8px;
   color: var(--blue);
   font-size: 0.68rem;
   font-weight: 800;
@@ -2562,6 +2574,7 @@ legend {
 }
 
 .method-flow {
+  position: relative;
   margin: 0;
   padding: 0;
   display: grid;
@@ -2571,13 +2584,24 @@ legend {
 }
 
 .method-flow li {
+  position: relative;
   min-height: 190px;
   padding: 24px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px 18px 8px 8px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.026)),
     rgba(255, 255, 255, 0.035);
+}
+
+.method-flow li::before {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(165, 214, 207, 0.78), transparent);
+  content: "";
 }
 
 .method-flow span {
@@ -2607,18 +2631,25 @@ legend {
 }
 
 .quality-actions {
-  border-top: 1px solid var(--line-strong);
+  border-top: 1px solid rgba(41, 108, 123, 0.2);
 }
 
 .quality-actions article {
   display: grid;
   grid-template-columns: 36px 120px minmax(0, 1fr);
   gap: 14px;
-  padding: 22px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .quality-actions span {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: 50%;
+  background: rgba(229, 241, 238, 0.72);
   color: var(--blue);
   font-size: 0.75rem;
   font-weight: 700;
