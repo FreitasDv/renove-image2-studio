@@ -111,7 +111,7 @@ async function run() {
       "campos separados devem ficar escondidos como ajuste opcional",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Copiar pedido para o GPT/i }).count(),
+      await page.getByRole("button", { name: /Copiar orientação para o GPT/i }).count(),
       1,
       "ação primária do passo 1 precisa estar explícita",
     );
