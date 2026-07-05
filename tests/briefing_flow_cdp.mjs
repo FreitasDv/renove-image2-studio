@@ -103,7 +103,7 @@ async function run() {
     await page.locator('[data-workflow-panel="before-after"]').waitFor({ state: "visible" });
 
     assert.equal(
-      await page.getByRole("heading", { name: "Cole a ideia inteira primeiro" }).count(),
+      await page.getByRole("heading", { name: /Cole a ideia inteira/i }).count(),
       1,
       "briefing precisa guiar pela ideia inteira, não por campos soltos",
     );
@@ -113,12 +113,12 @@ async function run() {
       "campos separados devem ficar escondidos como ajuste opcional",
     );
     assert.equal(
-      await page.getByRole("button", { name: /1\. Copiar prompt organizador/i }).count(),
+      await page.getByRole("button", { name: /1\. Copiar organizador/i }).count(),
       1,
       "ação primária do passo 1 precisa estar explícita",
     );
     assert.equal(
-      await page.getByRole("button", { name: /2\. Copiar prompt final/i }).count(),
+      await page.getByRole("button", { name: /2\. Copiar briefing final/i }).count(),
       1,
       "ação do prompt final precisa estar explícita",
     );
@@ -131,6 +131,11 @@ async function run() {
       await page.getByText("Baixe e anexe somente estes arquivos").count(),
       1,
       "seção de anexos precisa declarar que a lista da receita é a fonte de verdade",
+    );
+    assert.equal(
+      await page.getByText(/Fonte de verdade/i).count() >= 1,
+      true,
+      "receita precisa declarar que anexos fora da lista não entram na produção",
     );
 
     const rawIdea = [
@@ -163,7 +168,7 @@ async function run() {
     await page.locator("#brief-map").fill(approvedMap);
 
     const finalPrompt = await page.locator("#copy-brief").evaluate((button) => button.dataset.briefText);
-    assert.match(finalPrompt, /PROMPT FINAL DE BRIEFING RENOVE/i);
+    assert.match(finalPrompt, /BRIEFING FINAL RENOVE/i);
     assert.match(finalPrompt, /MAPA APROVADO PELO GPT/i);
     assert.match(finalPrompt, /O que sustenta o resultado/i);
     assert.match(finalPrompt, /Story e Feed são peças irmãs/i);
@@ -172,8 +177,13 @@ async function run() {
     assert.match(finalPrompt, /Não invente preço, prova, resultado/i);
     assert.match(await page.locator("#recipe-status").innerText(), /materiais/i);
     assert(
-      await page.getByRole("link", { name: /Baixar base para anexar/i }).count() >= 1,
-      "base de antes/depois precisa aparecer como download claro para anexar",
+      await page.getByText(/Base privada/i).count() >= 1,
+      "base de antes/depois precisa aparecer como item privado, sem expor arquivo no link online",
+    );
+    assert.equal(
+      await page.getByRole("link", { name: /Baixar base/i }).count(),
+      0,
+      "link online não deve expor download direto de base real",
     );
     assert.doesNotMatch(await page.locator("body").innerText(), /diagnóstico da copy/i);
 
