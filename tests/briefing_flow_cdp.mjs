@@ -331,6 +331,45 @@ async function run() {
     );
     assert.doesNotMatch(await page.locator("body").innerText(), /diagnóstico da copy/i);
 
+    await page.evaluate(() => {
+      location.hash = "#arquivos";
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+      window.scrollTo(0, 0);
+    });
+    await page.waitForTimeout(200);
+    const arquivoViews = await page.evaluate(() => [...document.querySelectorAll("[data-view]")]
+      .filter((view) => !view.hidden)
+      .map((view) => view.id));
+    assert.deepEqual(
+      arquivoViews,
+      ["arquivos"],
+      "Arquivos deve ser uma unica view ativa; aviso de base privada nao pode virar outra tela",
+    );
+    await page.locator('[data-tab="assets"]').click();
+    await page.locator("#library-search").fill("antes e depois");
+    const beforeAfterAssets = await page.evaluate(() => [...document.querySelectorAll("#panel-assets [data-library-item]")]
+      .filter((item) => !item.hidden && item.offsetParent !== null)
+      .length);
+    assert(
+      beforeAfterAssets >= 4,
+      `busca por antes e depois deve encontrar bases privadas: ${beforeAfterAssets}`,
+    );
+    await page.locator('[data-tab="prompts"]').click();
+    await page.locator("#library-search").fill("feed, correcao");
+    const feedCorrectionPrompts = await page.evaluate(() => [...document.querySelectorAll("#panel-prompts [data-library-item]")]
+      .filter((item) => !item.hidden && item.offsetParent !== null)
+      .length);
+    assert(
+      feedCorrectionPrompts >= 2,
+      `busca com virgula/termos deve funcionar como lista flexivel: ${feedCorrectionPrompts}`,
+    );
+    await page.evaluate(() => {
+      location.hash = "#produzir";
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+      window.scrollTo(0, 0);
+    });
+    await page.waitForTimeout(200);
+
     const widths = await page.evaluate(() => ({
       document: document.documentElement.scrollWidth,
       viewport: document.documentElement.clientWidth,
