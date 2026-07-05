@@ -641,6 +641,14 @@ summary:focus-visible {
   gap: 16px;
 }
 
+.studio-layout > .recipe {
+  order: 1;
+}
+
+.studio-layout > .setup {
+  order: 2;
+}
+
 .setup {
   overflow: hidden;
   border: 1px solid rgba(41, 108, 123, 0.16);
@@ -956,6 +964,8 @@ legend {
 }
 
 .recipe {
+  display: flex;
+  flex-direction: column;
   overflow: clip;
   border: 0;
   border-top: 3px solid var(--petrol);
@@ -963,6 +973,36 @@ legend {
   border-radius: 0;
   background: var(--paper);
   box-shadow: 0 22px 54px rgba(18, 63, 75, 0.075);
+}
+
+.recipe > * {
+  order: 10;
+}
+
+.recipe > .recipe-brief {
+  order: 1;
+}
+
+.recipe > .workflow-wrap {
+  order: 2;
+  margin: 0 38px 18px;
+}
+
+.recipe > .setup {
+  order: 3;
+  margin: 0 38px 18px;
+}
+
+.recipe > .recipe__heading {
+  order: 4;
+}
+
+.recipe > .recipe-path {
+  order: 5;
+}
+
+.recipe > .recipe-section {
+  order: 6;
 }
 
 .recipe__heading {
@@ -1190,7 +1230,7 @@ legend {
 }
 
 .recipe-brief {
-  margin-bottom: 18px;
+  margin: 18px 38px 18px;
   padding: 18px;
   border: 1px solid rgba(41, 108, 123, 0.18);
   border-radius: var(--radius);
@@ -1234,7 +1274,7 @@ legend {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  margin: 0 0 14px;
+  margin: 14px 0 0;
 }
 
 .brief-step {
@@ -2517,6 +2557,13 @@ legend {
     margin-left: 18px;
   }
 
+  .recipe > .recipe-brief,
+  .recipe > .workflow-wrap,
+  .recipe > .setup {
+    margin-right: 14px;
+    margin-left: 14px;
+  }
+
   .recipe__heading {
     display: block;
     padding: 14px 16px;
@@ -2870,28 +2917,6 @@ legend {
         </noscript>
 
         <div class="studio" data-testid="studio">
-          <div class="workflow-wrap" data-tour="workflow">
-          <p class="field-label" id="workflow-label">1. Escolha o caminho da peça</p>
-            <div class="workflow-switcher" role="group" aria-labelledby="workflow-label">
-              <button type="button" data-workflow="new" aria-pressed="true">
-                <strong>Criar peça nova</strong>
-                <span>Direção Renove desde a estratégia</span>
-              </button>
-              <button type="button" data-workflow="adapt" aria-pressed="false">
-                <strong>Adaptar referência</strong>
-                <span>Transformar referência em peça Renove</span>
-              </button>
-              <button type="button" data-workflow="version" aria-pressed="false">
-                <strong>Versionar aprovada</strong>
-                <span>Escalar uma peça já aprovada</span>
-              </button>
-              <button type="button" data-workflow="before-after" aria-pressed="false">
-                <strong>Antes/depois estratégico</strong>
-                <span>Editar base real com controle</span>
-              </button>
-            </div>
-          </div>
-
           <div class="studio-layout">
             <details class="setup" aria-labelledby="setup-title" data-tour="setup">
               <summary class="setup__summary">
@@ -3132,15 +3157,9 @@ legend {
                   <div>
                     <span class="library-kicker">Brief assistido</span>
                     <h3>Cole a ideia inteira. O painel organiza o resto.</h3>
-                    <p>Pode colar roteiro, mensagem do WhatsApp, oferta, tema, texto solto ou descrição de print. Use o botão 1 para organizar. Depois cole o mapa do GPT e use o botão 2.</p>
+                    <p>Cole roteiro, mensagem, tema, oferta, copy solta ou descrição de print. O painel transforma isso em direção, materiais e prompts.</p>
                   </div>
                   <span class="recipe-brief__badge" id="brief-flow-badge">Ideia vira mapa</span>
-                </div>
-                <div class="brief-flow" aria-label="Fluxo do briefing assistido">
-                  <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
-                  <div class="brief-step"><b>2</b><div><span>Copie o organizador</span><small>Cole no ChatGPT antes de gerar imagem.</small></div></div>
-                  <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Volte com a resposta do GPT.</small></div></div>
-                  <div class="brief-step"><b>4</b><div><span>Use a receita</span><small>Baixe anexos e copie prompts em ordem.</small></div></div>
                 </div>
                 <div class="brief-fields">
                   <label class="brief-field" for="brief-copy">
@@ -3155,6 +3174,12 @@ legend {
                     <span>Mapa aprovado pelo GPT</span>
                     <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Sem esse mapa, o prompt final pode ficar fraco ou genérico."></textarea>
                   </label>
+                </div>
+                <div class="brief-flow" aria-label="Fluxo do briefing assistido">
+                  <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
+                  <div class="brief-step"><b>2</b><div><span>Copie o organizador</span><small>Cole no ChatGPT antes de gerar imagem.</small></div></div>
+                  <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Volte com a resposta do GPT.</small></div></div>
+                  <div class="brief-step"><b>4</b><div><span>Use a receita</span><small>Baixe anexos e copie prompts em ordem.</small></div></div>
                 </div>
                 <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                 <details class="brief-advanced">
@@ -3192,6 +3217,28 @@ legend {
                 <div class="brief-actions">
                   <button type="button" id="copy-brief">2. Copiar briefing final</button>
                   <small id="brief-helper">Cole o mapa aprovado antes. Este botão prepara a peça; a imagem vem depois, nos prompts da receita.</small>
+                </div>
+              </div>
+
+              <div class="workflow-wrap" data-tour="workflow">
+                <p class="field-label" id="workflow-label">2. Escolha ou confirme a rota da peça</p>
+                <div class="workflow-switcher" role="group" aria-labelledby="workflow-label">
+                  <button type="button" data-workflow="new" aria-pressed="true">
+                    <strong>Criar peça nova</strong>
+                    <span>Direção Renove desde a estratégia</span>
+                  </button>
+                  <button type="button" data-workflow="adapt" aria-pressed="false">
+                    <strong>Adaptar referência</strong>
+                    <span>Transformar referência em peça Renove</span>
+                  </button>
+                  <button type="button" data-workflow="version" aria-pressed="false">
+                    <strong>Versionar aprovada</strong>
+                    <span>Escalar uma peça já aprovada</span>
+                  </button>
+                  <button type="button" data-workflow="before-after" aria-pressed="false">
+                    <strong>Antes/depois estratégico</strong>
+                    <span>Editar base real com controle</span>
+                  </button>
                 </div>
               </div>
 
@@ -5495,9 +5542,15 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   const tourSteps = [
     {
       view: "#produzir",
+      selector: "[data-tour='brief']",
+      title: "Cole a ideia aqui",
+      body: "Roteiro, copy solta, tema, print descrito ou mensagem do WhatsApp entram aqui. O organizador transforma isso em mapa antes do prompt final.",
+    },
+    {
+      view: "#produzir",
       selector: "[data-tour='workflow']",
-      title: "Escolha o trabalho",
-      body: "Comece pela frente criativa. Isso muda os campos, os anexos e a ordem dos prompts.",
+      title: "Ajuste o tipo de produção",
+      body: "Escolha a rota quando a peça pedir: nova, referência, versão aprovada ou antes/depois. Isso muda anexos, riscos e prompts sem apagar a ideia.",
     },
     {
       view: "#produzir",
@@ -5518,6 +5571,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       title: "Escolha a frente",
       body: "Corpo protegido usa comparação com roupa e recorte cuidadoso. Protocolo vende acompanhamento sem depender de fármaco visível.",
       workflow: "before-after",
+      openSetup: true,
     },
     {
       view: "#produzir",
@@ -5525,12 +5579,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       title: "Controle a força",
       body: "Principal forte é a rota padrão quando a imagem está controlada. Protegido é o backup quando corpo, texto ou promessa pesam.",
       workflow: "before-after",
-    },
-    {
-      view: "#produzir",
-      selector: "[data-tour='brief']",
-      title: "Cole a ideia aqui",
-      body: "Roteiro, copy solta ou tema entram aqui. Se a ideia estiver bagunçada, copie o organizador antes do prompt final.",
+      openSetup: true,
     },
     {
       view: "#produzir",
@@ -5601,9 +5650,17 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     byId("access-user").focus({ preventScroll: true });
   }
 
+  function mountProductionControls() {
+    const setup = document.querySelector(".studio-layout > .setup");
+    const workflow = document.querySelector(".recipe > .workflow-wrap");
+    if (!setup || !workflow) return;
+    workflow.insertAdjacentElement("afterend", setup);
+  }
+
   function startApp() {
     if (appStarted) return;
     appStarted = true;
+    mountProductionControls();
     bindStudio();
     bindBrief();
     bindTabs();
@@ -6633,6 +6690,8 @@ Agora siga os prompts da receita na ordem.`;
       const step = tourSteps[activeTourIndex];
       if (step.workflow) setWorkflow(step.workflow, false);
       if (navigateToHash) navigateToHash(step.view, { push: false, focus: false });
+      const setupPanel = document.querySelector("details.setup");
+      if (setupPanel) setupPanel.open = Boolean(step.openSetup);
       root.hidden = false;
       tourOpen = true;
       title.textContent = step.title;

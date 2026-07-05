@@ -132,6 +132,14 @@ async function run() {
       false,
       "painel de direção deve iniciar fechado para a ideia aparecer primeiro",
     );
+    await page.locator("#tour-start").click();
+    await page.locator("#tour:not([hidden])").waitFor();
+    assert.match(
+      await page.locator("#tour-title").innerText(),
+      /Cole a ideia/i,
+      "tutorial precisa começar pelo campo de ideia, não por configuração",
+    );
+    await page.locator("[data-tour-close]").click();
     assert.equal(
       await page.locator("#direction-summary").count(),
       1,
@@ -264,8 +272,29 @@ async function run() {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.reload({ waitUntil: "domcontentloaded" });
     await login(page);
+    const mobileInitialScreen = await page.evaluate(() => ({
+      copyTop: Math.round(document.querySelector("#brief-copy")?.getBoundingClientRect().top || 9999),
+      workflowTop: Math.round(document.querySelector("[data-tour='workflow']")?.getBoundingClientRect().top || 9999),
+      viewport: window.innerHeight,
+    }));
+    assert(
+      mobileInitialScreen.copyTop > 0 && mobileInitialScreen.copyTop < mobileInitialScreen.viewport,
+      `campo de ideia precisa aparecer na primeira dobra mobile inicial: ${JSON.stringify(mobileInitialScreen)}`,
+    );
+    assert(
+      mobileInitialScreen.copyTop < mobileInitialScreen.workflowTop,
+      `briefing precisa vir antes da escolha de rota no mobile: ${JSON.stringify(mobileInitialScreen)}`,
+    );
     await page.locator('[data-workflow="before-after"]').click();
     await page.locator('[data-workflow="before-after"][aria-pressed="true"]').waitFor();
+    const mobileFirstScreen = await page.evaluate(() => ({
+      copyTop: Math.round(document.querySelector("#brief-copy")?.getBoundingClientRect().top || 9999),
+      viewport: window.innerHeight,
+    }));
+    assert(
+      mobileFirstScreen.copyTop < mobileFirstScreen.viewport,
+      `campo de ideia precisa aparecer na primeira dobra mobile: ${JSON.stringify(mobileFirstScreen)}`,
+    );
     await page.locator("#brief-copy").fill(rawIdea);
     await page.locator("#brief-map").fill(approvedMap);
 
