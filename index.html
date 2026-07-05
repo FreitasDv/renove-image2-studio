@@ -559,41 +559,36 @@ summary:focus-visible {
 }
 
 .workflow-wrap {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .workflow-switcher {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  padding: 0;
-  border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line-strong);
-  background: rgba(251, 252, 250, 0.48);
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: rgba(251, 252, 250, 0.72);
 }
 
 .workflow-switcher button {
   position: relative;
-  min-height: 104px;
-  padding: 20px 22px 34px;
-  border: 0;
-  border-right: 1px solid var(--line);
-  border-radius: 0;
+  min-height: 74px;
+  padding: 14px 14px 28px;
+  border: 1px solid transparent;
+  border-radius: 13px;
   background: transparent;
   text-align: left;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
-}
-
-.workflow-switcher button:last-child {
-  border-right: 0;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .workflow-switcher button::after {
   content: "Escolher";
   position: absolute;
-  right: 16px;
-  bottom: 12px;
+  right: 12px;
+  bottom: 9px;
   left: auto;
   height: auto;
   color: var(--blue);
@@ -609,7 +604,8 @@ summary:focus-visible {
 .workflow-switcher button[aria-pressed="true"] {
   background: var(--paper);
   color: var(--ink);
-  box-shadow: inset 0 -4px 0 var(--petrol);
+  border-color: rgba(41, 108, 123, 0.28);
+  box-shadow: none;
 }
 
 .workflow-switcher button[aria-pressed="true"]::after {
@@ -623,14 +619,14 @@ summary:focus-visible {
 }
 
 .workflow-switcher strong {
-  margin-bottom: 5px;
-  font-size: 1rem;
+  margin-bottom: 3px;
+  font-size: 0.93rem;
 }
 
 .workflow-switcher span {
-  max-width: 20ch;
+  max-width: 24ch;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   line-height: 1.35;
 }
 
@@ -640,32 +636,42 @@ summary:focus-visible {
 
 .studio-layout {
   display: grid;
-  grid-template-columns: minmax(274px, 324px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: 22px;
+  gap: 16px;
 }
 
 .setup {
-  position: sticky;
-  top: calc(var(--header-height) + 22px);
   overflow: hidden;
-  border: 0;
-  border-top: 3px solid var(--clay);
-  border-bottom: 1px solid var(--line-strong);
-  border-radius: 0;
-  background: rgba(251, 252, 250, 0.72);
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: 18px;
+  background: rgba(251, 252, 250, 0.84);
   box-shadow: none;
 }
 
+.setup__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.setup__summary::-webkit-details-marker {
+  display: none;
+}
+
 .setup__heading {
-  padding: 24px 24px 20px;
-  border-bottom: 1px solid var(--line);
+  padding: 18px 22px 16px;
+  border-bottom: 0;
 }
 
 .setup__heading h2 {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-family: "Ubuntu Local", Arial, sans-serif;
-  font-size: 1.28rem;
+  font-size: 1.08rem;
   line-height: 1.25;
 }
 
@@ -676,11 +682,32 @@ summary:focus-visible {
 }
 
 .setup-hint {
-  margin-top: 12px;
-  padding-left: 12px;
-  border-left: 3px solid var(--clay);
-  color: var(--muted);
-  font-size: 0.84rem;
+  margin-top: 10px;
+  padding: 9px 11px;
+  border: 1px solid rgba(41, 108, 123, 0.14);
+  border-radius: 999px;
+  background: var(--paper-soft);
+  color: var(--petrol);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.setup__edit {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 18px;
+  padding: 9px 13px;
+  border: 1px solid rgba(41, 108, 123, 0.22);
+  border-radius: 999px;
+  color: var(--petrol);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.setup[open] .setup__edit {
+  background: var(--petrol);
+  color: #ffffff;
 }
 
 .field-note {
@@ -691,12 +718,13 @@ summary:focus-visible {
 }
 
 #studio-form > div {
-  padding: 6px 24px 26px;
+  padding: 0 22px 22px;
+  border-top: 1px solid var(--line);
 }
 
 .setup-recipe-jump {
   min-height: 58px;
-  margin: 0 24px 24px;
+  margin: 0 22px 22px;
   padding: 11px 14px;
   display: flex;
   align-items: center;
@@ -1455,17 +1483,17 @@ legend {
 
 .recipe-assets {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .recipe-asset {
-  min-height: 136px;
+  min-height: 108px;
   display: grid;
-  grid-template-columns: 98px minmax(0, 1fr);
+  grid-template-columns: 84px minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: var(--radius-small);
+  border-radius: 16px;
   background: #ffffff;
   box-shadow: none;
   transition: border-color 160ms ease, background-color 160ms ease;
@@ -1477,7 +1505,7 @@ legend {
 }
 
 .recipe-asset__preview {
-  min-height: 136px;
+  min-height: 108px;
   overflow: hidden;
   background: #dbe4e1;
 }
@@ -1534,7 +1562,7 @@ legend {
 
 .recipe-asset > div {
   min-width: 0;
-  padding: 12px 12px 11px;
+  padding: 12px 14px 13px;
 }
 
 .recipe-asset a:not(.recipe-asset__preview) {
@@ -1552,7 +1580,7 @@ legend {
 .recipe-asset__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: 8px;
 }
 
 .recipe-asset__actions a {
@@ -1581,8 +1609,12 @@ legend {
 }
 
 .asset-note {
-  display: inline-flex;
+  display: block;
   margin-top: 8px;
+  padding: 9px 10px;
+  border: 1px dashed rgba(41, 108, 123, 0.22);
+  border-radius: var(--radius-small);
+  background: rgba(251, 252, 250, 0.82);
   color: var(--faint);
   font-size: 0.76rem;
   line-height: 1.35;
@@ -2240,8 +2272,8 @@ legend {
 
 @media (max-width: 1100px) {
   .studio-layout {
-    grid-template-columns: 320px minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .recipe-assets {
@@ -2397,30 +2429,42 @@ legend {
   }
 
   .intro {
-    padding: 30px 0 56px;
+    padding: 14px 0 24px;
   }
 
   h1 {
-    font-size: 2.28rem;
+    font-size: 1.58rem;
+    line-height: 1.04;
   }
 
   .intro__heading {
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+  }
+
+  .intro__heading .eyebrow,
+  .intro__heading p {
+    display: none;
   }
 
   .workflow-switcher {
-    grid-template-columns: repeat(4, minmax(236px, 78vw));
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline proximity;
-    scrollbar-color: var(--line-strong) transparent;
-    scrollbar-width: thin;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    scroll-snap-type: none;
   }
 
   .workflow-switcher button {
-    min-height: 94px;
-    padding: 17px 18px 32px;
-    scroll-snap-align: start;
+    min-height: 52px;
+    padding: 10px 10px 22px;
+    scroll-snap-align: none;
+  }
+
+  .workflow-switcher strong {
+    font-size: 0.78rem;
+  }
+
+  .workflow-switcher span {
+    display: none;
   }
 
   .workflow-switcher button::after {
@@ -2434,8 +2478,38 @@ legend {
 
   .setup__heading,
   #studio-form > div {
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .setup__summary {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .setup__edit {
+    width: calc(100% - 28px);
+    justify-content: center;
+    margin: 0 14px 14px;
+  }
+
+  .setup__heading {
+    padding-top: 14px;
+    padding-bottom: 10px;
+  }
+
+  .setup__heading h2 {
+    font-size: 0.92rem;
+  }
+
+  #setup-description {
+    display: none;
+  }
+
+  .setup-hint {
+    border-radius: 12px;
+    font-size: 0.72rem;
+    line-height: 1.35;
   }
 
   .setup-recipe-jump {
@@ -2445,16 +2519,26 @@ legend {
 
   .recipe__heading {
     display: block;
-    padding: 24px 20px;
+    padding: 14px 16px;
+  }
+
+  .recipe__heading h2 {
+    margin-bottom: 0;
+    font-size: 1.12rem;
+  }
+
+  .recipe__heading > div > p:last-child {
+    display: none;
   }
 
   .recipe-meta {
     justify-items: start;
-    margin-top: 16px;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   .recipe-status {
-    margin-top: 14px;
+    margin-top: 8px;
   }
 
   .recipe-path {
@@ -2616,7 +2700,7 @@ legend {
 @media (max-width: 420px) {
   .workflow-switcher button,
   .workflow-switcher button:nth-child(2) {
-    min-height: 90px;
+    min-height: 78px;
   }
 
   .choice-grid--two {
@@ -2809,13 +2893,16 @@ legend {
           </div>
 
           <div class="studio-layout">
-            <section class="setup" aria-labelledby="setup-title" data-tour="setup">
-              <div class="setup__heading">
-                 <p class="section-index">Receita</p>
-                 <h2 id="setup-title">Configure sem adivinhar</h2>
-                 <p id="setup-description">A escolha muda os anexos, os prompts e os cuidados da receita.</p>
-                 <p class="setup-hint">Escolha só o que descreve a peça de agora. A receita abaixo vira a fonte de verdade para anexos, prompts e revisão.</p>
-              </div>
+            <details class="setup" aria-labelledby="setup-title" data-tour="setup">
+              <summary class="setup__summary">
+                <div class="setup__heading">
+                   <p class="section-index">Direção da peça</p>
+                   <h2 id="setup-title">Ajustes ficam aqui. A produção começa abaixo.</h2>
+                   <p id="setup-description">A escolha muda os anexos, os prompts e os cuidados da receita.</p>
+                   <p class="setup-hint" id="direction-summary">Criar peça nova · Story 9:16 · Principal forte · Oceano profundo</p>
+                </div>
+                <span class="setup__edit">Editar direção</span>
+              </summary>
 
               <form id="studio-form">
                 <div data-workflow-panel="new">
@@ -3025,7 +3112,7 @@ legend {
                 <span>Direção definida</span>
                 <strong>Ver receita atualizada</strong>
               </a>
-            </section>
+            </details>
 
             <section class="recipe" id="receita" aria-labelledby="recipe-title" data-tour="recipe">
               <header class="recipe__heading">
@@ -3039,25 +3126,6 @@ legend {
                   <button class="recipe-copy-main" type="button" data-copy-first-prompt>Copiar contexto sem gerar</button>
                 </div>
               </header>
-
-              <div class="recipe-path" aria-label="Linha de produção da receita" data-tour="production-line">
-                <div class="recipe-path__item">
-                  <span>1</span>
-                  <div><strong>Ideia</strong><small>Cole tudo no campo de briefing.</small></div>
-                </div>
-                <div class="recipe-path__item">
-                  <span>2</span>
-                  <div><strong>Anexos</strong><small>Baixe só a lista desta receita.</small></div>
-                </div>
-                <div class="recipe-path__item">
-                  <span>3</span>
-                  <div><strong>Prompts</strong><small>Copie um por vez, no mesmo chat.</small></div>
-                </div>
-                <div class="recipe-path__item">
-                  <span>4</span>
-                  <div><strong>Revisão</strong><small>Aprove, corrija ou reconstrua.</small></div>
-                </div>
-              </div>
 
               <div class="recipe-brief" data-tour="brief">
                 <div class="recipe-brief__header">
@@ -3124,6 +3192,25 @@ legend {
                 <div class="brief-actions">
                   <button type="button" id="copy-brief">2. Copiar briefing final</button>
                   <small id="brief-helper">Cole o mapa aprovado antes. Este botão prepara a peça; a imagem vem depois, nos prompts da receita.</small>
+                </div>
+              </div>
+
+              <div class="recipe-path" aria-label="Linha de produção da receita" data-tour="production-line">
+                <div class="recipe-path__item">
+                  <span>1</span>
+                  <div><strong>Ideia</strong><small>Cole tudo no briefing assistido.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>2</span>
+                  <div><strong>Materiais</strong><small>Baixe só a lista desta receita.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>3</span>
+                  <div><strong>Prompts</strong><small>Copie um por vez, no mesmo chat.</small></div>
+                </div>
+                <div class="recipe-path__item">
+                  <span>4</span>
+                  <div><strong>Revisão</strong><small>Aprove, corrija ou reconstrua.</small></div>
                 </div>
               </div>
 
@@ -6119,8 +6206,8 @@ Agora siga os prompts da receita na ordem.`;
         : `<a class="recipe-asset__preview recipe-asset__preview--document" href="${info.href}" aria-label="Abrir ${info.title}">
           <span>${info.href.toLowerCase().endsWith(".pdf") ? "PDF" : "Arquivo"}</span>
         </a>`;
-      const actionLabel = info.lockedOnline ? null : info.isImage ? "Ver arquivo" : "Abrir arquivo";
-      const downloadLabel = info.lockedOnline ? null : info.sensitiveBase ? "Baixar arquivo para anexar" : info.isImage ? "Baixar para anexar" : "Baixar arquivo";
+      const actionLabel = info.lockedOnline ? null : info.isImage ? "Conferir arquivo" : "Abrir arquivo";
+      const downloadLabel = info.lockedOnline ? null : "Baixar e anexar";
       const instruction = info.sensitiveBase
         ? "Use esta base somente nesta receita e neste formato."
         : info.role === "consulta"
@@ -6132,7 +6219,7 @@ Agora siga os prompts da receita na ordem.`;
           <span>${info.role}</span>
           <h4>${info.title}</h4>
           <p>${info.description}</p>
-          ${actionLabel ? `<div class="recipe-asset__actions"><a href="${info.href}" download>${downloadLabel}</a><a href="${info.href}">${actionLabel}</a></div><small class="recipe-asset__instruction">${instruction}</small>` : `<small class="asset-note">Base privada: use pela pasta privada combinada, somente quando esta receita pedir este formato.</small>`}
+          ${actionLabel ? `<div class="recipe-asset__actions"><a href="${info.href}" download>${downloadLabel}</a><a href="${info.href}">${actionLabel}</a></div><small class="recipe-asset__instruction">${instruction}</small>` : `<small class="asset-note">Base privada: pegue na pasta privada combinada e use somente quando esta receita pedir este formato. No link online ela aparece sem download por segurança.</small>`}
         </div>
       `;
       root.appendChild(article);
@@ -6147,7 +6234,6 @@ Agora siga os prompts da receita na ordem.`;
       article.className = "recipe-prompt";
       article.dataset.recipePrompt = prompt.file;
       const details = document.createElement("details");
-      if (index === 0) details.open = true;
       details.innerHTML = `
         <summary>
           <span class="prompt-number">${String(index + 1).padStart(2, "0")}</span>
@@ -6191,11 +6277,23 @@ Agora siga os prompts da receita na ordem.`;
     if (links[2] && reset) links[2].setAttribute("href", reset.href);
   }
 
+  function renderDirectionSummary(recipe) {
+    const root = byId("direction-summary");
+    if (!root) return;
+    const workflow = data.workflows[state.workflow]?.label || "Criar peça";
+    const format = currentFormatLabel();
+    const force = currentForceLabel();
+    const visual = currentVisualLabel(recipe);
+    const logo = data.logoModes[state.logoMode]?.label || "Logo por contraste";
+    root.textContent = `${workflow} · ${format} · ${force} · ${visual} · ${logo}`;
+  }
+
   function renderRecipe() {
     const recipe = buildRecipe();
     byId("recipe-title").textContent = recipe.title;
     byId("recipe-description").textContent = recipe.description;
     byId("recipe-status").textContent = `${recipe.assets.length + recipe.manualAssets.length} materiais · ${recipe.prompts.length} prompts`;
+    renderDirectionSummary(recipe);
     renderBrief(recipe);
     renderAssetGuide(recipe);
     renderManualAssets(recipe.manualAssets);

@@ -100,7 +100,7 @@ async function run() {
   try {
     await login(page);
     await page.locator('[data-workflow="before-after"]').click();
-    await page.locator('[data-workflow-panel="before-after"]').waitFor({ state: "visible" });
+    await page.locator('[data-workflow="before-after"][aria-pressed="true"]').waitFor();
 
     assert.equal(
       await page.getByRole("heading", { name: /Cole a ideia inteira/i }).count(),
@@ -121,6 +121,21 @@ async function run() {
       await page.getByRole("button", { name: /2\. Copiar briefing final/i }).count(),
       1,
       "ação do prompt final precisa estar explícita",
+    );
+    assert.equal(
+      await page.locator("details.setup").count(),
+      1,
+      "configurações devem ficar em painel recolhível, sem sequestrar a tela Produzir",
+    );
+    assert.equal(
+      await page.locator("details.setup").evaluate((node) => node.open),
+      false,
+      "painel de direção deve iniciar fechado para a ideia aparecer primeiro",
+    );
+    assert.equal(
+      await page.locator("#direction-summary").count(),
+      1,
+      "resumo da direção precisa ficar visível mesmo com ajustes fechados",
     );
     assert.equal(
       await page.getByLabel("Linha de produção da receita").count(),
@@ -227,6 +242,15 @@ async function run() {
       0,
       "link online não deve expor download direto de base real",
     );
+    assert.equal(
+      await page.locator(".recipe-prompt details[open]").count(),
+      0,
+      "prompts devem iniciar fechados; a ação principal copia sem abrir bloco gigante",
+    );
+    assert(
+      await page.getByText(/Baixar e anexar/i).count() >= 1,
+      "materiais baixáveis precisam ter uma ação clara de baixar e anexar",
+    );
     assert.doesNotMatch(await page.locator("body").innerText(), /diagnóstico da copy/i);
 
     const widths = await page.evaluate(() => ({
@@ -241,7 +265,7 @@ async function run() {
     await page.reload({ waitUntil: "domcontentloaded" });
     await login(page);
     await page.locator('[data-workflow="before-after"]').click();
-    await page.locator('[data-workflow-panel="before-after"]').waitFor({ state: "visible" });
+    await page.locator('[data-workflow="before-after"][aria-pressed="true"]').waitFor();
     await page.locator("#brief-copy").fill(rawIdea);
     await page.locator("#brief-map").fill(approvedMap);
 
