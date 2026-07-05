@@ -1305,43 +1305,76 @@ legend {
 }
 
 .recipe-brief {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  grid-template-areas:
+    "brief-header brief-workspace"
+    "brief-progress brief-workspace"
+    "brief-progress brief-advanced";
   margin: 0 38px 22px;
-  padding: 24px 28px 26px;
+  padding: 0;
   border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 14px 36px rgba(18, 63, 75, 0.055);
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(246, 248, 245, 0.82)),
+    radial-gradient(circle at 18% 8%, rgba(165, 214, 207, 0.34), transparent 34%),
+    var(--paper);
+  box-shadow: 0 22px 52px rgba(18, 63, 75, 0.08);
+}
+
+.recipe-brief::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(41, 108, 123, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 108, 123, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.12) 38%, transparent 76%);
+  content: "";
 }
 
 .recipe-brief__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+  grid-area: brief-header;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  margin: 0;
+  padding: 26px 22px 12px;
+  border-right: 1px solid rgba(41, 108, 123, 0.12);
+  background: linear-gradient(180deg, rgba(246, 248, 245, 0.72), rgba(255, 255, 255, 0.34));
 }
 
 .recipe-brief__header h3 {
-  margin: 3px 0 4px;
-  font-size: 1rem;
+  margin: 5px 0 8px;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 1.18;
+  text-wrap: balance;
 }
 
 .recipe-brief__header p {
-  max-width: 62ch;
+  max-width: 30ch;
   margin: 0;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .recipe-brief__badge {
-  flex: 0 0 auto;
-  padding: 7px 10px;
-  border: 1px solid rgba(41, 108, 123, 0.2);
-  border-radius: 999px;
-  background: var(--paper-soft);
+  width: fit-content;
+  padding: 7px 9px;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
   color: var(--petrol);
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .brief-flow {
@@ -1353,10 +1386,14 @@ legend {
 }
 
 .brief-workspace {
+  position: relative;
+  z-index: 1;
+  grid-area: brief-workspace;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 18px;
+  gap: 0;
   align-items: start;
+  padding: 30px 32px 22px;
 }
 
 .brief-main {
@@ -1365,20 +1402,24 @@ legend {
 
 .brief-progress {
   position: relative;
+  z-index: 1;
+  grid-area: brief-progress;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  margin: 0 0 20px;
-  padding: 0;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 22px 28px;
+  border-right: 1px solid rgba(41, 108, 123, 0.12);
   list-style: none;
 }
 
 .brief-progress::before {
   position: absolute;
-  top: 11px;
-  right: 12%;
-  left: 12%;
-  height: 1px;
+  top: 24px;
+  bottom: 42px;
+  left: 33px;
+  width: 1px;
   background: rgba(41, 108, 123, 0.18);
   content: "";
 }
@@ -1386,23 +1427,29 @@ legend {
 .brief-progress li {
   position: relative;
   display: grid;
-  justify-items: center;
-  gap: 7px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
 }
 
 .brief-progress li::before {
   z-index: 1;
+  grid-column: 1;
   width: 22px;
   height: 22px;
   border: 1px solid rgba(41, 108, 123, 0.24);
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 0 0 5px #ffffff;
+  background: #fbfcfa;
+  box-shadow: 0 0 0 5px rgba(251, 252, 250, 0.92);
   content: "";
+}
+
+.brief-progress li span {
+  grid-column: 2;
 }
 
 .brief-progress li[data-complete="true"]::before {
@@ -1422,7 +1469,7 @@ legend {
 .brief-stage-panel {
   display: grid;
   gap: 14px;
-  max-width: 850px;
+  max-width: 880px;
 }
 
 .brief-stage-panel[hidden] {
@@ -1432,8 +1479,11 @@ legend {
 .brief-stage-message {
   display: grid;
   gap: 4px;
-  padding: 0 0 2px 15px;
-  border-left: 3px solid var(--aqua);
+  max-width: 640px;
+  padding: 14px 16px;
+  border: 1px solid rgba(41, 108, 123, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.68);
 }
 
 .brief-stage-message strong {
@@ -1452,19 +1502,33 @@ legend {
 .brief-back {
   width: fit-content;
   min-height: 44px;
-  padding: 8px 2px;
-  border: 0;
-  border-bottom: 1px solid transparent;
-  border-radius: 0;
-  background: transparent;
+  padding: 10px 14px;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
   color: var(--petrol);
   font: 700 0.79rem/1.2 "Ubuntu Local", Arial, sans-serif;
   cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
 }
 
 .brief-skip:hover,
 .brief-back:hover {
-  border-bottom-color: currentColor;
+  border-color: rgba(41, 108, 123, 0.34);
+  background: #ffffff;
+  color: var(--blue);
+  transform: translateY(-1px);
+}
+
+.brief-secondary-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .recipe-brief[data-brief-stage="ready"] .brief-main {
@@ -1541,10 +1605,13 @@ legend {
 }
 
 .brief-advanced {
-  margin-top: 12px;
-  border: 1px solid rgba(41, 108, 123, 0.16);
-  border-radius: var(--radius-small);
-  background: rgba(255, 255, 255, 0.68);
+  position: relative;
+  z-index: 1;
+  grid-area: brief-advanced;
+  margin: 0 32px 28px;
+  border: 1px solid rgba(41, 108, 123, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .brief-advanced summary {
@@ -1553,7 +1620,7 @@ legend {
   justify-content: space-between;
   gap: 12px;
   min-height: 48px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   color: var(--petrol);
   cursor: pointer;
   font-size: 0.82rem;
@@ -1589,12 +1656,13 @@ legend {
 .brief-field input {
   width: 100%;
   min-height: 46px;
-  padding: 13px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 14px;
-  background: var(--paper-soft);
+  padding: 15px 16px;
+  border: 1px solid rgba(41, 108, 123, 0.22);
+  border-radius: 18px;
+  background: rgba(251, 252, 250, 0.84);
   color: var(--ink);
   font: 0.9rem/1.5 "Ubuntu Local", Arial, sans-serif;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 .brief-field textarea:focus,
@@ -1605,7 +1673,7 @@ legend {
 }
 
 .brief-field textarea {
-  min-height: 96px;
+  min-height: 112px;
   resize: vertical;
 }
 
@@ -1619,15 +1687,16 @@ legend {
 
 .brief-actions button {
   min-height: 48px;
-  padding: 11px 16px;
+  padding: 12px 18px;
   border: 1px solid var(--petrol);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--petrol);
   color: #ffffff;
   font-size: 0.84rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  box-shadow: 0 12px 26px rgba(20, 63, 73, 0.16);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 
 .brief-actions button:disabled,
@@ -1644,8 +1713,10 @@ legend {
 }
 
 .brief-actions button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(35, 100, 140, 0.12);
+  border-color: #0f3f49;
+  background: #0f3f49;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(20, 63, 73, 0.2);
 }
 
 .brief-actions button:active {
@@ -1659,9 +1730,13 @@ legend {
 }
 
 .brief-result {
-  padding: 20px 0 0;
-  border-top: 1px solid rgba(41, 108, 123, 0.18);
-  background: transparent;
+  position: relative;
+  padding: 22px;
+  border: 1px solid rgba(41, 108, 123, 0.14);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(251, 252, 250, 0.62)),
+    radial-gradient(circle at 100% 0, rgba(217, 170, 143, 0.18), transparent 34%);
 }
 
 .brief-result strong,
@@ -1682,7 +1757,8 @@ legend {
   margin-bottom: 6px;
   color: var(--ink);
   font-family: "Literata Local", Georgia, serif;
-  font-size: 1.12rem;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.16;
 }
 
 .brief-result p {
@@ -1694,14 +1770,22 @@ legend {
 
 .brief-result__action {
   min-height: 44px;
-  padding: 9px 13px;
+  padding: 10px 15px;
   border: 1px solid var(--petrol);
-  border-radius: var(--radius-small);
+  border-radius: 12px;
   background: var(--petrol);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 12px 24px rgba(20, 63, 73, 0.15);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.brief-result__action:hover {
+  background: #0f3f49;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(20, 63, 73, 0.2);
 }
 
 .brief-result__actions {
@@ -1712,35 +1796,44 @@ legend {
 
 .brief-result__secondary {
   min-height: 44px;
-  padding: 9px 13px;
+  padding: 10px 15px;
   border: 1px solid rgba(41, 108, 123, 0.24);
-  border-radius: var(--radius-small);
-  background: #ffffff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
   color: var(--petrol);
   font: 700 0.8rem/1.2 "Ubuntu Local", Arial, sans-serif;
   cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.brief-result__secondary:hover {
+  border-color: rgba(41, 108, 123, 0.42);
+  background: #ffffff;
+  transform: translateY(-1px);
 }
 
 .brief-result__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 10px;
   margin-top: 18px;
-  border-top: 1px solid rgba(41, 108, 123, 0.14);
+  border-top: 0;
 }
 
 .brief-result__grid div {
   min-height: 68px;
-  padding: 13px 16px 10px 0;
-  border-right: 1px solid rgba(41, 108, 123, 0.12);
+  padding: 13px 14px 12px;
+  border: 1px solid rgba(41, 108, 123, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .brief-result__grid div + div {
-  padding-left: 16px;
+  padding-left: 14px;
 }
 
 .brief-result__grid div:last-child {
-  border-right: 0;
+  border-right: 1px solid rgba(41, 108, 123, 0.1);
 }
 
 .brief-result__grid span {
@@ -2573,6 +2666,10 @@ legend {
 }
 
 @media (max-width: 1100px) {
+  .recipe-brief {
+    grid-template-columns: minmax(170px, 200px) minmax(0, 1fr);
+  }
+
   .studio-layout {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -2826,6 +2923,65 @@ legend {
     margin-left: 14px;
   }
 
+  .recipe-brief {
+    display: block;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .recipe-brief::before {
+    display: none;
+  }
+
+  .recipe-brief__header {
+    display: block;
+    margin-bottom: 14px;
+    padding: 0;
+    border-right: 0;
+    background: transparent;
+  }
+
+  .recipe-brief__header p {
+    max-width: 62ch;
+  }
+
+  .brief-progress {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin: 0 0 18px;
+    padding: 0;
+    border-right: 0;
+    background: transparent;
+  }
+
+  .brief-progress::before {
+    top: 11px;
+    right: 12%;
+    bottom: auto;
+    left: 12%;
+    width: auto;
+    height: 1px;
+  }
+
+  .brief-progress li {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 7px;
+    text-align: center;
+  }
+
+  .brief-progress li span {
+    grid-column: 1;
+  }
+
+  .brief-workspace {
+    padding: 0;
+  }
+
+  .brief-advanced {
+    margin: 12px 0 0;
+  }
+
   .recipe__heading {
     display: block;
     padding: 14px 16px;
@@ -2850,10 +3006,6 @@ legend {
     margin-top: 8px;
   }
 
-  .brief-workspace {
-    grid-template-columns: 1fr;
-  }
-
   .recipe-path {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2867,7 +3019,6 @@ legend {
     padding: 26px 20px 30px;
   }
 
-  .recipe-brief__header,
   .brief-fields {
     display: block;
   }
@@ -3436,10 +3587,13 @@ legend {
                         <textarea id="brief-copy" placeholder="Cole aqui tudo que você tem: tema do roteiro, mensagem do WhatsApp, texto do anúncio, oferta, dor, descrição de print ou pauta que vai virar peça."></textarea>
                       </label>
                       <div class="brief-actions brief-actions--primary">
-                        <button type="button" id="copy-diagnostic">Copiar pedido para o GPT</button>
-                        <small>Cole no GPT. Ele devolve a direção estruturada para o painel preparar a receita.</small>
+                        <button type="button" id="copy-diagnostic">Copiar orientação para o GPT</button>
+                        <small>Cole no GPT uma vez. Ele devolve a direção estruturada para o painel montar materiais e prompts.</small>
                       </div>
-                      <button class="brief-skip" type="button" id="show-brief-map">Já organizei no GPT</button>
+                      <div class="brief-secondary-flow">
+                        <span>Já fez essa etapa?</span>
+                        <button class="brief-skip" type="button" id="show-brief-map">Colar resposta do GPT</button>
+                      </div>
                     </div>
                     <div class="brief-stage-panel" id="brief-map-panel" hidden>
                       <div class="brief-stage-message" id="brief-stage-status" role="status">
@@ -3572,12 +3726,12 @@ legend {
     </section>
 
 
-        <section class="section" id="versao-online" aria-labelledby="online-title">
+        <section class="section" id="versao-online" data-view="arquivos" aria-labelledby="online-title">
           <div class="shell">
             <div class="section-heading">
-              <p class="eyebrow">Bases reais</p>
-              <h2 id="online-title">Uso controlado por receita</h2>
-              <p>As bases de antes/depois aparecem quando a rota pede esse tipo de criativo. Use sempre Story com Story e Feed com Feed, escolhendo corpo protegido ou protocolo conforme o objetivo da peça.</p>
+              <p class="eyebrow">Base privada</p>
+              <h2 id="online-title">Antes/depois só entra quando a receita pedir</h2>
+              <p>As imagens reais não são enfeite da biblioteca. Elas entram apenas na rota de antes/depois estratégico, usando Story com Story e Feed com Feed, com corpo protegido ou protocolo conforme o objetivo da peça.</p>
             </div>
           </div>
         </section>
@@ -6593,7 +6747,7 @@ Agora siga os prompts da receita na ordem.`;
     const stageLabel = byId("recipe-stage-label");
     if (diagnosticButton) {
       diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
-      diagnosticButton.textContent = "Copiar pedido para o GPT";
+      diagnosticButton.textContent = "Copiar orientação para o GPT";
     }
     if (briefButton) {
       briefButton.dataset.briefText = buildBriefText(recipe);
