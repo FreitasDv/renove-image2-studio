@@ -2386,6 +2386,27 @@ legend {
   font-size: 0.88rem;
 }
 
+.library-context--private {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.42fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin-top: -18px;
+  border-left-color: var(--clay);
+  background:
+    linear-gradient(90deg, rgba(217, 170, 143, 0.14), rgba(229, 241, 238, 0.62)),
+    var(--paper-soft);
+}
+
+.library-context--private strong {
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.library-context--private span {
+  line-height: 1.45;
+}
+
 .library-toolbar {
   display: flex;
   align-items: flex-end;
@@ -3139,6 +3160,11 @@ legend {
     min-height: 82px;
   }
 
+  .library-context--private {
+    grid-template-columns: 1fr;
+    margin-top: -8px;
+  }
+
   .search-field {
     width: 100%;
   }
@@ -3756,22 +3782,15 @@ legend {
       </div>
     </section>
 
-
-        <section class="section" id="versao-online" data-view="arquivos" aria-labelledby="online-title">
-          <div class="shell">
-            <div class="section-heading">
-              <p class="eyebrow">Base privada</p>
-              <h2 id="online-title">Antes/depois só entra quando a receita pedir</h2>
-              <p>As imagens reais não são enfeite da biblioteca. Elas entram apenas na rota de antes/depois estratégico, usando Story com Story e Feed com Feed, com corpo protegido ou protocolo conforme o objetivo da peça.</p>
-            </div>
-          </div>
-        </section>
-
     <section class="section" id="arquivos" data-view="arquivos" aria-labelledby="library-title">
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div><p class="eyebrow">Biblioteca</p><h2 id="library-title">Materiais de criação</h2></div>
           <p>Arquivos é consulta. Para produzir, volte em Produzir e deixe a receita escolher só o conjunto certo.</p>
+        </div>
+        <div class="library-context library-context--private" id="versao-online">
+          <strong>Antes/depois só entra quando a receita pedir.</strong>
+          <span>As imagens reais não são enfeite da biblioteca. Use apenas na rota de antes/depois estratégico, sempre Story com Story e Feed com Feed.</span>
         </div>
 
         <div class="library-shortcuts" aria-label="Atalhos da biblioteca">
@@ -7191,14 +7210,23 @@ Agora siga os prompts da receita na ordem.`;
       .toLocaleLowerCase("pt-BR")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[\/_-]+/g, " ")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
       .replace(/\s+/g, " ");
-    const query = normalize(byId("library-search").value);
+    const rawQuery = byId("library-search").value;
+    const query = normalize(rawQuery);
+    const hasListSeparator = /[,;]/.test(rawQuery);
+    const tokens = query
+      .split(" ")
+      .filter((token) => token.length > 1 && !["de", "da", "do", "das", "dos", "em", "no", "na", "para", "com"].includes(token));
     const panel = document.querySelector(`[data-tab-panel="${activeTab}"]`);
     const items = [...panel.querySelectorAll("[data-library-item]")];
     let visible = 0;
     items.forEach((item) => {
-      const match = !query || normalize(item.dataset.search).includes(query);
+      const searchText = normalize(item.dataset.search);
+      const tokenMatch = hasListSeparator
+        ? tokens.some((token) => searchText.includes(token))
+        : tokens.every((token) => searchText.includes(token));
+      const match = !query || searchText.includes(query) || tokenMatch;
       item.hidden = !match;
       if (match) visible += 1;
     });
