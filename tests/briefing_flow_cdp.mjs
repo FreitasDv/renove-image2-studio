@@ -113,14 +113,19 @@ async function run() {
       "campos separados devem ficar escondidos como ajuste opcional",
     );
     assert.equal(
-      await page.getByRole("button", { name: /1\. Copiar organizador/i }).count(),
+      await page.getByRole("button", { name: /Copiar para organizar no GPT/i }).count(),
       1,
       "ação primária do passo 1 precisa estar explícita",
     );
     assert.equal(
-      await page.getByRole("button", { name: /2\. Copiar briefing final/i }).count(),
+      await page.getByRole("button", { name: /Cole o mapa para liberar o contexto/i }).count(),
       1,
-      "ação do prompt final precisa estar explícita",
+      "contexto do Image 2 deve ficar bloqueado até existir mapa aprovado",
+    );
+    assert.equal(
+      await page.locator("#copy-brief").isDisabled(),
+      true,
+      "botão de contexto não pode funcionar antes da volta do GPT",
     );
     assert.equal(
       await page.locator("details.setup").count(),
@@ -198,12 +203,11 @@ async function run() {
     );
     assert.match(
       await page.locator("#brief-result").innerText(),
-      /Copie o briefing final/i,
+      /Copie o contexto para o Image 2/i,
       "depois do mapa, a próxima ação precisa ficar explícita na própria tela",
     );
-    assert.equal(
-      await page.getByRole("button", { name: /Copiar briefing final agora/i }).count(),
-      1,
+    assert(
+      await page.getByRole("button", { name: /Copiar contexto para o Image 2/i }).count() >= 1,
       "o estado de mapa recebido precisa oferecer o botão certo sem obrigar a procurar na tela",
     );
     assert.equal(
@@ -212,9 +216,14 @@ async function run() {
       "depois da volta do GPT, o selo do briefing deve mostrar progresso real",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Refazer organizador/i }).count(),
+      await page.getByRole("button", { name: /Refazer mapa no GPT/i }).count(),
       1,
       "depois da volta do GPT, o organizador deve virar ação de refazer, não primeiro passo",
+    );
+    assert.equal(
+      await page.locator("#copy-brief").isDisabled(),
+      false,
+      "mapa aprovado precisa liberar o contexto do Image 2",
     );
     assert.equal(
       await page.locator("#brief-headline").inputValue(),
@@ -233,7 +242,8 @@ async function run() {
     );
 
     const finalPrompt = await page.locator("#copy-brief").evaluate((button) => button.dataset.briefText);
-    assert.match(finalPrompt, /BRIEFING FINAL RENOVE/i);
+    assert.match(finalPrompt, /CONTEXTO DA PEÇA RENOVE/i);
+    assert.match(finalPrompt, /COLE NO IMAGE 2 ANTES DOS PROMPTS DA RECEITA/i);
     assert.match(finalPrompt, /MAPA APROVADO PELO GPT/i);
     assert.match(finalPrompt, /O que sustenta o resultado/i);
     assert.match(finalPrompt, /Story e Feed são peças irmãs/i);

@@ -1272,9 +1272,45 @@ legend {
 
 .brief-flow {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 8px;
-  margin: 14px 0 0;
+  align-content: start;
+  margin: 0;
+}
+
+.brief-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.brief-main {
+  min-width: 0;
+}
+
+.brief-guide {
+  display: grid;
+  gap: 10px;
+  padding: 13px;
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.brief-guide__title {
+  margin: 0;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.brief-guide__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.42;
 }
 
 .brief-step {
@@ -1282,11 +1318,11 @@ legend {
   grid-template-columns: auto minmax(0, 1fr);
   gap: 8px;
   align-items: start;
-  min-height: 74px;
+  min-height: 0;
   padding: 11px 12px;
   border: 1px solid rgba(41, 108, 123, 0.16);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(251, 252, 250, 0.78);
 }
 
 .brief-step b {
@@ -1379,6 +1415,13 @@ legend {
   font: 0.86rem/1.45 "Ubuntu Local", Arial, sans-serif;
 }
 
+.brief-field textarea:focus,
+.brief-field input:focus {
+  outline: 3px solid rgba(165, 214, 207, 0.42);
+  border-color: rgba(41, 108, 123, 0.58);
+  box-shadow: 0 0 0 1px rgba(41, 108, 123, 0.12);
+}
+
 .brief-field textarea {
   min-height: 118px;
   resize: vertical;
@@ -1402,6 +1445,14 @@ legend {
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.brief-actions button:disabled,
+.brief-result__action:disabled {
+  border-color: rgba(96, 96, 96, 0.24);
+  background: rgba(96, 96, 96, 0.14);
+  color: rgba(26, 26, 46, 0.58);
+  cursor: not-allowed;
 }
 
 .brief-actions button.secondary-action {
@@ -2588,6 +2639,10 @@ legend {
     margin-top: 8px;
   }
 
+  .brief-workspace {
+    grid-template-columns: 1fr;
+  }
+
   .recipe-path {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2604,10 +2659,6 @@ legend {
   .recipe-brief__header,
   .brief-fields {
     display: block;
-  }
-
-  .brief-flow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .brief-result__grid {
@@ -3161,27 +3212,35 @@ legend {
                   </div>
                   <span class="recipe-brief__badge" id="brief-flow-badge">Ideia vira mapa</span>
                 </div>
-                <div class="brief-fields">
-                  <label class="brief-field" for="brief-copy">
-                    <span>Ideia inteira da peça</span>
-                    <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira. Ex.: tema do roteiro, texto do anúncio, oferta, dor, observação do WhatsApp, print descrito ou pauta que vai virar peça."></textarea>
-                  </label>
-                  <div class="brief-actions brief-actions--primary">
-                    <button type="button" id="copy-diagnostic">1. Copiar organizador</button>
-                    <small>Primeiro passo. Ele transforma a ideia em headline, subheadline, CTA, risco, anexos e arquitetura visual.</small>
+                <div class="brief-workspace">
+                  <div class="brief-main">
+                    <div class="brief-fields">
+                      <label class="brief-field" for="brief-copy">
+                        <span>Ideia inteira da peça</span>
+                        <textarea id="brief-copy" placeholder="Cole aqui a ideia inteira. Ex.: tema do roteiro, texto do anúncio, oferta, dor, observação do WhatsApp, print descrito ou pauta que vai virar peça."></textarea>
+                      </label>
+                      <div class="brief-actions brief-actions--primary">
+                        <button type="button" id="copy-diagnostic">Copiar para organizar no GPT</button>
+                        <small>Cole esse prompt no GPT. Ele devolve um mapa limpo para o painel montar a peça sem perder estratégia.</small>
+                      </div>
+                      <label class="brief-field" for="brief-map">
+                        <span>Resposta do GPT: mapa aprovado</span>
+                        <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Depois disso, o contexto do Image 2 será liberado."></textarea>
+                      </label>
+                    </div>
+                    <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                   </div>
-                  <label class="brief-field" for="brief-map">
-                    <span>Mapa aprovado pelo GPT</span>
-                    <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Sem esse mapa, o prompt final pode ficar fraco ou genérico."></textarea>
-                  </label>
+                  <aside class="brief-guide" aria-label="Como usar o briefing assistido">
+                    <p class="brief-guide__title">O que acontece aqui</p>
+                    <p class="brief-guide__note">O GPT organiza a ideia. O Image 2 recebe o contexto já aprovado e depois os prompts da receita.</p>
+                    <div class="brief-flow" aria-label="Fluxo do briefing assistido">
+                      <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
+                      <div class="brief-step"><b>2</b><div><span>Organize no GPT</span><small>Use o prompt organizador. Ainda não gere imagem.</small></div></div>
+                      <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Volte com a resposta do GPT para este painel.</small></div></div>
+                      <div class="brief-step"><b>4</b><div><span>Gere no Image 2</span><small>Copie o contexto, anexe materiais e siga os prompts.</small></div></div>
+                    </div>
+                  </aside>
                 </div>
-                <div class="brief-flow" aria-label="Fluxo do briefing assistido">
-                  <div class="brief-step"><b>1</b><div><span>Cole a ideia</span><small>Pode vir bagunçada, longa ou em bloco único.</small></div></div>
-                  <div class="brief-step"><b>2</b><div><span>Copie o organizador</span><small>Cole no ChatGPT antes de gerar imagem.</small></div></div>
-                  <div class="brief-step"><b>3</b><div><span>Cole o mapa</span><small>Volte com a resposta do GPT.</small></div></div>
-                  <div class="brief-step"><b>4</b><div><span>Use a receita</span><small>Baixe anexos e copie prompts em ordem.</small></div></div>
-                </div>
-                <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                 <details class="brief-advanced">
                   <summary>
                     <span>Ajustes manuais opcionais</span>
@@ -3215,8 +3274,8 @@ legend {
                   </div>
                 </details>
                 <div class="brief-actions">
-                  <button type="button" id="copy-brief">2. Copiar briefing final</button>
-                  <small id="brief-helper">Cole o mapa aprovado antes. Este botão prepara a peça; a imagem vem depois, nos prompts da receita.</small>
+                  <button type="button" id="copy-brief" disabled>Cole o mapa para liberar o contexto</button>
+                  <small id="brief-helper">Depois que o mapa voltar do GPT, este botão copia o contexto que abre a geração no Image 2.</small>
                 </div>
               </div>
 
@@ -5544,7 +5603,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       view: "#produzir",
       selector: "[data-tour='brief']",
       title: "Cole a ideia aqui",
-      body: "Roteiro, copy solta, tema, print descrito ou mensagem do WhatsApp entram aqui. O organizador transforma isso em mapa antes do prompt final.",
+      body: "Roteiro, copy solta, tema, print descrito ou mensagem do WhatsApp entram aqui. O organizador transforma isso em mapa antes da geração.",
     },
     {
       view: "#produzir",
@@ -6075,7 +6134,7 @@ Se esta receita pedir base real, use a base anexada como material de edição, p
       : `Regra de imagem e referência:
 Se usar foto, print de anúncio ou material externo, trate como referência de direção, composição ou cena. Não invente resultado, paciente, depoimento, prova clínica ou autorização. Se a foto real for essencial, peça confirmação antes de gerar.`;
 
-    return `BRIEFING FINAL RENOVE — USE ANTES DOS PROMPTS DA RECEITA
+    return `CONTEXTO DA PEÇA RENOVE — COLE NO IMAGE 2 ANTES DOS PROMPTS DA RECEITA
 
 Objetivo: ${workflow}
 Formato: ${format}
@@ -6152,9 +6211,9 @@ Agora siga os prompts da receita na ordem.`;
     const cta = extracted.cta || byId("brief-cta")?.value.trim() || "Use o CTA aprovado no mapa.";
     root.hidden = false;
     root.innerHTML = `
-      <strong>Mapa recebido. O painel já preparou a próxima etapa.</strong>
-      <p>Copie o briefing final e cole no mesmo chat do GPT. Depois anexe os materiais da receita e comece por: ${escapeHtml(firstPrompt)}.</p>
-      <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar briefing final agora</button>
+      <strong>Mapa recebido. Agora a geração já pode começar.</strong>
+      <p>Copie o contexto para o Image 2, anexe os materiais da receita e depois comece por: ${escapeHtml(firstPrompt)}.</p>
+      <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar contexto para o Image 2</button>
       <div class="brief-result__grid" aria-label="Texto extraído do mapa aprovado">
         <div><span>Headline</span><small>${escapeHtml(headline)}</small></div>
         <div><span>Subheadline</span><small>${escapeHtml(subheadline)}</small></div>
@@ -6170,19 +6229,22 @@ Agora siga os prompts da receita na ordem.`;
     const mapReady = hasApprovedMap();
     badge.textContent = mapReady ? "Mapa recebido" : currentFormatLabel();
     helper.textContent = mapReady
-      ? "Mapa recebido. Copie o briefing final, cole no mesmo chat do GPT e depois siga os anexos e prompts da receita abaixo."
+      ? "Cole este contexto no Image 2 antes dos prompts da receita. Ele leva a ideia, o mapa aprovado, as travas de copy e os cuidados de formato."
       : state.workflow === "before-after"
-      ? "Cole a ideia, organize o mapa, localize a base privada indicada, anexe somente os materiais da receita e use os prompts em ordem."
-      : "Cole a ideia, organize no GPT, cole o mapa aprovado aqui, copie o briefing final e depois use os prompts da receita em ordem.";
+      ? "Primeiro organize a ideia no GPT e cole o mapa aprovado aqui. Só depois anexe a base privada indicada pela receita."
+      : "Primeiro organize a ideia no GPT e cole o mapa aprovado aqui. O contexto do Image 2 será liberado depois disso.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
     if (diagnosticButton) {
       diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
-      diagnosticButton.textContent = mapReady ? "Refazer organizador" : "1. Copiar organizador";
+      diagnosticButton.textContent = mapReady ? "Refazer mapa no GPT" : "Copiar para organizar no GPT";
     }
     if (briefButton) {
       briefButton.dataset.briefText = buildBriefText(recipe);
-      briefButton.textContent = mapReady ? "2. Copiar briefing final para o GPT" : "2. Copiar briefing final";
+      briefButton.disabled = !mapReady;
+      briefButton.textContent = mapReady ? "Copiar contexto para o Image 2" : "Cole o mapa para liberar o contexto";
+      const actionRow = briefButton.closest(".brief-actions");
+      if (actionRow) actionRow.hidden = mapReady;
     }
     renderBriefResult(recipe);
   }
@@ -6505,8 +6567,8 @@ Agora siga os prompts da receita na ordem.`;
       const original = button.textContent;
       try {
         const copied = await copyText(button.dataset.briefText || buildBriefText(buildRecipe()));
-        button.textContent = copied ? "Prompt final copiado" : "Prompt final selecionado";
-        announce(copied ? "Prompt final copiado." : "O prompt final foi selecionado para cópia manual.");
+        button.textContent = copied ? "Contexto copiado" : "Contexto selecionado";
+        announce(copied ? "Contexto do Image 2 copiado." : "O contexto do Image 2 foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
@@ -6521,8 +6583,8 @@ Agora siga os prompts da receita na ordem.`;
       try {
         const sourceButton = byId("copy-brief");
         const copied = await copyText(sourceButton?.dataset.briefText || buildBriefText(buildRecipe()));
-        button.textContent = copied ? "Briefing copiado" : "Briefing selecionado";
-        announce(copied ? "Briefing final copiado." : "O briefing final foi selecionado para cópia manual.");
+        button.textContent = copied ? "Contexto copiado" : "Contexto selecionado";
+        announce(copied ? "Contexto do Image 2 copiado." : "O contexto do Image 2 foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
