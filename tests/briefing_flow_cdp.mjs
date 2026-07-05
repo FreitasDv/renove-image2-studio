@@ -167,6 +167,48 @@ async function run() {
     ].join("\n");
     await page.locator("#brief-map").fill(approvedMap);
 
+    await page.locator("#brief-result").waitFor({ state: "visible" });
+    assert.match(
+      await page.locator("#brief-result").innerText(),
+      /Mapa recebido/i,
+      "ao colar o mapa aprovado, a tela precisa confirmar que entendeu a volta do GPT",
+    );
+    assert.match(
+      await page.locator("#brief-result").innerText(),
+      /Copie o briefing final/i,
+      "depois do mapa, a próxima ação precisa ficar explícita na própria tela",
+    );
+    assert.equal(
+      await page.getByRole("button", { name: /Copiar briefing final agora/i }).count(),
+      1,
+      "o estado de mapa recebido precisa oferecer o botão certo sem obrigar a procurar na tela",
+    );
+    assert.equal(
+      await page.getByText("Mapa recebido").count() >= 1,
+      true,
+      "depois da volta do GPT, o selo do briefing deve mostrar progresso real",
+    );
+    assert.equal(
+      await page.getByRole("button", { name: /Refazer organizador/i }).count(),
+      1,
+      "depois da volta do GPT, o organizador deve virar ação de refazer, não primeiro passo",
+    );
+    assert.equal(
+      await page.locator("#brief-headline").inputValue(),
+      "O que sustenta o resultado",
+      "mapa aprovado deve preencher a headline travada automaticamente",
+    );
+    assert.equal(
+      await page.locator("#brief-subheadline").inputValue(),
+      "avaliação, plano e acompanhamento de perto",
+      "mapa aprovado deve preencher a subheadline travada automaticamente",
+    );
+    assert.equal(
+      await page.locator("#brief-cta").inputValue(),
+      "Agende sua avaliação",
+      "mapa aprovado deve preencher o CTA travado automaticamente",
+    );
+
     const finalPrompt = await page.locator("#copy-brief").evaluate((button) => button.dataset.briefText);
     assert.match(finalPrompt, /BRIEFING FINAL RENOVE/i);
     assert.match(finalPrompt, /MAPA APROVADO PELO GPT/i);

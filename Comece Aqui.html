@@ -1356,6 +1356,77 @@ legend {
   line-height: 1.4;
 }
 
+.brief-result {
+  margin-top: 14px;
+  padding: 15px;
+  border: 1px solid rgba(41, 108, 123, 0.2);
+  border-left: 4px solid var(--petrol);
+  border-radius: var(--radius-small);
+  background:
+    linear-gradient(135deg, rgba(165, 214, 207, 0.22), rgba(255, 255, 255, 0.86)),
+    #ffffff;
+}
+
+.brief-result strong,
+.brief-result span,
+.brief-result small {
+  display: block;
+}
+
+.brief-result strong {
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+.brief-result p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.brief-result__action {
+  min-height: 44px;
+  margin: 0 0 12px;
+  padding: 9px 13px;
+  border: 1px solid var(--petrol);
+  border-radius: var(--radius-small);
+  background: var(--petrol);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brief-result__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.brief-result__grid div {
+  min-height: 58px;
+  padding: 10px 11px;
+  border: 1px solid rgba(41, 108, 123, 0.14);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.brief-result__grid span {
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.brief-result__grid small {
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
 .manual-asset > span,
 .recipe-asset span {
   color: var(--blue);
@@ -2408,6 +2479,10 @@ legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .brief-result__grid {
+    grid-template-columns: 1fr;
+  }
+
   .brief-locks {
     grid-template-columns: 1fr;
   }
@@ -2613,655 +2688,6 @@ legend {
   }
 }
 
-/* Premium product layer: visual polish without changing prompt logic or navigation contracts. */
-:root {
-  --premium-ink: #10242c;
-  --premium-petrol: #123f4b;
-  --premium-petrol-2: #1b5b68;
-  --premium-paper: #fbfcfa;
-  --premium-wash: #eef4f1;
-  --premium-edge: rgba(41, 108, 123, 0.18);
-  --premium-edge-strong: rgba(18, 63, 75, 0.28);
-  --premium-shadow-soft: 0 18px 46px rgba(18, 63, 75, 0.08);
-  --premium-shadow-lift: 0 26px 70px rgba(18, 63, 75, 0.14);
-  --premium-shadow-dark: 0 34px 90px rgba(9, 38, 46, 0.28);
-}
-
-body {
-  background:
-    linear-gradient(115deg, rgba(191, 211, 224, 0.20) 0%, transparent 32%),
-    linear-gradient(180deg, #f8faf7 0%, #edf3ef 42%, #fbfcfa 100%);
-}
-
-body::before {
-  opacity: 0.86;
-  background-image:
-    linear-gradient(90deg, rgba(18, 63, 75, 0.030) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(18, 63, 75, 0.022) 1px, transparent 1px),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
-  background-size: 84px 84px, 84px 84px, 180px 180px;
-}
-
-button,
-a,
-input,
-textarea,
-summary {
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-summary:focus-visible {
-  outline: 3px solid rgba(165, 214, 207, 0.82);
-  outline-offset: 3px;
-}
-
-.access-screen {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(18px, 4vw, 48px);
-  background:
-    linear-gradient(90deg, rgba(18, 63, 75, 0.98) 0 38%, rgba(237, 243, 239, 0.98) 38% 100%),
-    var(--premium-wash);
-}
-
-.access-screen::before,
-.access-screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.access-screen::before {
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.20), transparent 30%),
-    linear-gradient(315deg, rgba(217, 170, 143, 0.18), transparent 34%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 96px);
-}
-
-.access-screen::after {
-  inset: auto 0 0;
-  height: 42%;
-  background: linear-gradient(0deg, rgba(16, 36, 44, 0.10), transparent);
-}
-
-.access-card {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 930px);
-  min-height: 520px;
-  display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1fr);
-  align-items: stretch;
-  overflow: hidden;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  border-top: 0;
-  border-radius: 8px;
-  background: rgba(251, 252, 250, 0.94);
-  box-shadow: var(--premium-shadow-dark);
-}
-
-.access-card__brand {
-  grid-row: 1 / 3;
-  min-height: 100%;
-  margin: 0;
-  padding: 40px 34px;
-  display: grid;
-  align-content: space-between;
-  justify-items: start;
-  gap: 28px;
-  border: 0;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.07), transparent 42%),
-    linear-gradient(180deg, var(--premium-petrol), #0e333d);
-  color: #f7faf8;
-}
-
-.access-card__brand img {
-  width: 156px;
-  max-height: 56px;
-}
-
-.access-card__brand span {
-  max-width: 19ch;
-  padding: 14px 0 0;
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.76rem;
-  line-height: 1.45;
-}
-
-.access-card__brand::after {
-  content: "Briefing, anexos, prompts e revisão em um fluxo só.";
-  max-width: 24ch;
-  color: rgba(255, 255, 255, 0.86);
-  font-family: "Literata Local", Georgia, serif;
-  font-size: 1.28rem;
-  font-weight: 700;
-  line-height: 1.18;
-}
-
-.access-card__copy,
-.access-form {
-  grid-column: 2;
-}
-
-.access-card__copy {
-  padding: 50px 48px 12px;
-}
-
-.access-title {
-  max-width: 11ch;
-  color: var(--premium-ink);
-  font-size: clamp(2.25rem, 5vw, 3.45rem);
-}
-
-.access-card__copy p:last-child {
-  max-width: 38ch;
-  color: #4c5d62;
-  font-size: 0.98rem;
-}
-
-.access-form {
-  align-self: end;
-  padding: 0 48px 46px;
-  gap: 10px;
-}
-
-.access-form label,
-.brief-field span,
-.manual-asset > span,
-.recipe-asset span,
-.prompt-summary small,
-.library-kicker,
-.eyebrow,
-.section-index,
-.field-label {
-  letter-spacing: 0.01em;
-}
-
-.access-form input,
-.brief-field textarea,
-.brief-field input,
-.search-field input {
-  border-color: rgba(41, 108, 123, 0.22);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
-}
-
-.access-form input:focus,
-.brief-field textarea:focus,
-.brief-field input:focus,
-.search-field input:focus {
-  border-color: var(--premium-petrol-2);
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(165, 214, 207, 0.28);
-}
-
-.access-form button,
-.setup-recipe-jump,
-.recipe-copy-main,
-.brief-actions button,
-.prompt-actions button,
-.alternative button,
-.empty-state button,
-.text-action {
-  border-radius: 6px;
-}
-
-.access-form button {
-  margin-top: 12px;
-  background:
-    linear-gradient(135deg, var(--premium-petrol), var(--premium-petrol-2));
-  box-shadow: 0 16px 34px rgba(18, 63, 75, 0.20);
-}
-
-.access-form button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 20px 44px rgba(18, 63, 75, 0.25);
-}
-
-.site-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(18, 63, 75, 0.92);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 16px 42px rgba(7, 35, 43, 0.16);
-}
-
-.site-header__inner {
-  gap: 18px;
-}
-
-.brand {
-  min-width: 190px;
-}
-
-.brand img {
-  width: 120px;
-}
-
-.primary-nav {
-  gap: 6px;
-  padding: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.065);
-}
-
-.primary-nav a {
-  min-height: 42px;
-  padding: 9px 14px;
-  border: 0;
-  border-radius: 6px;
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.primary-nav a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-}
-
-.primary-nav a[aria-current="page"] {
-  background: #f7faf8;
-  color: var(--premium-petrol);
-  box-shadow: 0 10px 22px rgba(7, 35, 43, 0.18);
-}
-
-.tour-start,
-.access-logout {
-  min-height: 42px;
-  border-radius: 6px;
-}
-
-.tour-start:hover,
-.access-logout:hover,
-.recipe-copy-main:hover,
-.text-action:hover {
-  transform: translateY(-1px);
-}
-
-.intro {
-  padding-top: 46px;
-}
-
-.intro::before {
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--blue), var(--aqua), var(--clay), var(--petrol-2));
-}
-
-.workflow-switcher {
-  gap: 10px;
-  padding: 10px;
-  border: 1px solid var(--premium-edge);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(245, 247, 244, 0.74)),
-    rgba(251, 252, 250, 0.82);
-  box-shadow: var(--premium-shadow-soft);
-}
-
-.workflow-switcher button {
-  min-height: 112px;
-  padding: 20px 20px 36px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.52);
-}
-
-.workflow-switcher button:hover {
-  border-color: rgba(41, 108, 123, 0.18);
-  background: #ffffff;
-  transform: translateY(-1px);
-}
-
-.workflow-switcher button[aria-pressed="true"] {
-  border-color: rgba(41, 108, 123, 0.28);
-  background:
-    linear-gradient(145deg, rgba(165, 214, 207, 0.20), rgba(255, 255, 255, 0.96));
-  box-shadow:
-    inset 0 -3px 0 var(--petrol),
-    0 16px 32px rgba(18, 63, 75, 0.10);
-}
-
-.workflow-switcher button::after {
-  right: 14px;
-  bottom: 12px;
-  padding: 3px 0;
-}
-
-.setup,
-.recipe,
-.asset-card,
-.library-row,
-.tour-card,
-.recipe-brief,
-.brief-advanced,
-.manual-asset,
-.recipe-asset,
-.asset-guide-item {
-  border-radius: 8px;
-}
-
-.setup {
-  border: 1px solid var(--premium-edge);
-  border-top: 3px solid var(--clay);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(251, 252, 250, 0.78)),
-    rgba(251, 252, 250, 0.84);
-  box-shadow: var(--premium-shadow-soft);
-}
-
-.setup__heading {
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.18), transparent 42%);
-}
-
-.choice-grid button,
-.choice-stack button,
-.visual-choices button {
-  border-color: rgba(41, 108, 123, 0.16);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.choice-grid button:hover,
-.choice-stack button:hover,
-.visual-choices button:hover {
-  border-color: rgba(41, 108, 123, 0.30);
-  background: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(18, 63, 75, 0.08);
-}
-
-.choice-grid button[aria-pressed="true"],
-.choice-stack button[aria-pressed="true"],
-.visual-choices button[aria-pressed="true"] {
-  border-color: rgba(18, 63, 75, 0.42);
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.24), rgba(255, 255, 255, 0.94));
-  box-shadow: inset 0 0 0 1px rgba(18, 63, 75, 0.08);
-}
-
-.recipe {
-  border: 1px solid var(--premium-edge);
-  background: rgba(251, 252, 250, 0.94);
-  box-shadow: var(--premium-shadow-lift);
-}
-
-.recipe__heading {
-  border-bottom: 0;
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.16), transparent 32%),
-    linear-gradient(180deg, var(--premium-petrol), #0f3540);
-}
-
-.recipe__heading::after {
-  right: 38px;
-  width: min(260px, 28%);
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--aqua), var(--clay));
-}
-
-.recipe-status {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.10);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11);
-}
-
-.recipe-copy-main {
-  border-color: rgba(255, 255, 255, 0.26);
-  background: #fbfcfa;
-  box-shadow: 0 12px 26px rgba(7, 35, 43, 0.16);
-}
-
-.recipe-path {
-  gap: 8px;
-  padding: 12px;
-  border-bottom: 1px solid var(--premium-edge);
-  background:
-    linear-gradient(180deg, rgba(245, 247, 244, 0.82), rgba(255, 255, 255, 0.60));
-}
-
-.recipe-path__item {
-  border: 1px solid rgba(41, 108, 123, 0.12);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.86);
-}
-
-.recipe-path__item:first-child {
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.30), rgba(255, 255, 255, 0.92));
-}
-
-.recipe-path__item span,
-.recipe-section__title > span,
-.prompt-number,
-.brief-step b {
-  box-shadow:
-    0 0 0 5px rgba(165, 214, 207, 0.12),
-    0 8px 18px rgba(18, 63, 75, 0.08);
-}
-
-.recipe-section {
-  background: rgba(255, 255, 255, 0.44);
-}
-
-.recipe-section:nth-child(even) {
-  background: rgba(245, 247, 244, 0.60);
-}
-
-.recipe-section + .recipe-section {
-  border-top-color: rgba(41, 108, 123, 0.12);
-}
-
-.recipe-brief {
-  border-color: rgba(41, 108, 123, 0.16);
-  background:
-    linear-gradient(135deg, rgba(165, 214, 207, 0.22), rgba(255, 255, 255, 0.90) 56%),
-    #ffffff;
-  box-shadow: 0 16px 34px rgba(18, 63, 75, 0.07);
-}
-
-.brief-step,
-.asset-guide-item,
-.recipe-asset,
-.asset-card,
-.library-row {
-  box-shadow: 0 10px 24px rgba(18, 63, 75, 0.055);
-}
-
-.recipe-asset {
-  border-color: rgba(41, 108, 123, 0.14);
-}
-
-.recipe-asset:hover,
-.asset-card:hover,
-.library-row:hover {
-  border-color: rgba(41, 108, 123, 0.30);
-  box-shadow: 0 18px 40px rgba(18, 63, 75, 0.10);
-  transform: translateY(-1px);
-}
-
-.recipe-asset__preview--document,
-.recipe-asset__preview--locked,
-.asset-card__image--document {
-  background:
-    linear-gradient(135deg, rgba(191, 211, 224, 0.50), rgba(165, 214, 207, 0.28)),
-    linear-gradient(180deg, #fbfcfa, #eef4f1);
-}
-
-.recipe-prompt details {
-  border-radius: 6px;
-}
-
-.recipe-prompt summary {
-  border-radius: 6px;
-}
-
-.recipe-prompt summary:hover {
-  background: rgba(165, 214, 207, 0.12);
-}
-
-.recipe-prompt details[open] {
-  background:
-    linear-gradient(180deg, #ffffff, rgba(245, 247, 244, 0.84));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
-}
-
-.summary-action {
-  border-radius: 999px;
-  background: rgba(35, 100, 140, 0.08);
-}
-
-.prompt-actions button,
-.prompt-actions a,
-.brief-actions button,
-.recipe-asset__actions a {
-  min-height: 44px;
-}
-
-.tour-spotlight {
-  border-color: rgba(165, 214, 207, 0.96);
-  box-shadow:
-    0 0 0 9999px rgba(8, 28, 34, 0.54),
-    0 0 0 6px rgba(251, 252, 250, 0.94),
-    0 24px 70px rgba(12, 32, 39, 0.24);
-}
-
-.tour-card {
-  border-color: rgba(41, 108, 123, 0.20);
-  border-top: 0;
-  background:
-    linear-gradient(145deg, #ffffff, #f6f8f5);
-  box-shadow: var(--premium-shadow-lift);
-}
-
-.tour-count {
-  width: fit-content;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: rgba(165, 214, 207, 0.18);
-}
-
-.asset-card {
-  background: rgba(251, 252, 250, 0.92);
-  box-shadow: var(--premium-shadow-soft);
-}
-
-.method-flow li {
-  border-color: rgba(255, 255, 255, 0.18);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.090), rgba(255, 255, 255, 0.032)),
-    rgba(255, 255, 255, 0.035);
-}
-
-@media (max-width: 900px) {
-  .access-screen {
-    overflow: auto;
-    background:
-      linear-gradient(180deg, var(--premium-petrol) 0 32%, rgba(237, 243, 239, 0.98) 32% 100%),
-      var(--premium-wash);
-  }
-
-  .access-card {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-
-  .access-card__brand,
-  .access-card__copy,
-  .access-form {
-    grid-column: 1;
-  }
-
-  .access-card__brand {
-    min-height: 190px;
-    padding: 28px;
-  }
-
-  .access-card__brand::after {
-    max-width: 28ch;
-    font-size: 1.05rem;
-  }
-
-  .access-card__copy {
-    padding: 30px 28px 10px;
-  }
-
-  .access-title {
-    max-width: 12ch;
-  }
-
-  .access-form {
-    padding: 0 28px 30px;
-  }
-
-  .primary-nav {
-    padding: 4px;
-    gap: 4px;
-  }
-
-  .primary-nav a {
-    padding-inline: 12px;
-  }
-}
-
-@media (max-width: 720px) {
-  .site-header__inner {
-    gap: 8px;
-  }
-
-  .primary-nav {
-    border-radius: 8px;
-  }
-
-  .workflow-switcher {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    overflow: visible;
-    scroll-snap-type: none;
-    padding: 8px;
-  }
-
-  .workflow-switcher button {
-    min-height: 112px;
-    padding: 16px 14px 34px;
-  }
-
-  .recipe-path {
-    padding: 10px;
-  }
-
-  .recipe__heading::after {
-    right: 20px;
-    width: 42%;
-  }
-}
-
-@media (max-width: 420px) {
-  .workflow-switcher {
-    grid-template-columns: 1fr;
-  }
-
-  .workflow-switcher button,
-  .workflow-switcher button:nth-child(2) {
-    min-height: 104px;
-  }
-}
-
 @media print {
   .site-header,
   .workflow-wrap,
@@ -3295,12 +2721,12 @@ summary:focus-visible {
     <div class="access-card">
       <div class="access-card__brand">
         <img src="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" alt="Renove Clinic">
-        <span>Produção assistida</span>
+        <span>Produção criativa</span>
       </div>
       <div class="access-card__copy">
         <p class="eyebrow">Acesso ao painel</p>
-        <div class="access-title" id="access-title">Creative OS Renove</div>
-        <p>Entre para transformar briefing, anexos e referências em peças Renove com Story, Feed e revisão orientados.</p>
+        <div class="access-title" id="access-title">Produção criativa Renove</div>
+        <p>Entre para consultar a primeira versão navegável dos prompts, anexos e caminhos de criação da Renove.</p>
       </div>
       <form class="access-form" id="access-form">
         <label for="access-user">Usuário</label>
@@ -3319,7 +2745,7 @@ summary:focus-visible {
     <div class="site-header__inner">
       <a class="brand" href="#produzir" aria-label="Renove · Produção de criativos">
         <img src="Anexos/Identidade/Logo%20clara%20para%20fundo%20escuro.png" alt="Renove Clinic">
-        <span>Produção assistida</span>
+        <span>Produção criativa</span>
       </a>
       <nav class="primary-nav" aria-label="Navegação principal">
         <a href="#produzir" data-view-link="produzir" aria-current="page">Produzir</a>
@@ -3662,6 +3088,7 @@ summary:focus-visible {
                     <textarea id="brief-map" placeholder="Cole aqui o mapa que o GPT devolver. Sem esse mapa, o prompt final pode ficar fraco ou genérico."></textarea>
                   </label>
                 </div>
+                <div class="brief-result" id="brief-result" hidden aria-live="polite"></div>
                 <details class="brief-advanced">
                   <summary>
                     <span>Ajustes manuais opcionais</span>
@@ -6315,6 +5742,81 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     return byId(id)?.value.trim() || fallback;
   }
 
+  function normalizeForMatch(value) {
+    return (value || "")
+      .toLocaleUpperCase("pt-BR")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function cleanMapValue(value) {
+    return (value || "")
+      .replace(/^["“”']+|["“”']+$/g, "")
+      .replace(/^\s*[-–—]\s*/, "")
+      .trim();
+  }
+
+  function readMapField(lines, labels) {
+    const normalizedLabels = labels.map(normalizeForMatch);
+    for (let index = 0; index < lines.length; index += 1) {
+      const rawLine = lines[index].trim();
+      const normalizedLine = normalizeForMatch(rawLine).replace(/^\d+\.\s*/, "");
+      const match = normalizedLabels.find((label) => normalizedLine.startsWith(`${label}:`) || normalizedLine === label);
+      if (!match) continue;
+      const colonIndex = rawLine.indexOf(":");
+      if (colonIndex >= 0 && rawLine.slice(colonIndex + 1).trim()) {
+        return cleanMapValue(rawLine.slice(colonIndex + 1));
+      }
+      const nextLine = lines.slice(index + 1).find((line) => line.trim());
+      return cleanMapValue(nextLine || "");
+    }
+    return "";
+  }
+
+  function extractApprovedMap() {
+    const map = byId("brief-map")?.value || "";
+    const lines = map.split(/\r?\n/);
+    return {
+      angle: readMapField(lines, ["Ângulo principal", "Angulo principal", "Ângulo", "Angulo"]),
+      headline: readMapField(lines, ["HEADLINE", "Headline"]),
+      subheadline: readMapField(lines, ["SUBHEADLINE", "Subheadline"]),
+      cta: readMapField(lines, ["CTA/OFERTA", "CTA", "Oferta"]),
+      footer: readMapField(lines, ["RODAPÉ/DISCLAIMER", "Rodapé/disclaimer", "RODAPE/DISCLAIMER", "Rodapé", "Rodape", "Disclaimer"]),
+      support: readMapField(lines, ["BLOCOS AUXILIARES", "Blocos auxiliares"]),
+    };
+  }
+
+  function hasApprovedMap() {
+    const map = byId("brief-map")?.value.trim() || "";
+    if (!map) return false;
+    const normalized = normalizeForMatch(map);
+    return normalized.includes("MAPA APROVADO") || normalized.includes("HEADLINE:") || normalized.includes("ANGULO PRINCIPAL");
+  }
+
+  function applyMapAutofill() {
+    if (!hasApprovedMap()) return;
+    const extracted = extractApprovedMap();
+    const targets = {
+      headline: "brief-headline",
+      subheadline: "brief-subheadline",
+      cta: "brief-cta",
+      footer: "brief-footer",
+      support: "brief-support",
+      angle: "brief-angle",
+    };
+    Object.entries(targets).forEach(([key, id]) => {
+      const field = byId(id);
+      const value = extracted[key];
+      if (!field || !value) return;
+      if (!field.value.trim() || field.dataset.autofilled === "true") {
+        field.value = value;
+        field.dataset.autofilled = "true";
+      }
+    });
+  }
+
   function currentForceLabel() {
     if (state.workflow === "before-after") return data.beforeLanes[state.beforeLane].label;
     return data.forces[state.force]?.label || "Controle pela receita";
@@ -6491,18 +5993,54 @@ Quando o prompt de geração estiver em inglês, mantenha a direção técnica e
 Agora siga os prompts da receita na ordem.`;
   }
 
+  function renderBriefResult(recipe) {
+    const root = byId("brief-result");
+    if (!root) return;
+    if (!hasApprovedMap()) {
+      root.hidden = true;
+      root.replaceChildren();
+      return;
+    }
+    const extracted = extractApprovedMap();
+    const firstPrompt = recipe.prompts[0]?.title || "primeiro prompt da receita";
+    const headline = extracted.headline || byId("brief-headline")?.value.trim() || "Use o texto aprovado no mapa.";
+    const subheadline = extracted.subheadline || byId("brief-subheadline")?.value.trim() || "Use o texto aprovado no mapa.";
+    const cta = extracted.cta || byId("brief-cta")?.value.trim() || "Use o CTA aprovado no mapa.";
+    root.hidden = false;
+    root.innerHTML = `
+      <strong>Mapa recebido. O painel já preparou a próxima etapa.</strong>
+      <p>Copie o briefing final e cole no mesmo chat do GPT. Depois anexe os materiais da receita e comece por: ${escapeHtml(firstPrompt)}.</p>
+      <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar briefing final agora</button>
+      <div class="brief-result__grid" aria-label="Texto extraído do mapa aprovado">
+        <div><span>Headline</span><small>${escapeHtml(headline)}</small></div>
+        <div><span>Subheadline</span><small>${escapeHtml(subheadline)}</small></div>
+        <div><span>CTA</span><small>${escapeHtml(cta)}</small></div>
+      </div>
+    `;
+  }
+
   function renderBrief(recipe) {
     const badge = byId("brief-flow-badge");
     const helper = byId("brief-helper");
     if (!badge || !helper) return;
-    badge.textContent = currentFormatLabel();
-    helper.textContent = state.workflow === "before-after"
+    const mapReady = hasApprovedMap();
+    badge.textContent = mapReady ? "Mapa recebido" : currentFormatLabel();
+    helper.textContent = mapReady
+      ? "Mapa recebido. Copie o briefing final, cole no mesmo chat do GPT e depois siga os anexos e prompts da receita abaixo."
+      : state.workflow === "before-after"
       ? "Cole a ideia, organize o mapa, localize a base privada indicada, anexe somente os materiais da receita e use os prompts em ordem."
       : "Cole a ideia, organize no GPT, cole o mapa aprovado aqui, copie o briefing final e depois use os prompts da receita em ordem.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
-    if (diagnosticButton) diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
-    if (briefButton) briefButton.dataset.briefText = buildBriefText(recipe);
+    if (diagnosticButton) {
+      diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
+      diagnosticButton.textContent = mapReady ? "Refazer organizador" : "1. Copiar organizador";
+    }
+    if (briefButton) {
+      briefButton.dataset.briefText = buildBriefText(recipe);
+      briefButton.textContent = mapReady ? "2. Copiar briefing final para o GPT" : "2. Copiar briefing final";
+    }
+    renderBriefResult(recipe);
   }
 
   function renderManualAssets(items) {
@@ -6782,8 +6320,16 @@ Agora siga os prompts da receita na ordem.`;
   }
 
   function bindBrief() {
-    ["brief-copy", "brief-map", "brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
-      byId(id)?.addEventListener("input", () => renderRecipe());
+    byId("brief-copy")?.addEventListener("input", () => renderRecipe());
+    byId("brief-map")?.addEventListener("input", () => {
+      applyMapAutofill();
+      renderRecipe();
+    });
+    ["brief-headline", "brief-subheadline", "brief-cta", "brief-footer", "brief-support", "brief-angle"].forEach((id) => {
+      byId(id)?.addEventListener("input", (event) => {
+        delete event.currentTarget.dataset.autofilled;
+        renderRecipe();
+      });
     });
     byId("copy-diagnostic")?.addEventListener("click", async (event) => {
       const button = event.currentTarget;
@@ -6806,6 +6352,22 @@ Agora siga os prompts da receita na ordem.`;
         const copied = await copyText(button.dataset.briefText || buildBriefText(buildRecipe()));
         button.textContent = copied ? "Prompt final copiado" : "Prompt final selecionado";
         announce(copied ? "Prompt final copiado." : "O prompt final foi selecionado para cópia manual.");
+      } catch {
+        button.textContent = "Tente copiar manualmente";
+      }
+      window.setTimeout(() => {
+        button.textContent = original;
+      }, 2200);
+    });
+    byId("brief-result")?.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-copy-brief-inline]");
+      if (!button) return;
+      const original = button.textContent;
+      try {
+        const sourceButton = byId("copy-brief");
+        const copied = await copyText(sourceButton?.dataset.briefText || buildBriefText(buildRecipe()));
+        button.textContent = copied ? "Briefing copiado" : "Briefing selecionado";
+        announce(copied ? "Briefing final copiado." : "O briefing final foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
