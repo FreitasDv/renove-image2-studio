@@ -1072,14 +1072,19 @@ legend {
   order: 5;
 }
 
-.recipe > .recipe-section {
+.recipe > .recipe-chat-rule {
   order: 6;
+}
+
+.recipe > .recipe-section {
+  order: 7;
 }
 
 .recipe:not([data-brief-stage="ready"]) > .workflow-wrap,
 .recipe:not([data-brief-stage="ready"]) > .setup,
 .recipe:not([data-brief-stage="ready"]) > .recipe__heading,
 .recipe:not([data-brief-stage="ready"]) > .recipe-path,
+.recipe:not([data-brief-stage="ready"]) > .recipe-chat-rule,
 .recipe:not([data-brief-stage="ready"]) > .recipe-section {
   display: none;
 }
@@ -1211,6 +1216,33 @@ legend {
 
 .recipe-path__item:first-child {
   background: linear-gradient(135deg, rgba(165, 214, 207, 0.26), #ffffff);
+}
+
+.recipe-chat-rule {
+  margin: 18px 38px 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(41, 108, 123, 0.18);
+  border-radius: var(--radius-medium);
+  background:
+    linear-gradient(135deg, rgba(165, 214, 207, 0.24), rgba(255, 255, 255, 0.82)),
+    #ffffff;
+}
+
+.recipe-chat-rule strong,
+.recipe-chat-rule span {
+  display: block;
+}
+
+.recipe-chat-rule strong {
+  color: var(--petrol);
+  font-size: 0.93rem;
+}
+
+.recipe-chat-rule span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .recipe-section {
@@ -3067,6 +3099,11 @@ legend {
     padding: 14px;
   }
 
+  .recipe-chat-rule {
+    margin: 14px 20px 0;
+    padding: 15px 16px;
+  }
+
   .recipe-section {
     padding: 26px 20px 30px;
   }
@@ -3644,22 +3681,22 @@ legend {
                         <textarea id="brief-copy" placeholder="Cole aqui tudo que você tem: tema do roteiro, mensagem do WhatsApp, texto do anúncio, oferta, dor, descrição de print ou pauta que vai virar peça."></textarea>
                       </label>
                       <div class="brief-actions brief-actions--primary">
-                        <button type="button" id="copy-diagnostic">Copiar orientação para o GPT</button>
-                        <small>Cole no GPT uma vez. Ele devolve a direção estruturada para o painel montar materiais e prompts.</small>
+                        <button type="button" id="copy-diagnostic">Copiar organizador para IA</button>
+                        <small>Cole no Claude ou ChatGPT. A IA devolve um mapa aprovado para o painel montar materiais e prompts.</small>
                       </div>
                       <div class="brief-secondary-flow">
                         <span>Já fez essa etapa?</span>
-                        <button class="brief-skip" type="button" id="show-brief-map">Colar resposta do GPT</button>
+                        <button class="brief-skip" type="button" id="show-brief-map">Colar mapa aprovado</button>
                       </div>
                     </div>
                     <div class="brief-stage-panel" id="brief-map-panel" hidden>
                       <div class="brief-stage-message" id="brief-stage-status" role="status">
-                        <strong>Cole a resposta do GPT abaixo.</strong>
+                        <strong>Cole o mapa aprovado abaixo.</strong>
                         <span>Não precisa recortar. O painel reconhece rota, formato, força, família visual, logo e copy.</span>
                       </div>
                       <label class="brief-field" for="brief-map">
-                        <span>Resposta completa do GPT</span>
-                        <textarea id="brief-map" placeholder="Cole aqui tudo que o GPT devolver. Não precisa recortar nem organizar."></textarea>
+                        <span>Mapa aprovado da peça</span>
+                        <textarea id="brief-map" placeholder="Cole aqui tudo que a IA devolver. Não precisa recortar nem organizar."></textarea>
                       </label>
                       <button class="brief-back" type="button" id="back-to-brief-idea">Voltar para a ideia</button>
                     </div>
@@ -3729,26 +3766,31 @@ legend {
               <div class="recipe-path" aria-label="Linha de produção da receita" data-tour="production-line">
                 <div class="recipe-path__item">
                   <span>1</span>
-                  <div><strong>Ideia</strong><small>Cole tudo no briefing assistido.</small></div>
+                  <div><strong>Ideia</strong><small>Organize no Claude ou ChatGPT.</small></div>
                 </div>
                 <div class="recipe-path__item">
                   <span>2</span>
-                  <div><strong>Materiais</strong><small>Baixe só a lista desta receita.</small></div>
+                  <div><strong>Anexos</strong><small>Envie uma vez no chat do Image 2.</small></div>
                 </div>
                 <div class="recipe-path__item">
                   <span>3</span>
-                  <div><strong>Prompts</strong><small>Copie um por vez, no mesmo chat.</small></div>
+                  <div><strong>Contexto</strong><small>Cole antes de gerar. Ele carrega copy e regras.</small></div>
                 </div>
                 <div class="recipe-path__item">
                   <span>4</span>
-                  <div><strong>Revisão</strong><small>Aprove, corrija ou reconstrua.</small></div>
+                  <div><strong>Geração</strong><small>Depois copie os prompts no mesmo chat.</small></div>
                 </div>
+              </div>
+
+              <div class="recipe-chat-rule" data-tour="same-chat-rule">
+                <strong>Regra simples: uma peça = um chat do Image 2.</strong>
+                <span>Anexe os arquivos listados uma vez, cole o contexto inicial e depois use os prompts em ordem. Os prompts de geração usam a copy e os anexos que já estão nesse mesmo chat.</span>
               </div>
 
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>1</span>
-                  <div><h3 id="recipe-assets-title">Baixe e anexe somente estes arquivos</h3><p>Esta lista é a fonte de verdade da peça atual. Arquivos é só biblioteca de consulta.</p></div>
+                  <div><h3 id="recipe-assets-title">Baixe e anexe uma vez no Image 2</h3><p>Faça isso antes de copiar o contexto inicial. Estes arquivos ficam disponíveis para todos os prompts deste chat.</p></div>
                 </div>
                 <div class="recipe-asset-guide" id="recipe-asset-guide" aria-live="polite"></div>
                 <div class="manual-assets" id="manual-assets"></div>
@@ -3758,7 +3800,7 @@ legend {
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>2</span>
-                  <div><h3 id="recipe-prompts-title">Use os prompts nesta ordem</h3><p>Copie um por vez no ChatGPT. Primeiro contexto sem gerar, depois geração. Story e Feed são composições próprias, não cortes automáticos.</p></div>
+                  <div><h3 id="recipe-prompts-title">Depois copie os prompts no mesmo chat</h3><p>O primeiro botão copia o contexto inicial. Ele não gera imagem: ele carrega copy, mapa, anexos e regras. Os prompts seguintes usam essa memória.</p></div>
                 </div>
                 <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
@@ -6648,8 +6690,15 @@ Direção visual: ${visual}
 Tema/copy de origem:
 "${copy}"
 
-MAPA APROVADO PELO GPT
+MAPA APROVADO PELA IA
 "${map}"
+
+ORDEM DE USO NO IMAGE 2
+- Use um chat do Image 2 para esta peça.
+- Antes deste contexto, anexe os arquivos listados na receita.
+- Depois de colar este contexto, não gere ainda se o próximo prompt da receita for de análise ou arquitetura.
+- Os prompts de geração e revisão dependem deste contexto e dos anexos já enviados no mesmo chat.
+- Se abrir outro chat, repita anexos + contexto inicial antes de gerar.
 
 TRAVAS MANUAIS OPCIONAIS
 Use estes campos só quando estiverem preenchidos com conteúdo real. Se estiverem genéricos ou vazios, priorize o mapa aprovado.
@@ -6714,14 +6763,14 @@ Agora siga os prompts da receita na ordem.`;
       },
       map: {
         kicker: "2. Volte com a direção",
-        title: "Cole aqui a resposta completa do GPT.",
+        title: "Cole aqui o mapa aprovado.",
         copy: "Essa resposta destrava a receita certa: rota, formato, força, anexos, família visual e prompts em ordem.",
         badge: "Aguardando direção",
       },
       ready: {
         kicker: "3. Gerar com receita",
         title: "Direção pronta. Agora use materiais e prompts.",
-        copy: "Baixe somente os anexos listados abaixo e copie os prompts na ordem. O contexto inicial já leva a ideia, a direção e as travas certas para o Image 2.",
+        copy: "Abra ou continue o chat da peça no Image 2. Anexe os materiais uma vez, cole o contexto inicial e depois use os prompts em ordem.",
         badge: "Receita pronta",
       },
     }[nextStage];
@@ -6770,7 +6819,7 @@ Agora siga os prompts da receita na ordem.`;
     root.innerHTML = `
       <span class="brief-result__eyebrow">Direção reconhecida</span>
       <strong>Pronto para começar no Image 2.</strong>
-      <p>${escapeHtml(direction)}. O painel já escolheu a receita e manteve a copy aprovada abaixo.</p>
+      <p>${escapeHtml(direction)}. Agora anexe os materiais da receita no chat do Image 2 e cole o contexto inicial antes de qualquer prompt de geração.</p>
       <div class="brief-result__actions">
         <button class="brief-result__action" type="button" data-copy-brief-inline>Copiar contexto inicial</button>
         <button class="brief-result__secondary" type="button" data-jump-to-materials>Ver materiais e prompts</button>
@@ -6791,17 +6840,17 @@ Agora siga os prompts da receita na ordem.`;
     if (mapReady) setBriefStage("ready");
     if (!mapReady) setBriefStage(briefStage);
     helper.textContent = mapReady
-      ? "O contexto inicial leva ao Image 2 a ideia, a direção aprovada, a copy e os cuidados de formato."
+      ? "No Image 2: anexe os materiais uma vez, cole o contexto inicial e siga os prompts no mesmo chat."
       : state.workflow === "before-after"
-      ? "Cole a ideia, prepare a direção no GPT e volte com a resposta. A base privada só aparece na receita certa."
-      : "Cole a ideia, prepare a direção no GPT e volte com a resposta. O painel organiza o restante.";
+      ? "Cole a ideia, organize no Claude ou ChatGPT e volte com o mapa aprovado. A base privada só aparece na receita certa."
+      : "Cole a ideia, organize no Claude ou ChatGPT e volte com o mapa aprovado. O painel organiza o restante.";
     const diagnosticButton = byId("copy-diagnostic");
     const briefButton = byId("copy-brief");
     const recipeButton = document.querySelector("[data-copy-first-prompt]");
     const stageLabel = byId("recipe-stage-label");
     if (diagnosticButton) {
       diagnosticButton.dataset.diagnosticText = buildCopyDiagnosticText(recipe);
-      diagnosticButton.textContent = "Copiar orientação para o GPT";
+      diagnosticButton.textContent = "Copiar organizador para IA";
     }
     if (briefButton) {
       briefButton.dataset.briefText = buildBriefText(recipe);
@@ -6851,12 +6900,16 @@ Agora siga os prompts da receita na ordem.`;
       : storyFeedNote();
     const items = [
       {
-        title: "Anexar no ChatGPT",
-        body: `${downloadable.length} arquivo${downloadable.length === 1 ? "" : "s"} baixável${downloadable.length === 1 ? "" : "eis"}${lockedBases.length ? ` + ${lockedBases.length} base privada indicada` : ""}.`,
+        title: "Quando anexar",
+        body: `Antes do contexto inicial: ${downloadable.length} arquivo${downloadable.length === 1 ? "" : "s"} baixável${downloadable.length === 1 ? "" : "eis"}${lockedBases.length ? ` + ${lockedBases.length} base privada indicada` : ""}.`,
       },
       {
-        title: recipe.manualAssets.length ? "Arquivo manual" : "Fonte de verdade",
-        body: manualText,
+        title: "O que os prompts usam",
+        body: "Todos os prompts usam os anexos e o contexto já enviados neste chat.",
+      },
+      {
+        title: recipe.manualAssets.length ? "Arquivo manual" : "Se abrir outro chat",
+        body: recipe.manualAssets.length ? manualText : "Repita anexos + contexto inicial antes de gerar.",
       },
       {
         title: "Regra do formato",
@@ -6902,7 +6955,7 @@ Agora siga os prompts da receita na ordem.`;
         ? "Use esta base somente nesta receita e neste formato."
         : info.role === "consulta"
         ? "Consulta: anexe apenas se a receita pedir."
-        : "Anexo desta receita: baixe e envie no ChatGPT.";
+        : "Anexo desta receita: baixe e envie no chat do Image 2 antes do contexto inicial.";
       article.innerHTML = `
         ${preview}
         <div>
@@ -7129,7 +7182,7 @@ Agora siga os prompts da receita na ordem.`;
       try {
         const copied = await copyText(button.dataset.diagnosticText || buildCopyDiagnosticText(buildRecipe()));
         button.textContent = copied ? "Direção copiada" : "Texto selecionado";
-        announce(copied ? "Pedido copiado. Cole no GPT e volte com a resposta." : "O pedido foi selecionado para cópia manual.");
+        announce(copied ? "Organizador copiado. Cole no Claude ou ChatGPT e volte com o mapa aprovado." : "O pedido foi selecionado para cópia manual.");
       } catch {
         button.textContent = "Tente copiar manualmente";
       }
