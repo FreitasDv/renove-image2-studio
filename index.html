@@ -3800,7 +3800,7 @@ legend {
               <div class="recipe-section">
                 <div class="recipe-section__title">
                   <span>2</span>
-                  <div><h3 id="recipe-prompts-title">Depois copie os prompts no mesmo chat</h3><p>O primeiro botão copia o contexto inicial. Ele não gera imagem: ele carrega copy, mapa, anexos e regras. Os prompts seguintes usam essa memória.</p></div>
+                  <div><h3 id="recipe-prompts-title">Depois copie os prompts no mesmo chat</h3><p>O primeiro botão copia o contexto inicial. Ele não gera imagem: ele carrega copy, mapa, anexos e regras. Quando a receita for Story, o Feed 4:5 já entra na sequência antes da correção.</p></div>
                 </div>
                 <div class="recipe-prompts" id="recipe-prompts" data-tour="recipe-prompts"></div>
               </div>
@@ -6245,6 +6245,16 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     return null;
   }
 
+  function addStoryToFeedStep(prompts, formatKey, file = "07 Adaptar para feed 4x5.txt") {
+    if (formatKey === "story") {
+      prompts.push(promptStep(file, "Versionar para Feed 4:5"));
+    }
+  }
+
+  function storyToFeedAssets(formatKey, extra = []) {
+    return formatKey === "story" ? [data.constants.feedGeometry, ...extra] : [];
+  }
+
   function logoAssets() {
     return data.logoModes[state.logoMode]?.assets || [];
   }
@@ -6260,7 +6270,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const surface = data.surfaces[state.surface];
     const force = data.forces[state.force];
     const visual = data.visuals[state.visual];
-    const assets = [...visual.assets, ...logoAssets(), geometryGuideFor(state.format)];
+    const assets = [...visual.assets, ...logoAssets(), geometryGuideFor(state.format), ...storyToFeedAssets(state.format)];
     const prompts = [
       promptStep("01 Contexto fixo Renove.txt", "Confirmar contexto"),
       promptStep("02 Contrato de saída.txt", "Travar a saída"),
@@ -6273,6 +6283,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       );
     } else {
       prompts.push(promptStep(visual.prompt, "Gerar a direção"));
+      addStoryToFeedStep(prompts, state.format);
       if (format.adaptPrompt) {
         prompts.push(promptStep(format.adaptPrompt, "Recompor o formato"));
       }
@@ -6299,12 +6310,14 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       data.constants.logoLight,
       ...logoAssets(),
       geometryGuideFor(state.format),
+      ...storyToFeedAssets(state.format),
     ];
     const prompts = [
       promptStep("01 Contexto fixo Renove.txt", "Confirmar marca e uso"),
       promptStep("10 Ler print de anúncio.txt", "Ler antes de adaptar"),
       promptStep("11 Adaptar print para Renove.txt", "Gerar a adaptação"),
     ];
+    addStoryToFeedStep(prompts, state.format);
     if (format.adaptPrompt) prompts.push(promptStep(format.adaptPrompt, "Recompor o formato"));
     prompts.push(promptStep("12 Corrigir comparando com print.txt", "Comparar e corrigir", true));
 
@@ -6327,8 +6340,9 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   function buildVersionRecipe() {
     const format = data.formats[state.format];
     const scope = data.versionScopes[state.versionScope];
-    const assets = [data.constants.master, data.constants.logoLight, ...logoAssets(), geometryGuideFor(state.format)];
+    const assets = [data.constants.master, data.constants.logoLight, ...logoAssets(), geometryGuideFor(state.format), ...storyToFeedAssets(state.format)];
     const prompts = [promptStep(data.constants.versionPrompt, "Declarar o que muda")];
+    addStoryToFeedStep(prompts, state.format);
     if (state.versionScope === "format" && format.adaptPrompt) {
       prompts.push(promptStep(format.adaptPrompt, "Recompor o formato"));
     }
@@ -6357,7 +6371,22 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const commercialForce = data.forces[state.force];
     const base = front.bases[state.beforeFormat];
     const generation = front.prompts[state.beforeLane][state.beforeFormat];
-    const assets = [data.constants.master, base, data.constants.logoLight, ...logoAssets(), geometryGuideFor(state.beforeFormat)];
+    const feedBase = front.bases.feed45;
+    const feedPrompt = front.prompts[state.beforeLane].feed45;
+    const assets = [
+      data.constants.master,
+      base,
+      data.constants.logoLight,
+      ...logoAssets(),
+      geometryGuideFor(state.beforeFormat),
+      ...storyToFeedAssets(state.beforeFormat, [feedBase]),
+    ];
+    const prompts = [
+      promptStep(front.context, "Confirmar a base"),
+      promptStep(generation, "Gerar a peça"),
+    ];
+    addStoryToFeedStep(prompts, state.beforeFormat, feedPrompt);
+    prompts.push(promptStep(data.constants.beforeRevision, "Corrigir se necessário", true));
 
     return {
       title: `${front.label} · ${lane.label} · ${format.label}`,
@@ -6370,11 +6399,7 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
           description: "Use Principal forte quando a imagem está controlada. Use Protegida quando corpo, promessa ou copy ficarem fortes. Se a comparação parecer agressiva demais, use a alternativa sem comparação corporal.",
         },
       ],
-      prompts: [
-        promptStep(front.context, "Confirmar a base"),
-        promptStep(generation, "Gerar a peça"),
-        promptStep(data.constants.beforeRevision, "Corrigir se necessário", true),
-      ],
+      prompts,
       alternative: {
         file: data.constants.clinicalCase,
         label: "Abrir alternativa sem comparação corporal",

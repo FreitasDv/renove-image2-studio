@@ -313,6 +313,30 @@ async function run() {
     assert.match(finalPrompt, /EXACT TEXT ON IMAGE/i);
     assert.match(finalPrompt, /Não invente preço, prova, resultado/i);
     assert.match(await page.locator("#recipe-status").innerText(), /materiais/i);
+    const promptRail = await page.evaluate(() => [...document.querySelectorAll(".recipe-prompt")]
+      .map((item) => ({
+        file: item.dataset.recipePrompt,
+        text: item.innerText,
+      })));
+    const storyPromptIndex = promptRail.findIndex((item) => /Story/i.test(item.text) && /Gerar a peça/i.test(item.text));
+    const feedPromptIndex = promptRail.findIndex((item) => /Versionar para Feed 4:5/i.test(item.text));
+    const correctionPromptIndex = promptRail.findIndex((item) => /Corrigir se necessário/i.test(item.text));
+    assert(
+      storyPromptIndex >= 0 && feedPromptIndex > storyPromptIndex && feedPromptIndex < correctionPromptIndex,
+      `receita Story deve oferecer Feed 4:5 antes da correção: ${JSON.stringify(promptRail)}`,
+    );
+    assert(
+      promptRail.some((item) => /Feed/i.test(item.text) && /principal forte/i.test(item.text)),
+      "antes/depois Story deve usar o prompt Feed específico da mesma frente, não só correção genérica",
+    );
+    assert(
+      await page.getByText(/(Corpo protegido|Protocolo) Feed 4:5/i).count() >= 1,
+      "antes/depois Story precisa listar a base Feed para a sequência no mesmo chat",
+    );
+    assert(
+      await page.getByText(/Geometria Feed 4:5 e 1:1/i).count() >= 1,
+      "Story precisa trazer a geometria Feed quando a receita inclui versionamento para Feed",
+    );
     assert(
       await page.getByText(/Base privada/i).count() >= 1,
       "base de antes/depois precisa aparecer como item privado, sem expor arquivo no link online",

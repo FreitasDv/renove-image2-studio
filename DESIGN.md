@@ -27,11 +27,14 @@ Aplicativo interno de produção assistida para usuário não técnico. A aparê
 3. Geração: anexar materiais uma vez no Image 2, colar contexto inicial e depois usar prompts na ordem.
 4. Revisão: aprovar, corrigir ou reconstruir sem reiniciar o processo.
 
+Regra de sequência: quando a receita for Story 9:16, o painel deve oferecer Feed 4:5 logo depois da geração Story, no mesmo chat e antes da correção. Esse é o fluxo operacional usado nas peças de ads e social: Story e Feed são peças irmãs, não cortes.
+
 ## Regras de UX
 
 - Uma ação primária por estado.
 - O sistema carrega informações adiante; nunca pede o mesmo dado duas vezes.
 - Uma peça usa um chat do Image 2: anexos primeiro, contexto inicial depois, prompts seguintes no mesmo chat.
+- Story 9:16 sempre mostra a continuação para Feed 4:5 na própria esteira de produção.
 - O usuário não precisa conhecer "briefing final", "diagnóstico" ou nomes de implementação.
 - Ajuda aparece no ponto da dúvida e some quando deixa de ser útil.
 - O texto completo nunca depende de hover.
