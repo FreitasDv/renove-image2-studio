@@ -2056,8 +2056,65 @@ legend {
   border-bottom: 1px solid rgba(41, 108, 123, 0.16);
 }
 
+.prompt-flow-note {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 16px 14px 16px 12px;
+  border-bottom: 1px solid rgba(41, 108, 123, 0.14);
+  background:
+    linear-gradient(135deg, rgba(165, 214, 207, 0.2), rgba(251, 252, 250, 0.92)),
+    #ffffff;
+}
+
+.prompt-flow-note::before {
+  content: "→";
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--petrol);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.prompt-flow-note strong,
+.prompt-flow-note span {
+  display: block;
+}
+
+.prompt-flow-note strong {
+  color: var(--ink);
+  font-size: 0.88rem;
+}
+
+.prompt-flow-note span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 .recipe-prompt {
   border-bottom: 1px solid rgba(41, 108, 123, 0.13);
+}
+
+.recipe-prompt--feed {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(165, 214, 207, 0.18), rgba(255, 255, 255, 0) 62%),
+    rgba(251, 252, 250, 0.72);
+}
+
+.recipe-prompt--feed::before {
+  content: "";
+  position: absolute;
+  inset: 10px auto 10px 0;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--aqua);
 }
 
 .recipe-prompt details {
@@ -2096,13 +2153,20 @@ legend {
   font-weight: 700;
 }
 
+.recipe-prompt--feed .prompt-number {
+  border-color: rgba(41, 108, 123, 0.36);
+  background: var(--aqua-soft);
+  color: var(--petrol);
+}
+
 .prompt-summary {
   min-width: 0;
 }
 
 .prompt-summary small,
 .prompt-summary h4,
-.prompt-summary > span {
+.prompt-summary > span,
+.prompt-summary em {
   display: block;
 }
 
@@ -2123,6 +2187,19 @@ legend {
 .prompt-summary > span {
   color: var(--muted);
   font-size: 0.81rem;
+}
+
+.prompt-continuation {
+  width: fit-content;
+  margin-top: 7px;
+  padding: 5px 8px;
+  border: 1px solid rgba(41, 108, 123, 0.16);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--petrol);
+  font-size: 0.69rem;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .summary-action {
@@ -6997,15 +7074,29 @@ Agora siga os prompts da receita na ordem.`;
   function renderPrompts(prompts) {
     const root = byId("recipe-prompts");
     root.replaceChildren();
+    const hasFeedContinuation = prompts.some((prompt) => prompt.phase === "Versionar para Feed 4:5");
+    if (hasFeedContinuation) {
+      const note = document.createElement("div");
+      note.className = "prompt-flow-note";
+      note.innerHTML = `
+        <div>
+          <strong>Story aprovado? Continue no mesmo chat e gere o Feed.</strong>
+          <span>Depois de aprovar a direção do Story, copie o passo Feed 4:5 antes de qualquer correção final. Não abra outro chat e não recorte a imagem.</span>
+        </div>
+      `;
+      root.appendChild(note);
+    }
     prompts.forEach((prompt, index) => {
+      const isFeedContinuation = prompt.phase === "Versionar para Feed 4:5";
       const article = document.createElement("article");
-      article.className = "recipe-prompt";
+      article.className = `recipe-prompt${isFeedContinuation ? " recipe-prompt--feed" : ""}`;
       article.dataset.recipePrompt = prompt.file;
+      if (isFeedContinuation) article.dataset.promptKind = "story-to-feed";
       const details = document.createElement("details");
       details.innerHTML = `
         <summary>
           <span class="prompt-number">${String(index + 1).padStart(2, "0")}</span>
-          <span class="prompt-summary"><small>${prompt.phase}${prompt.optional ? " · se necessário" : ""}</small><h4>${prompt.title}</h4><span>${prompt.description}</span></span>
+          <span class="prompt-summary"><small>${prompt.phase}${prompt.optional ? " · se necessário" : ""}</small><h4>${prompt.title}</h4><span>${prompt.description}</span>${isFeedContinuation ? '<em class="prompt-continuation">continuação do Story aprovado</em>' : ""}</span>
           <span class="summary-action" aria-hidden="true"></span>
         </summary>
         <div class="prompt-body">

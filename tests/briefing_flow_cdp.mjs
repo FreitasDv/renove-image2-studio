@@ -330,6 +330,19 @@ async function run() {
       "antes/depois Story deve usar o prompt Feed específico da mesma frente, não só correção genérica",
     );
     assert(
+      await page.getByText(/Story aprovado\? Continue no mesmo chat e gere o Feed/i).count() >= 1,
+      "receita Story precisa explicar a sequência Story -> Feed no ponto de uso",
+    );
+    assert.equal(
+      await page.locator('[data-prompt-kind="story-to-feed"]').count(),
+      1,
+      "prompt de Feed precisa ter destaque semântico próprio na esteira",
+    );
+    assert(
+      await page.getByText(/continuação do Story aprovado/i).count() >= 1,
+      "passo Feed precisa parecer continuação natural, não arquivo perdido",
+    );
+    assert(
       await page.getByText(/(Corpo protegido|Protocolo) Feed 4:5/i).count() >= 1,
       "antes/depois Story precisa listar a base Feed para a sequência no mesmo chat",
     );

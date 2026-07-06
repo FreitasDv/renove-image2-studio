@@ -35,6 +35,7 @@ Regra de sequência: quando a receita for Story 9:16, o painel deve oferecer Fee
 - O sistema carrega informações adiante; nunca pede o mesmo dado duas vezes.
 - Uma peça usa um chat do Image 2: anexos primeiro, contexto inicial depois, prompts seguintes no mesmo chat.
 - Story 9:16 sempre mostra a continuação para Feed 4:5 na própria esteira de produção.
+- A continuação Story -> Feed deve aparecer como etapa destacada, com ajuda contextual no ponto de uso.
 - O usuário não precisa conhecer "briefing final", "diagnóstico" ou nomes de implementação.
 - Ajuda aparece no ponto da dúvida e some quando deixa de ser útil.
 - O texto completo nunca depende de hover.
