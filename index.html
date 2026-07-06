@@ -6312,13 +6312,14 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
     const front = data.beforeFronts[state.beforeFront];
     const lane = data.beforeLanes[state.beforeLane];
     const format = data.formats[state.beforeFormat];
+    const commercialForce = data.forces[state.force];
     const base = front.bases[state.beforeFormat];
     const generation = front.prompts[state.beforeLane][state.beforeFormat];
     const assets = [data.constants.master, base, data.constants.logoLight, ...logoAssets(), geometryGuideFor(state.beforeFormat)];
 
     return {
       title: `${front.label} · ${lane.label} · ${format.label}`,
-      description: `${lane.description} Esta rota usa base real de edição. Use a base privada indicada com os arquivos da receita e revise risco, texto, roupa, recorte e autorização antes de veicular.`,
+      description: `${lane.description} Força comercial: ${commercialForce.label}. Esta rota usa base real de edição: a copy pode ficar mais direta, mas a base visual continua Principal forte ou Protegida para controlar corpo, recorte e autorização antes de veicular.`,
       assets: unique(assets),
       manualAssets: [
         {
@@ -6481,9 +6482,12 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
       else if (includesAny(extracted.logo, ["oficial", "fundo claro"])) state.logoMode = "official";
     }
 
-    const beforeHint = `${extracted.beforeFront || ""} ${extracted.angle || ""}`;
+    const explicitBeforeFront = extracted.beforeFront || "";
+    const inferredBeforeFront = extracted.angle || "";
+    const shouldUseExplicitBeforeFront = explicitBeforeFront && !includesAny(explicitBeforeFront, ["não se aplica", "nao se aplica"]);
+    const beforeHint = shouldUseExplicitBeforeFront ? explicitBeforeFront : inferredBeforeFront;
     if (includesAny(beforeHint, ["protocolo", "acompanhamento", "preço", "preco", "plano"])) state.beforeFront = "protocol";
-    if (includesAny(beforeHint, ["corpo", "comparação", "comparacao", "roupa", "silhueta"])) state.beforeFront = "sensitive";
+    else if (includesAny(beforeHint, ["corpo", "comparação", "comparacao", "roupa", "silhueta"])) state.beforeFront = "sensitive";
   }
 
   function applyMapAutofill() {
@@ -6510,13 +6514,13 @@ Depois da confirmação, aguarde meu comando. Gere uma única imagem final e pre
   }
 
   function currentForceLabel() {
-    if (state.workflow === "before-after") return data.beforeLanes[state.beforeLane].label;
     return data.forces[state.force]?.label || "Controle pela receita";
   }
 
   function currentVisualLabel(recipe) {
     if (state.workflow === "new") return data.visuals[state.visual].label;
     if (state.workflow === "adapt") return `${recipe.title} / ${data.references[state.reference].label}`;
+    if (state.workflow === "before-after") return `${data.beforeFronts[state.beforeFront].label} · base ${data.beforeLanes[state.beforeLane].label}`;
     return recipe.title;
   }
 
