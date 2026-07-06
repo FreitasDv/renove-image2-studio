@@ -111,7 +111,7 @@ async function run() {
       "campos separados devem ficar escondidos como ajuste opcional",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Copiar orientação para o GPT/i }).count(),
+      await page.getByRole("button", { name: /Copiar organizador para IA/i }).count(),
       1,
       "ação primária do passo 1 precisa estar explícita",
     );
@@ -128,7 +128,7 @@ async function run() {
     assert.equal(
       await page.locator("#brief-map-panel").isVisible(),
       false,
-      "campo de retorno do GPT não deve competir com a ideia antes da primeira ação",
+      "campo de retorno da IA não deve competir com a ideia antes da primeira ação",
     );
     assert.equal(
       await page.locator("[data-copy-first-prompt]").isDisabled(),
@@ -138,7 +138,7 @@ async function run() {
     assert.equal(
       await page.locator("#copy-brief").isDisabled(),
       true,
-      "botão de contexto não pode funcionar antes da volta do GPT",
+      "botão de contexto não pode funcionar antes do mapa aprovado",
     );
     assert.equal(
       await page.locator("details.setup").count(),
@@ -148,7 +148,7 @@ async function run() {
     assert.equal(
       await page.locator(".recipe:not([data-brief-stage='ready']) [data-tour='workflow']").isVisible(),
       false,
-      "rotas avançadas não devem aparecer antes da direção do GPT",
+      "rotas avançadas não devem aparecer antes do mapa aprovado",
     );
     assert.equal(
       await page.locator("details.setup").evaluate((node) => node.open),
@@ -174,14 +174,14 @@ async function run() {
       "receita precisa mostrar a sequência principal sem depender de memória",
     );
     assert.equal(
-      await page.getByText("Baixe e anexe somente estes arquivos").count(),
+      await page.getByText("Baixe e anexe uma vez no Image 2").count(),
       1,
       "seção de anexos precisa declarar que a lista da receita é a fonte de verdade",
     );
     assert.equal(
-      await page.getByText(/Fonte de verdade/i).count() >= 1,
+      await page.getByText(/Quando anexar/i).count() >= 1,
       true,
-      "receita precisa declarar que anexos fora da lista não entram na produção",
+      "receita precisa declarar quando os anexos entram na produção",
     );
 
     const rawIdea = [
@@ -205,11 +205,11 @@ async function run() {
     assert.equal(
       await page.locator("#brief-map-panel").isVisible(),
       true,
-      "depois de copiar o organizador, a tela deve revelar somente o retorno do GPT",
+      "depois de copiar o organizador, a tela deve revelar somente o mapa aprovado",
     );
     assert.match(
       await page.locator("#brief-stage-status").innerText(),
-      /Cole a resposta do GPT abaixo/i,
+      /Cole o mapa aprovado abaixo/i,
       "a interface precisa dizer claramente o que fazer depois da troca de tela",
     );
 
@@ -244,17 +244,17 @@ async function run() {
     assert.equal(
       await page.locator('[data-workflow="before-after"]').getAttribute("aria-pressed"),
       "true",
-      "rota recomendada pelo GPT deve atualizar a receita automaticamente",
+      "rota recomendada pela IA deve atualizar a receita automaticamente",
     );
     assert.equal(
       await page.locator('[data-choice-group="beforeFormat"] [data-value="story"]').getAttribute("aria-pressed"),
       "true",
-      "formato recomendado pelo GPT deve atualizar a receita automaticamente",
+      "formato recomendado pela IA deve atualizar a receita automaticamente",
     );
     assert.match(
       await page.locator("#brief-result").innerText(),
       /Direção reconhecida/i,
-      "ao colar o mapa aprovado, a tela precisa confirmar que entendeu a volta do GPT",
+      "ao colar o mapa aprovado, a tela precisa confirmar que entendeu a direção",
     );
     assert.match(
       await page.locator("#brief-result").innerText(),
@@ -268,12 +268,12 @@ async function run() {
     assert.equal(
       await page.getByText("Receita pronta").count() >= 1,
       true,
-      "depois da volta do GPT, o selo do briefing deve mostrar progresso real",
+      "depois do mapa aprovado, o selo do briefing deve mostrar progresso real",
     );
     assert.equal(
-      await page.getByRole("button", { name: /Copiar pedido para o GPT/i }).count(),
+      await page.getByRole("button", { name: /Copiar organizador para IA/i }).count(),
       0,
-      "depois da volta do GPT, o primeiro passo deve sair do caminho visual",
+      "depois do mapa aprovado, o primeiro passo deve sair do caminho visual",
     );
     assert.equal(
       await page.locator("#copy-brief").isDisabled(),
@@ -304,7 +304,9 @@ async function run() {
     const finalPrompt = await page.locator("#copy-brief").evaluate((button) => button.dataset.briefText);
     assert.match(finalPrompt, /CONTEXTO DA PEÇA RENOVE/i);
     assert.match(finalPrompt, /COLE NO IMAGE 2 ANTES DOS PROMPTS DA RECEITA/i);
-    assert.match(finalPrompt, /MAPA APROVADO PELO GPT/i);
+    assert.match(finalPrompt, /MAPA APROVADO PELA IA/i);
+    assert.match(finalPrompt, /ORDEM DE USO NO IMAGE 2/i);
+    assert.match(finalPrompt, /Se abrir outro chat, repita anexos \+ contexto inicial/i);
     assert.match(finalPrompt, /O que sustenta o resultado/i);
     assert.match(finalPrompt, /Story e Feed são peças irmãs/i);
     assert.match(finalPrompt, /base real indicada/i);
@@ -328,6 +330,18 @@ async function run() {
     assert(
       await page.getByText(/Baixar e anexar/i).count() >= 1,
       "materiais baixáveis precisam ter uma ação clara de baixar e anexar",
+    );
+    assert(
+      await page.getByText(/uma peça = um chat do Image 2/i).count() >= 1,
+      "a tela precisa explicar que contexto, anexos e prompts ficam no mesmo chat",
+    );
+    assert(
+      await page.getByText(/Antes do contexto inicial/i).count() >= 1,
+      "guia de anexos precisa dizer quando anexar",
+    );
+    assert(
+      await page.getByText(/Todos os prompts usam os anexos e o contexto/i).count() >= 1,
+      "guia de anexos precisa explicar como prompts posteriores usam os arquivos",
     );
     assert.doesNotMatch(await page.locator("body").innerText(), /diagnóstico da copy/i);
 

@@ -22,15 +22,16 @@ Aplicativo interno de produção assistida para usuário não técnico. A aparê
 
 ## Fluxo Produzir
 
-1. Ideia: campo principal e ação "Copiar pedido para o GPT".
-2. Direção: retorno do GPT, confirmação do que foi entendido e ajustes opcionais.
-3. Geração: materiais da receita, contexto inicial e prompts na ordem.
+1. Ideia: campo principal e ação "Copiar organizador para IA".
+2. Direção: mapa aprovado vindo do Claude ou ChatGPT, confirmação do que foi entendido e ajustes opcionais.
+3. Geração: anexar materiais uma vez no Image 2, colar contexto inicial e depois usar prompts na ordem.
 4. Revisão: aprovar, corrigir ou reconstruir sem reiniciar o processo.
 
 ## Regras de UX
 
 - Uma ação primária por estado.
 - O sistema carrega informações adiante; nunca pede o mesmo dado duas vezes.
+- Uma peça usa um chat do Image 2: anexos primeiro, contexto inicial depois, prompts seguintes no mesmo chat.
 - O usuário não precisa conhecer "briefing final", "diagnóstico" ou nomes de implementação.
 - Ajuda aparece no ponto da dúvida e some quando deixa de ser útil.
 - O texto completo nunca depende de hover.
@@ -40,7 +41,7 @@ Aplicativo interno de produção assistida para usuário não técnico. A aparê
 
 ## Critério de pronto
 
-- O fluxo completo pode ser explicado em uma frase: cole a ideia, organize no GPT, volte com a direção e siga a receita no Image 2.
+- O fluxo completo pode ser explicado em uma frase: cole a ideia, organize no Claude ou ChatGPT, anexe os materiais no Image 2, cole o contexto inicial e siga os prompts no mesmo chat.
 - Um usuário novo encontra o próximo clique sem abrir Método ou Arquivos.
 - Um usuário experiente consegue revisar rota, risco, cor, logo e copy sem perder profundidade.
 - Não há overflow, sobreposição, texto truncado sem expansão, foco invisível ou ação ambígua.
