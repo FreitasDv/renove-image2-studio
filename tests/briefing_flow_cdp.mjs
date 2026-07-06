@@ -370,6 +370,44 @@ async function run() {
     });
     await page.waitForTimeout(200);
 
+    const protocolBeforeAfterMap = [
+      "MAPA APROVADO PARA COLAR NO PAINEL",
+      "ROTA RECOMENDADA: antes/depois",
+      "FORMATO PRINCIPAL: Feed 4:5",
+      "CANAL: pago",
+      "FAIXA: Agressivo consciente",
+      "FAMILIA VISUAL: Oceano profundo",
+      "LOGO: Automatica por contraste",
+      "FRENTE DE ANTES/DEPOIS: Protocolo e acompanhamento",
+      "1. Angulo principal: alternativa mais segura que comparacao corporal forte.",
+      "3. Texto exato para a arte:",
+      "HEADLINE: Emagrecer sem direcao custa caro",
+      "SUBHEADLINE: plano medico, nutricao e acompanhamento",
+      "CTA/OFERTA: Avaliacao a partir de R$997",
+    ].join("\n");
+    await page.evaluate((nextMap) => {
+      const copy = document.querySelector("#brief-copy");
+      const map = document.querySelector("#brief-map");
+      copy.value = "Peca forte de protocolo sem corpo exposto.";
+      map.value = nextMap;
+      copy.dispatchEvent(new Event("input", { bubbles: true }));
+      map.dispatchEvent(new Event("input", { bubbles: true }));
+    }, protocolBeforeAfterMap);
+    await page.waitForTimeout(200);
+    assert.match(
+      await page.locator("#recipe-title").innerText(),
+      /Protocolo.*Feed 4:5/i,
+      "frente explicita de protocolo deve vencer mencao secundaria a comparacao corporal",
+    );
+    assert.match(
+      await page.locator("#direction-summary").innerText(),
+      /Agressivo consciente/i,
+      "antes/depois deve preservar a forca comercial sem inventar base mega agressiva",
+    );
+    const protocolBrief = await page.locator("#copy-brief").evaluate((button) => button.dataset.briefText);
+    assert.match(protocolBrief, /For.a: Agressivo consciente/i);
+    assert.match(protocolBrief, /Dire..o visual: Protocolo e acompanhamento/i);
+
     const widths = await page.evaluate(() => ({
       document: document.documentElement.scrollWidth,
       viewport: document.documentElement.clientWidth,
